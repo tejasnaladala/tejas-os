@@ -45,7 +45,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
-      <body className="font-mono antialiased">{children}</body>
+      <body className="font-mono antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Tejas Naladala",
+              url: "https://tejasnaladala.com",
+              email: "tejas.naladala@gmail.com",
+              jobTitle: "Founder & Engineer",
+              alumniOf: {
+                "@type": "CollegeOrUniversity",
+                name: "University of Washington",
+              },
+              sameAs: [
+                "https://github.com/tejasnaladala",
+                "https://linkedin.com/in/tejasnaladala",
+                "https://instagram.com/simplytejxs",
+              ],
+            }),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

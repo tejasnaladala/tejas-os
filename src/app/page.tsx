@@ -7,16 +7,19 @@ import Desktop from "@/components/desktop/Desktop";
 import Taskbar from "@/components/desktop/Taskbar";
 import WindowManager from "@/components/windows/WindowManager";
 import CrtOverlay from "@/components/shared/CrtOverlay";
+import MobileShell from "@/components/mobile/MobileShell";
 import { useBootStore } from "@/stores/bootStore";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { useEasterEggStore } from "@/stores/easterEggStore";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
 import { useKeyboardNav } from "@/hooks/useKeyboardNav";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export default function Home() {
   const phase = useBootStore((s) => s.phase);
   const founderModeActive = useEasterEggStore((s) => s.founderModeActive);
   const [showFounderFlash, setShowFounderFlash] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   // Hydrate sound setting from localStorage on mount
   useEffect(() => {
@@ -47,10 +50,19 @@ export default function Home() {
       <BootScreen />
       {phase === "ready" && (
         <>
-          <Desktop />
-          <WindowManager />
-          <Taskbar />
-          <CrtOverlay />
+          {isMobile ? (
+            <>
+              <MobileShell />
+              <CrtOverlay />
+            </>
+          ) : (
+            <>
+              <Desktop />
+              <WindowManager />
+              <Taskbar />
+              <CrtOverlay />
+            </>
+          )}
         </>
       )}
 
