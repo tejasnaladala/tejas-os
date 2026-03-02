@@ -1,35 +1,19 @@
-export type WindowId =
-  | "projects"
-  | "resume"
-  | "system-info"
-  | "skills"
-  | "arcade"
-  | "project-detail"
-  | "terminal"
-  | "achievements"
-  | "timeline"
-  | "classified";
+export type StationId = "research" | "salvage" | "systems" | "arcade" | "comms" | "trench";
 
-export interface WindowState {
-  id: WindowId;
-  title: string;
-  isOpen: boolean;
-  isMinimized: boolean;
-  isMaximized: boolean;
-  position: { x: number; y: number };
-  size: { width: number; height: number };
-  zIndex: number;
-  meta?: Record<string, unknown>;
-}
-
-export interface DesktopIconConfig {
-  id: WindowId | "mail";
+export interface StationConfig {
+  id: StationId;
   label: string;
   icon: string;
-  action: "window" | "mailto";
+  position: { x: number; y: number };
+  description: string;
 }
 
-export type BootPhase = "idle" | "power-on" | "bios-post" | "loading-desktop" | "ready";
+export interface ROVState {
+  position: { x: number; y: number };
+  velocity: { x: number; y: number };
+  isBoosting: boolean;
+  facingDirection: "left" | "right";
+}
 
 export interface Project {
   id: string;
@@ -75,5 +59,3 @@ export interface TerminalCommand {
   description: string;
   execute: () => string;
 }
-
-export type WallpaperOption = "default" | "circuit" | "matrix";

@@ -9,26 +9,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: {
-          primary: "var(--bg-primary)",
-          surface: "var(--bg-surface)",
-          elevated: "var(--bg-elevated)",
+        ocean: {
+          surface: "var(--ocean-surface)",
+          twilight: "var(--ocean-twilight)",
+          midnight: "var(--ocean-midnight)",
+          abyss: "var(--ocean-abyss)",
         },
-        border: "var(--border)",
+        panel: "var(--bg-panel)",
         text: {
           primary: "var(--text-primary)",
           secondary: "var(--text-secondary)",
         },
         accent: {
+          cyan: "var(--accent-cyan)",
           green: "var(--accent-green)",
           amber: "var(--accent-amber)",
-          cyan: "var(--accent-cyan)",
           red: "var(--accent-red)",
         },
       },
       fontFamily: {
         mono: ["var(--font-mono)"],
-        pixel: ["var(--font-pixel)"],
         sans: ["var(--font-sans)"],
       },
     },

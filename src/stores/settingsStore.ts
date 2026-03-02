@@ -1,16 +1,12 @@
 import { create } from "zustand";
-import { WallpaperOption } from "@/types";
 
 interface SettingsState {
   soundEnabled: boolean;
-  wallpaper: WallpaperOption;
   toggleSound: () => void;
-  setWallpaper: (wp: WallpaperOption) => void;
 }
 
 export const useSettingsStore = create<SettingsState>((set) => ({
   soundEnabled: false, // default muted
-  wallpaper: "default",
   toggleSound: () =>
     set((s) => {
       const next = !s.soundEnabled;
@@ -19,5 +15,4 @@ export const useSettingsStore = create<SettingsState>((set) => ({
       }
       return { soundEnabled: next };
     }),
-  setWallpaper: (wallpaper) => set({ wallpaper }),
 }));

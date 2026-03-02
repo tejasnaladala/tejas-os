@@ -2,20 +2,20 @@
 @config "../../tailwind.config.ts";
 
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-surface: #12121a;
-  --bg-elevated: #1a1a2e;
-  --border: #2a2a3e;
-  --text-primary: #e0e0e8;
-  --text-secondary: #8888a0;
-  --accent-green: #00ff41;
-  --accent-amber: #ffb000;
+  --ocean-surface: #0a2463;
+  --ocean-twilight: #0d1b3e;
+  --ocean-midnight: #0a1128;
+  --ocean-abyss: #020408;
+  --bg-panel: #0a0f1a;
+  --text-primary: #c8d6e5;
+  --text-secondary: #5f7a94;
   --accent-cyan: #00d4ff;
-  --accent-red: #ff0040;
-  --glow-green: rgba(0, 255, 65, 0.2);
-  --glow-amber: rgba(255, 176, 0, 0.2);
+  --accent-green: #00ff88;
+  --accent-amber: #ffb000;
+  --accent-red: #ff3366;
+  --glow-cyan: rgba(0, 212, 255, 0.3);
+  --bubble: rgba(255, 255, 255, 0.15);
   --font-mono: "JetBrains Mono", monospace;
-  --font-pixel: "Press Start 2P", monospace;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
@@ -29,94 +29,98 @@ html,
 body {
   height: 100%;
   overflow: hidden;
-  background: var(--bg-primary);
+  background: var(--ocean-surface);
   color: var(--text-primary);
   font-family: var(--font-mono);
 }
 
 ::selection {
-  background: var(--accent-green);
-  color: var(--bg-primary);
+  background: var(--accent-cyan);
+  color: var(--ocean-abyss);
 }
 
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-surface);
+  background: var(--ocean-midnight);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border: 2px solid var(--bg-surface);
+  background: var(--text-secondary);
+  border: 2px solid var(--ocean-midnight);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
+  background: var(--accent-cyan);
 }
 
-.crt-scanlines::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 1px,
-    rgba(0, 0, 0, 0.04) 1px,
-    rgba(0, 0, 0, 0.04) 2px
-  );
-  pointer-events: none;
-  z-index: 9999;
-}
-
-.crt-vignette::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.4) 100%);
-  pointer-events: none;
-  z-index: 9998;
-}
-
-.glow-green {
-  text-shadow: 0 0 8px var(--glow-green), 0 0 16px var(--glow-green);
-}
-
-.glow-amber {
-  text-shadow: 0 0 8px var(--glow-amber), 0 0 16px var(--glow-amber);
-}
-
-@keyframes crt-power-on {
+/* Bubble floating animation */
+@keyframes float-up {
   0% {
-    clip-path: inset(50% 0 50% 0);
-    opacity: 1;
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
   }
   50% {
-    clip-path: inset(2% 0 2% 0);
-    opacity: 1;
+    opacity: 0.5;
   }
   100% {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
+    transform: translateY(-800px) translateX(20px);
+    opacity: 0;
   }
 }
 
-.crt-power-on {
-  animation: crt-power-on 0.4s ease-out forwards;
+/* Sea creature drift animation */
+@keyframes drift {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(300px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
-@keyframes crt-flicker {
-  0% { opacity: 1; }
-  50% { opacity: 0.95; }
-  100% { opacity: 1; }
+/* Station marker pulse glow */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--glow-cyan), 0 0 16px transparent;
+  }
+  50% {
+    box-shadow: 0 0 16px var(--glow-cyan), 0 0 32px var(--glow-cyan);
+  }
 }
 
-.crt-flicker {
-  animation: crt-flicker 0.15s ease-in-out;
+/* Light ray sweep */
+@keyframes light-ray {
+  0% {
+    opacity: 0.02;
+    transform: rotate(15deg) translateX(-100px);
+  }
+  50% {
+    opacity: 0.04;
+  }
+  100% {
+    opacity: 0.02;
+    transform: rotate(15deg) translateX(100px);
+  }
 }
 
+/* ROV idle bob */
+@keyframes bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Cursor blink (kept) */
 @keyframes blink-cursor {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
@@ -126,14 +130,19 @@ body {
   animation: blink-cursor 1s step-end infinite;
 }
 
+/* Glow utilities */
+.glow-cyan {
+  text-shadow: 0 0 8px var(--glow-cyan), 0 0 16px var(--glow-cyan);
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .crt-power-on,
-  .crt-flicker,
   .cursor-blink {
     animation: none;
   }
-  .crt-scanlines::after,
-  .crt-vignette::before {
-    display: none;
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
