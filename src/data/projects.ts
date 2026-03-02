@@ -1,0 +1,148 @@
+import { Project } from "@/types";
+
+export const projects: Project[] = [
+  {
+    id: "plasmafx",
+    filename: "PlasmaX",
+    extension: "sys",
+    title: "PlasmaX",
+    role: "Founder & CEO",
+    date: "May 2023 – Present",
+    description:
+      "Engineered the first industrial-scale continuous plasma-activated water disinfection system for post-harvest produce processing, replacing chlorine sanitation with a chemical-free process.",
+    metrics: [
+      "$2M seed round at $8M post-money valuation",
+      "Sold first production unit ($180K) to CSIR-CFTRI India",
+      "10 contracted revenue-generating system deployments",
+      "Patent filed on venturi-plasma integration architecture",
+      "3 peer-reviewed publications",
+      "2.5 log\u2081\u2080 microbial reduction at 1.86 kW, $0.47/ton operating cost",
+    ],
+    tech: [
+      "Plasma Physics",
+      "High-Voltage Electronics",
+      "Fusion360 CAD",
+      "CNC/VMC Machining",
+      "Injection Molding",
+    ],
+    links: [
+      { label: "DOI: 10.1088/1361-6463/ad77de", url: "https://doi.org/10.1088/1361-6463/ad77de" },
+    ],
+  },
+  {
+    id: "cerulean",
+    filename: "CeruleanROV",
+    extension: "hw",
+    title: "Cerulean Robotics",
+    role: "Founder & Sole Engineer",
+    date: "Nov 2025 – Present",
+    description:
+      "Architecting open-source underwater ROV platform ($2\u20135K) with modular sensor payload system, targeting 80\u2013100m depth rating as accessible alternative to $10\u201350K commercial systems.",
+    metrics: [
+      "Vectored 5-thruster configuration (Pixhawk/ArduSub)",
+      "Raspberry Pi 5 HD vision pipeline",
+      "Custom MOSFET power distribution for 6S Li-ion",
+      "$2,000 Buerk Center prototype funding secured",
+      "Targeting $3.5B AUV/ROV market",
+    ],
+    tech: [
+      "Pixhawk/ArduSub",
+      "Raspberry Pi 5",
+      "MOSFET Power Electronics",
+      "KiCad PCB",
+      "CAD/Waterproofing",
+    ],
+  },
+  {
+    id: "atticus",
+    filename: "AtticusAI",
+    extension: "exe",
+    title: "Atticus AI",
+    role: "Founder & Technical Lead",
+    date: "Jan 2026 – Present",
+    description:
+      "Built AI-powered B2B SaaS platform that audits commercial insurance policies for SMBs, parsing PDFs through a proprietary 4-stage extraction pipeline.",
+    metrics: [
+      "Identifies coverage gaps, exclusions, and premium inefficiencies",
+      "Multi-model AI orchestration with Protection Score\u2122",
+      "Plain-English audit reports with broker negotiation strategies",
+      "Processes policies in under 60 seconds",
+      "Targeting $294.6B U.S. commercial insurance market",
+    ],
+    tech: ["Next.js 14", "Multi-Model AI", "PDF Document AI", "RAG Pipeline", "TypeScript"],
+  },
+  {
+    id: "forge",
+    filename: "Forge",
+    extension: "pkg",
+    title: "Forge \u2014 Open-Source AI Agent Runtime",
+    role: "Creator",
+    date: "Feb 2026",
+    description:
+      "Provider-agnostic AI agent orchestration framework enabling declarative YAML agent definitions with automatic routing across 8 LLM providers.",
+    metrics: [
+      "4,400+ lines of code (Python/TypeScript)",
+      "8 LLM providers (OpenAI, Anthropic, Google, Ollama, DeepSeek, Groq, Together AI, vLLM)",
+      "150+ unique clones in first week",
+      "Multi-agent orchestration (sequential, parallel, supervisor)",
+      "FastAPI + WebSocket observability with Next.js dashboard",
+    ],
+    tech: [
+      "Python",
+      "TypeScript",
+      "LiteLLM",
+      "ChromaDB",
+      "SQLite",
+      "FastAPI",
+      "WebSocket",
+      "Next.js",
+    ],
+    links: [{ label: "GitHub", url: "https://github.com/tejasnaladala" }],
+  },
+  {
+    id: "seal-lab",
+    filename: "SEAL_Lab",
+    extension: "log",
+    title: "SEAL Lab \u2014 University of Washington",
+    role: "Research Associate",
+    date: "Mar \u2013 Nov 2025",
+    description:
+      "Designed embedded sensing architectures for 2 research grant proposals under Prof. Alex Mamishev.",
+    metrics: [
+      "PPG-based drowsiness detection wearable for real-time physiological monitoring",
+      "Non-intrusive breakage-detection sensor for U.S. Navy hull integrity",
+      "Authored grant sections and technical abstracts across 7-person team",
+      "Literature analysis of 40+ papers on photoplethysmography signal processing",
+    ],
+    tech: [
+      "Embedded Systems",
+      "PPG Signal Processing",
+      "Anomaly Detection",
+      "Grant Writing",
+      "STM32",
+    ],
+  },
+  {
+    id: "niist",
+    filename: "NIIST_Solar",
+    extension: "dat",
+    title: "NIIST (CSIR) India \u2014 Solar Cell Research",
+    role: "Research Intern",
+    date: "Jun 2024 \u2013 Mar 2025",
+    description:
+      "Fabricated and optimized dye-sensitized and perovskite solar cells under Dr. Suraj Soman (world-record DSC efficiency group).",
+    metrics: [
+      "Engineered ruthenium-TiO\u2082 photoanode interfaces",
+      "Characterized 20+ device architectures",
+      "Used Dyenamo Toolbox, PIA spectroscopy, IPCE, XRD",
+      "Validated photovoltaic performance metrics",
+    ],
+    tech: [
+      "Perovskite Solar Cells",
+      "Dye-Sensitized Solar Cells",
+      "PIA Spectroscopy",
+      "XRD",
+      "Cleanroom Fabrication",
+    ],
+  },
+];
