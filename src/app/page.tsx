@@ -6,6 +6,7 @@ import MiniMap from "@/components/hud/MiniMap";
 import DiscoveryLog from "@/components/hud/DiscoveryLog";
 import NavBar from "@/components/hud/NavBar";
 import Tutorial from "@/components/hud/Tutorial";
+import ContentPanel from "@/components/panels/ContentPanel";
 
 export default function Home() {
   return (
@@ -18,6 +19,9 @@ export default function Home() {
       <DiscoveryLog />
       <NavBar />
       <Tutorial />
+
+      {/* Content panel (slide-in from right) */}
+      <ContentPanel />
     </main>
   );
 }
