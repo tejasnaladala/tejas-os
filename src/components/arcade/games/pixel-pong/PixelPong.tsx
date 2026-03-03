@@ -95,7 +95,8 @@ export default function PixelPong() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const W = size.w, H = size.h;
-    canvas.width = W; canvas.height = H;
+    if (canvas.width !== W || canvas.height !== H) { canvas.width = W; canvas.height = H; }
+    ctx.clearRect(0, 0, W, H);
 
     const blockW = (W - 40) / BLOCK_COLS, blockH = 20;
     const blockOX = 20, blockOY = 50;
@@ -137,16 +138,18 @@ export default function PixelPong() {
           b.y = paddleY - PADDLE_H / 2 - BALL_R;
         }
 
-        // Block collision
+        // Block collision (break after first hit to prevent double-negate)
         let anyBlock = false;
-        for (let r = 0; r < BLOCK_ROWS; r++)
-          for (let c = 0; c < BLOCK_COLS; c++) {
+        let blockHit = false;
+        for (let r = 0; r < BLOCK_ROWS && !blockHit; r++)
+          for (let c = 0; c < BLOCK_COLS && !blockHit; c++) {
             if (blocks.current[r][c] === null) continue;
             anyBlock = true;
             const bx = blockOX + c * blockW, by = blockOY + r * blockH;
             if (b.x + BALL_R > bx && b.x - BALL_R < bx + blockW && b.y + BALL_R > by && b.y - BALL_R < by + blockH) {
               blocks.current[r][c] = null;
               scoreRef.current += 10;
+              blockHit = true;
               // Reflect
               const overlapL = b.x + BALL_R - bx, overlapR = bx + blockW - (b.x - BALL_R);
               const overlapT = b.y + BALL_R - by, overlapB = by + blockH - (b.y - BALL_R);
@@ -154,7 +157,7 @@ export default function PixelPong() {
               if (minO === overlapL || minO === overlapR) b.vx = -b.vx; else b.vy = -b.vy;
             }
           }
-        if (!anyBlock) gs.current = "win";
+        if (!anyBlock && !blockHit) gs.current = "win";
       }
     }
 

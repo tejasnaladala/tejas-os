@@ -1,38 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 const games = {
   "flappy-tejas": {
     name: "Flappy Tejas",
-    description: "Dodge circuit board pillars with your drone",
-    mode: "easy" as const,
+    description: "Dodge the pillars with my headshot as the bird",
     component: dynamic(() => import("./games/flappy-tejas/FlappyTejas"), { ssr: false }),
   },
   "tetromino-ai": {
     name: "Tetromino.AI",
     description: "Stack circuit-themed blocks before they overflow",
-    mode: "easy" as const,
     component: dynamic(() => import("./games/tetromino-ai/TetrominoAI"), { ssr: false }),
   },
   "pixel-pong": {
     name: "Pixel Pong",
     description: "Break the circuit blocks with your paddle",
-    mode: "easy" as const,
     component: dynamic(() => import("./games/pixel-pong/PixelPong"), { ssr: false }),
   },
-  "debug-circuit": {
-    name: "Debug the Circuit",
-    description: "Find and fix bugs in logic circuits",
-    mode: "hard" as const,
-    component: dynamic(() => import("./games/debug-circuit/DebugCircuit"), { ssr: false }),
+  "whack-a-bug": {
+    name: "Whack-a-Bug",
+    description: "Click the bugs before they scurry away",
+    component: dynamic(() => import("./games/whack-a-bug/WhackABug"), { ssr: false }),
   },
-  "train-agent": {
-    name: "Train the Agent",
-    description: "Teach an AI agent to reach its goal",
-    mode: "hard" as const,
-    component: dynamic(() => import("./games/train-agent/TrainAgent"), { ssr: false }),
+  "memory-grid": {
+    name: "Memory Grid",
+    description: "Remember the pattern and reproduce it",
+    component: dynamic(() => import("./games/memory-grid/MemoryGrid"), { ssr: false }),
+  },
+  "reaction-test": {
+    name: "Reaction Test",
+    description: "How fast can you click when it turns green?",
+    component: dynamic(() => import("./games/reaction-test/ReactionTest"), { ssr: false }),
   },
 };
 
@@ -60,7 +60,7 @@ function GameCard({ id, onPlay }: { id: GameId; onPlay: (id: GameId) => void }) 
       <button
         onClick={() => onPlay(id)}
         style={{
-          background: game.mode === "easy" ? "var(--accent-green)" : "var(--accent-red)",
+          background: "var(--accent-cyan)",
           color: "var(--bg-panel)",
           border: "none",
           borderRadius: 4,
@@ -80,6 +80,12 @@ function GameCard({ id, onPlay }: { id: GameId; onPlay: (id: GameId) => void }) 
 
 export default function GameLauncher({ windowId }: { windowId: string }) {
   const [activeGame, setActiveGame] = useState<GameId | null>(null);
+  const gameContainerRef = useRef<HTMLDivElement>(null);
+
+  // Focus the game container when a game is launched (once, not every render)
+  useEffect(() => {
+    if (activeGame) gameContainerRef.current?.focus();
+  }, [activeGame]);
 
   if (activeGame) {
     const GameComponent = games[activeGame].component;
@@ -102,53 +108,25 @@ export default function GameLauncher({ windowId }: { windowId: string }) {
         >
           &larr; BACK TO ARCADE
         </button>
-        <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
+        <div
+          style={{ flex: 1, position: "relative", overflow: "hidden" }}
+          tabIndex={0}
+          ref={gameContainerRef}
+        >
           <GameComponent />
         </div>
       </div>
     );
   }
 
-  const easyGames = (Object.keys(games) as GameId[]).filter((id) => games[id].mode === "easy");
-  const hardGames = (Object.keys(games) as GameId[]).filter((id) => games[id].mode === "hard");
+  const allGames = Object.keys(games) as GameId[];
 
   return (
     <div style={{ padding: 20, fontFamily: "var(--font-mono)", overflowY: "auto", height: "100%" }}>
-      <div style={{ marginBottom: 24 }}>
-        <h3
-          style={{
-            color: "var(--accent-green)",
-            fontSize: 14,
-            fontWeight: 700,
-            marginBottom: 12,
-            letterSpacing: 2,
-          }}
-        >
-          // EASY MODE
-        </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {easyGames.map((id) => (
-            <GameCard key={id} id={id} onPlay={setActiveGame} />
-          ))}
-        </div>
-      </div>
-      <div>
-        <h3
-          style={{
-            color: "var(--accent-red)",
-            fontSize: 14,
-            fontWeight: 700,
-            marginBottom: 12,
-            letterSpacing: 2,
-          }}
-        >
-          // HARD MODE
-        </h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {hardGames.map((id) => (
-            <GameCard key={id} id={id} onPlay={setActiveGame} />
-          ))}
-        </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {allGames.map((id) => (
+          <GameCard key={id} id={id} onPlay={setActiveGame} />
+        ))}
       </div>
     </div>
   );

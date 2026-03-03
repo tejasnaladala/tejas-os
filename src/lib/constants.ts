@@ -20,21 +20,22 @@ export const BREAKPOINTS = {
 } as const;
 
 export const OCEAN_CONFIG = {
-  worldWidth: 5000,
-  worldHeight: 3500,
-  rovSpeed: 200,
+  worldWidth: 3200,
+  worldHeight: 2400,
+  rovSpeed: 350,
   rovBoostMultiplier: 2,
   rovFriction: 0.92,
-  rovAcceleration: 600,
-  dockRange: 100,
-  spawnPosition: { x: 800, y: 300 },
+  rovAcceleration: 900,
+  dockRange: 120,
+  spawnPosition: { x: 500, y: 250 },
 } as const;
 
 export const STATIONS: StationConfig[] = [
-  { id: "research", label: "Research Lab", icon: "\uD83D\uDD2C", position: { x: 1200, y: 500 }, description: "Pilot Profile & Bio" },
-  { id: "salvage", label: "Salvage Yard", icon: "\uD83D\uDCE6", position: { x: 2800, y: 1200 }, description: "Recovered Project Artifacts" },
-  { id: "systems", label: "Systems Bay", icon: "\uD83D\uDD27", position: { x: 4000, y: 700 }, description: "ROV Subsystem Diagnostics" },
-  { id: "arcade", label: "Arcade Rig", icon: "\uD83D\uDD79\uFE0F", position: { x: 3500, y: 2100 }, description: "Recreation Module" },
-  { id: "comms", label: "Comms Array", icon: "\uD83D\uDCE1", position: { x: 900, y: 2600 }, description: "Transmission Hub" },
-  { id: "trench", label: "The Trench", icon: "\uD83C\uDF0B", position: { x: 2500, y: 3200 }, description: "Classified Zone" },
+  { id: "research", label: "Research Lab", icon: "\uD83D\uDD2C", position: { x: 700, y: 400 }, description: "Pilot Profile & Bio" },
+  { id: "salvage", label: "Salvage Yard", icon: "\uD83D\uDCE6", position: { x: 1500, y: 700 }, description: "Recovered Project Artifacts" },
+  { id: "systems", label: "Systems Bay", icon: "\uD83D\uDD27", position: { x: 2400, y: 450 }, description: "ROV Subsystem Diagnostics" },
+  { id: "arcade", label: "Arcade Rig", icon: "\uD83D\uDD79\uFE0F", position: { x: 2200, y: 1300 }, description: "Recreation Module" },
+  { id: "gallery", label: "Gallery", icon: "\uD83C\uDFA5", position: { x: 1100, y: 1300 }, description: "Media Showcase" },
+  { id: "comms", label: "Comms Array", icon: "\uD83D\uDCE1", position: { x: 500, y: 1000 }, description: "Transmission Hub" },
+  { id: "trench", label: "The Trench", icon: "\uD83C\uDF0B", position: { x: 1500, y: 2000 }, description: "Classified Zone" },
 ];

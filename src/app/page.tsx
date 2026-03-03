@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
+import { useBackgroundMusic } from "@/hooks/useBackgroundMusic";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { useEasterEggStore } from "@/stores/easterEggStore";
 import { useOceanStore } from "@/stores/oceanStore";
@@ -13,6 +14,7 @@ import MiniMap from "@/components/hud/MiniMap";
 import DiscoveryLog from "@/components/hud/DiscoveryLog";
 import NavBar from "@/components/hud/NavBar";
 import Tutorial from "@/components/hud/Tutorial";
+import GuidedTutorial from "@/components/hud/GuidedTutorial";
 import ContentPanel from "@/components/panels/ContentPanel";
 import MobileOcean from "@/components/mobile/MobileOcean";
 
@@ -20,6 +22,23 @@ export default function Home() {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const founderModeActive = useEasterEggStore((s) => s.founderModeActive);
   const [showFounderFlash, setShowFounderFlash] = useState(false);
+  const [showDamageFlash, setShowDamageFlash] = useState(false);
+  const rovLives = useOceanStore((s) => s.rovLives);
+  const rovAlive = useOceanStore((s) => s.rovAlive);
+  const gameOverVisible = useOceanStore((s) => s.gameOverVisible);
+
+  // Listen for creature attack damage events — lose a life
+  useEffect(() => {
+    const handleDamage = () => {
+      const store = useOceanStore.getState();
+      if (!store.rovAlive) return; // already dead, ignore
+      store.loseLife();
+      setShowDamageFlash(true);
+      setTimeout(() => setShowDamageFlash(false), 400);
+    };
+    window.addEventListener("rov-damage", handleDamage);
+    return () => window.removeEventListener("rov-damage", handleDamage);
+  }, []);
 
   // Hydrate sound setting from localStorage
   useEffect(() => {
@@ -34,6 +53,22 @@ export default function Home() {
 
   // Easter egg hooks
   useKonamiCode();
+
+  // Background music system
+  useBackgroundMusic();
+
+  // Auto-start guided tutorial on first visit
+  useEffect(() => {
+    const hasVisited = sessionStorage.getItem("tejas-os-tutorial-shown");
+    if (!hasVisited) {
+      // Small delay so the scene loads first
+      const timer = setTimeout(() => {
+        useOceanStore.getState().startGuidedTutorial();
+        sessionStorage.setItem("tejas-os-tutorial-shown", "true");
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // When Konami code activates founder mode, reveal The Trench
   useEffect(() => {
@@ -60,9 +95,120 @@ export default function Home() {
       <DiscoveryLog />
       <NavBar />
       <Tutorial />
+      <GuidedTutorial />
 
       {/* Content panel (slide-in from right) */}
       <ContentPanel />
+
+      {/* Creature Damage Flash */}
+      {showDamageFlash && (
+        <div
+          className="pointer-events-none fixed inset-0 z-[150]"
+          style={{
+            background: "radial-gradient(ellipse at center, rgba(255,0,40,0.3) 0%, rgba(255,0,0,0.15) 40%, transparent 80%)",
+            animation: "damage-flash 0.4s ease-out forwards",
+            border: "3px solid rgba(255, 0, 40, 0.6)",
+            borderRadius: 0,
+          }}
+        />
+      )}
+
+      {/* Lives display - hearts in top-right area */}
+      <div
+        className="pointer-events-none fixed z-[60] font-mono"
+        style={{
+          top: 14,
+          right: 200,
+          display: "flex",
+          gap: 6,
+          alignItems: "center",
+        }}
+      >
+        {Array.from({ length: 3 }).map((_, i) => (
+          <span
+            key={i}
+            style={{
+              fontSize: 18,
+              color: i < rovLives ? "#ff3366" : "#2a2a3e",
+              textShadow: i < rovLives ? "0 0 8px rgba(255, 51, 102, 0.6)" : "none",
+              transition: "color 0.3s, text-shadow 0.3s",
+            }}
+          >
+            ♥
+          </span>
+        ))}
+      </div>
+
+      {/* Game Over Overlay */}
+      <AnimatePresence>
+        {gameOverVisible && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-[300] flex items-center justify-center"
+            style={{ background: "rgba(10, 5, 15, 0.85)" }}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex flex-col items-center gap-6 px-12 py-10"
+              style={{
+                background: "rgba(10, 15, 26, 0.95)",
+                border: "1px solid rgba(255, 51, 102, 0.4)",
+                borderRadius: 12,
+                boxShadow: "0 0 60px rgba(255, 51, 102, 0.15), 0 0 120px rgba(255, 51, 102, 0.05)",
+                maxWidth: 500,
+              }}
+            >
+              <div
+                className="font-mono text-2xl font-bold tracking-widest"
+                style={{ color: "#ff3366" }}
+              >
+                GAME OVER
+              </div>
+              <div
+                className="font-mono text-center text-sm leading-relaxed"
+                style={{ color: "var(--text-secondary)", maxWidth: 360 }}
+              >
+                hey you&apos;re supposed to shoot them too
+                <br />
+                don&apos;t judge my profile too hard lol
+              </div>
+              <button
+                onClick={() => {
+                  useOceanStore.getState().respawnROV();
+                  window.dispatchEvent(new CustomEvent("rov-respawn"));
+                }}
+                className="font-mono text-sm font-bold tracking-wider"
+                style={{
+                  background: "var(--accent-cyan)",
+                  color: "#0a0f1a",
+                  border: "none",
+                  borderRadius: 6,
+                  padding: "10px 32px",
+                  cursor: "pointer",
+                  boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)",
+                  transition: "transform 0.15s, box-shadow 0.15s",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "scale(1.05)";
+                  e.currentTarget.style.boxShadow = "0 0 30px rgba(0, 212, 255, 0.5)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.boxShadow = "0 0 20px rgba(0, 212, 255, 0.3)";
+                }}
+              >
+                RESPAWN
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Founder Mode Activation Overlay */}
       <AnimatePresence>

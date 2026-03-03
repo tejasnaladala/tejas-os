@@ -11,6 +11,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Java", level: "Proficient", barFill: 8 },
       { name: "SQL", level: "Proficient", barFill: 8 },
       { name: "MATLAB/Simulink", level: "Capable", barFill: 6 },
+      { name: "Rust", level: "Capable", barFill: 6 },
       { name: "Next.js / React", level: "Expert", barFill: 12 },
       { name: "FastAPI / Node.js", level: "Advanced", barFill: 10 },
     ],
@@ -25,6 +26,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Pixhawk / ArduSub", level: "Advanced", barFill: 10 },
       { name: "MOSFET Power Electronics", level: "Advanced", barFill: 10 },
       { name: "Oscilloscope / Logic Analyzer", level: "Advanced", barFill: 10 },
+      { name: "High-Voltage Power Supply Design", level: "Expert", barFill: 12 },
     ],
   },
   {
@@ -36,6 +38,8 @@ export const skillCategories: SkillCategory[] = [
       { name: "RAG Pipelines", level: "Advanced", barFill: 10 },
       { name: "TensorFlow / OpenCV", level: "Proficient", barFill: 8 },
       { name: "Document AI / PDF Parsing", level: "Advanced", barFill: 10 },
+      { name: "Prompt Engineering / Function Calling", level: "Expert", barFill: 12 },
+      { name: "ChromaDB / Pinecone", level: "Advanced", barFill: 10 },
     ],
   },
   {
@@ -56,6 +60,8 @@ export const skillCategories: SkillCategory[] = [
       { name: "Docker", level: "Advanced", barFill: 10 },
       { name: "Linux", level: "Advanced", barFill: 10 },
       { name: "ROS / Gazebo", level: "Proficient", barFill: 8 },
+      { name: "Vercel / AWS Lambda", level: "Advanced", barFill: 10 },
+      { name: "WebSocket / SSE", level: "Proficient", barFill: 8 },
     ],
   },
 ];

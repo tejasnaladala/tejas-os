@@ -17,6 +17,8 @@ export const projects: Project[] = [
       "Patent filed on venturi-plasma integration architecture",
       "3 peer-reviewed publications",
       "2.5 log\u2081\u2080 microbial reduction at 1.86 kW, $0.47/ton operating cost",
+      "Custom high-voltage flyback driver: 18kV AC at 23kHz, <2W quiescent",
+      "Embedded STM32 PID loop controlling gas flow, voltage regulation, and thermal management",
     ],
     tech: [
       "Plasma Physics",
@@ -44,6 +46,8 @@ export const projects: Project[] = [
       "Custom MOSFET power distribution for 6S Li-ion",
       "$2,000 Buerk Center prototype funding secured",
       "Targeting $3.5B AUV/ROV market",
+      "Letter of intent from government officials for Lake Sammamish environmental audit contracts",
+      "Real-time HD video streaming via tethered Ethernet with <100ms latency",
     ],
     tech: [
       "Pixhawk/ArduSub",
@@ -69,7 +73,7 @@ export const projects: Project[] = [
       "Processes policies in under 60 seconds",
       "Targeting $294.6B U.S. commercial insurance market",
     ],
-    tech: ["Next.js 14", "Multi-Model AI", "PDF Document AI", "RAG Pipeline", "TypeScript"],
+    tech: ["Next.js 14", "Claude/GPT-4 Orchestration", "PDF.js + Tesseract OCR", "Pinecone Vector DB", "Stripe Billing", "TypeScript"],
   },
   {
     id: "forge",
@@ -86,6 +90,7 @@ export const projects: Project[] = [
       "150+ unique clones in first week",
       "Multi-agent orchestration (sequential, parallel, supervisor)",
       "FastAPI + WebSocket observability with Next.js dashboard",
+      "Provider-agnostic tool-calling with automatic schema translation across OpenAI, Anthropic, and Google function formats",
     ],
     tech: [
       "Python",
@@ -113,6 +118,7 @@ export const projects: Project[] = [
       "Non-intrusive breakage-detection sensor for U.S. Navy hull integrity",
       "Authored grant sections and technical abstracts across 7-person team",
       "Literature analysis of 40+ papers on photoplethysmography signal processing",
+      "Real-time PPG signal denoising using Butterworth bandpass filter (0.5-5Hz) with 95% motion artifact rejection",
     ],
     tech: [
       "Embedded Systems",
@@ -136,6 +142,7 @@ export const projects: Project[] = [
       "Characterized 20+ device architectures",
       "Used Dyenamo Toolbox, PIA spectroscopy, IPCE, XRD",
       "Validated photovoltaic performance metrics",
+      "Achieved 7.2% PCE on N719-sensitized TiO\u2082 photoanode with optimized dye-loading protocol",
     ],
     tech: [
       "Perovskite Solar Cells",

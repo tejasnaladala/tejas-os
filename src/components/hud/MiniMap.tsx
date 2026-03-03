@@ -4,21 +4,27 @@ import { useOceanStore } from "@/stores/oceanStore";
 import { useDiscovery } from "@/hooks/useDiscovery";
 import { OCEAN_CONFIG, STATIONS } from "@/lib/constants";
 
-const MAP_WIDTH = 160;
-const MAP_HEIGHT = 112; // Proportional to 5000:3500
+const MAP_SM_W = 160;
+const MAP_SM_H = 120;
+const MAP_LG_W = 360;
+const MAP_LG_H = 270;
 
 export default function MiniMap() {
   const rovX = useOceanStore((s) => s.rovX);
   const rovY = useOceanStore((s) => s.rovY);
   const hudVisible = useOceanStore((s) => s.hudVisible);
+  const expanded = useOceanStore((s) => s.minimapExpanded);
+  const toggleMinimap = useOceanStore((s) => s.toggleMinimap);
   const setRovPosition = useOceanStore((s) => s.setRovPosition);
   const setRovVelocity = useOceanStore((s) => s.setRovVelocity);
   const { isDiscovered, allMainDiscovered } = useDiscovery();
 
   if (!hudVisible) return null;
 
-  const scaleX = MAP_WIDTH / OCEAN_CONFIG.worldWidth;
-  const scaleY = MAP_HEIGHT / OCEAN_CONFIG.worldHeight;
+  const mapW = expanded ? MAP_LG_W : MAP_SM_W;
+  const mapH = expanded ? MAP_LG_H : MAP_SM_H;
+  const scaleX = mapW / OCEAN_CONFIG.worldWidth;
+  const scaleY = mapH / OCEAN_CONFIG.worldHeight;
 
   const handleStationClick = (x: number, y: number) => {
     setRovPosition(x, y);
@@ -26,15 +32,19 @@ export default function MiniMap() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 font-mono select-none">
+    <div
+      className="fixed bottom-4 right-4 z-50 font-mono select-none"
+      id="minimap-container"
+    >
       <div
         className="relative rounded-sm overflow-hidden"
         style={{
-          width: MAP_WIDTH,
-          height: MAP_HEIGHT,
+          width: mapW,
+          height: mapH,
           background: "rgba(10, 15, 26, 0.85)",
           border: "1px solid rgba(0, 212, 255, 0.2)",
           backdropFilter: "blur(4px)",
+          transition: "width 0.3s ease, height 0.3s ease",
         }}
       >
         {/* Depth gradient preview */}
@@ -49,7 +59,6 @@ export default function MiniMap() {
         {/* Station dots */}
         {STATIONS.map((station) => {
           const discovered = isDiscovered(station.id);
-          // Hide trench until all main discovered
           if (station.id === "trench" && !allMainDiscovered && !discovered)
             return null;
 
@@ -61,10 +70,10 @@ export default function MiniMap() {
               }
               className="absolute z-10 cursor-pointer"
               style={{
-                left: station.position.x * scaleX - 3,
-                top: station.position.y * scaleY - 3,
-                width: 6,
-                height: 6,
+                left: station.position.x * scaleX - (expanded ? 5 : 3),
+                top: station.position.y * scaleY - (expanded ? 5 : 3),
+                width: expanded ? 10 : 6,
+                height: expanded ? 10 : 6,
                 borderRadius: "50%",
                 background: discovered
                   ? "var(--accent-cyan)"
@@ -74,11 +83,24 @@ export default function MiniMap() {
                 boxShadow: discovered
                   ? "0 0 4px rgba(0, 212, 255, 0.5)"
                   : "none",
-                transition: "background 0.3s",
+                transition: "all 0.3s",
               }}
               title={station.label}
               aria-label={`Navigate to ${station.label}`}
-            />
+            >
+              {expanded && (
+                <span
+                  className="absolute left-full ml-1.5 whitespace-nowrap text-[8px] tracking-wider uppercase pointer-events-none"
+                  style={{
+                    color: discovered ? "var(--accent-cyan)" : "var(--text-secondary)",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                  }}
+                >
+                  {station.label}
+                </span>
+              )}
+            </button>
           );
         })}
 
@@ -86,22 +108,44 @@ export default function MiniMap() {
         <div
           className="absolute z-20"
           style={{
-            left: rovX * scaleX - 2,
-            top: rovY * scaleY - 2,
-            width: 4,
-            height: 4,
+            left: rovX * scaleX - (expanded ? 4 : 2),
+            top: rovY * scaleY - (expanded ? 4 : 2),
+            width: expanded ? 8 : 4,
+            height: expanded ? 8 : 4,
             borderRadius: "50%",
             background: "var(--accent-green)",
             boxShadow: "0 0 6px rgba(0, 255, 136, 0.6)",
+            transition: "width 0.3s, height 0.3s",
           }}
         />
 
-        {/* Label */}
-        <div
-          className="absolute bottom-1 left-1 text-[8px] tracking-wider uppercase"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          MAP
+        {/* Label + expand toggle */}
+        <div className="absolute bottom-1 left-1 right-1 flex items-center justify-between">
+          <span
+            className="text-[8px] tracking-wider uppercase"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            MAP
+          </span>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleMinimap();
+            }}
+            className="cursor-pointer"
+            style={{
+              background: "none",
+              border: "none",
+              padding: "0 2px",
+              color: "var(--text-secondary)",
+              fontSize: expanded ? "10px" : "8px",
+              lineHeight: 1,
+            }}
+            title={expanded ? "Minimize map" : "Enlarge map"}
+            aria-label={expanded ? "Minimize map" : "Enlarge map"}
+          >
+            {expanded ? "\u25BC" : "\u25B2"}
+          </button>
         </div>
       </div>
     </div>

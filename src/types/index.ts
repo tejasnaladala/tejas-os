@@ -1,4 +1,4 @@
-export type StationId = "research" | "salvage" | "systems" | "arcade" | "comms" | "trench";
+export type StationId = "research" | "salvage" | "systems" | "arcade" | "comms" | "gallery" | "trench";
 
 export interface StationConfig {
   id: StationId;

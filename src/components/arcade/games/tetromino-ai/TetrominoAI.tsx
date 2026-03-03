@@ -5,7 +5,7 @@ import { useGameLoop } from "@/hooks/useGameLoop";
 
 type GameState = "waiting" | "playing" | "gameOver";
 
-const COLS = 10, ROWS = 20, CELL = 0;
+const COLS = 10, ROWS = 20;
 const SHAPES: number[][][] = [
   [[1,1,1,1]],                    // I
   [[1,1],[1,1]],                  // O
@@ -161,8 +161,11 @@ export default function TetrominoAI() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const W = size.w, H = size.h;
-    canvas.width = W;
-    canvas.height = H;
+    if (canvas.width !== W || canvas.height !== H) {
+      canvas.width = W;
+      canvas.height = H;
+    }
+    ctx.clearRect(0, 0, W, H);
 
     const cellSize = Math.min(Math.floor((H - 20) / ROWS), Math.floor((W - 140) / COLS));
     const gridW = cellSize * COLS, gridH = cellSize * ROWS;

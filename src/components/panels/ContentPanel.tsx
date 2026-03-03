@@ -9,6 +9,7 @@ import SalvageYard from "./SalvageYard";
 import SystemsBay from "./SystemsBay";
 import ArcadeRig from "./ArcadeRig";
 import CommsArray from "./CommsArray";
+import Gallery from "./Gallery";
 import TheTrench from "./TheTrench";
 
 const STATION_PANELS: Record<StationId, React.ComponentType> = {
@@ -17,6 +18,7 @@ const STATION_PANELS: Record<StationId, React.ComponentType> = {
   systems: SystemsBay,
   arcade: ArcadeRig,
   comms: CommsArray,
+  gallery: Gallery,
   trench: TheTrench,
 };
 

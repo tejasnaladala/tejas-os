@@ -10,6 +10,7 @@ interface OceanState {
   rovVY: number;
   isBoosting: boolean;
   facingDirection: "left" | "right";
+  speedMultiplier: number;
 
   // Station state
   activeStation: StationId | null;
@@ -23,12 +24,23 @@ interface OceanState {
   // UI state
   tutorialDismissed: boolean;
   hudVisible: boolean;
+  fpvMode: boolean;
+  guidedTutorialActive: boolean;
+  guidedTutorialStep: number;
+  minimapExpanded: boolean;
+  musicPlaying: boolean;
+
+  // Combat state
+  rovLives: number;
+  rovAlive: boolean;
+  gameOverVisible: boolean;
 
   // Actions
   setRovPosition: (x: number, y: number) => void;
   setRovVelocity: (vx: number, vy: number) => void;
   setIsBoosting: (boosting: boolean) => void;
   setFacingDirection: (dir: "left" | "right") => void;
+  setSpeedMultiplier: (mult: number) => void;
   setNearStation: (id: StationId | null) => void;
   dockAtStation: (id: StationId) => void;
   undock: () => void;
@@ -37,6 +49,14 @@ interface OceanState {
   closePanel: () => void;
   dismissTutorial: () => void;
   toggleHud: () => void;
+  toggleFpvMode: () => void;
+  startGuidedTutorial: () => void;
+  nextGuidedStep: () => void;
+  endGuidedTutorial: () => void;
+  toggleMinimap: () => void;
+  toggleMusic: () => void;
+  loseLife: () => void;
+  respawnROV: () => void;
   resetOcean: () => void;
 }
 
@@ -48,6 +68,7 @@ export const useOceanStore = create<OceanState>((set) => ({
   rovVY: 0,
   isBoosting: false,
   facingDirection: "right",
+  speedMultiplier: 2,
 
   // Station state
   activeStation: null,
@@ -61,12 +82,23 @@ export const useOceanStore = create<OceanState>((set) => ({
   // UI state
   tutorialDismissed: false,
   hudVisible: true,
+  fpvMode: false,
+  guidedTutorialActive: false,
+  guidedTutorialStep: 0,
+  minimapExpanded: false,
+  musicPlaying: false,
+
+  // Combat state
+  rovLives: 3,
+  rovAlive: true,
+  gameOverVisible: false,
 
   // Actions
   setRovPosition: (x, y) => set({ rovX: x, rovY: y }),
   setRovVelocity: (vx, vy) => set({ rovVX: vx, rovVY: vy }),
   setIsBoosting: (boosting) => set({ isBoosting: boosting }),
   setFacingDirection: (dir) => set({ facingDirection: dir }),
+  setSpeedMultiplier: (mult) => set({ speedMultiplier: Math.max(0.3, Math.min(2, mult)) }),
 
   setNearStation: (id) => set({ nearStation: id }),
 
@@ -109,6 +141,35 @@ export const useOceanStore = create<OceanState>((set) => ({
 
   dismissTutorial: () => set({ tutorialDismissed: true }),
   toggleHud: () => set((state) => ({ hudVisible: !state.hudVisible })),
+  toggleFpvMode: () => set((state) => ({ fpvMode: !state.fpvMode })),
+
+  startGuidedTutorial: () => set({ guidedTutorialActive: true, guidedTutorialStep: 0, tutorialDismissed: true }),
+  nextGuidedStep: () => set((state) => ({ guidedTutorialStep: state.guidedTutorialStep + 1 })),
+  endGuidedTutorial: () => set({ guidedTutorialActive: false, guidedTutorialStep: 0 }),
+
+  toggleMinimap: () => set((state) => ({ minimapExpanded: !state.minimapExpanded })),
+  toggleMusic: () => set((state) => ({ musicPlaying: !state.musicPlaying })),
+
+  loseLife: () =>
+    set((state) => {
+      const newLives = Math.max(0, state.rovLives - 1);
+      return {
+        rovLives: newLives,
+        rovAlive: newLives > 0,
+        gameOverVisible: newLives <= 0,
+      };
+    }),
+
+  respawnROV: () =>
+    set({
+      rovLives: 3,
+      rovAlive: true,
+      gameOverVisible: false,
+      rovX: OCEAN_CONFIG.spawnPosition.x,
+      rovY: OCEAN_CONFIG.spawnPosition.y,
+      rovVX: 0,
+      rovVY: 0,
+    }),
 
   resetOcean: () =>
     set({
@@ -118,6 +179,7 @@ export const useOceanStore = create<OceanState>((set) => ({
       rovVY: 0,
       isBoosting: false,
       facingDirection: "right",
+      speedMultiplier: 2,
       activeStation: null,
       nearStation: null,
       discoveredStations: new Set<StationId>(),
@@ -125,5 +187,13 @@ export const useOceanStore = create<OceanState>((set) => ({
       panelStation: null,
       tutorialDismissed: false,
       hudVisible: true,
+      fpvMode: false,
+      guidedTutorialActive: false,
+      guidedTutorialStep: 0,
+      minimapExpanded: false,
+      musicPlaying: false,
+      rovLives: 3,
+      rovAlive: true,
+      gameOverVisible: false,
     }),
 }));
