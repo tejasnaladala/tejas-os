@@ -1,8 +1,11 @@
 "use client";
+
+import OceanWorld from "@/components/ocean/OceanWorld";
+
 export default function Home() {
   return (
-    <main className="h-screen w-screen flex items-center justify-center bg-ocean-surface">
-      <p className="text-accent-cyan font-mono">Rebuilding... Ocean loading.</p>
+    <main className="h-screen w-screen overflow-hidden">
+      <OceanWorld />
     </main>
   );
 }
