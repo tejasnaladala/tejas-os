@@ -6,6 +6,10 @@ import { OCEAN_CONFIG, STATIONS } from "@/lib/constants";
 import ROV from "./ROV";
 import DepthGradient from "./DepthGradient";
 import Station from "./Station";
+import Bubbles from "./Bubbles";
+import SeaCreatures from "./SeaCreatures";
+import LightRays from "./LightRays";
+import Seafloor from "./Seafloor";
 
 export default function OceanWorld() {
   useROVControls();
@@ -25,12 +29,18 @@ export default function OceanWorld() {
           transform,
         }}
       >
+        {/* Ambient effects (back layer) */}
+        <LightRays />
+        <Bubbles />
+        <SeaCreatures />
+        <Seafloor />
+
         {/* Stations */}
         {STATIONS.map((station) => (
           <Station key={station.id} station={station} />
         ))}
 
-        {/* ROV player (rendered on top of stations) */}
+        {/* ROV player (rendered on top) */}
         <ROV />
       </div>
     </div>
