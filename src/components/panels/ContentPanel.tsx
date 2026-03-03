@@ -3,6 +3,22 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useOceanStore } from "@/stores/oceanStore";
 import { STATIONS } from "@/lib/constants";
+import { StationId } from "@/types";
+import ResearchLab from "./ResearchLab";
+import SalvageYard from "./SalvageYard";
+import SystemsBay from "./SystemsBay";
+import ArcadeRig from "./ArcadeRig";
+import CommsArray from "./CommsArray";
+import TheTrench from "./TheTrench";
+
+const STATION_PANELS: Record<StationId, React.ComponentType> = {
+  research: ResearchLab,
+  salvage: SalvageYard,
+  systems: SystemsBay,
+  arcade: ArcadeRig,
+  comms: CommsArray,
+  trench: TheTrench,
+};
 
 export default function ContentPanel() {
   const panelOpen = useOceanStore((s) => s.panelOpen);
@@ -10,10 +26,11 @@ export default function ContentPanel() {
   const closePanel = useOceanStore((s) => s.closePanel);
 
   const station = STATIONS.find((s) => s.id === panelStation);
+  const PanelComponent = panelStation ? STATION_PANELS[panelStation] : null;
 
   return (
     <AnimatePresence>
-      {panelOpen && station && (
+      {panelOpen && station && PanelComponent && (
         <>
           {/* Backdrop */}
           <motion.div
@@ -40,7 +57,7 @@ export default function ContentPanel() {
               boxShadow: "-8px 0 32px rgba(0, 0, 0, 0.5)",
             }}
           >
-            {/* Panel header */}
+            {/* Header */}
             <div
               className="sticky top-0 z-10 flex items-center justify-between px-6 py-4"
               style={{
@@ -52,10 +69,7 @@ export default function ContentPanel() {
               <div className="flex items-center gap-3">
                 <span className="text-xl">{station.icon}</span>
                 <div>
-                  <h2
-                    className="font-mono text-sm tracking-wider uppercase"
-                    style={{ color: "var(--accent-cyan)" }}
-                  >
+                  <h2 className="font-mono text-sm tracking-wider uppercase" style={{ color: "var(--accent-cyan)" }}>
                     {station.label}
                   </h2>
                   <p className="font-mono text-[10px]" style={{ color: "var(--text-secondary)" }}>
@@ -63,7 +77,6 @@ export default function ContentPanel() {
                   </p>
                 </div>
               </div>
-
               <button
                 onClick={closePanel}
                 className="flex items-center justify-center w-8 h-8 rounded-sm transition-colors"
@@ -83,13 +96,13 @@ export default function ContentPanel() {
                 }}
                 aria-label="Close panel"
               >
-                ✕
+                &#x2715;
               </button>
             </div>
 
-            {/* Panel content */}
+            {/* Content */}
             <div className="px-6 py-6">
-              <PanelContent stationId={panelStation} />
+              <PanelComponent />
             </div>
 
             {/* Bottom hint */}
@@ -107,24 +120,5 @@ export default function ContentPanel() {
         </>
       )}
     </AnimatePresence>
-  );
-}
-
-// Placeholder content - will be replaced with real station components in Task 9
-function PanelContent({ stationId }: { stationId: string | null }) {
-  const labels: Record<string, string> = {
-    research: "Research Lab \u2014 About & Bio",
-    salvage: "Salvage Yard \u2014 Projects",
-    systems: "Systems Bay \u2014 Skills",
-    arcade: "Arcade Rig \u2014 Games",
-    comms: "Comms Array \u2014 Contact",
-    trench: "The Trench \u2014 Easter Eggs",
-  };
-
-  return (
-    <div className="font-mono text-sm" style={{ color: "var(--text-secondary)" }}>
-      <p className="mb-4">{labels[stationId || ""] || "Unknown Station"}</p>
-      <p className="text-[11px]">Content loading in next phase...</p>
-    </div>
   );
 }

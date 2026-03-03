@@ -43,8 +43,8 @@ function GameCard({ id, onPlay }: { id: GameId; onPlay: (id: GameId) => void }) 
   return (
     <div
       style={{
-        background: "var(--bg-elevated)",
-        border: "1px solid var(--border)",
+        background: "rgba(0, 212, 255, 0.05)",
+        border: "1px solid rgba(0, 212, 255, 0.15)",
         borderRadius: 8,
         padding: "14px 16px",
         display: "flex",
@@ -61,7 +61,7 @@ function GameCard({ id, onPlay }: { id: GameId; onPlay: (id: GameId) => void }) 
         onClick={() => onPlay(id)}
         style={{
           background: game.mode === "easy" ? "var(--accent-green)" : "var(--accent-red)",
-          color: "var(--bg-primary)",
+          color: "var(--bg-panel)",
           border: "none",
           borderRadius: 4,
           padding: "6px 16px",
@@ -84,14 +84,14 @@ export default function GameLauncher({ windowId }: { windowId: string }) {
   if (activeGame) {
     const GameComponent = games[activeGame].component;
     return (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: "var(--bg-primary)" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: "var(--bg-panel)" }}>
         <button
           onClick={() => setActiveGame(null)}
           style={{
-            background: "var(--bg-elevated)",
+            background: "rgba(0, 212, 255, 0.05)",
             color: "var(--accent-green)",
             border: "none",
-            borderBottom: "1px solid var(--border)",
+            borderBottom: "1px solid rgba(0, 212, 255, 0.15)",
             padding: "8px 16px",
             fontFamily: "var(--font-mono)",
             fontSize: 13,
