@@ -2,9 +2,10 @@
 
 import { useROVControls } from "@/hooks/useROVControls";
 import { useCamera } from "@/hooks/useCamera";
-import { OCEAN_CONFIG } from "@/lib/constants";
+import { OCEAN_CONFIG, STATIONS } from "@/lib/constants";
 import ROV from "./ROV";
 import DepthGradient from "./DepthGradient";
+import Station from "./Station";
 
 export default function OceanWorld() {
   useROVControls();
@@ -24,10 +25,13 @@ export default function OceanWorld() {
           transform,
         }}
       >
-        {/* ROV player */}
-        <ROV />
+        {/* Stations */}
+        {STATIONS.map((station) => (
+          <Station key={station.id} station={station} />
+        ))}
 
-        {/* Stations, effects, etc. will be added in later tasks */}
+        {/* ROV player (rendered on top of stations) */}
+        <ROV />
       </div>
     </div>
   );
