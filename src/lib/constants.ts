@@ -2,8 +2,8 @@ import { StationConfig } from "@/types";
 
 export const SITE_CONFIG = {
   name: "Tejas Naladala",
-  title: "TejasOS",
-  description: "Hardware engineer, AI builder, startup founder. Welcome to the OS.",
+  title: "Deep Sea Portfolio",
+  description: "Hardware engineer, AI builder, startup founder. Pilot an ROV through the deep sea to explore my work.",
   domain: "tejasnaladala.com",
   url: "https://tejasnaladala.com",
   email: "tejas.naladala@gmail.com",

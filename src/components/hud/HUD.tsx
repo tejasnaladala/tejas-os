@@ -1,6 +1,7 @@
 "use client";
 
 import { useOceanStore } from "@/stores/oceanStore";
+import { useSettingsStore } from "@/stores/settingsStore";
 import { OCEAN_CONFIG } from "@/lib/constants";
 
 export default function HUD() {
@@ -8,6 +9,7 @@ export default function HUD() {
   const rovY = useOceanStore((s) => s.rovY);
   const isBoosting = useOceanStore((s) => s.isBoosting);
   const hudVisible = useOceanStore((s) => s.hudVisible);
+  const soundEnabled = useSettingsStore((s) => s.soundEnabled);
 
   if (!hudVisible) return null;
 
@@ -24,7 +26,7 @@ export default function HUD() {
   return (
     <div className="fixed top-4 left-4 z-50 font-mono select-none pointer-events-none">
       <div
-        className="px-3 py-2 rounded-sm"
+        className="px-3 py-2 rounded-sm pointer-events-auto"
         style={{
           background: "rgba(10, 15, 26, 0.8)",
           border: "1px solid rgba(0, 212, 255, 0.2)",
@@ -88,6 +90,23 @@ export default function HUD() {
             {"\u25B6\u25B6"} BOOST
           </div>
         )}
+
+        {/* Sound toggle */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            useSettingsStore.getState().toggleSound();
+          }}
+          className="mt-2 font-mono text-[10px] tracking-wider uppercase cursor-pointer"
+          style={{
+            color: soundEnabled ? "var(--accent-green)" : "var(--text-secondary)",
+            background: "none",
+            border: "none",
+            padding: 0,
+          }}
+        >
+          {soundEnabled ? "\uD83D\uDD0A Sound ON" : "\uD83D\uDD07 Sound OFF"}
+        </button>
       </div>
     </div>
   );
