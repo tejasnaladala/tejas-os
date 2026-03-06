@@ -51,7 +51,7 @@ function Terminal() {
       onClick={() => inputRef.current?.focus()}
     >
       <div style={{ color: "var(--text-secondary)" }}>
-        TejasOS Terminal v1.0 &mdash; Type &apos;help&apos; for commands
+        TejasOS Terminal v1.0 - Type &apos;help&apos; for commands
       </div>
       <div className="mt-2 space-y-1">
         {history.map((h, i) => (

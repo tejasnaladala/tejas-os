@@ -19,11 +19,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: `${SITE_CONFIG.title} — ${SITE_CONFIG.name}`,
+  title: `${SITE_CONFIG.title} - ${SITE_CONFIG.name}`,
   description: SITE_CONFIG.description,
   metadataBase: new URL(SITE_CONFIG.url),
   openGraph: {
-    title: `${SITE_CONFIG.title} — ${SITE_CONFIG.name}`,
+    title: `${SITE_CONFIG.title} - ${SITE_CONFIG.name}`,
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.title,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_CONFIG.title} — ${SITE_CONFIG.name}`,
+    title: `${SITE_CONFIG.title} - ${SITE_CONFIG.name}`,
     description: SITE_CONFIG.description,
     images: ["/api/og"],
   },

@@ -44,7 +44,7 @@ export default function Home() {
         }}
         aria-label="Portfolio content"
       >
-        <h1>Tejas Naladala — Hardware Engineer, AI Builder, Startup Founder</h1>
+        <h1>Tejas Naladala - Hardware Engineer, AI Builder, Startup Founder</h1>
         <p>{bio.tagline}</p>
         <p>{bio.full}</p>
 
@@ -70,7 +70,7 @@ export default function Home() {
             <ul>
               {cat.skills.map((s) => (
                 <li key={s.name}>
-                  {s.name} — {s.level}
+                  {s.name} - {s.level}
                 </li>
               ))}
             </ul>
@@ -81,7 +81,7 @@ export default function Home() {
       {/* ASCII Art Name */}
       <div
         style={{
-          marginTop: "48px",
+          marginTop: "16px",
           marginBottom: "24px",
           textAlign: "center",
         }}
@@ -171,7 +171,7 @@ export default function Home() {
             <span style={{ color: "var(--text-secondary)" }}>whoami</span>
           </p>
           <p style={{ color: "var(--text-primary)", paddingLeft: "16px" }}>
-            tejas — founder, engineer, builder of things
+            tejas. founder, engineer, ships hardware and AI systems
           </p>
           <p style={{ marginTop: "8px" }}>
             <span style={{ color: "var(--accent-green)" }}>{">"}</span>{" "}
@@ -184,6 +184,65 @@ export default function Home() {
             <span style={{ color: "var(--accent-green)" }}>{">"}</span>{" "}
             <span className="cursor-blink" style={{ color: "var(--accent-cyan)" }}>_</span>
           </p>
+        </div>
+      </div>
+
+      {/* Vital Signs - Lifestyle */}
+      <div
+        style={{
+          maxWidth: "520px",
+          margin: "0 auto 48px",
+          padding: "20px 24px",
+          background: "rgba(0, 255, 136, 0.02)",
+          border: "1px solid rgba(0, 255, 136, 0.08)",
+        }}
+      >
+        <p
+          className="font-mono"
+          style={{
+            fontSize: "10px",
+            letterSpacing: "4px",
+            color: "var(--accent-green)",
+            marginBottom: "16px",
+            textTransform: "uppercase",
+          }}
+        >
+          {"// VITAL SIGNS"}
+        </p>
+        <div className="font-mono" style={{ fontSize: "12px", lineHeight: 2 }}>
+          <p>
+            <span style={{ color: "var(--accent-green)" }}>{">"}</span>{" "}
+            <span style={{ color: "var(--text-secondary)" }}>cat /sys/vitals</span>
+          </p>
+          <div style={{ paddingLeft: "16px", color: "var(--text-primary)" }}>
+            <p>
+              <span style={{ color: "var(--accent-amber)" }}>TRAINING</span>{" "}
+              6 days/week, push-pull-legs
+            </p>
+            <p>
+              <span style={{ color: "var(--accent-amber)" }}>MACROS</span>{" "}
+              ~2800 cal / 180g protein / tracking since 2022
+            </p>
+            <p>
+              <span style={{ color: "var(--accent-amber)" }}>SIDE_QUEST</span>{" "}
+              competitive beatboxer, somehow
+            </p>
+          </div>
+          <div
+            style={{
+              marginTop: "16px",
+              padding: "20px",
+              border: "1px dashed rgba(0, 255, 136, 0.15)",
+              textAlign: "center",
+            }}
+          >
+            <p
+              className="font-mono"
+              style={{ color: "var(--text-secondary)", fontSize: "11px" }}
+            >
+              [ PHYSIQUE_LOG: awaiting upload ]
+            </p>
+          </div>
         </div>
       </div>
 

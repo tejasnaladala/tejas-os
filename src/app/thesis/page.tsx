@@ -3,7 +3,7 @@ import PageLayout from "@/components/shared/PageLayout";
 import { thesisEntries, ThesisEntry } from "@/data/thesis";
 
 export const metadata: Metadata = {
-  title: "Thesis — Tejas Naladala",
+  title: "Thesis - Tejas Naladala",
   description:
     "Technical philosophy on hardware, engineering, startups, and building real things.",
 };

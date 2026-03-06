@@ -16,11 +16,11 @@ const images = [
   {
     src: "/gallery/welding.jpg",
     caption:
-      "building plasma reactor components by hand — every founder starts somewhere",
+      "building plasma reactor components by hand. every founder starts somewhere",
   },
   {
     src: "/gallery/wallpaper.jpg",
-    caption: "my wallpaper — so you want to be a pilot",
+    caption: "my wallpaper, so you want to be a pilot",
   },
 ];
 
@@ -87,7 +87,7 @@ export default function GalleryPage() {
             marginTop: "8px",
           }}
         >
-          Moments from the journey — newest first.
+          Moments from the journey. Newest first.
         </p>
       </div>
 

@@ -5,7 +5,7 @@ import { skillCategories } from "@/data/skills";
 import { achievements } from "@/data/achievements";
 
 export const metadata: Metadata = {
-  title: "Tejas Naladala \u2014 Resume",
+  title: "Tejas Naladala - Resume",
   description:
     "Hardware engineer, AI builder, startup founder. B.S. ECE + Applied Math at UW Seattle. Founder of PlasmaX, Cerulean Robotics, Atticus AI.",
 };
@@ -161,7 +161,7 @@ export default function ResumePage() {
               >
                 <span className="mt-0.5 shrink-0 text-[#00ff41]">&bull;</span>
                 <span>
-                  <strong>{a.title}</strong> &mdash; {a.description}
+                  <strong>{a.title}</strong> - {a.description}
                 </span>
               </li>
             ))}

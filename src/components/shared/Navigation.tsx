@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { href: "/work", label: "work" },
   { href: "/gallery", label: "gallery" },
   { href: "/arcade", label: "arcade" },
-  { href: "/blog", label: "blog" },
+  { href: "/stories", label: "stories" },
   { href: "/ocean", label: "ocean" },
 ];
 

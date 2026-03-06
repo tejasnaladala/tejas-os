@@ -32,7 +32,7 @@ function ProjectCard({ project, onSelect }: { project: Project; onSelect: (p: Pr
         </span>
       </div>
       <div className="font-mono text-[11px]" style={{ color: "var(--text-primary)" }}>
-        {project.title} &mdash; {project.role}
+        {project.title} - {project.role}
       </div>
     </button>
   );

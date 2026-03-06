@@ -3,7 +3,7 @@ import PageLayout from "@/components/shared/PageLayout";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Work — Tejas Naladala",
+  title: "Work - Tejas Naladala",
   description:
     "Companies founded, research conducted, and projects shipped.",
 };
@@ -15,7 +15,7 @@ const research = projects.filter((p) =>
 const openSource = projects.filter((p) => p.id === "forge");
 
 const TEJAS_OS = {
-  title: "TejasOS — This Portfolio",
+  title: "TejasOS - This Portfolio",
   role: "Creator",
   date: "Mar 2026",
   description:

@@ -20,12 +20,12 @@ const images: GalleryImage[] = [
   {
     src: "/gallery/welding.jpg",
     caption:
-      "building plasma reactor components by hand — every founder starts somewhere",
+      "building plasma reactor components by hand. every founder starts somewhere",
   },
   {
     src: "/gallery/wallpaper.jpg",
     caption:
-      "my wallpaper — so you want to be a pilot",
+      "my wallpaper, so you want to be a pilot",
   },
 ];
 

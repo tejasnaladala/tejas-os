@@ -13,7 +13,7 @@ export const TERMINAL_COMMANDS: Record<string, { description: string; execute: (
   },
   whoami: {
     description: "Display current user",
-    execute: () => "tejas \u2014 founder, engineer, builder of things",
+    execute: () => "tejas. founder, engineer, ships hardware and AI systems",
   },
   ls: {
     description: "List directory contents",

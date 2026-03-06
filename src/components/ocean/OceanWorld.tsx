@@ -142,7 +142,7 @@ export default function OceanWorld() {
     <div
       className="fixed inset-0 overflow-hidden"
       role="application"
-      aria-label="Interactive underwater ROV exploration — use WASD to navigate, ENTER to dock at stations, SPACE to shoot"
+      aria-label="Interactive underwater ROV exploration. Use WASD to navigate, ENTER to dock at stations, SPACE to shoot"
       aria-roledescription="game"
     >
       {/* Fixed depth gradient background */}

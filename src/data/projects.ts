@@ -79,7 +79,7 @@ export const projects: Project[] = [
     id: "forge",
     filename: "Forge",
     extension: "pkg",
-    title: "Forge \u2014 Open-Source AI Agent Runtime",
+    title: "Forge - Open-Source AI Agent Runtime",
     role: "Creator",
     date: "Feb 2026",
     description:
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     id: "seal-lab",
     filename: "SEAL_Lab",
     extension: "log",
-    title: "SEAL Lab \u2014 University of Washington",
+    title: "SEAL Lab - University of Washington",
     role: "Research Associate",
     date: "Mar \u2013 Nov 2025",
     description:
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     id: "niist",
     filename: "NIIST_Solar",
     extension: "dat",
-    title: "NIIST (CSIR) India \u2014 Solar Cell Research",
+    title: "NIIST (CSIR) India - Solar Cell Research",
     role: "Research Intern",
     date: "Jun 2024 \u2013 Mar 2025",
     description:
