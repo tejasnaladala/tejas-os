@@ -1,7 +1,6 @@
 # tejas-os
 
-my personal site. built it as a CRT-themed terminal portfolio because i got bored of the standard template stuff everyone uses
-
+my personal site. built it as a CRT-themed terminal portfolio because of my bestfriend here at udub (he loves crt themed stuff)
 live at [tejasnaladala.com](https://tejasnaladala.com)
 
 ## whats in here
