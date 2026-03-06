@@ -73,13 +73,15 @@ export default function TetrominoAI() {
           const by = p.y + y;
           if (by >= 0) board.current[by][p.x + x] = p.color;
         }
-    // Clear lines
+    // Clear lines — iterate backwards; y++ compensates for the loop's y--
+    // after splice+unshift shifts everything down, so we re-check the same index
     let cleared = 0;
     for (let y = ROWS - 1; y >= 0; y--) {
       if (board.current[y].every((c) => c !== null)) {
         board.current.splice(y, 1);
         board.current.unshift(Array(COLS).fill(null));
-        cleared++; y++;
+        cleared++;
+        y++; // re-check this index since unshift shifted rows down
       }
     }
     if (cleared > 0) {

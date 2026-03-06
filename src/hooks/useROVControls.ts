@@ -25,8 +25,8 @@ export function useROVControls() {
   const updatePhysics = useCallback((timestamp: number) => {
     const store = useOceanStore.getState();
 
-    // Don't update if panel is open (docked) or ROV is dead
-    if (store.panelOpen || !store.rovAlive) {
+    // Don't update if panel is open (docked), ROV is dead, or command palette is open
+    if (store.panelOpen || !store.rovAlive || store.commandPaletteOpen) {
       animationFrameRef.current = requestAnimationFrame(updatePhysics);
       return;
     }
@@ -166,9 +166,23 @@ export function useROVControls() {
         return;
       }
 
-      // SKIP all other key handling when panel is open
+      // Toggle command palette with K key (skip if focused on input/textarea)
+      if (
+        key === "k" &&
+        !store.panelOpen &&
+        !(e.target instanceof HTMLInputElement) &&
+        !(e.target instanceof HTMLTextAreaElement)
+      ) {
+        e.preventDefault();
+        store.commandPaletteOpen
+          ? useOceanStore.getState().closeCommandPalette()
+          : useOceanStore.getState().openCommandPalette();
+        return;
+      }
+
+      // SKIP all other key handling when panel or command palette is open
       // (so games inside panels can use arrow keys, WASD, Space, etc.)
-      if (store.panelOpen) return;
+      if (store.panelOpen || store.commandPaletteOpen) return;
 
       // Fire projectile on Space
       if (e.key === " " || e.key === "Space") {

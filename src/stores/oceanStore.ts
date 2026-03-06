@@ -29,6 +29,8 @@ interface OceanState {
   guidedTutorialStep: number;
   minimapExpanded: boolean;
   musicPlaying: boolean;
+  peacefulMode: boolean;
+  commandPaletteOpen: boolean;
 
   // Combat state
   rovLives: number;
@@ -55,6 +57,10 @@ interface OceanState {
   endGuidedTutorial: () => void;
   toggleMinimap: () => void;
   toggleMusic: () => void;
+  togglePeacefulMode: () => void;
+  openCommandPalette: () => void;
+  closeCommandPalette: () => void;
+  toggleCommandPalette: () => void;
   loseLife: () => void;
   respawnROV: () => void;
   resetOcean: () => void;
@@ -87,6 +93,8 @@ export const useOceanStore = create<OceanState>((set) => ({
   guidedTutorialStep: 0,
   minimapExpanded: false,
   musicPlaying: false,
+  peacefulMode: typeof window !== "undefined" ? localStorage.getItem("peacefulMode") === "true" : false,
+  commandPaletteOpen: false,
 
   // Combat state
   rovLives: 3,
@@ -150,6 +158,17 @@ export const useOceanStore = create<OceanState>((set) => ({
   toggleMinimap: () => set((state) => ({ minimapExpanded: !state.minimapExpanded })),
   toggleMusic: () => set((state) => ({ musicPlaying: !state.musicPlaying })),
 
+  togglePeacefulMode: () =>
+    set((state) => {
+      const next = !state.peacefulMode;
+      if (typeof window !== "undefined") localStorage.setItem("peacefulMode", String(next));
+      return { peacefulMode: next };
+    }),
+
+  openCommandPalette: () => set({ commandPaletteOpen: true }),
+  closeCommandPalette: () => set({ commandPaletteOpen: false }),
+  toggleCommandPalette: () => set((state) => ({ commandPaletteOpen: !state.commandPaletteOpen })),
+
   loseLife: () =>
     set((state) => {
       const newLives = Math.max(0, state.rovLives - 1);
@@ -192,6 +211,7 @@ export const useOceanStore = create<OceanState>((set) => ({
       guidedTutorialStep: 0,
       minimapExpanded: false,
       musicPlaying: false,
+      commandPaletteOpen: false,
       rovLives: 3,
       rovAlive: true,
       gameOverVisible: false,

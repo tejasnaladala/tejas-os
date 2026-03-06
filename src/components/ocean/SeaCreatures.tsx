@@ -291,7 +291,7 @@ export default function SeaCreatures() {
     const dt = Math.min(timestamp - lastTimeRef.current, 50); // cap to avoid jumps
     lastTimeRef.current = timestamp;
 
-    const { rovX, rovY, rovAlive } = useOceanStore.getState();
+    const { rovX, rovY, rovAlive, peacefulMode } = useOceanStore.getState();
 
     const next = hostileRef.current.map((creature) => {
       const c = { ...creature };
@@ -299,8 +299,8 @@ export default function SeaCreatures() {
       // Skip AI for dead/dying creatures
       if (!c.alive) return c;
 
-      // If ROV is dead, force all creatures back to patrol
-      if (!rovAlive && (c.state === "chase" || c.state === "bite")) {
+      // If ROV is dead or peaceful mode is on, force aggressive creatures to retreat
+      if ((!rovAlive || peacefulMode) && (c.state === "chase" || c.state === "bite")) {
         c.state = "retreat";
         c.aggroTimer = 0;
         return c;
@@ -328,8 +328,8 @@ export default function SeaCreatures() {
           c.currentY += (dy / d) * speed;
           c.facing = dx < 0 ? "left" : "right";
 
-          // Check if ROV is in detection range (only chase if ROV is alive)
-          if (rovAlive && distToROV < c.detectionRange) {
+          // Check if ROV is in detection range (only chase if ROV is alive and not peaceful)
+          if (rovAlive && !peacefulMode && distToROV < c.detectionRange) {
             c.state = "chase";
             c.aggroTimer = 0;
           }

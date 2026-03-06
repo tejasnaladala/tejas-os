@@ -15,14 +15,19 @@ import DiscoveryLog from "@/components/hud/DiscoveryLog";
 import NavBar from "@/components/hud/NavBar";
 import Tutorial from "@/components/hud/Tutorial";
 import GuidedTutorial from "@/components/hud/GuidedTutorial";
+import CommandPalette from "@/components/hud/CommandPalette";
 import ContentPanel from "@/components/panels/ContentPanel";
 import MobileOcean from "@/components/mobile/MobileOcean";
+import { bio } from "@/data/bio";
+import { projects } from "@/data/projects";
+import { skillCategories } from "@/data/skills";
 
 export default function Home() {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const founderModeActive = useEasterEggStore((s) => s.founderModeActive);
   const [showFounderFlash, setShowFounderFlash] = useState(false);
   const [showDamageFlash, setShowDamageFlash] = useState(false);
+  const [loading, setLoading] = useState(true);
   const rovLives = useOceanStore((s) => s.rovLives);
   const rovAlive = useOceanStore((s) => s.rovAlive);
   const gameOverVisible = useOceanStore((s) => s.gameOverVisible);
@@ -59,15 +64,21 @@ export default function Home() {
 
   // Auto-start guided tutorial on first visit
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("tejas-os-tutorial-shown");
+    const hasVisited = localStorage.getItem("tejas-os-tutorial-shown");
     if (!hasVisited) {
       // Small delay so the scene loads first
       const timer = setTimeout(() => {
         useOceanStore.getState().startGuidedTutorial();
-        sessionStorage.setItem("tejas-os-tutorial-shown", "true");
+        localStorage.setItem("tejas-os-tutorial-shown", "true");
       }, 1500);
       return () => clearTimeout(timer);
     }
+  }, []);
+
+  // Dismiss loading screen after brief delay
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
   }, []);
 
   // When Konami code activates founder mode, reveal The Trench
@@ -86,7 +97,56 @@ export default function Home() {
   }
 
   return (
-    <main className="h-screen w-screen overflow-hidden">
+    <main id="main-content" className="h-screen w-screen overflow-hidden">
+      {/* Visually hidden but crawlable structured content for SEO + screen readers */}
+      <div
+        style={{
+          position: "absolute",
+          width: 1,
+          height: 1,
+          padding: 0,
+          margin: -1,
+          overflow: "hidden",
+          clip: "rect(0, 0, 0, 0)",
+          whiteSpace: "nowrap",
+          borderWidth: 0,
+        }}
+        aria-label="Portfolio content"
+      >
+        <h1>Tejas Naladala — Hardware Engineer, AI Builder, Startup Founder</h1>
+        <p>{bio.tagline}</p>
+        <p>{bio.full}</p>
+
+        <h2>Projects</h2>
+        {projects.map((p) => (
+          <article key={p.id}>
+            <h3>{p.title}</h3>
+            <p>{p.role} | {p.date}</p>
+            <p>{p.description}</p>
+            <ul>
+              {p.metrics.map((m, i) => (
+                <li key={i}>{m}</li>
+              ))}
+            </ul>
+            <p>Technologies: {p.tech.join(", ")}</p>
+          </article>
+        ))}
+
+        <h2>Skills</h2>
+        {skillCategories.map((cat) => (
+          <section key={cat.name}>
+            <h3>{cat.name}</h3>
+            <ul>
+              {cat.skills.map((s) => (
+                <li key={s.name}>
+                  {s.name} — {s.level}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+
       <OceanWorld />
 
       {/* HUD overlays (fixed position) */}
@@ -99,6 +159,9 @@ export default function Home() {
 
       {/* Content panel (slide-in from right) */}
       <ContentPanel />
+
+      {/* Command Palette overlay */}
+      <CommandPalette />
 
       {/* Creature Damage Flash */}
       {showDamageFlash && (
@@ -206,6 +269,35 @@ export default function Home() {
                 RESPAWN
               </button>
             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Loading Screen */}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-[500] flex flex-col items-center justify-center"
+            style={{ background: "#0a0f1a" }}
+          >
+            <div
+              className="font-mono text-xs tracking-[6px] uppercase"
+              style={{
+                color: "var(--accent-cyan)",
+                animation: "pulse 1.5s ease-in-out infinite",
+              }}
+            >
+              INITIALIZING SYSTEMS...
+            </div>
+            <div
+              className="mt-4 font-mono text-[10px] tracking-widest"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              {"\u2588".repeat(6)}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

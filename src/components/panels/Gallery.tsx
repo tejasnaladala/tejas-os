@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 interface GalleryImage {
   src: string;
@@ -22,7 +23,7 @@ const images: GalleryImage[] = [
       "building plasma reactor components by hand — every founder starts somewhere",
   },
   {
-    src: "/gallery/wallpaper.png",
+    src: "/gallery/wallpaper.jpg",
     caption:
       "my wallpaper — so you want to be a pilot",
   },
@@ -91,12 +92,16 @@ export default function Gallery() {
                 </span>
               </div>
             ) : (
-              <img
+              <Image
                 src={image.src}
                 alt={image.caption}
+                width={800}
+                height={450}
+                quality={80}
                 onError={() => handleImageError(index)}
                 style={{
                   width: "100%",
+                  height: "auto",
                   display: "block",
                   objectFit: "cover",
                   aspectRatio: "16 / 9",

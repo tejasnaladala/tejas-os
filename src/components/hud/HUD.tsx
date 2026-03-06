@@ -16,6 +16,9 @@ export default function HUD() {
   const musicPlaying = useOceanStore((s) => s.musicPlaying);
   const toggleMusic = useOceanStore((s) => s.toggleMusic);
   const startGuidedTutorial = useOceanStore((s) => s.startGuidedTutorial);
+  const peacefulMode = useOceanStore((s) => s.peacefulMode);
+  const togglePeacefulMode = useOceanStore((s) => s.togglePeacefulMode);
+  const openCommandPalette = useOceanStore((s) => s.openCommandPalette);
   const soundEnabled = useSettingsStore((s) => s.soundEnabled);
 
   if (!hudVisible) return null;
@@ -194,7 +197,42 @@ export default function HUD() {
           >
             {musicPlaying ? "\uD83C\uDFB5" : "\uD83C\uDFB5"}
           </button>
+
+          {/* Peaceful mode toggle */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              togglePeacefulMode();
+            }}
+            className="font-mono text-[9px] tracking-wider uppercase cursor-pointer rounded-sm"
+            style={{
+              color: peacefulMode ? "var(--accent-green)" : "var(--text-secondary)",
+              background: peacefulMode ? "rgba(0, 255, 136, 0.1)" : "transparent",
+              border: `1px solid ${peacefulMode ? "rgba(0, 255, 136, 0.2)" : "rgba(95, 122, 148, 0.2)"}`,
+              padding: "2px 6px",
+            }}
+            title={peacefulMode ? "Disable peaceful mode" : "Enable peaceful mode"}
+          >
+            {peacefulMode ? "\u262E" : "\u2694"}
+          </button>
         </div>
+
+        {/* Command Palette button */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            openCommandPalette();
+          }}
+          className="mt-2 w-full font-mono text-[9px] tracking-wider uppercase cursor-pointer py-1 rounded-sm"
+          style={{
+            color: "var(--accent-cyan)",
+            background: "rgba(0, 212, 255, 0.05)",
+            border: "1px solid rgba(0, 212, 255, 0.2)",
+          }}
+          title="Open command palette (K)"
+        >
+          {"\u2318"} NAVIGATE [K]
+        </button>
 
         {/* Guide button */}
         <button
@@ -202,7 +240,7 @@ export default function HUD() {
             e.stopPropagation();
             startGuidedTutorial();
           }}
-          className="mt-2 w-full font-mono text-[9px] tracking-wider uppercase cursor-pointer py-1 rounded-sm"
+          className="mt-1 w-full font-mono text-[9px] tracking-wider uppercase cursor-pointer py-1 rounded-sm"
           style={{
             color: "var(--text-secondary)",
             background: "transparent",
@@ -212,6 +250,34 @@ export default function HUD() {
         >
           ? GUIDED TOUR
         </button>
+
+        {/* Resume + Hire Me */}
+        <div className="flex gap-1 mt-1">
+          <a
+            href="/resume"
+            className="flex-1 text-center font-mono text-[9px] tracking-wider uppercase py-1 rounded-sm"
+            style={{
+              color: "var(--accent-amber)",
+              background: "transparent",
+              border: "1px solid rgba(255, 176, 0, 0.3)",
+              textDecoration: "none",
+            }}
+          >
+            Resume
+          </a>
+          <a
+            href="mailto:tejas.naladala@gmail.com"
+            className="flex-1 text-center font-mono text-[9px] tracking-wider uppercase py-1 rounded-sm"
+            style={{
+              color: "var(--accent-green)",
+              background: "transparent",
+              border: "1px solid rgba(0, 255, 136, 0.3)",
+              textDecoration: "none",
+            }}
+          >
+            Hire Me
+          </a>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JetBrains_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { SITE_CONFIG } from "@/lib/constants";
+import SkipToContent from "@/components/SkipToContent";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -27,13 +28,13 @@ export const metadata: Metadata = {
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.title,
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/api/og", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_CONFIG.title} — ${SITE_CONFIG.name}`,
     description: SITE_CONFIG.description,
-    images: ["/og-image.png"],
+    images: ["/api/og"],
   },
   robots: { index: true, follow: true },
 };
@@ -46,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${inter.variable}`}>
       <body className="font-mono antialiased">
+        <SkipToContent />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
