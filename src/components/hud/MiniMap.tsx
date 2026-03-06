@@ -42,7 +42,7 @@ export default function MiniMap() {
           width: mapW,
           height: mapH,
           background: "rgba(10, 15, 26, 0.85)",
-          border: "1px solid rgba(0, 212, 255, 0.2)",
+          border: "1px solid rgba(0, 212, 255, 0.15)",
           backdropFilter: "blur(4px)",
           transition: "width 0.3s ease, height 0.3s ease",
         }}
@@ -90,7 +90,7 @@ export default function MiniMap() {
             >
               {expanded && (
                 <span
-                  className="absolute left-full ml-1.5 whitespace-nowrap text-[8px] tracking-wider uppercase pointer-events-none"
+                  className="absolute left-full ml-1.5 whitespace-nowrap text-[10px] tracking-wider uppercase pointer-events-none"
                   style={{
                     color: discovered ? "var(--accent-cyan)" : "var(--text-secondary)",
                     top: "50%",
@@ -122,7 +122,7 @@ export default function MiniMap() {
         {/* Label + expand toggle */}
         <div className="absolute bottom-1 left-1 right-1 flex items-center justify-between">
           <span
-            className="text-[8px] tracking-wider uppercase"
+            className="text-[10px] tracking-wider uppercase"
             style={{ color: "var(--text-secondary)" }}
           >
             MAP

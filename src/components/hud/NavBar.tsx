@@ -20,11 +20,11 @@ export default function NavBar() {
   return (
     <div className="fixed top-4 right-4 z-50 font-mono select-none">
       <div
-        className="flex items-center gap-1 px-2 py-1.5 rounded-sm"
+        className="flex items-center gap-1.5 px-3 py-2 rounded-sm"
         style={{
-          background: "rgba(10, 15, 26, 0.8)",
-          border: "1px solid rgba(0, 212, 255, 0.2)",
-          backdropFilter: "blur(4px)",
+          background: "rgba(10, 15, 26, 0.85)",
+          border: "1px solid rgba(0, 212, 255, 0.15)",
+          backdropFilter: "blur(8px)",
         }}
       >
         {STATIONS.map((station) => {
@@ -39,7 +39,7 @@ export default function NavBar() {
               onClick={() =>
                 handleNavigate(station.position.x, station.position.y)
               }
-              className="px-2 py-1 rounded-sm text-[10px] tracking-wider uppercase transition-all duration-200"
+              className="px-2.5 py-1.5 rounded-sm text-[12px] tracking-wider uppercase transition-all duration-200"
               style={{
                 color: discovered
                   ? "var(--accent-cyan)"

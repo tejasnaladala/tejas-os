@@ -12,22 +12,22 @@ export default function DiscoveryLog() {
   return (
     <div className="fixed bottom-4 left-4 z-50 font-mono select-none pointer-events-none">
       <div
-        className="px-3 py-2 rounded-sm"
+        className="px-4 py-3 rounded-sm"
         style={{
-          background: "rgba(10, 15, 26, 0.8)",
-          border: "1px solid rgba(0, 212, 255, 0.2)",
-          backdropFilter: "blur(4px)",
+          background: "rgba(10, 15, 26, 0.85)",
+          border: "1px solid rgba(0, 212, 255, 0.15)",
+          backdropFilter: "blur(8px)",
         }}
       >
         <div
-          className="text-[10px] tracking-widest uppercase"
+          className="text-[11px] tracking-widest uppercase"
           style={{ color: "var(--text-secondary)" }}
         >
           Stations Discovered
         </div>
-        <div className="flex items-baseline gap-1 mt-1">
+        <div className="flex items-baseline gap-1.5 mt-1.5">
           <span
-            className="text-sm tabular-nums"
+            className="text-base tabular-nums font-bold"
             style={{
               color: allMainDiscovered
                 ? "var(--accent-green)"
@@ -37,7 +37,7 @@ export default function DiscoveryLog() {
             {discoveredCount}
           </span>
           <span
-            className="text-[10px]"
+            className="text-[12px]"
             style={{ color: "var(--text-secondary)" }}
           >
             / {totalStations}
@@ -45,7 +45,7 @@ export default function DiscoveryLog() {
         </div>
         {allMainDiscovered && (
           <div
-            className="text-[10px] mt-1"
+            className="text-[11px] mt-1.5 font-bold"
             style={{ color: "var(--accent-green)" }}
           >
             {"\u2713"} All stations found

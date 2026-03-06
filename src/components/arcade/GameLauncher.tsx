@@ -14,11 +14,6 @@ const games = {
     description: "Stack circuit-themed blocks before they overflow",
     component: dynamic(() => import("./games/tetromino-ai/TetrominoAI"), { ssr: false }),
   },
-  "pixel-pong": {
-    name: "Pixel Pong",
-    description: "Break the circuit blocks with your paddle",
-    component: dynamic(() => import("./games/pixel-pong/PixelPong"), { ssr: false }),
-  },
   "whack-a-bug": {
     name: "Whack-a-Bug",
     description: "Click the bugs before they scurry away",
