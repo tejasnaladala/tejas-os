@@ -9,7 +9,7 @@ export const projects: Project[] = [
     role: "Founder & CEO",
     date: "May 2023 – Present",
     description:
-      "Built the first industrial-scale plasma water disinfection system from scratch. Designed custom high-voltage electronics, machined reactor housings, wrote firmware, and shipped a $180K production unit to a government food safety lab in India. Replaces chlorine sanitation entirely with cold plasma, no chemicals, just ionized gas and engineering.",
+      "Designed, built, and shipped a $180K production plasma reactor that eliminates chlorine-based water sanitation entirely, from custom 18kV flyback drivers and STM32 firmware to CNC-machined reactor housings. Deployed to CSIR-CFTRI, India's premier government food safety lab. No chemicals, just ionized gas and engineering.",
     metrics: [
       "$2M seed round at $8M post-money valuation",
       "Sold first production unit ($180K) to CSIR-CFTRI India",
@@ -38,14 +38,13 @@ export const projects: Project[] = [
     role: "Founder & Sole Engineer",
     date: "Nov 2025 – Present",
     description:
-      "Designing an open-source underwater ROV that costs $2-5K instead of the $10-50K commercial alternatives. Custom power distribution board, 5-thruster vectored drive, Raspberry Pi vision pipeline, all rated to 100m depth. Already secured government LOIs for environmental audit contracts on Lake Sammamish.",
+      "Sole-engineering an open-source underwater ROV rated to 100m depth at 1/10th the cost of commercial alternatives, with government LOIs already secured for environmental audit contracts on Lake Sammamish. Custom MOSFET power distribution, 5-thruster vectored drive on Pixhawk/ArduSub, and a Raspberry Pi 5 HD vision pipeline, all designed and assembled from scratch.",
     metrics: [
-      "Vectored 5-thruster configuration (Pixhawk/ArduSub)",
-      "Raspberry Pi 5 HD vision pipeline",
-      "Custom MOSFET power distribution for 6S Li-ion",
-      "$2,000 Buerk Center prototype funding secured",
-      "Letter of intent from government officials for Lake Sammamish environmental audit contracts",
+      "Government LOIs secured for Lake Sammamish environmental audit deployments",
+      "100m depth-rated system at $2-5K vs $10-50K commercial alternatives",
+      "Custom MOSFET power distribution board for 6S Li-ion packs",
       "Real-time HD video streaming via tethered Ethernet with <100ms latency",
+      "$2,000 Buerk Center prototype funding secured",
     ],
     tech: [
       "Pixhawk/ArduSub",
@@ -62,13 +61,12 @@ export const projects: Project[] = [
     role: "Founder & Technical Lead",
     date: "Jan 2026 – Present",
     description:
-      "Built an AI-powered platform that audits commercial insurance policies and surfaces coverage gaps most businesses never catch. Parses 50+ page PDFs through a 4-stage extraction pipeline, orchestrates multiple LLMs to cross-reference exclusions, and delivers a plain-English audit report with negotiation strategies in under 60 seconds.",
+      "Built a multi-LLM orchestration platform that ingests 50-page commercial insurance policies and delivers a plain-English coverage audit with broker negotiation strategies in under 60 seconds. 4-stage PDF extraction pipeline, cross-references exclusions across multiple AI models, and generates actionable Protection Score reports targeting the $294.6B U.S. commercial insurance market.",
     metrics: [
-      "Identifies coverage gaps, exclusions, and premium inefficiencies",
-      "Multi-model AI orchestration with Protection Score\u2122",
-      "Plain-English audit reports with broker negotiation strategies",
-      "Processes policies in under 60 seconds",
+      "Full policy audit with broker negotiation playbook in under 60 seconds",
       "Targeting $294.6B U.S. commercial insurance market",
+      "Multi-model AI orchestration with Protection Score\u2122",
+      "4-stage PDF extraction pipeline with OCR and vector search",
     ],
     tech: ["Next.js", "Claude/GPT-4 Orchestration", "PDF Extraction + OCR", "Vector Search"],
   },
@@ -80,13 +78,12 @@ export const projects: Project[] = [
     role: "Creator",
     date: "Feb 2026",
     description:
-      "Open-source framework that lets you define AI agents in YAML and run them across any LLM provider. Write once, route to OpenAI, Anthropic, Google, Ollama, or 4 others automatically. Handles multi-agent orchestration, tool-calling schema translation, and ships with a real-time observability dashboard. Hit 150+ clones in week one.",
+      "Open-source AI agent runtime supporting 8 LLM providers with automatic tool-calling schema translation, multi-agent orchestration, and a real-time observability dashboard. Define agents in YAML, route to OpenAI, Anthropic, Google, Ollama, or 4 others automatically. Hit 150+ clones in week one.",
     metrics: [
-      "4,400+ lines of code (Python/TypeScript)",
-      "8 LLM providers supported",
-      "150+ unique clones in first week",
-      "Multi-agent orchestration (sequential, parallel, supervisor)",
+      "150+ unique clones in first week, 8 LLM providers supported out of the box",
+      "Multi-agent orchestration (sequential, parallel, supervisor patterns)",
       "Provider-agnostic tool-calling with automatic schema translation",
+      "Real-time observability dashboard with WebSocket streaming",
     ],
     tech: [
       "Python",
@@ -104,12 +101,11 @@ export const projects: Project[] = [
     role: "Research Associate",
     date: "Mar \u2013 Nov 2025",
     description:
-      "Worked under Prof. Alex Mamishev designing embedded sensing systems for two funded research proposals. Built a PPG-based wearable that detects drowsiness in real-time using a custom bandpass filter pipeline with 95% motion artifact rejection. Also designed a non-intrusive breakage sensor for U.S. Navy hull integrity monitoring.",
+      "Built real-time embedded sensing systems under Prof. Mamishev across two funded research proposals, including a PPG-based drowsiness detection wearable with 95% motion artifact rejection and a non-intrusive breakage sensor designed for U.S. Navy hull integrity monitoring. Custom Butterworth bandpass filter pipeline at 0.5-5Hz, authored grant sections and technical abstracts across a 7-person research team.",
     metrics: [
-      "PPG-based drowsiness detection wearable for real-time physiological monitoring",
-      "Non-intrusive breakage-detection sensor for U.S. Navy hull integrity",
-      "Authored grant sections and technical abstracts across 7-person team",
-      "Real-time PPG signal denoising using Butterworth bandpass filter (0.5-5Hz) with 95% motion artifact rejection",
+      "95% motion artifact rejection on real-time PPG drowsiness detection (0.5-5Hz Butterworth pipeline)",
+      "Non-intrusive breakage sensor designed for U.S. Navy hull integrity monitoring",
+      "Authored grant sections and technical abstracts across 7-person research team",
     ],
     tech: [
       "Embedded Systems (STM32)",
@@ -126,11 +122,11 @@ export const projects: Project[] = [
     role: "Research Intern",
     date: "Jun 2024 \u2013 Mar 2025",
     description:
-      "Fabricated dye-sensitized and perovskite solar cells in the lab of Dr. Suraj Soman, whose group holds world-record DSC efficiency. Hands-on cleanroom work engineering photoanode interfaces, characterizing 20+ device architectures, and optimizing dye-loading protocols. Hit 7.2% power conversion efficiency on an N719-sensitized cell.",
+      "Fabricated dye-sensitized and perovskite solar cells in a world-record-holding DSC efficiency lab, engineering ruthenium-TiO\u2082 photoanode interfaces across 20+ device architectures and achieving 7.2% power conversion efficiency. Hands-on cleanroom work under Dr. Suraj Soman, optimizing dye-loading protocols and characterizing devices via PIA, IPCE, and XRD spectroscopy.",
     metrics: [
-      "Engineered ruthenium-TiO\u2082 photoanode interfaces",
-      "Characterized 20+ device architectures",
-      "Achieved 7.2% PCE on N719-sensitized TiO\u2082 photoanode with optimized dye-loading protocol",
+      "7.2% power conversion efficiency on N719-sensitized TiO\u2082 photoanode",
+      "20+ device architectures characterized across DSC and perovskite platforms",
+      "Engineered ruthenium-TiO\u2082 photoanode interfaces with optimized dye-loading protocols",
     ],
     tech: [
       "Solar Cell Fabrication",
