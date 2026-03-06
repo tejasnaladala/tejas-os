@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useKonamiCode } from "@/hooks/useKonamiCode";
 import { useBackgroundMusic } from "@/hooks/useBackgroundMusic";
@@ -93,6 +94,37 @@ export default function OceanClient() {
   return (
     <main id="main-content" className="h-screen w-screen overflow-hidden" style={{ background: "var(--ocean-surface)" }}>
       <OceanWorld />
+
+      {/* Back to Home button */}
+      <Link
+        href="/"
+        className="font-mono"
+        style={{
+          position: "fixed",
+          top: 14,
+          left: 16,
+          zIndex: 60,
+          fontSize: "11px",
+          letterSpacing: "2px",
+          color: "var(--accent-cyan)",
+          background: "rgba(10, 15, 26, 0.7)",
+          border: "1px solid rgba(0, 212, 255, 0.2)",
+          padding: "6px 14px",
+          textDecoration: "none",
+          backdropFilter: "blur(4px)",
+          transition: "border-color 0.2s, background 0.2s",
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.borderColor = "rgba(0, 212, 255, 0.5)";
+          e.currentTarget.style.background = "rgba(10, 15, 26, 0.9)";
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.borderColor = "rgba(0, 212, 255, 0.2)";
+          e.currentTarget.style.background = "rgba(10, 15, 26, 0.7)";
+        }}
+      >
+        {"< HOME"}
+      </Link>
 
       {/* HUD overlays (fixed position) */}
       <HUD />

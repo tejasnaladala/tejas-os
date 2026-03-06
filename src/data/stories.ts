@@ -87,13 +87,14 @@ export const brainTeasers: BrainTeaser[] = [
 
 export const stories: Story[] = [
   {
-    id: "vending-machine",
-    title: "the vending machine protocol",
+    id: "building-lockout",
+    title: "the building lockout",
     paragraphs: [
-      "so theres this vending machine in the basement of the engineering building. ancient thing, probably installed before wifi existed. it ate my dollar three times in one week and i took it personally",
-      "my buddy and i noticed it had a DB9 serial port on the back, barely hidden behind a loose panel. we didnt plan on doing anything crazy we just wanted to understand how the thing worked. plugged in a USB-to-serial adapter and started logging the traffic. turns out the whole inventory and pricing system was running on a protocol from like 2003 with zero authentication",
-      "we could technically change any price to zero or dispense anything. but we didnt. we mapped the entire protocol, documented it, wrote a clean python script that could monitor stock levels in realtime. left the documentation in a sealed envelope taped to the back of the machine with a note that said 'you might want to update this'",
-      "maintenance guy found it two weeks later. they replaced the whole machine. the new one still eats dollars but at least its secure i guess",
+      "so our engineering building had this ancient HID access control system running on a Wiegand 26-bit protocol. the card readers were iClass SE but the backend was still talking to some legacy controller over RS-485 serial. i found this out because one of the readers near the back entrance had a loose faceplate and i could literally see the wiring. green red and white data lines just hanging out",
+      "i didnt touch the wiring. but i did notice the controller had a web management portal running on the buildings internal network. default credentials. admin/admin. i wish i was kidding. the whole access group table was right there in plaintext, every card ID mapped to a permission group, every door zone laid out in a nice little spreadsheet format",
+      "heres where it gets funny. my buddy dared me to do something with it so i wrote a python script that used the controllers API to swap the permission groups around. not delete anything, just shuffle. group A gets group B permissions, group B gets group C, so on. deployed it at like 2am on a wednesday",
+      "next morning absolute chaos. engineering students badges wont open the engineering building. CS majors cant get into the CS lab. but for some reason the art building is wide open to everyone and the art majors are the only people who can get into the engineering building. nobody could figure out why. facilities spent 6 hours resetting the whole system",
+      "the best part was watching 200 engineering students standing outside their own building at 8am while a girl with a painting portfolio just walked right in. i reversed everything before lunch but man. the group chat was on fire for weeks. nobody ever figured out it was us",
     ],
   },
   {

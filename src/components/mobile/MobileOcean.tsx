@@ -114,6 +114,16 @@ export default function MobileOcean() {
             {visitedStations.size}/{MAIN_STATIONS.length}
           </span>
           <a
+            href="/"
+            className="font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded-sm"
+            style={{
+              color: "var(--accent-cyan)",
+              border: "1px solid rgba(0, 212, 255, 0.2)",
+            }}
+          >
+            Home
+          </a>
+          <a
             href="/resume"
             className="font-mono text-[9px] tracking-wider uppercase px-2 py-1 rounded-sm"
             style={{
