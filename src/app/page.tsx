@@ -178,7 +178,7 @@ export default function Home() {
             <span style={{ color: "var(--text-secondary)" }}>status</span>
           </p>
           <p style={{ color: "var(--text-primary)", paddingLeft: "16px" }}>
-            3 active ventures &middot; 3 papers &middot; $2M raised &middot; Lavin Fellow
+            3 active ventures &middot; 3 publications &middot; $2M raised &middot; Lavin Fellow
           </p>
           <p style={{ marginTop: "8px" }}>
             <span style={{ color: "var(--accent-green)" }}>{">"}</span>{" "}

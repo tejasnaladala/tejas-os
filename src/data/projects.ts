@@ -62,7 +62,7 @@ export const projects: Project[] = [
     role: "Founder & Technical Lead",
     date: "Jan 2026 – Present",
     description:
-      "Built an AI-powered platform that reads commercial insurance policies and tells small businesses where they're getting screwed. Parses 50+ page PDFs through a 4-stage extraction pipeline, orchestrates multiple LLMs to cross-reference coverage gaps, and spits out a plain-English report with negotiation strategies in under 60 seconds.",
+      "Built an AI-powered platform that audits commercial insurance policies and surfaces coverage gaps most businesses never catch. Parses 50+ page PDFs through a 4-stage extraction pipeline, orchestrates multiple LLMs to cross-reference exclusions, and delivers a plain-English audit report with negotiation strategies in under 60 seconds.",
     metrics: [
       "Identifies coverage gaps, exclusions, and premium inefficiencies",
       "Multi-model AI orchestration with Protection Score\u2122",

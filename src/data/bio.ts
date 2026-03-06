@@ -1,6 +1,6 @@
 export const bio = {
   tagline: "Hardware engineer who builds plasma reactors and underwater robots by day, ships AI agents by night.",
-  full: "Founded 3 ventures, closed a $2M seed round, and published 3 papers. All before graduating. Currently running PlasmaX ($8M valuation), building an open-source ROV, and shipping an AI insurance auditor. Lavin Entrepreneurship Fellow at UW.",
+  full: "Founded 3 ventures, closed a $2M seed round, and published 3 peer-reviewed papers. All before graduating. Currently running PlasmaX ($8M valuation), building an open-source ROV, and shipping an AI-powered insurance auditor. Lavin Entrepreneurship Fellow at UW.",
   systemInfo: {
     os: "TejasOS v1.0",
     build: "Founder Edition",
