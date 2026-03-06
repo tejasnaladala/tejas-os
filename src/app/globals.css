@@ -28,10 +28,11 @@
 html,
 body {
   height: 100%;
-  overflow: hidden;
-  background: var(--ocean-surface);
+  background: var(--bg-panel);
   color: var(--text-primary);
   font-family: var(--font-mono);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 ::selection {
@@ -256,6 +257,43 @@ input[type="range"]::-moz-range-thumb {
   100% {
     opacity: 0;
   }
+}
+
+/* CRT scanline overlay for non-game pages */
+.crt-page {
+  position: relative;
+}
+
+.crt-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 212, 255, 0.015) 0px,
+    rgba(0, 212, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* CRT flicker animation */
+@keyframes crt-flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.92; }
+  97% { opacity: 1; }
+  98% { opacity: 0.94; }
+}
+
+/* Glow utilities */
+.glow-green {
+  text-shadow: 0 0 8px rgba(0, 255, 136, 0.5), 0 0 16px rgba(0, 255, 136, 0.3);
+}
+
+.glow-amber {
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.5), 0 0 16px rgba(255, 176, 0, 0.3);
 }
 
 /* Reduced motion */

@@ -72,7 +72,7 @@ export default function Gallery() {
               <div
                 style={{
                   width: "100%",
-                  aspectRatio: "16 / 9",
+                  minHeight: 120,
                   background: "rgba(10, 15, 26, 0.8)",
                   display: "flex",
                   alignItems: "center",
@@ -96,15 +96,14 @@ export default function Gallery() {
                 src={image.src}
                 alt={image.caption}
                 width={800}
-                height={450}
+                height={0}
                 quality={80}
+                sizes="(max-width: 768px) 100vw, 600px"
                 onError={() => handleImageError(index)}
                 style={{
                   width: "100%",
                   height: "auto",
                   display: "block",
-                  objectFit: "cover",
-                  aspectRatio: "16 / 9",
                 }}
               />
             )}

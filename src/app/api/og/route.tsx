@@ -41,17 +41,17 @@ export async function GET() {
           }}
         />
 
-        {/* ASCII submarine art */}
+        {/* Terminal prompt decoration */}
         <div
           style={{
             color: "rgba(0, 212, 255, 0.15)",
             fontSize: 14,
-            letterSpacing: 2,
+            letterSpacing: 4,
             marginBottom: 20,
             display: "flex",
           }}
         >
-          {"<=({=))=====>"}
+          {"// TEJAS OS v2.0"}
         </div>
 
         {/* Name */}
@@ -94,7 +94,7 @@ export async function GET() {
           }}
         >
           <span style={{ color: "#00ff88", display: "flex" }}>{">"}</span>
-          <span style={{ display: "flex" }}>explore the deep sea portfolio_</span>
+          <span style={{ display: "flex" }}>thesis / work / gallery / arcade / ocean_</span>
         </div>
 
         {/* Domain */}
@@ -112,7 +112,7 @@ export async function GET() {
           tejasnaladala.com
         </div>
 
-        {/* Depth indicator */}
+        {/* Status indicator */}
         <div
           style={{
             position: "absolute",
@@ -126,8 +126,7 @@ export async function GET() {
             gap: 4,
           }}
         >
-          <span style={{ display: "flex" }}>DEPTH: 2400m</span>
-          <span style={{ display: "flex" }}>ZONE: ABYSS</span>
+          <span style={{ display: "flex" }}>3 VENTURES / 3 PAPERS / $2M RAISED</span>
         </div>
       </div>
     ),

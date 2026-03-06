@@ -182,7 +182,7 @@ export default function ResumePage() {
             href="/"
             className="text-sm text-[#00d4ff] transition-colors hover:underline"
           >
-            Enter TejasOS &rarr;
+            Home &rarr;
           </a>
         </footer>
       </div>
