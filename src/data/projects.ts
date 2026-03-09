@@ -9,9 +9,9 @@ export const projects: Project[] = [
     role: "Founder & CEO",
     date: "May 2023 – Present",
     description:
-      "Designed, built, and shipped a $180K production plasma reactor that eliminates chlorine-based water sanitation entirely, from custom 18kV flyback drivers and STM32 firmware to CNC-machined reactor housings. Deployed to CSIR-CFTRI, India's premier government food safety lab. No chemicals, just ionized gas and engineering.",
+      "Designed, built, and shipped a $30K production plasma reactor that eliminates chlorine-based water sanitation entirely, from custom 18kV flyback drivers and STM32 firmware to CNC-machined reactor housings. Deployed to CSIR-CFTRI, India's premier government food safety lab. No chemicals, just ionized gas and engineering.",
     metrics: [
-      "Sold first production unit ($180K) to CSIR-CFTRI India",
+      "Sold first production unit ($30K) to CSIR-CFTRI India",
       "Patent filed on venturi-plasma integration architecture",
       "3 peer-reviewed publications",
       "2.5 log\u2081\u2080 microbial reduction at 1.86 kW, $0.47/ton operating cost",

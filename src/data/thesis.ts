@@ -9,7 +9,7 @@ export const thesisEntries: ThesisEntry[] = [
   {
     number: 1,
     title: "Hardware is the hardest problem",
-    body: "Atoms don't compile. When you burn a PCB trace at 2am, there's no undo button and no Stack Overflow answer. Software engineers get infinite retries. Hardware engineers get one shot at a $180K production unit. That constraint breeds a different kind of builder, one who thinks in tolerances, thermal gradients, and failure modes before writing a single line of code. If you can ship hardware, software feels like easy mode.",
+    body: "Atoms don't compile. When you burn a PCB trace at 2am, there's no undo button and no Stack Overflow answer. Software engineers get infinite retries. Hardware engineers get one shot at a $30K production unit. That constraint breeds a different kind of builder, one who thinks in tolerances, thermal gradients, and failure modes before writing a single line of code. If you can ship hardware, software feels like easy mode.",
     accent: "cyan",
   },
   {
@@ -27,7 +27,7 @@ export const thesisEntries: ThesisEntry[] = [
   {
     number: 4,
     title: "Research without product is tourism",
-    body: "I've published three papers and worked in two research labs. The work mattered most when it connected to a deployed system. When a plasma physics paper became a $180K production unit, when a signal processing technique became a real-time wearable. Papers are credentials. Products are proof. Do both, but know which one actually changes anything.",
+    body: "I've published three papers and worked in two research labs. The work mattered most when it connected to a deployed system. When a plasma physics paper became a $30K production unit, when a signal processing technique became a real-time wearable. Papers are credentials. Products are proof. Do both, but know which one actually changes anything.",
     accent: "cyan",
   },
 ];
