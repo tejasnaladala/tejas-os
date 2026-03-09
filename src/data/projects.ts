@@ -11,9 +11,7 @@ export const projects: Project[] = [
     description:
       "Designed, built, and shipped a $180K production plasma reactor that eliminates chlorine-based water sanitation entirely, from custom 18kV flyback drivers and STM32 firmware to CNC-machined reactor housings. Deployed to CSIR-CFTRI, India's premier government food safety lab. No chemicals, just ionized gas and engineering.",
     metrics: [
-      "$2M seed round at $8M post-money valuation",
       "Sold first production unit ($180K) to CSIR-CFTRI India",
-      "10 contracted revenue-generating system deployments",
       "Patent filed on venturi-plasma integration architecture",
       "3 peer-reviewed publications",
       "2.5 log\u2081\u2080 microbial reduction at 1.86 kW, $0.47/ton operating cost",
@@ -92,6 +90,28 @@ export const projects: Project[] = [
       "LLM Orchestration",
     ],
     links: [{ label: "GitHub", url: "https://github.com/tejasnaladala" }],
+  },
+  {
+    id: "icordion",
+    filename: "iCordion",
+    extension: "app",
+    title: "iCordion",
+    role: "Creator",
+    date: "Mar 2026",
+    description:
+      "Turns your iPhone into a virtual accordion using the accelerometer as bellows, with musette tuning via three detuned oscillators per note and real-time filter sweeps mapped to phone tilt. Two octaves of chromatic treble keys plus six bass/chord buttons, all running through Web Audio API over a self-signed HTTPS local server.",
+    metrics: [
+      "Real-time accelerometer-to-bellows mapping with dynamic filter sweep",
+      "Musette tuning via 3 detuned oscillators per note (Web Audio API)",
+      "Self-signed HTTPS server for iOS accelerometer access",
+    ],
+    tech: [
+      "JavaScript",
+      "Web Audio API",
+      "DeviceMotion API",
+      "Node.js/Express",
+    ],
+    links: [{ label: "GitHub", url: "https://github.com/tejasnaladala/icordion" }],
   },
   {
     id: "seal-lab",

@@ -126,7 +126,7 @@ export async function GET() {
             gap: 4,
           }}
         >
-          <span style={{ display: "flex" }}>3 VENTURES / 3 PAPERS / $2M RAISED</span>
+          <span style={{ display: "flex" }}>3 VENTURES / 3 PAPERS / LAVIN FELLOW</span>
         </div>
       </div>
     ),

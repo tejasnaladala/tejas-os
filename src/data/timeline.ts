@@ -40,7 +40,7 @@ export const timeline: TimelineEntry[] = [
   {
     date: "2023.05",
     title: "PlasmaX - Founded",
-    description: "Started building industrial plasma water disinfection technology. Now at $8M valuation.",
+    description: "Started building industrial plasma water disinfection technology.",
     type: "venture",
   },
 ];

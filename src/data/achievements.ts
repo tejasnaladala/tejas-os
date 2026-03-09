@@ -2,12 +2,6 @@ import { Achievement } from "@/types";
 
 export const achievements: Achievement[] = [
   {
-    title: "$2M Raised",
-    description: "Seed round at $8M post-money valuation",
-    icon: "\ud83d\udcb0",
-    unlocked: true,
-  },
-  {
     title: "3 Publications",
     description: "J. Phys. D + Innov. Food Sci. & Emerg. Tech.",
     icon: "\ud83d\udcc4",
