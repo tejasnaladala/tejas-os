@@ -2,6 +2,12 @@ import { Achievement } from "@/types";
 
 export const achievements: Achievement[] = [
   {
+    title: "$2M Raised",
+    description: "Seed round at $8M post-money valuation",
+    icon: "\ud83d\udcb0",
+    unlocked: true,
+  },
+  {
     title: "3 Publications",
     description: "J. Phys. D + Innov. Food Sci. & Emerg. Tech.",
     icon: "\ud83d\udcc4",
@@ -11,6 +17,18 @@ export const achievements: Achievement[] = [
     title: "Grand Prize Winner",
     description: "UW S&T Showcase + Best Pitch Award",
     icon: "\ud83c\udfc6",
+    unlocked: true,
+  },
+  {
+    title: "Red Bull Basement 2nd Place",
+    description: "Global innovation competition",
+    icon: "\ud83e\udd43",
+    unlocked: true,
+  },
+  {
+    title: "CMU Venture Finalist",
+    description: "Carnegie Mellon Venture Competition",
+    icon: "\ud83d\ude80",
     unlocked: true,
   },
   {
