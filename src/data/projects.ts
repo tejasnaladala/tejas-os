@@ -71,6 +71,29 @@ export const projects: Project[] = [
     tech: ["Next.js", "Claude/GPT-4 Orchestration", "PDF Extraction + OCR", "Vector Search"],
   },
   {
+    id: "mimic",
+    filename: "Mimic",
+    extension: "py",
+    title: "Mimic - Robotics Imitation Learning Platform",
+    role: "Creator",
+    date: "Mar 2026",
+    description:
+      "End-to-end robotics learning platform that lets you teleoperate a simulated Panda arm from your browser via WebRTC, record demonstrations into LeRobot-compatible datasets, train Action Chunking Transformer or Diffusion Policy models in PyTorch, and deploy as ONNX, all from a single CLI across 41 Python modules with 103 passing tests.",
+    metrics: [
+      "Full pipeline: browser teleoperation \u2192 data collection \u2192 training \u2192 ONNX deployment",
+      "Dual policy architectures: Action Chunking Transformer + Diffusion Policy (PyTorch)",
+      "Real-time WebRTC streaming at 60 FPS with cyberpunk HUD and click-to-navigate IK",
+      "103 passing tests across 12 test modules, 41 Python source files",
+    ],
+    tech: [
+      "MuJoCo",
+      "PyTorch",
+      "FastAPI/WebRTC",
+      "React/TypeScript",
+    ],
+    links: [{ label: "GitHub", url: "https://github.com/tejasnaladala/mimic" }],
+  },
+  {
     id: "forge",
     filename: "Forge",
     extension: "pkg",
@@ -123,17 +146,19 @@ export const projects: Project[] = [
     role: "Research Associate",
     date: "Mar \u2013 Nov 2025",
     description:
-      "Built real-time embedded sensing systems under Prof. Mamishev across two funded research proposals, including a PPG-based drowsiness detection wearable with 95% motion artifact rejection and a non-intrusive breakage sensor designed for U.S. Navy hull integrity monitoring. Custom Butterworth bandpass filter pipeline at 0.5-5Hz, authored grant sections and technical abstracts across a 7-person research team.",
+      "Built real-time embedded sensing systems under Prof Mamishev across two funded research proposals: a PPG-based drowsiness detection wearable on STM32 with a custom 4th-order Butterworth bandpass filter achieving 95% motion artifact rejection, and a non-intrusive breakage sensor for US Navy hull integrity monitoring with custom signal conditioning circuitry and data acquisition firmware built from scratch.",
     metrics: [
-      "95% motion artifact rejection on real-time PPG drowsiness detection (0.5-5Hz Butterworth pipeline)",
-      "Non-intrusive breakage sensor designed for U.S. Navy hull integrity monitoring",
-      "Authored grant sections and technical abstracts across 7-person research team",
+      "95% motion artifact rejection on real-time PPG drowsiness detection wearable",
+      "Full signal chain: photodiode \u2192 analog front-end \u2192 DSP \u2192 feature extraction \u2192 classification",
+      "Non-intrusive breakage sensor engineered for U.S. Navy hull integrity monitoring",
+      "Authored technical sections across 2 funded grant proposals in a 7-person team",
     ],
     tech: [
-      "Embedded Systems (STM32)",
-      "Signal Processing",
-      "Sensor Design",
-      "Technical Writing",
+      "Embedded C/C++ (STM32)",
+      "PCB Design",
+      "Signal Processing (DSP)",
+      "Analog Front-End Design",
+      "Python (SciPy/NumPy)",
     ],
   },
   {
