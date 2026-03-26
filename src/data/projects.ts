@@ -2,6 +2,33 @@ import { Project } from "@/types";
 
 export const projects: Project[] = [
   {
+    id: "parchment",
+    filename: "ParchmentLabs",
+    extension: "ai",
+    title: "Parchment Labs",
+    role: "Founder & CEO",
+    date: "Jan 2026 – Present",
+    description:
+      "Built an autonomous research discovery engine that ingests thousands of papers daily across 50+ scientific categories, identifies cross-domain research gaps, validates them through multi-agent swarm peer review (75-150 AI reviewers), designs rigorous computational experiments, and executes them. Pointed it at neuroscience with zero domain expertise. It produced a 900-experiment study across 10 biological organisms, validated by a NeurIPS reviewer, targeting PNAS. Currently running on UW Hyak HPC cluster with 8x NVIDIA H200 nodes at zero inference cost.",
+    metrics: [
+      "900-experiment computational neuroscience study produced autonomously",
+      "NeurIPS reviewer validated methodology passes all benchmarks",
+      "5,600+ papers scored, 72B parameter model running on 2x A40 GPUs via UW Hyak HPC",
+      "MiroFish swarm: 75-150 AI reviewers with weighted expertise voting, 85% endorsement threshold",
+      "1,100+ self-learning calibration patterns accumulated from swarm review cycles",
+      "Meeting scheduled with Oren Etzioni (founder of Allen AI / Semantic Scholar)",
+      "Enterprise RaaS model: $15K-$50K computational research sprints",
+    ],
+    tech: [
+      "Python/FastAPI",
+      "vLLM + Qwen 72B",
+      "NVIDIA H200/A40 (Hyak HPC)",
+      "Multi-Agent Orchestration",
+      "D3.js Knowledge Graph",
+    ],
+    links: [{ label: "Website", url: "https://parchmentlabs.com" }],
+  },
+  {
     id: "plasmafx",
     filename: "PlasmaX",
     extension: "sys",
@@ -137,6 +164,28 @@ export const projects: Project[] = [
       "Node.js/Express",
     ],
     links: [{ label: "GitHub", url: "https://github.com/tejasnaladala/icordion" }],
+  },
+  {
+    id: "delulu",
+    filename: "DeluluIsNotTheSolulu",
+    extension: "app",
+    title: "Delulu Is Not The Solulu",
+    role: "Creator",
+    date: "Feb 2026",
+    description:
+      "Local-first relationship analytics engine that processes conversation data entirely on-device. No cloud uploads, no data leaves your phone. Analyzes communication patterns, attachment styles, and relationship dynamics using on-device ML inference with privacy as a hard constraint.",
+    metrics: [
+      "100% local processing, zero data leaves the device",
+      "On-device ML inference for communication pattern analysis",
+      "Attachment style and relationship dynamics scoring",
+    ],
+    tech: [
+      "React Native",
+      "On-Device ML",
+      "Local Storage",
+      "Privacy-First Architecture",
+    ],
+    links: [{ label: "GitHub", url: "https://github.com/tejasnaladala/deluluisnotthesolulu" }],
   },
   {
     id: "seal-lab",
