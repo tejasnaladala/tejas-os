@@ -12,7 +12,7 @@ const founded = projects.filter((p) => p.role.includes("Founder"));
 const research = projects.filter((p) =>
   ["seal-lab", "niist"].includes(p.id)
 );
-const openSource = projects.filter((p) => ["mimic", "forge", "icordion"].includes(p.id));
+const openSource = projects.filter((p) => ["wireml", "maze-rl-baselines", "parameter-golf", "engram", "claude-nexus", "mimic", "forge", "cerulean", "knowledge-engine", "ai-agent-city", "icordion", "delulu"].includes(p.id));
 
 const TEJAS_OS = {
   title: "TejasOS - This Portfolio",

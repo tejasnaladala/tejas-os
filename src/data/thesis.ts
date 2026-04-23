@@ -5,29 +5,25 @@ export interface ThesisEntry {
   accent: "cyan" | "green" | "amber";
 }
 
+export const thesisTagline = "I am obsessed with building.";
+
 export const thesisEntries: ThesisEntry[] = [
   {
     number: 1,
-    title: "Atoms don't have a backspace key",
-    body: "Software engineers get infinite retries. I get one shot at a $80K plasma reactor. Burn a trace at 2am and it's scrap metal, not a rollback. That constraint breeds a different kind of builder, one who thinks in failure modes before features. If you can ship hardware, software is easy mode.",
+    title: "Build or get out of the way",
+    body: "Most people aren't really building anything they're just moving pieces around and hoping it looks like progress. The real ones don't wait for permission or validation. Rules are meant to be broken. If what you're building doesn't make something else obsolete its probably not worth it.",
     accent: "cyan",
   },
   {
     number: 2,
-    title: "No customers, no opinion",
-    body: "Three ventures before graduating. Not side projects, ventures with invoices and people depending on the thing actually working. Engineering isn't elegant abstractions. It's solving problems someone will pay real money for. If you've never shipped with your name on the line, you're practicing.",
+    title: "Outwork everyone",
+    body: "I don't believe in work-life balance when you're building something from nothing. That's a luxury for people maintaining what someone else already built. Right now it's volume. Ship more, break more, learn faster than your competitor.",
     accent: "green",
   },
   {
     number: 3,
-    title: "Prototype like a maniac. Produce like a surgeon.",
-    body: "I'll hack a proof of concept in a weekend and spend weeks specifying it for production. Plasma reactors don't forgive sloppy work and neither do customers. Speed and rigor aren't opposites. They're both outcomes of knowing which phase you're in.",
+    title: "Failure is not an option",
+    body: "People love romanticizing failure like it's some badge of honor. \"We learned so much.\" Fuck no. Your investors lost money, your team lost a year. The market doesn't give participation trophies. Failure is not an option.",
     accent: "amber",
-  },
-  {
-    number: 4,
-    title: "Research that never ships is tourism",
-    body: "Three papers. Two labs. The work I'm proudest of left the building. Plasma physics became a $80K production unit. Signal processing became a real-time wearable. Papers are credentials. Products are proof.",
-    accent: "cyan",
   },
 ];

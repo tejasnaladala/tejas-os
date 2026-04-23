@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import PageLayout from "@/components/shared/PageLayout";
-import { thesisEntries, ThesisEntry } from "@/data/thesis";
+import { thesisEntries, thesisTagline, ThesisEntry } from "@/data/thesis";
 
 export const metadata: Metadata = {
   title: "Thesis - Tejas Naladala",
@@ -100,7 +100,7 @@ export default function ThesisPage() {
             lineHeight: 1.2,
           }}
         >
-          Things I believe to be true.
+          {thesisTagline}
         </h1>
         <p
           style={{
