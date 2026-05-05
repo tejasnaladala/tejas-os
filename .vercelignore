@@ -1,0 +1,20 @@
+# Local build/cache output
+.git
+.next
+node_modules
+coverage
+out
+build
+*.tsbuildinfo
+
+# Local/private environment and tool state
+.env*
+.vercel
+.codex
+.claude
+
+# Scratch artifacts accidentally created in the workspace
+,
+,+,
+ls
+*.lnk

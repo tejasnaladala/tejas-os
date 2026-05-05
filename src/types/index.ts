@@ -1,20 +1,3 @@
-export type StationId = "research" | "salvage" | "systems" | "arcade" | "comms" | "gallery" | "trench";
-
-export interface StationConfig {
-  id: StationId;
-  label: string;
-  icon: string;
-  position: { x: number; y: number };
-  description: string;
-}
-
-export interface ROVState {
-  position: { x: number; y: number };
-  velocity: { x: number; y: number };
-  isBoosting: boolean;
-  facingDirection: "left" | "right";
-}
-
 export interface Project {
   id: string;
   filename: string;
@@ -22,10 +5,22 @@ export interface Project {
   title: string;
   role: string;
   date: string;
+  category: "venture" | "research" | "open-source" | "competition" | "industry";
+  summary: string;
   description: string;
   metrics: string[];
   tech: string[];
   links?: { label: string; url: string }[];
+}
+
+export interface Publication {
+  title: string;
+  authors: string;
+  venue: string;
+  year: string;
+  citations?: number;
+  doi?: string;
+  status?: string;
 }
 
 export interface Skill {

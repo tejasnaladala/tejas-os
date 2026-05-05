@@ -28,11 +28,12 @@ export default function SkipToContent() {
           top: "16px",
           left: "16px",
           zIndex: 999,
-          background: "var(--accent-cyan)",
-          color: "#0a0f1a",
+          background: "var(--text-primary)",
+          color: "var(--bg)",
           fontFamily: "var(--font-mono)",
           fontSize: "12px",
-          borderRadius: "4px",
+          letterSpacing: "0.08em",
+          borderRadius: "var(--radius-sm)",
         });
       }}
       onBlur={(e) => {

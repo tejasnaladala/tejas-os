@@ -1,18 +1,22 @@
 export const bio = {
-  tagline: "Hardware engineer who ships $180K plasma reactors and autonomous AI research engines. Both before graduating college.",
-  full: "Founded 2 ventures, closed a $2M seed round, co-authored 3 peer-reviewed papers, filed a patent. All before turning 19. Currently CTO of Parchment Labs (autonomous research discovery engine, raising pre-seed). Previously CTO of PlasmaX ($8M valuation, sold a $180K production unit to India's CSIR-CFTRI). Lavin Entrepreneurship Fellow at UW.",
+  tagline:
+    "18. Building plasma hardware, autonomous research engines, and verification systems for model-generated work.",
+  full:
+    "18. Currently building R0 Systems, plasma sanitization equipment for post-harvest agricultural produce. Prev. founded PlasmaX ($2M seed; decentralised on-site nitrogen production for ammonia synthesis), with $180K first production unit sold to CSIR-CFTRI India, 10 contracted deployments, 1 patent filed, and 3 peer-reviewed publications. Also building Parchment Labs (autonomous literature-to-experiment pipeline) and delphi (pre-registered verification for LLM-generated quant strategies). Lavin Entrepreneurship Fellow at UW, YC AI Startup School 2026 SF cohort.",
   systemInfo: {
     os: "TejasOS v1.0",
-    build: "Founder Edition",
+    build: "Builder Edition",
     user: "Tejas Naladala",
     location: "Seattle, WA",
     processor: "UW ECE + Applied Math (Double Major, 3.93 GPA)",
-    status: "Lavin Entrepreneurship Fellow",
+    status: "Lavin Fellow + YC AI Startup School 2026",
     uptime: "Since May 2023",
     activeProcesses: [
-      "Parchment Labs (Founder & CTO)",
-      "OpenAI Parameter Golf (training 3.7M-param transformers on 8xH100)",
-      "Research & Computing Club",
+      "R0 Systems (plasma sanitization for post-harvest produce)",
+      "Parchment Labs (autonomous research discovery)",
+      "delphi (LLM strategy verification)",
+      "agentbreed (pre-registered multi-agent LLM study)",
+      "maze-rl-baselines (reward-driven RL failure modes)",
       "UW Class of 2028",
     ],
     languages: "English, Hindi, Telugu, Mandarin",

@@ -13,55 +13,55 @@ export async function GET() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "#0a0f1a",
+          background: "#f5f4ef",
           fontFamily: "monospace",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Scanline overlay effect */}
+        {/* Dot grid */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background:
-              "repeating-linear-gradient(0deg, rgba(0, 212, 255, 0.03) 0px, rgba(0, 212, 255, 0.03) 1px, transparent 1px, transparent 3px)",
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgba(10,10,10,0.10) 1px, transparent 0)",
+            backgroundSize: "24px 24px",
             display: "flex",
           }}
         />
 
-        {/* Border glow */}
+        {/* Hairline frame */}
         <div
           style={{
             position: "absolute",
-            inset: 16,
-            border: "1px solid rgba(0, 212, 255, 0.3)",
-            borderRadius: 4,
+            inset: 24,
+            border: "1px solid rgba(10,10,10,0.16)",
             display: "flex",
           }}
         />
 
-        {/* Terminal prompt decoration */}
+        {/* Eyebrow */}
         <div
           style={{
-            color: "rgba(0, 212, 255, 0.15)",
+            color: "#777",
             fontSize: 14,
-            letterSpacing: 4,
-            marginBottom: 20,
+            letterSpacing: 6,
+            marginBottom: 24,
+            textTransform: "uppercase",
             display: "flex",
           }}
         >
-          {"// TEJAS OS v2.0"}
+          Tejas Naladala / Profile 2026
         </div>
 
         {/* Name */}
         <div
           style={{
-            color: "#00d4ff",
-            fontSize: 56,
+            color: "#0a0a0a",
+            fontSize: 96,
             fontWeight: 700,
-            letterSpacing: 6,
-            textShadow: "0 0 40px rgba(0, 212, 255, 0.4), 0 0 80px rgba(0, 212, 255, 0.15)",
+            letterSpacing: 4,
             display: "flex",
           }}
         >
@@ -71,39 +71,39 @@ export async function GET() {
         {/* Tagline */}
         <div
           style={{
-            color: "#5f7a94",
-            fontSize: 20,
-            letterSpacing: 4,
-            marginTop: 12,
+            color: "#3a3a3a",
+            fontSize: 22,
+            letterSpacing: 3,
+            marginTop: 16,
+            textTransform: "uppercase",
             display: "flex",
           }}
         >
-          HARDWARE ENGINEER / AI BUILDER / FOUNDER
+          Hardware / AI Research / Verification
         </div>
 
-        {/* Terminal prompt */}
-        <div
-          style={{
-            color: "#00ff88",
-            fontSize: 16,
-            letterSpacing: 2,
-            marginTop: 40,
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-          }}
+        {/* Claude orange asterisk accent */}
+        <svg
+          width="56"
+          height="56"
+          viewBox="0 0 100 100"
+          style={{ marginTop: 40, display: "block" }}
         >
-          <span style={{ color: "#00ff88", display: "flex" }}>{">"}</span>
-          <span style={{ display: "flex" }}>thesis / work / gallery / arcade / ocean_</span>
-        </div>
+          <g transform="translate(50,50)" fill="#CC785C">
+            <ellipse cx="0" cy="0" rx="6" ry="36" />
+            <ellipse cx="0" cy="0" rx="6" ry="36" transform="rotate(45)" />
+            <ellipse cx="0" cy="0" rx="6" ry="36" transform="rotate(90)" />
+            <ellipse cx="0" cy="0" rx="6" ry="36" transform="rotate(135)" />
+          </g>
+        </svg>
 
         {/* Domain */}
         <div
           style={{
             position: "absolute",
-            bottom: 32,
-            right: 40,
-            color: "rgba(0, 212, 255, 0.4)",
+            bottom: 48,
+            right: 56,
+            color: "#0a0a0a",
             fontSize: 14,
             letterSpacing: 3,
             display: "flex",
@@ -112,21 +112,19 @@ export async function GET() {
           tejasnaladala.com
         </div>
 
-        {/* Status indicator */}
+        {/* Status */}
         <div
           style={{
             position: "absolute",
-            bottom: 32,
-            left: 40,
-            color: "rgba(95, 122, 148, 0.4)",
+            bottom: 48,
+            left: 56,
+            color: "#777",
             fontSize: 12,
             letterSpacing: 2,
             display: "flex",
-            flexDirection: "column",
-            gap: 4,
           }}
         >
-          <span style={{ display: "flex" }}>3 VENTURES / 3 PAPERS / $2M RAISED</span>
+          $2M SEED / $180K UNIT / 35 CITATIONS
         </div>
       </div>
     ),

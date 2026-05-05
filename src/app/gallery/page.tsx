@@ -5,23 +5,10 @@ import Image from "next/image";
 import PageLayout from "@/components/shared/PageLayout";
 
 const images = [
-  {
-    src: "/gallery/headshot.jpg",
-    caption: "the guy behind the submarine",
-  },
-  {
-    src: "/gallery/showcase.jpg",
-    caption: "winning the 2026 science & technology showcase at uw",
-  },
-  {
-    src: "/gallery/welding.jpg",
-    caption:
-      "building plasma reactor components by hand. every founder starts somewhere",
-  },
-  {
-    src: "/gallery/wallpaper.jpg",
-    caption: "my wallpaper, so you want to be a pilot",
-  },
+  { src: "/gallery/headshot.jpg", caption: "the guy behind the submarine" },
+  { src: "/gallery/showcase.jpg", caption: "winning the 2026 science & technology showcase at uw" },
+  { src: "/gallery/welding.jpg", caption: "building plasma reactor components by hand. every founder starts somewhere" },
+  { src: "/gallery/wallpaper.jpg", caption: "my wallpaper. so you want to be a pilot" },
 ];
 
 export default function GalleryPage() {
@@ -29,13 +16,9 @@ export default function GalleryPage() {
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
 
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
-
   const goNext = useCallback(() => {
-    setLightboxIndex((prev) =>
-      prev !== null ? (prev + 1) % images.length : null
-    );
+    setLightboxIndex((prev) => (prev !== null ? (prev + 1) % images.length : null));
   }, []);
-
   const goPrev = useCallback(() => {
     setLightboxIndex((prev) =>
       prev !== null ? (prev - 1 + images.length) % images.length : null
@@ -55,95 +38,28 @@ export default function GalleryPage() {
 
   return (
     <PageLayout wide>
-      {/* Header */}
-      <div style={{ marginBottom: "40px" }}>
-        <p
-          className="font-mono"
-          style={{
-            color: "var(--accent-green)",
-            fontSize: "11px",
-            letterSpacing: "3px",
-            marginBottom: "12px",
-          }}
-        >
-          {"> ls gallery/"}
-        </p>
-        <h1
-          className="font-mono"
-          style={{
-            color: "var(--text-primary)",
-            fontSize: "28px",
-            fontWeight: 700,
-            letterSpacing: "2px",
-          }}
-        >
-          Gallery
+      <header className="page-header">
+        <p className="eyebrow">Gallery</p>
+        <h1 className="display">
+          Moments<br /><em>from the journey.</em>
         </h1>
-        <p
-          style={{
-            color: "var(--text-secondary)",
-            fontFamily: "var(--font-sans)",
-            fontSize: "13px",
-            marginTop: "8px",
-          }}
-        >
-          Moments from the journey. Newest first.
-        </p>
-      </div>
+        <p className="body-lg">Newest first.</p>
+      </header>
 
-      {/* Grid */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "16px",
-        }}
-      >
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {images.map((img, i) => (
           <button
             key={i}
             onClick={() => !failedImages.has(i) && setLightboxIndex(i)}
-            style={{
-              background: "rgba(0, 212, 255, 0.03)",
-              border: "1px solid rgba(0, 212, 255, 0.1)",
-              padding: 0,
-              cursor: failedImages.has(i) ? "default" : "pointer",
-              overflow: "hidden",
-              textAlign: "left",
-              transition: "border-color 0.2s, box-shadow 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "rgba(0, 212, 255, 0.3)";
-              e.currentTarget.style.boxShadow =
-                "0 0 20px rgba(0, 212, 255, 0.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "rgba(0, 212, 255, 0.1)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
+            className="editorial-card overflow-hidden p-0 text-left transition-transform hover:-translate-y-[2px]"
+            style={{ cursor: failedImages.has(i) ? "default" : "pointer" }}
           >
             {failedImages.has(i) ? (
               <div
-                style={{
-                  width: "100%",
-                  minHeight: 200,
-                  background: "rgba(10, 15, 26, 0.8)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: 20,
-                }}
+                className="flex min-h-[260px] items-center justify-center p-8"
+                style={{ background: "var(--bg)" }}
               >
-                <span
-                  className="font-mono"
-                  style={{
-                    color: "var(--text-secondary)",
-                    fontSize: "11px",
-                    textAlign: "center",
-                  }}
-                >
-                  [image not found]
-                </span>
+                <span className="body-sm">[ image not found ]</span>
               </div>
             ) : (
               <Image
@@ -151,26 +67,16 @@ export default function GalleryPage() {
                 alt={img.caption}
                 width={800}
                 height={0}
-                quality={80}
-                sizes="(max-width: 768px) 100vw, 400px"
-                onError={() =>
-                  setFailedImages((prev) => new Set(prev).add(i))
-                }
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                }}
+                quality={85}
+                sizes="(max-width: 768px) 100vw, 600px"
+                onError={() => setFailedImages((prev) => new Set(prev).add(i))}
+                style={{ width: "100%", height: "auto", display: "block" }}
               />
             )}
-            <div style={{ padding: "10px 14px" }}>
+            <div style={{ padding: "20px 24px" }}>
               <p
-                className="font-mono"
-                style={{
-                  fontSize: "11px",
-                  color: "var(--text-secondary)",
-                  lineHeight: 1.5,
-                }}
+                className="body-sm"
+                style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.55 }}
               >
                 {img.caption}
               </p>
@@ -179,131 +85,65 @@ export default function GalleryPage() {
         ))}
       </div>
 
-      {/* Lightbox */}
       {lightboxIndex !== null && (
         <div
           onClick={closeLightbox}
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 200,
-            background: "rgba(2, 4, 8, 0.92)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-          }}
+          className="fixed inset-0 z-[200] flex cursor-pointer flex-col items-center justify-center"
+          style={{ background: "rgba(10, 10, 10, 0.96)", backdropFilter: "blur(16px)" }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            style={{
-              position: "relative",
-              maxWidth: "90vw",
-              maxHeight: "80vh",
-              cursor: "default",
-            }}
+            className="relative cursor-default"
+            style={{ maxWidth: "90vw", maxHeight: "82vh" }}
           >
             <Image
               src={images[lightboxIndex].src}
               alt={images[lightboxIndex].caption}
-              width={1200}
+              width={1400}
               height={0}
-              quality={90}
+              quality={92}
               sizes="90vw"
               style={{
                 width: "auto",
                 maxWidth: "90vw",
-                maxHeight: "80vh",
+                maxHeight: "82vh",
                 height: "auto",
                 display: "block",
-                border: "1px solid rgba(0, 212, 255, 0.15)",
+                borderRadius: "var(--radius-md)",
               }}
             />
           </div>
 
-          {/* Caption */}
-          <p
-            className="font-mono"
-            style={{
-              color: "var(--text-secondary)",
-              fontSize: "12px",
-              marginTop: "16px",
-              textAlign: "center",
-              maxWidth: "600px",
-              padding: "0 24px",
-            }}
-          >
+          <p className="body-sm mt-6 max-w-[600px] px-6 text-center">
             {images[lightboxIndex].caption}
           </p>
 
-          {/* Nav arrows */}
-          <div
-            style={{
-              position: "fixed",
-              top: "50%",
-              left: "24px",
-              transform: "translateY(-50%)",
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goPrev();
             }}
+            className="btn-secondary fixed left-6 top-1/2 -translate-y-1/2"
+            aria-label="Previous"
           >
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goPrev();
-              }}
-              className="font-mono"
-              style={{
-                background: "rgba(10, 15, 26, 0.8)",
-                border: "1px solid rgba(0, 212, 255, 0.2)",
-                color: "var(--accent-cyan)",
-                fontSize: "20px",
-                padding: "8px 14px",
-                cursor: "pointer",
-              }}
-            >
-              {"‹"}
-            </button>
-          </div>
-          <div
-            style={{
-              position: "fixed",
-              top: "50%",
-              right: "24px",
-              transform: "translateY(-50%)",
+            Prev
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              goNext();
             }}
+            className="btn-secondary fixed right-6 top-1/2 -translate-y-1/2"
+            aria-label="Next"
           >
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goNext();
-              }}
-              className="font-mono"
-              style={{
-                background: "rgba(10, 15, 26, 0.8)",
-                border: "1px solid rgba(0, 212, 255, 0.2)",
-                color: "var(--accent-cyan)",
-                fontSize: "20px",
-                padding: "8px 14px",
-                cursor: "pointer",
-              }}
-            >
-              {"›"}
-            </button>
-          </div>
+            Next
+          </button>
 
-          {/* Close hint */}
           <p
-            className="font-mono"
-            style={{
-              position: "fixed",
-              top: "20px",
-              right: "24px",
-              color: "var(--text-secondary)",
-              fontSize: "10px",
-              letterSpacing: "2px",
-            }}
+            className="body-sm fixed right-6 top-6"
+            style={{ color: "var(--text-muted)" }}
           >
-            ESC TO CLOSE
+            ESC to close
           </p>
         </div>
       )}

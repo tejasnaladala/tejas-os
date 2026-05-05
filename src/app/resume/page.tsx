@@ -1,191 +1,315 @@
+import type { ReactNode } from "react";
 import { Metadata } from "next";
+import Link from "next/link";
+import PageLayout from "@/components/shared/PageLayout";
 import { SITE_CONFIG } from "@/lib/constants";
+import { bio } from "@/data/bio";
 import { projects } from "@/data/projects";
 import { skillCategories } from "@/data/skills";
 import { achievements } from "@/data/achievements";
+import { preprints, publications, scholarProfile } from "@/data/publications";
+import { Project, Publication } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Tejas Naladala - Resume",
+  title: "Resume | Tejas Naladala",
   description:
-    "Hardware engineer, AI builder, startup founder. B.S. ECE + Applied Math at UW Seattle. Founder of PlasmaX, Cerulean Robotics, Atticus AI.",
+    "Hardware engineer, AI systems builder, startup founder, and University of Washington ECE + Applied Math student.",
 };
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+const researchExperience = [
+  "r0-systems",
+  "parchment",
+  "delphi",
+  "agentbreed",
+  "maze-rl-baselines",
+  "seal-lab",
+  "niist",
+].map(projectById);
+
+const industryExperience = ["plasmafx"].map(projectById);
+
+const openSourceAndCompetitions = [
+  "parameter-golf",
+  "forge",
+  "engram",
+  "wireml",
+  "knowledge-engine",
+  "claude-nexus",
+  "ai-agent-city",
+  "mimic",
+  "icordion",
+  "delulu",
+  "cerulean",
+  "tejas-os",
+].map(projectById);
+
+function projectById(id: string) {
+  const project = projects.find((p) => p.id === id);
+  if (!project) {
+    throw new Error(`Missing project data for ${id}`);
+  }
+  return project;
+}
+
+const ACCENT = "#CC785C";
+
+function SectionHeading({ children }: { children: ReactNode }) {
   return (
-    <h2 className="mb-3 border-b border-[#2a2a3e] pb-1 text-xs font-semibold uppercase tracking-widest text-[#ffb000]">
+    <h2
+      className="eyebrow mb-5 mt-14 pb-3 first:mt-0"
+      style={{ borderBottom: "1px solid var(--hairline)", color: ACCENT }}
+    >
       {children}
     </h2>
   );
 }
 
+function BulletList({ items, limit }: { items: string[]; limit?: number }) {
+  const visible = typeof limit === "number" ? items.slice(0, limit) : items;
+  return (
+    <ul className="mt-3 space-y-1.5">
+      {visible.map((item) => (
+        <li key={item} className="body-md flex items-start gap-3" style={{ fontSize: 15.5 }}>
+          <span
+            aria-hidden="true"
+            className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full"
+            style={{ background: ACCENT }}
+          />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ProjectEntry({ project, compact }: { project: Project; compact?: boolean }) {
+  return (
+    <article className="py-6" style={{ borderBottom: "1px solid var(--hairline)" }}>
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+        <div>
+          <p className="display" style={{ fontSize: compact ? 19 : 21, lineHeight: 1.2 }}>
+            {project.title}
+          </p>
+          <p className="body-sm mt-1" style={{ color: ACCENT }}>
+            {project.role}
+          </p>
+        </div>
+        <p
+          className="body-sm shrink-0"
+          style={{ color: "var(--text-muted)", fontSize: 13 }}
+        >
+          {project.date}
+        </p>
+      </div>
+      <p
+        className="body-md mt-3 max-w-3xl"
+        style={{ color: "var(--text-secondary)", fontSize: 15.5, lineHeight: 1.65 }}
+      >
+        {compact ? project.summary : project.description}
+      </p>
+      <BulletList items={project.metrics} limit={compact ? 2 : 4} />
+      <p
+        className="body-sm mt-3"
+        style={{ color: "var(--text-muted)", fontSize: 13 }}
+      >
+        {project.tech.join(", ")}
+      </p>
+    </article>
+  );
+}
+
+function PublicationEntry({ publication }: { publication: Publication }) {
+  const citationText =
+    typeof publication.citations === "number"
+      ? ` [${publication.citations} citations]`
+      : "";
+
+  return (
+    <article className="py-4" style={{ borderBottom: "1px solid var(--hairline)" }}>
+      <p className="body-md" style={{ fontWeight: 600, fontSize: 16 }}>
+        {publication.title}
+      </p>
+      <p
+        className="body-sm mt-1"
+        style={{ color: "var(--text-secondary)", fontSize: 14 }}
+      >
+        {publication.authors}. {publication.venue} ({publication.year}).
+        {citationText}
+      </p>
+      {publication.doi && (
+        <a
+          href={`https://doi.org/${publication.doi}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="body-sm mt-1 inline-block hover:underline"
+          style={{ color: ACCENT, fontSize: 13 }}
+        >
+          doi.org/{publication.doi}
+        </a>
+      )}
+    </article>
+  );
+}
+
 export default function ResumePage() {
   return (
-    <div className="fixed inset-0 overflow-y-auto bg-[#0a0a0f] text-[#e0e0e8]">
-      <div className="mx-auto max-w-3xl px-6 py-12" style={{ fontFamily: "var(--font-sans)" }}>
-        {/* Header */}
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold tracking-tight text-white">
-            Tejas Naladala
-          </h1>
-          <p className="mt-1 text-sm text-[#8888a0]">
-            Seattle, WA &middot;{" "}
-            <a
-              href={`mailto:${SITE_CONFIG.email}`}
-              className="text-[#00d4ff] hover:underline"
-            >
-              {SITE_CONFIG.email}
-            </a>{" "}
-            &middot;{" "}
-            <a
-              href={SITE_CONFIG.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#00d4ff] hover:underline"
-            >
-              GitHub
-            </a>{" "}
-            &middot;{" "}
-            <a
-              href={SITE_CONFIG.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#00d4ff] hover:underline"
-            >
-              LinkedIn
-            </a>
-          </p>
-        </header>
-
-        {/* Education */}
-        <section className="mb-8">
-          <SectionHeading>Education</SectionHeading>
-          <div>
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-sm font-semibold text-white">
-                  University of Washington, Seattle
-                </p>
-                <p className="text-sm text-[#8888a0]">
-                  B.S. Electrical & Computer Engineering + Applied Mathematics
-                </p>
-              </div>
-              <p className="shrink-0 text-xs text-[#8888a0]">Class of 2028</p>
-            </div>
-            <p className="mt-1 text-xs text-[#8888a0]">
-              GPA: 3.93/4.0 &middot; Lavin Entrepreneurship Fellow
-            </p>
-          </div>
-        </section>
-
-        {/* Experience */}
-        <section className="mb-8">
-          <SectionHeading>Experience</SectionHeading>
-          <div className="space-y-5">
-            {projects.map((project) => {
-              // Get first 2 sentences of description
-              const sentences = project.description.match(/[^.!?]+[.!?]+/g) || [
-                project.description,
-              ];
-              const shortDesc = sentences.slice(0, 2).join(" ").trim();
-              const topMetrics = project.metrics.slice(0, 3);
-
-              return (
-                <div key={project.id}>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-sm font-semibold text-white">
-                        {project.title}
-                      </p>
-                      <p className="text-xs text-[#00d4ff]">{project.role}</p>
-                    </div>
-                    <p className="shrink-0 text-xs text-[#8888a0]">
-                      {project.date}
-                    </p>
-                  </div>
-                  <p className="mt-1 text-xs leading-relaxed text-[#8888a0]">
-                    {shortDesc}
-                  </p>
-                  <ul className="mt-1.5 space-y-0.5">
-                    {topMetrics.map((metric, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-1.5 text-xs text-[#e0e0e8]"
-                      >
-                        <span className="mt-0.5 shrink-0 text-[#00ff41]">
-                          &bull;
-                        </span>
-                        <span>{metric}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Publications */}
-        <section className="mb-8">
-          <SectionHeading>Publications</SectionHeading>
-          <p className="text-xs leading-relaxed text-[#8888a0]">
-            3 peer-reviewed papers (2024) in J. Phys. D: Appl. Phys. and Innov.
-            Food Sci. Emerg. Technol.
-          </p>
-        </section>
-
-        {/* Skills */}
-        <section className="mb-8">
-          <SectionHeading>Skills</SectionHeading>
-          <div className="space-y-2">
-            {skillCategories.map((cat) => (
-              <div key={cat.name}>
-                <span className="text-xs font-semibold text-white">
-                  {cat.name}:{" "}
-                </span>
-                <span className="text-xs text-[#8888a0]">
-                  {cat.skills.map((s) => s.name).join(", ")}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Achievements */}
-        <section className="mb-10">
-          <SectionHeading>Achievements</SectionHeading>
-          <ul className="space-y-1">
-            {achievements.map((a) => (
-              <li
-                key={a.title}
-                className="flex items-start gap-1.5 text-xs text-[#e0e0e8]"
-              >
-                <span className="mt-0.5 shrink-0 text-[#00ff41]">&bull;</span>
-                <span>
-                  <strong>{a.title}</strong> - {a.description}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Actions */}
-        <footer className="flex flex-wrap items-center gap-4 border-t border-[#2a2a3e] pt-6">
+    <PageLayout>
+      <header className="mb-12">
+        <h1 className="display" style={{ fontSize: "clamp(48px, 7.4vw, 88px)", lineHeight: 1.04 }}>
+          Tejas <em>Naladala</em>
+        </h1>
+        <p
+          className="body-md mt-4"
+          style={{ color: "var(--text-muted)", fontSize: 15 }}
+        >
+          Hardware Engineer &middot; AI Builder &middot; Founder
+        </p>
+        <p
+          className="body-md mt-1"
+          style={{ color: "var(--text-muted)", fontSize: 15 }}
+        >
+          Seattle, WA &middot;{" "}
           <a
-            href="/resume.pdf"
+            href={`mailto:${SITE_CONFIG.email}`}
+            style={{ color: ACCENT }}
+            className="hover:underline"
+          >
+            {SITE_CONFIG.email}
+          </a>{" "}
+          &middot;{" "}
+          <a
+            href={SITE_CONFIG.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded border border-[#00ff41]/30 bg-[#00ff41]/10 px-5 py-2.5 text-sm font-medium text-[#00ff41] transition-colors hover:bg-[#00ff41]/20"
+            style={{ color: ACCENT }}
+            className="hover:underline"
           >
-            Download Resume
-          </a>
+            LinkedIn
+          </a>{" "}
+          &middot;{" "}
           <a
-            href="/"
-            className="text-sm text-[#00d4ff] transition-colors hover:underline"
+            href={SITE_CONFIG.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: ACCENT }}
+            className="hover:underline"
           >
-            Home &rarr;
+            GitHub
           </a>
-        </footer>
+        </p>
+      </header>
+
+      <SectionHeading>Profile</SectionHeading>
+      <p className="body-md max-w-3xl">{bio.full}</p>
+      <p className="body-md mt-4 max-w-3xl" style={{ color: "var(--text-secondary)" }}>
+        Research interests: safety-relevant evaluation and interpretability of
+        frontier models; empirical study design for multi-agent and RL failure
+        modes; reproducible research artifacts with pre-registered protocols,
+        open code/data, and audit trails.
+      </p>
+
+      <SectionHeading>Education</SectionHeading>
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+        <div>
+          <p className="display" style={{ fontSize: 22, lineHeight: 1.2 }}>
+            University of Washington, Seattle
+          </p>
+          <p className="body-md mt-1" style={{ fontSize: 15.5 }}>
+            B.S. Electrical &amp; Computer Engineering and Applied Mathematics
+            (Double Major)
+          </p>
+        </div>
+        <p
+          className="body-sm shrink-0"
+          style={{ color: "var(--text-muted)", fontSize: 13 }}
+        >
+          Sep 2024 — Jun 2028
+        </p>
       </div>
-    </div>
+      <BulletList
+        items={[
+          "GPA 3.93 / 4.0",
+          "Lavin Entrepreneurship Fellow, four-year selective program",
+          "Y Combinator AI Startup School 2026, San Francisco cohort",
+          "Activities: Research & Computing Club, National Acapella Team",
+        ]}
+      />
+
+      <SectionHeading>Research & Founder Experience</SectionHeading>
+      {researchExperience.map((project) => (
+        <ProjectEntry key={project.id} project={project} />
+      ))}
+
+      <SectionHeading>Industry</SectionHeading>
+      {industryExperience.map((project) => (
+        <ProjectEntry key={project.id} project={project} />
+      ))}
+
+      <SectionHeading>Publications</SectionHeading>
+      <p className="body-md max-w-3xl">
+        Google Scholar: {scholarProfile.citations} total citations, h-index{" "}
+        {scholarProfile.hIndex}, i10-index {scholarProfile.i10Index}.
+      </p>
+      <div className="mt-4">
+        {publications.map((publication) => (
+          <PublicationEntry key={publication.title} publication={publication} />
+        ))}
+      </div>
+      <p className="eyebrow mb-2 mt-8" style={{ color: "var(--text-muted)" }}>
+        Preprints in preparation
+      </p>
+      {preprints.map((publication) => (
+        <PublicationEntry key={publication.title} publication={publication} />
+      ))}
+
+      <SectionHeading>Open Source Projects & Competitions</SectionHeading>
+      {openSourceAndCompetitions.map((project) => (
+        <ProjectEntry key={project.id} project={project} compact />
+      ))}
+
+      <SectionHeading>Technical Skills</SectionHeading>
+      <div className="space-y-3">
+        {skillCategories.map((category) => (
+          <div key={category.name}>
+            <span
+              className="eyebrow"
+              style={{ color: ACCENT, display: "inline-block", marginRight: 10 }}
+            >
+              {category.name}
+            </span>
+            <span className="body-md" style={{ fontSize: 15.5 }}>
+              {category.skills.map((skill) => skill.name).join(", ")}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <SectionHeading>Awards & Recognition</SectionHeading>
+      <BulletList items={achievements.map((a) => `${a.title}: ${a.description}`)} />
+
+      <SectionHeading>Additional</SectionHeading>
+      <BulletList
+        items={[
+          "Languages: English, Hindi, Telugu, Mandarin",
+          "Interests: Powerlifting, beatboxing, public speaking, entrepreneurial mentoring",
+        ]}
+      />
+
+      <footer
+        id="contact"
+        className="mt-16 flex flex-wrap items-center gap-3 pt-10"
+        style={{ borderTop: "1px solid var(--hairline)" }}
+      >
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+          Download PDF
+        </a>
+        <a href={`mailto:${SITE_CONFIG.email}`} className="btn-secondary">
+          Email
+        </a>
+        <Link href="/" className="btn-secondary">
+          Home
+        </Link>
+      </footer>
+    </PageLayout>
   );
 }

@@ -3,126 +3,63 @@ import PageLayout from "@/components/shared/PageLayout";
 import { thesisEntries, thesisTagline, ThesisEntry } from "@/data/thesis";
 
 export const metadata: Metadata = {
-  title: "Thesis - Tejas Naladala",
+  title: "Thesis | Tejas Naladala",
   description:
-    "Technical philosophy on hardware, engineering, startups, and building real things.",
+    "Working hypotheses on hardware, engineering, startups, and shipping things.",
 };
 
-function ThesisCard({ entry, isLast }: { entry: ThesisEntry; isLast: boolean }) {
-  const accentColor = {
-    cyan: "var(--accent-cyan)",
-    green: "var(--accent-green)",
-    amber: "var(--accent-amber)",
-  }[entry.accent];
-
+function ThesisCard({ entry }: { entry: ThesisEntry }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: "28px",
-        paddingBottom: isLast ? 0 : "40px",
-        borderBottom: isLast
-          ? "none"
-          : "1px solid rgba(0, 212, 255, 0.06)",
-        marginBottom: isLast ? 0 : "40px",
-      }}
+    <article
+      className="grid grid-cols-12 gap-6 py-10 md:py-12"
+      style={{ borderBottom: "1px solid var(--hairline)" }}
     >
-      {/* Number */}
-      <div
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontSize: "48px",
-          fontWeight: 700,
-          color: accentColor,
-          opacity: 0.2,
-          lineHeight: 1,
-          minWidth: "56px",
-          userSelect: "none",
-        }}
-      >
-        {String(entry.number).padStart(2, "0")}
-      </div>
-
-      {/* Content */}
-      <div>
-        <h2
-          className="font-mono"
+      <div className="col-span-12 md:col-span-2">
+        <p
+          className="display"
           style={{
-            fontSize: "16px",
-            fontWeight: 700,
-            color: "var(--text-primary)",
-            letterSpacing: "1px",
-            marginBottom: "12px",
-            lineHeight: 1.4,
+            fontSize: "clamp(36px, 4.4vw, 56px)",
+            color: "#CC785C",
+            lineHeight: 1,
           }}
+        >
+          {String(entry.number).padStart(2, "0")}
+        </p>
+      </div>
+      <div className="col-span-12 md:col-span-10">
+        <h2
+          className="display mb-4"
+          style={{ fontSize: "clamp(26px, 3vw, 36px)", lineHeight: 1.18 }}
         >
           {entry.title}
         </h2>
         <p
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "14px",
-            color: "var(--text-secondary)",
-            lineHeight: 1.8,
-            maxWidth: "640px",
-          }}
+          className="body-md max-w-2xl"
+          style={{ fontSize: 16, lineHeight: 1.7 }}
         >
           {entry.body}
         </p>
       </div>
-    </div>
+    </article>
   );
 }
 
 export default function ThesisPage() {
   return (
     <PageLayout>
-      {/* Header */}
-      <div style={{ marginBottom: "56px" }}>
-        <p
-          className="font-mono"
-          style={{
-            color: "var(--accent-green)",
-            fontSize: "11px",
-            letterSpacing: "3px",
-            marginBottom: "12px",
-          }}
-        >
-          {"> cat thesis.md"}
-        </p>
-        <h1
-          className="font-mono"
-          style={{
-            color: "var(--text-primary)",
-            fontSize: "28px",
-            fontWeight: 700,
-            letterSpacing: "2px",
-            lineHeight: 1.2,
-          }}
-        >
+      <header className="page-header">
+        <p className="eyebrow">Thesis</p>
+        <h1 className="display">
           {thesisTagline}
         </h1>
-        <p
-          style={{
-            color: "var(--text-secondary)",
-            fontFamily: "var(--font-sans)",
-            fontSize: "13px",
-            marginTop: "12px",
-            lineHeight: 1.7,
-          }}
-        >
+        <p className="body-lg">
           Working hypotheses. Subject to revision upon contact with new data.
         </p>
-      </div>
+      </header>
 
-      {/* Entries */}
-      <div>
-        {thesisEntries.map((entry, i) => (
-          <ThesisCard
-            key={entry.number}
-            entry={entry}
-            isLast={i === thesisEntries.length - 1}
-          />
+      <div style={{ borderTop: "1px solid var(--hairline)" }}>
+        {thesisEntries.map((entry) => (
+          <ThesisCard key={entry.number} entry={entry} />
         ))}
       </div>
     </PageLayout>

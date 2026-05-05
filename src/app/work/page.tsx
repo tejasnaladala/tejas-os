@@ -1,294 +1,185 @@
 import { Metadata } from "next";
 import PageLayout from "@/components/shared/PageLayout";
 import { projects } from "@/data/projects";
+import { Project } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Work - Tejas Naladala",
+  title: "Work | Tejas Naladala",
   description:
-    "Companies founded, research conducted, and projects shipped.",
+    "Ventures, research, industry systems, competitions, and open-source projects shipped by Tejas Naladala.",
 };
 
-const founded = projects.filter((p) => p.role.includes("Founder"));
-const research = projects.filter((p) =>
-  ["seal-lab", "niist"].includes(p.id)
-);
-const openSource = projects.filter((p) => ["wireml", "maze-rl-baselines", "parameter-golf", "engram", "claude-nexus", "mimic", "forge", "cerulean", "knowledge-engine", "ai-agent-city", "icordion", "delulu"].includes(p.id));
+const ventures = ["r0-systems", "parchment", "delphi", "cerulean"].map(projectById);
+const research = ["agentbreed", "maze-rl-baselines", "seal-lab", "niist"].map(projectById);
+const industry = ["plasmafx"].map(projectById);
+const competitions = ["parameter-golf"].map(projectById);
+const openSource = [
+  "forge",
+  "engram",
+  "wireml",
+  "knowledge-engine",
+  "claude-nexus",
+  "ai-agent-city",
+  "mimic",
+  "icordion",
+  "delulu",
+  "tejas-os",
+].map(projectById);
 
-const TEJAS_OS = {
-  title: "TejasOS - This Portfolio",
-  role: "Creator",
-  date: "Mar 2026",
-  description:
-    "CRT-styled developer portfolio with an embedded underwater ROV game, 6 arcade mini-games, and retro terminal aesthetic.",
-  metrics: ["Next.js 16 + React 19, Zustand, Framer Motion"],
-  tech: ["Next.js", "React 19", "TypeScript", "Framer Motion", "Zustand"],
-  links: [{ label: "GitHub", url: "https://github.com/tejasnaladala/tejas-os" }],
-};
+const workSections = [
+  { eyebrow: "01 / Ventures", title: "Companies and labs", projects: ventures },
+  { eyebrow: "02 / Research", title: "Studies and lab work", projects: research },
+  { eyebrow: "03 / Industry", title: "Production hardware", projects: industry },
+  { eyebrow: "04 / Competition", title: "Compact models", projects: competitions },
+  { eyebrow: "05 / Open Source", title: "Tools and experiments", projects: openSource },
+].map((section, index, sections) => ({
+  ...section,
+  startAt:
+    sections.slice(0, index).reduce((total, item) => total + item.projects.length, 0) + 1,
+}));
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      className="font-mono"
-      style={{
-        color: "var(--accent-amber)",
-        fontSize: "10px",
-        fontWeight: 700,
-        letterSpacing: "4px",
-        textTransform: "uppercase",
-        marginBottom: "24px",
-        marginTop: "48px",
-      }}
-    >
-      {"// "}{children}
-    </h2>
+function projectById(id: string) {
+  const project = projects.find((p) => p.id === id);
+  if (!project) {
+    throw new Error(`Missing project data for ${id}`);
+  }
+  return project;
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const titleLink = project.links?.[0]?.url;
+  const idx = String(index).padStart(2, "0");
+
+  const title = (
+    <span className="display" style={{ fontSize: 26, lineHeight: 1.1 }}>
+      {project.title}
+    </span>
   );
-}
-
-interface WorkEntryProps {
-  title: string;
-  role: string;
-  date: string;
-  description: string;
-  metrics?: string[];
-  tech: string[];
-  links?: { label: string; url: string }[];
-  isLast?: boolean;
-}
-
-function WorkEntry({
-  title,
-  role,
-  date,
-  description,
-  metrics,
-  tech,
-  links,
-  isLast,
-}: WorkEntryProps) {
-  const firstSentence = description.match(/^[^.!?]+[.!?]/)?.[0] || description;
-  const titleLink = links?.[0]?.url;
 
   return (
-    <div
-      style={{
-        paddingBottom: isLast ? 0 : "28px",
-        borderBottom: isLast
-          ? "none"
-          : "1px solid rgba(0, 212, 255, 0.04)",
-        marginBottom: isLast ? 0 : "28px",
-      }}
-    >
-      {/* Title row */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          gap: "16px",
-          marginBottom: "4px",
-        }}
-      >
-        <div>
-          {titleLink ? (
-            <a
-              href={titleLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono"
-              style={{
-                color: "var(--text-primary)",
-                fontSize: "15px",
-                fontWeight: 700,
-                textDecoration: "none",
-                borderBottom: "1px solid rgba(200, 214, 229, 0.2)",
-                transition: "border-color 0.2s",
-              }}
-            >
-              {title}
-            </a>
-          ) : (
-            <span
-              className="font-mono"
-              style={{
-                color: "var(--text-primary)",
-                fontSize: "15px",
-                fontWeight: 700,
-              }}
-            >
-              {title}
-            </span>
-          )}
-          <span
-            className="font-mono"
-            style={{
-              color: "var(--accent-cyan)",
-              fontSize: "11px",
-              marginLeft: "10px",
-            }}
-          >
-            {role}
-          </span>
-        </div>
+    <article className="editorial-card flex flex-col">
+      <div className="mb-4 flex items-baseline justify-between gap-4">
         <span
           className="font-mono"
           style={{
-            color: "var(--text-secondary)",
-            fontSize: "11px",
-            whiteSpace: "nowrap",
+            color: "var(--text-primary)",
+            fontSize: 11,
+            fontWeight: 500,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
           }}
         >
-          {date}
+          {idx}
+        </span>
+        <span
+          className="font-mono"
+          style={{
+            color: "var(--text-muted)",
+            fontSize: 11,
+            letterSpacing: "0.06em",
+          }}
+        >
+          {project.date}
         </span>
       </div>
 
-      {/* Description */}
-      <p
-        style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: "13px",
-          color: "var(--text-secondary)",
-          lineHeight: 1.7,
-          marginTop: "6px",
-        }}
-      >
-        {firstSentence}
-      </p>
-
-      {/* Key metric */}
-      {metrics && metrics[0] && (
-        <p
-          className="font-mono"
-          style={{
-            fontSize: "11px",
-            color: "var(--accent-green)",
-            marginTop: "8px",
-          }}
+      {titleLink ? (
+        <a
+          href={titleLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+          style={{ color: "var(--text-primary)", textUnderlineOffset: 4 }}
         >
-          {"▸ "}{metrics[0]}
-        </p>
+          {title}
+        </a>
+      ) : (
+        title
       )}
 
-      {/* Tech tags */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "6px",
-          marginTop: "10px",
-        }}
+      <p className="eyebrow mt-3" style={{ color: "var(--text-muted)" }}>
+        {project.role}
+      </p>
+      <p
+        className="body-md mt-3 flex-1"
+        style={{ color: "var(--text-secondary)", fontSize: 15.5, lineHeight: 1.65 }}
       >
-        {tech.map((t) => (
-          <span
-            key={t}
-            className="font-mono"
-            style={{
-              fontSize: "9px",
-              letterSpacing: "1px",
-              color: "var(--text-secondary)",
-              border: "1px solid rgba(0, 212, 255, 0.1)",
-              padding: "2px 8px",
-              textTransform: "uppercase",
-            }}
-          >
-            {t}
+        {project.summary}
+      </p>
+
+      {project.metrics.length > 0 && (
+        <ul className="mt-4 space-y-1.5">
+          {project.metrics.slice(0, 2).map((metric) => (
+            <li key={metric} className="body-sm flex gap-3" style={{ fontSize: 14 }}>
+              <span
+                aria-hidden="true"
+                className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full"
+                style={{ background: "#CC785C" }}
+              />
+              <span style={{ color: "var(--text-primary)" }}>{metric}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div className="mt-5 flex flex-wrap gap-1.5">
+        {project.tech.slice(0, 5).map((tech) => (
+          <span key={tech} className="chip">
+            {tech}
           </span>
         ))}
       </div>
+    </article>
+  );
+}
+
+function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <header className="mb-10 mt-24 first:mt-0">
+      <p className="eyebrow mb-3">{eyebrow}</p>
+      <h2 className="display" style={{ fontSize: "clamp(32px, 4.4vw, 52px)" }}>
+        {title}
+      </h2>
+    </header>
+  );
+}
+
+function ProjectGrid({
+  projects,
+  startAt,
+}: {
+  projects: Project[];
+  startAt: number;
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+      {projects.map((project, offset) => (
+        <ProjectCard key={project.id} project={project} index={startAt + offset} />
+      ))}
     </div>
   );
 }
 
 export default function WorkPage() {
   return (
-    <PageLayout>
-      {/* Header */}
-      <div style={{ marginBottom: "16px" }}>
-        <p
-          className="font-mono"
-          style={{
-            color: "var(--accent-green)",
-            fontSize: "11px",
-            letterSpacing: "3px",
-            marginBottom: "12px",
-          }}
-        >
-          {"> ls work/"}
-        </p>
-        <h1
-          className="font-mono"
-          style={{
-            color: "var(--text-primary)",
-            fontSize: "28px",
-            fontWeight: 700,
-            letterSpacing: "2px",
-          }}
-        >
-          {"What I've built."}
+    <PageLayout wide>
+      <header className="page-header">
+        <p className="eyebrow">Work</p>
+        <h1 className="display">
+          Things I&rsquo;ve <em>shipped.</em>
         </h1>
-      </div>
+        <p className="body-lg">
+          A categorized map of the CV: companies, research, industrial hardware,
+          competitions, and open-source systems.
+        </p>
+      </header>
 
-      {/* Companies I Built */}
-      <SectionTitle>Companies I Built</SectionTitle>
-      <div>
-        {founded.map((p, i) => (
-          <WorkEntry
-            key={p.id}
-            title={p.title}
-            role={p.role}
-            date={p.date}
-            description={p.description}
-            metrics={p.metrics}
-            tech={p.tech}
-            links={p.links}
-            isLast={i === founded.length - 1}
-          />
-        ))}
-      </div>
-
-      {/* Research */}
-      <SectionTitle>Research</SectionTitle>
-      <div>
-        {research.map((p, i) => (
-          <WorkEntry
-            key={p.id}
-            title={p.title}
-            role={p.role}
-            date={p.date}
-            description={p.description}
-            metrics={p.metrics}
-            tech={p.tech}
-            links={p.links}
-            isLast={i === research.length - 1}
-          />
-        ))}
-      </div>
-
-      {/* Open Source */}
-      <SectionTitle>Open Source &amp; Side Projects</SectionTitle>
-      <div>
-        {openSource.map((p) => (
-          <WorkEntry
-            key={p.id}
-            title={p.title}
-            role={p.role}
-            date={p.date}
-            description={p.description}
-            metrics={p.metrics}
-            tech={p.tech}
-            links={p.links}
-          />
-        ))}
-        <WorkEntry
-          title={TEJAS_OS.title}
-          role={TEJAS_OS.role}
-          date={TEJAS_OS.date}
-          description={TEJAS_OS.description}
-          metrics={TEJAS_OS.metrics}
-          tech={TEJAS_OS.tech}
-          links={TEJAS_OS.links}
-          isLast
-        />
-      </div>
+      {workSections.map((section) => (
+        <section key={section.eyebrow}>
+          <SectionHeading eyebrow={section.eyebrow} title={section.title} />
+          <ProjectGrid projects={section.projects} startAt={section.startAt} />
+        </section>
+      ))}
     </PageLayout>
   );
 }

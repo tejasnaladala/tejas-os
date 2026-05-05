@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Navigation from "./Navigation";
+import Nav from "@/components/editorial/Nav";
+import SiteFooter from "@/components/editorial/SiteFooter";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -9,29 +9,34 @@ interface PageLayoutProps {
   wide?: boolean;
 }
 
+/**
+ * Editorial page wrapper used by all sub-pages (work, stories, thesis, resume,
+ * gallery). Inherits the new Nav and SiteFooter so the brand language stays
+ * consistent across the site.
+ */
 export default function PageLayout({ children, className, wide }: PageLayoutProps) {
   return (
     <div
-      className={`crt-page min-h-screen ${className ?? ""}`}
+      className={className}
       style={{
-        background: "var(--bg-panel)",
+        background: "var(--bg)",
         color: "var(--text-primary)",
+        minHeight: "100vh",
       }}
     >
-      <Navigation />
-      <motion.main
+      <Nav />
+      <main
         id="main-content"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="container-wide"
         style={{
-          maxWidth: wide ? "1100px" : "860px",
-          margin: "0 auto",
-          padding: "48px 24px 96px",
+          maxWidth: wide ? "1180px" : "880px",
+          paddingTop: "var(--page-top)",
+          paddingBottom: "var(--page-bottom)",
         }}
       >
         {children}
-      </motion.main>
+      </main>
+      <SiteFooter />
     </div>
   );
 }

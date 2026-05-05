@@ -13,15 +13,19 @@ export const TERMINAL_COMMANDS: Record<string, { description: string; execute: (
   },
   whoami: {
     description: "Display current user",
-    execute: () => "tejas. founder, engineer, ships hardware and AI systems",
+    execute: () =>
+      "tejas. hardware engineer, AI systems builder, startup founder",
   },
   ls: {
     description: "List directory contents",
     execute: () =>
       [
         "PlasmaX.sys",
+        "ParchmentLabs.ai",
+        "delphi.quant",
+        "agentbreed.study",
+        "MazeRLBaselines.py",
         "CeruleanROV.hw",
-        "AtticusAI.exe",
         "Forge.pkg",
         "SEAL_Lab.log",
         "NIIST_Solar.dat",
@@ -44,8 +48,8 @@ export const TERMINAL_COMMANDS: Record<string, { description: string; execute: (
      \u255a\u2550\u255d   \u255a\u2550\u2550\u2550\u2550\u2550\u2550\u255d     GPA:       3.93/4.0
                          Uptime:    ${bio.systemInfo.uptime}
   tejas@portfolio        Shell:     TejasOS Terminal v1.0
-                         Ventures:  3 active
-                         Papers:    3 published`,
+                         Ventures:  Parchment Labs, delphi, Cerulean
+                         Papers:    3 published / 35 citations`,
   },
   "cat resume.txt": {
     description: "Display resume summary",
