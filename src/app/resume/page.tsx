@@ -223,7 +223,7 @@ export default function ResumePage() {
           className="body-sm shrink-0"
           style={{ color: "var(--text-muted)", fontSize: 13 }}
         >
-          Sep 2024 — Jun 2028
+          Sep 2024 to Jun 2028
         </p>
       </div>
       <BulletList

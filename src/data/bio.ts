@@ -2,7 +2,7 @@ export const bio = {
   tagline:
     "18. Building plasma hardware, autonomous research engines, and verification systems for model-generated work.",
   full:
-    "18. Currently building R0 Systems, plasma sanitization equipment for post-harvest agricultural produce. Prev. founded PlasmaX ($2M seed; decentralised on-site nitrogen production for ammonia synthesis), with $180K first production unit sold to CSIR-CFTRI India, 10 contracted deployments, 1 patent filed, and 3 peer-reviewed publications. Also building Parchment Labs (autonomous literature-to-experiment pipeline) and delphi (pre-registered verification for LLM-generated quant strategies). Lavin Entrepreneurship Fellow at UW, YC AI Startup School 2026 SF cohort.",
+    "18. Currently building R0 Systems, plasma sanitization equipment for post-harvest agricultural produce. Prev. founded PlasmaX ($2M seed; decentralised on-site nitrogen production for ammonia synthesis), with $180K first production unit sold to CSIR-CFTRI India, 13 contracted deployments, 2 provisional patents filed, and 3 peer-reviewed publications. Also building Parchment Labs (autonomous literature-to-experiment pipeline) and delphi (pre-registered verification for LLM-generated quant strategies). Lavin Entrepreneurship Fellow at UW, YC AI Startup School 2026 SF cohort.",
   systemInfo: {
     os: "TejasOS v1.0",
     build: "Builder Edition",

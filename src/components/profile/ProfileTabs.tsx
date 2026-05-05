@@ -409,7 +409,7 @@ function Overview({ hidden }: { hidden: boolean }) {
         <div className="profile-row profile-row-start">
           <div>
             <p className="label-mono" style={{ color: "var(--text-muted)" }}>
-              2024 — 2028
+              2024 to 2028
             </p>
           </div>
           <div>
@@ -438,13 +438,13 @@ function Overview({ hidden }: { hidden: boolean }) {
         />
         <Highlight
           tag="PREV. SHIPPED"
-          title="PlasmaX (May 2023 — Jan 2026)"
-          body="$2M seed at $8M post-money. Decentralised on-site nitrogen production for ammonia synthesis. $180K first production unit sold to CSIR-CFTRI India, 10 deployments contracted, 3 peer-reviewed publications, 1 patent filed."
+          title="PlasmaX"
+          body="$2M seed at $8M post-money. Decentralised on-site nitrogen production for ammonia synthesis. $180K first production unit sold to CSIR-CFTRI India, 13 deployments contracted, 3 peer-reviewed publications, 2 provisional patents filed."
         />
         <Highlight
           tag="RESEARCH"
           title="Parchment Labs"
-          body="Autonomous literature-to-experiment engine — local 32B inference, HNSW retrieval, 150-agent adversarial peer review, GPU execution, LaTeX manuscript generation."
+          body="Autonomous literature-to-experiment engine. Local 32B inference, HNSW retrieval, 150-agent adversarial peer review, GPU execution, LaTeX manuscript generation."
         />
         <Highlight
           tag="VERIFYING"
@@ -628,37 +628,37 @@ function ExperienceCard({ entry }: { entry: ExperienceEntry }) {
 function Experience({ hidden }: { hidden: boolean }) {
   const entries: ExperienceEntry[] = [
     {
-      date: "2026 — Present",
+      date: "2026 to Present",
       role: "Project Lead",
       org: "R0 Systems",
       body: "Plasma sanitization equipment for post-harvest agricultural produce. Bench-validation underway, first reactor unit targeted 2026.",
     },
     {
-      date: "Dec 2025 — Present",
+      date: "Dec 2025 to Present",
       role: "Project Lead",
       org: "Parchment Labs",
-      body: "Autonomous research discovery engine — 5,000+ papers/day ingestion, local 32B inference, HNSW retrieval, 150-agent peer review, GPU execution, reproducible manuscripts.",
+      body: "Autonomous research discovery engine. 5,000+ papers/day ingestion, local 32B inference, HNSW retrieval, 150-agent peer review, GPU execution, reproducible manuscripts.",
     },
     {
-      date: "Jan 2026 — Present",
+      date: "Jan 2026 to Present",
       role: "Project Lead",
       org: "delphi",
       body: "Pre-registered validation pipeline for LLM-generated quantitative strategies. Explicit promotion criteria and structured rejection logs for full auditability.",
     },
     {
-      date: "Mar 2026 — Present",
+      date: "Mar 2026 to Present",
       role: "Lead Author",
       org: "agentbreed",
       body: "Pre-registered multi-agent LLM configuration study across ForecastBench, LiveCodeBench, GPQA. 509 unit and fuzz tests caught 23 issues before data collection.",
     },
     {
-      date: "Mar — Nov 2025",
+      date: "Mar to Nov 2025",
       role: "Research Associate",
       org: "SEAL Lab, University of Washington",
       body: "Under Prof. Mamishev. PPG drowsiness wearable, 95% motion-artifact rejection. Piezoelectric breakage sensor for U.S. Navy hull integrity monitoring.",
     },
     {
-      date: "Jun 2024 — Mar 2025",
+      date: "Jun 2024 to Mar 2025",
       role: "Research Intern",
       org: "NIIST-CSIR, India",
       body: "Centre for Sustainable Energy Technologies, under Dr. Suraj Soman. Fabricated and characterized 20+ dye-sensitized and perovskite solar cell architectures.",
@@ -670,7 +670,7 @@ function Experience({ hidden }: { hidden: boolean }) {
       <div>
         <SectionHeader
           label="Experience"
-          intro="Six positions across hardware ventures, autonomous research, and academic labs — each shipping real artifacts under real deadlines."
+          intro="Six positions across hardware ventures, autonomous research, and academic labs. Each shipping real artifacts under real deadlines."
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {entries.map((entry, i) => (
@@ -700,37 +700,18 @@ function FeaturedProject() {
       aria-label="PlasmaX (opens in a new tab)"
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <span
-            className="font-mono"
-            style={{
-              fontSize: 10.5,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: "#CC785C",
-              fontWeight: 600,
-            }}
-          >
-            Featured
-          </span>
-          <span
-            aria-hidden="true"
-            style={{ color: "var(--text-faint)", fontFamily: "var(--font-mono)" }}
-          >
-            ·
-          </span>
-          <span
-            className="font-mono"
-            style={{
-              fontSize: 11,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-            }}
-          >
-            {plasmax.date}
-          </span>
-        </div>
+        <span
+          className="font-mono"
+          style={{
+            fontSize: 10.5,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "#CC785C",
+            fontWeight: 600,
+          }}
+        >
+          Featured
+        </span>
         <span
           className="visit-arrow font-mono"
           style={{
@@ -785,8 +766,8 @@ function FeaturedProject() {
           }}
         >
           Decentralised on-site nitrogen production for ammonia synthesis. $2M
-          seed at $8M post-money, $180K first unit sold, 10 deployments
-          contracted, 1 patent filed, 3 peer-reviewed publications.
+          seed at $8M post-money, $180K first unit sold, 13 deployments
+          contracted, 2 provisional patents filed, 3 peer-reviewed publications.
         </p>
       </div>
 

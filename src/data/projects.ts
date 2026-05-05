@@ -189,17 +189,17 @@ export const projects: Project[] = [
     extension: "sys",
     title: "PlasmaX",
     role: "Founder & CTO",
-    date: "May 2023 - Jan 2026",
+    date: "",
     category: "industry",
     summary:
-      "Decentralised on-site nitrogen production for ammonia synthesis. $2M seed; first $180K production unit shipped; 10 deployments contracted.",
+      "Decentralised on-site nitrogen production for ammonia synthesis. $2M seed; first $180K production unit shipped; 13 deployments contracted.",
     description:
-      "Engineered an industrial plasma system for decentralised on-site nitrogen production used in ammonia synthesis. Designed a custom 18 kV AC flyback driver at 23 kHz with under 2 W quiescent draw, plus an STM32-based PID control loop for gas flow, voltage regulation, thermal management, and MOSFET-driven power stages with real-time ADC feedback. Shipped $180K first production unit, contracted 10 deployments, filed 1 patent, co-authored 3 peer-reviewed publications.",
+      "Engineered an industrial plasma system for decentralised on-site nitrogen production used in ammonia synthesis. Designed a custom 18 kV AC flyback driver at 23 kHz with under 2 W quiescent draw, plus an STM32-based PID control loop for gas flow, voltage regulation, thermal management, and MOSFET-driven power stages with real-time ADC feedback. Shipped $180K first production unit, contracted 13 deployments, filed 2 provisional patents, co-authored 3 peer-reviewed publications.",
     metrics: [
       "$2M seed closed at $8M post-money valuation",
       "$180K first production unit sold to CSIR-CFTRI India",
-      "10 revenue-generating deployments contracted across Indian commercial packhouses",
-      "Provisional patent filed on venturi-plasma integration architecture",
+      "13 revenue-generating deployments contracted across Indian commercial packhouses",
+      "2 provisional patents filed on venturi-plasma integration architecture",
       "3 peer-reviewed publications on RONS kinetics and antimicrobial efficacy",
     ],
     tech: [
