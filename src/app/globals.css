@@ -472,13 +472,114 @@ main {
 
 .section-label {
   display: block;
-  margin-bottom: clamp(20px, 2.4vw, 28px);
+  margin-bottom: 12px;
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+/* Short editorial sentence that sits under .section-label inside each
+   profile-panel block. Keeps the panels feeling intentional instead of
+   "raw resume blocks." */
+.section-intro {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 56ch;
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+
+/* ----- Featured project card (used for PlasmaX on the home Projects
+   panel). Full-width prominent card with a soft warm tint, hairline
+   border, and a hover lift. The whole card is wrapped in <a>. */
+.featured-card {
+  display: block;
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(204, 120, 92, 0.06) 0%,
+                            rgba(204, 120, 92, 0.02) 38%,
+                            rgba(255, 255, 255, 0.55) 100%);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  padding: clamp(28px, 3.6vw, 48px);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: border-color 220ms ease, transform 220ms ease,
+    box-shadow 220ms ease, background 220ms ease;
+  isolation: isolate;
+  overflow: hidden;
+}
+.featured-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 70% at 100% 0%,
+      rgba(204, 120, 92, 0.10) 0%, transparent 55%);
+  opacity: 0.85;
+  transition: opacity 220ms ease;
+  z-index: 0;
+}
+.featured-card > * {
+  position: relative;
+  z-index: 1;
+}
+.featured-card:hover {
+  border-color: rgba(204, 120, 92, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 24px 60px -28px rgba(91, 42, 24, 0.28);
+}
+.featured-card:hover::after {
+  opacity: 1;
+}
+.featured-card:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 4px;
+}
+.featured-card .visit-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 220ms ease;
+}
+.featured-card:hover .visit-arrow {
+  transform: translateX(3px);
+}
+
+/* Grid card used by Experience / Projects / Publications / Awards. Calmer
+   replacement for the GlowCard variant on these panels - hairline border,
+   subtle paper background, soft hover lift. */
+.grid-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  padding: clamp(22px, 2.4vw, 30px);
+  transition: border-color 220ms ease, transform 220ms ease,
+    background 220ms ease;
+}
+.grid-card:hover {
+  border-color: var(--hairline-strong);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.78);
+}
+.grid-card a.grid-card-cover {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+}
+.grid-card a.grid-card-cover:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
 }
 
 .profile-row {

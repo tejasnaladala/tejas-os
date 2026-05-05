@@ -203,13 +203,13 @@ export const projects: Project[] = [
       "3 peer-reviewed publications on RONS kinetics and antimicrobial efficacy",
     ],
     tech: [
-      "High-Voltage Electronics",
-      "Embedded C (STM32)",
-      "Plasma Physics",
-      "PID Control",
-      "CAD/CNC",
+      "Deep Tech",
+      "Plasma Hardware",
+      "Agriculture",
+      "Nitrogen",
     ],
     links: [
+      { label: "Website", url: "https://plasmax.in" },
       { label: "DOI: 10.1088/1361-6463/ad77de", url: "https://doi.org/10.1088/1361-6463/ad77de" },
     ],
   },

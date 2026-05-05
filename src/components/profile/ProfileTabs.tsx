@@ -6,8 +6,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/data/projects";
 import { achievements } from "@/data/achievements";
 import { publications, preprints, scholarProfile } from "@/data/publications";
-import { GlowCard } from "@/components/ui/spotlight-card";
 import ImageRevealHero from "@/components/profile/ImageRevealHero";
+
+/** Inline external-link arrow. Outline-only so it sits in body color. */
+function ArrowOutward({ size = 14 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      style={{ flexShrink: 0 }}
+    >
+      <path d="M7 17 17 7" />
+      <path d="M8 7h9v9" />
+    </svg>
+  );
+}
 
 /**
  * Aayam-style profile: bold mono nameplate, hairline tab nav, content panels
@@ -365,34 +385,25 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+function SectionHeader({
+  label,
+  intro,
+}: {
+  label: string;
+  intro?: string;
+}) {
+  return (
+    <div>
+      <p className="section-label">{label}</p>
+      {intro && <p className="section-intro">{intro}</p>}
+    </div>
+  );
+}
+
 /* -------------------- OVERVIEW -------------------- */
 function Overview({ hidden }: { hidden: boolean }) {
   return (
     <Panel id="overview" hidden={hidden}>
-      <div>
-        <SectionLabel>About</SectionLabel>
-        <p
-          className="body-lg"
-          style={{ fontSize: "clamp(20px, 2.2vw, 26px)", lineHeight: 1.5 }}
-        >
-          18, undergrad. Currently building{" "}
-          <strong style={{ fontWeight: 600 }}>R0 Systems</strong> — plasma
-          sanitization equipment for post-harvest agricultural produce.
-          Prev. founded <strong style={{ fontWeight: 600 }}>PlasmaX</strong>{" "}
-          ($2M seed; decentralised on-site nitrogen production for ammonia
-          synthesis). Also building{" "}
-          <strong style={{ fontWeight: 600 }}>Parchment Labs</strong> and{" "}
-          <strong style={{ fontWeight: 600 }}>delphi</strong>.
-        </p>
-        <p
-          className="body-md mt-6"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          I care about systems that can be audited: real customers, real
-          hardware, real experiments, real failure logs.
-        </p>
-      </div>
-
       <div>
         <SectionLabel>Education</SectionLabel>
         <div className="profile-row profile-row-start">
@@ -554,13 +565,68 @@ function Highlight({
 }
 
 /* -------------------- EXPERIENCE -------------------- */
+type ExperienceEntry = {
+  date: string;
+  role: string;
+  org: string;
+  body: string;
+};
+
+function ExperienceCard({ entry }: { entry: ExperienceEntry }) {
+  return (
+    <article className="grid-card">
+      <p
+        className="label-mono"
+        style={{
+          color: "var(--text-muted)",
+          fontSize: 11,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+        }}
+      >
+        {entry.date}
+      </p>
+      <h3
+        style={{
+          marginTop: 12,
+          fontFamily: "var(--font-display)",
+          fontWeight: 700,
+          fontSize: 20,
+          letterSpacing: "-0.005em",
+          color: "var(--text-primary)",
+          lineHeight: 1.2,
+        }}
+      >
+        {entry.role}
+      </h3>
+      <p
+        style={{
+          marginTop: 6,
+          fontFamily: "var(--font-mono)",
+          fontSize: 12,
+          letterSpacing: "0.04em",
+          color: "var(--text-secondary)",
+        }}
+      >
+        {entry.org}
+      </p>
+      <p
+        style={{
+          marginTop: 16,
+          fontFamily: "var(--font-body)",
+          fontSize: 14.5,
+          lineHeight: 1.65,
+          color: "var(--text-secondary)",
+        }}
+      >
+        {entry.body}
+      </p>
+    </article>
+  );
+}
+
 function Experience({ hidden }: { hidden: boolean }) {
-  const entries: Array<{
-    date: string;
-    role: string;
-    org: string;
-    body: string;
-  }> = [
+  const entries: ExperienceEntry[] = [
     {
       date: "2026 — Present",
       role: "Project Lead",
@@ -586,12 +652,6 @@ function Experience({ hidden }: { hidden: boolean }) {
       body: "Pre-registered multi-agent LLM configuration study across ForecastBench, LiveCodeBench, GPQA. 509 unit and fuzz tests caught 23 issues before data collection.",
     },
     {
-      date: "May 2023 — Jan 2026",
-      role: "Founder & CTO",
-      org: "PlasmaX",
-      body: "Decentralised on-site nitrogen production for ammonia synthesis. $2M seed at $8M post-money, $180K first unit sold, 10 deployments contracted, 1 patent filed, 3 peer-reviewed publications.",
-    },
-    {
       date: "Mar — Nov 2025",
       role: "Research Associate",
       org: "SEAL Lab, University of Washington",
@@ -608,51 +668,13 @@ function Experience({ hidden }: { hidden: boolean }) {
   return (
     <Panel id="experience" hidden={hidden}>
       <div>
-        <SectionLabel>Experience</SectionLabel>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
-          {entries.map((e, i) => (
-            <GlowCard
-              key={i}
-              glowColor="orange"
-              customSize
-              className="profile-card flex flex-col items-start text-left"
-            >
-              <p
-                className="label-mono"
-                style={{ color: "var(--text-muted)", fontSize: 11 }}
-              >
-                {e.date}
-              </p>
-              <h3
-                className="mt-3"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 700,
-                  fontSize: 20,
-                  letterSpacing: "-0.005em",
-                  color: "var(--text-primary)",
-                  lineHeight: 1.2,
-                }}
-              >
-                {e.role}
-              </h3>
-              <p
-                className="label-mono mt-1.5"
-                style={{ color: "var(--text-secondary)", fontSize: 12 }}
-              >
-                {e.org}
-              </p>
-              <p
-                className="body-sm mt-4"
-                style={{
-                  color: "var(--text-secondary)",
-                  fontSize: 14,
-                  lineHeight: 1.65,
-                }}
-              >
-                {e.body}
-              </p>
-            </GlowCard>
+        <SectionHeader
+          label="Experience"
+          intro="Six positions across hardware ventures, autonomous research, and academic labs — each shipping real artifacts under real deadlines."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {entries.map((entry, i) => (
+            <ExperienceCard key={i} entry={entry} />
           ))}
         </div>
       </div>
@@ -661,8 +683,228 @@ function Experience({ hidden }: { hidden: boolean }) {
 }
 
 /* -------------------- PROJECTS -------------------- */
+function FeaturedProject() {
+  const plasmax = projects.find((p) => p.id === "plasmafx");
+  if (!plasmax) return null;
+
+  // Tags chosen for brand-positioning (Deep Tech, Plasma Hardware, etc.)
+  // rather than the lower-level tech stack used in the regular grid.
+  const tags = ["Deep Tech", "Plasma Hardware", "Agriculture", "Nitrogen"];
+
+  return (
+    <a
+      className="featured-card"
+      href="https://plasmax.in"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="PlasmaX (opens in a new tab)"
+    >
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span
+            className="font-mono"
+            style={{
+              fontSize: 10.5,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "#CC785C",
+              fontWeight: 600,
+            }}
+          >
+            Featured
+          </span>
+          <span
+            aria-hidden="true"
+            style={{ color: "var(--text-faint)", fontFamily: "var(--font-mono)" }}
+          >
+            ·
+          </span>
+          <span
+            className="font-mono"
+            style={{
+              fontSize: 11,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              color: "var(--text-muted)",
+            }}
+          >
+            {plasmax.date}
+          </span>
+        </div>
+        <span
+          className="visit-arrow font-mono"
+          style={{
+            fontSize: 11,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: "var(--text-primary)",
+          }}
+        >
+          plasmax.in
+          <ArrowOutward size={13} />
+        </span>
+      </div>
+
+      <div
+        className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)]"
+        style={{ marginTop: 24, gap: "clamp(20px, 3vw, 48px)", alignItems: "start" }}
+      >
+        <div>
+          <h3
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 700,
+              fontSize: "clamp(34px, 4.6vw, 52px)",
+              letterSpacing: "-0.012em",
+              lineHeight: 1.02,
+              color: "var(--text-primary)",
+            }}
+          >
+            PlasmaX
+          </h3>
+          <p
+            className="font-mono"
+            style={{
+              marginTop: 10,
+              fontSize: 12,
+              letterSpacing: "0.06em",
+              color: "var(--text-secondary)",
+            }}
+          >
+            Founder &amp; CTO
+          </p>
+        </div>
+
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 15.5,
+            lineHeight: 1.65,
+            color: "var(--text-secondary)",
+            maxWidth: "44ch",
+          }}
+        >
+          Decentralised on-site nitrogen production for ammonia synthesis. $2M
+          seed at $8M post-money, $180K first unit sold, 10 deployments
+          contracted, 1 patent filed, 3 peer-reviewed publications.
+        </p>
+      </div>
+
+      <div className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-2">
+        {tags.map((t, i) => (
+          <span key={t} className="flex items-center">
+            <span className="chip">{t}</span>
+            {i < tags.length - 1 && (
+              <span
+                aria-hidden="true"
+                style={{
+                  marginLeft: 8,
+                  color: "var(--text-faint)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                }}
+              >
+                ·
+              </span>
+            )}
+          </span>
+        ))}
+      </div>
+    </a>
+  );
+}
+
+type ProjectCardProps = {
+  project: NonNullable<ReturnType<typeof projects.find>>;
+  index: number;
+};
+
+function ProjectGridCard({ project, index }: ProjectCardProps) {
+  const link = project.links?.[0];
+
+  return (
+    <article className="grid-card">
+      {link && (
+        <a
+          className="grid-card-cover"
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${project.title} (opens in a new tab)`}
+        />
+      )}
+      <div
+        className="flex flex-wrap items-center gap-x-2 gap-y-1"
+        style={{ marginBottom: 14 }}
+      >
+        <span
+          className="label-mono"
+          style={{
+            color: "var(--text-muted)",
+            fontSize: 11,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+          }}
+        >
+          {String(index + 1).padStart(2, "0")} · {project.date}
+        </span>
+      </div>
+      <h3
+        style={{
+          fontFamily: "var(--font-display)",
+          fontWeight: 700,
+          fontSize: 21,
+          letterSpacing: "-0.005em",
+          color: "var(--text-primary)",
+          lineHeight: 1.18,
+          display: "inline-flex",
+          alignItems: "baseline",
+          gap: 8,
+        }}
+      >
+        {project.title}
+        {link && (
+          <span style={{ color: "var(--text-muted)", display: "inline-flex" }}>
+            <ArrowOutward size={13} />
+          </span>
+        )}
+      </h3>
+      <p
+        className="font-mono"
+        style={{
+          marginTop: 6,
+          fontSize: 11.5,
+          letterSpacing: "0.04em",
+          color: "var(--text-muted)",
+        }}
+      >
+        {project.role}
+      </p>
+      <p
+        style={{
+          marginTop: 14,
+          fontFamily: "var(--font-body)",
+          fontSize: 14.5,
+          lineHeight: 1.65,
+          color: "var(--text-secondary)",
+        }}
+      >
+        {project.summary}
+      </p>
+      <div className="mt-5 flex flex-wrap gap-1.5" style={{ position: "relative", zIndex: 1 }}>
+        {project.tech.slice(0, 5).map((t) => (
+          <span key={t} className="chip">
+            {t}
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 function Projects({ hidden }: { hidden: boolean }) {
-  const featured = [
+  // PlasmaX is featured separately; the grid lists everything else.
+  const gridIds = [
     "r0-systems",
     "parchment",
     "delphi",
@@ -680,89 +922,32 @@ function Projects({ hidden }: { hidden: boolean }) {
     "icordion",
     "delulu",
     "tejas-os",
-  ]
+  ];
+  const grid = gridIds
     .map((id) => projects.find((p) => p.id === id))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
     <Panel id="projects" hidden={hidden}>
       <div>
-        <SectionLabel>Selected Projects</SectionLabel>
-        {/* Two-column glow card grid. Cards are left-aligned and size to
-            content; the cursor paints a warm halo behind. */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
-          {featured.map((p, i) => {
-            const link = p.links?.[0];
-            return (
-              <GlowCard
-                key={p.id}
-                glowColor="orange"
-                customSize
-                className="profile-card flex flex-col items-start text-left"
-              >
-                <div
-                  className="flex flex-wrap items-center gap-x-2 gap-y-1"
-                  style={{ marginBottom: 6 }}
-                >
-                  <span
-                    className="label-mono"
-                    style={{ color: "var(--text-muted)", fontSize: 11 }}
-                  >
-                    {String(i + 1).padStart(2, "0")} · {p.date}
-                  </span>
-                  {link && (
-                    <>
-                      <span style={{ color: "var(--text-faint)" }}>·</span>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          color: "var(--text-muted)",
-                          fontFamily: "var(--font-mono)",
-                          fontSize: 11,
-                          textDecoration: "underline",
-                          textUnderlineOffset: 3,
-                        }}
-                      >
-                        {link.label.replace(/^DOI: /, "DOI ")}
-                      </a>
-                    </>
-                  )}
-                </div>
-                <h3
-                  className="mt-3"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontWeight: 700,
-                    fontSize: 22,
-                    letterSpacing: "-0.005em",
-                    color: "var(--text-primary)",
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {p.title}
-                </h3>
-                <p
-                  className="body-sm mt-3"
-                  style={{
-                    color: "var(--text-secondary)",
-                    fontSize: 14,
-                    lineHeight: 1.65,
-                  }}
-                >
-                  {p.summary}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-1.5">
-                  {p.tech.slice(0, 5).map((t) => (
-                    <span key={t} className="chip">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </GlowCard>
-            );
-          })}
+        <SectionHeader
+          label="Featured Projects"
+          intro="Selected work across plasma hardware, autonomous research systems, and multi-agent evaluation."
+        />
+        <FeaturedProject />
+
+        <div style={{ marginTop: "clamp(40px, 5vw, 64px)" }}>
+          <p
+            className="section-label"
+            style={{ marginBottom: 24 }}
+          >
+            More Projects
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {grid.map((p, i) => (
+              <ProjectGridCard key={p.id} project={p} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </Panel>
@@ -775,78 +960,109 @@ function Publications({ hidden }: { hidden: boolean }) {
   return (
     <Panel id="publications" hidden={hidden}>
       <div>
-        <SectionLabel>Peer-Reviewed Publications</SectionLabel>
-        <p className="body-sm" style={{ color: "var(--text-muted)" }}>
+        <SectionHeader
+          label="Publications"
+          intro="Peer-reviewed work on plasma physics, antimicrobial efficacy, and reaction kinetics, with a working preprint set."
+        />
+
+        <p
+          className="font-mono"
+          style={{
+            marginBottom: 24,
+            fontSize: 12,
+            letterSpacing: "0.06em",
+            color: "var(--text-muted)",
+          }}
+        >
           Google Scholar · {scholarProfile.citations} citations · h-index{" "}
           {scholarProfile.hIndex} · i10-index {scholarProfile.i10Index}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {pubs.map((p, i) => (
-            <GlowCard
-              key={p.title}
-              glowColor="orange"
-              customSize
-              className="profile-card flex flex-col items-start text-left"
-            >
+            <article key={p.title} className="grid-card">
+              <a
+                href={`https://doi.org/${p.doi}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="grid-card-cover"
+                aria-label={`${p.title} (opens DOI in a new tab)`}
+              />
               <p
                 className="label-mono"
-                style={{ color: "var(--text-muted)", fontSize: 11 }}
+                style={{
+                  color: "var(--text-muted)",
+                  fontSize: 11,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                }}
               >
                 {String(i + 1).padStart(2, "0")} · Peer-reviewed
               </p>
               <h3
-                className="mt-3"
                 style={{
+                  marginTop: 12,
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
                   fontSize: 17,
                   letterSpacing: "-0.005em",
                   color: "var(--text-primary)",
-                  lineHeight: 1.3,
+                  lineHeight: 1.28,
                 }}
               >
                 {p.title}
               </h3>
               <p
-                className="body-sm mt-3"
+                className="font-mono"
                 style={{
+                  marginTop: 10,
+                  fontSize: 12,
+                  letterSpacing: "0.04em",
                   color: "var(--text-secondary)",
-                  fontSize: 13,
-                  lineHeight: 1.55,
                 }}
               >
                 {p.venue} · {p.year}
                 {typeof p.citations === "number" ? ` · ${p.citations} citations` : ""}
               </p>
-              <a
-                href={`https://doi.org/${p.doi}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4"
+              <span
+                className="font-mono"
                 style={{
-                  color: "var(--text-muted)",
-                  fontFamily: "var(--font-mono)",
+                  marginTop: 16,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
                   fontSize: 11,
-                  letterSpacing: "0.04em",
-                  textDecoration: "underline",
-                  textUnderlineOffset: 3,
+                  letterSpacing: "0.06em",
+                  color: "var(--text-muted)",
+                  position: "relative",
+                  zIndex: 1,
                 }}
               >
                 doi.org/{p.doi}
-              </a>
-            </GlowCard>
+                <ArrowOutward size={12} />
+              </span>
+            </article>
           ))}
         </div>
-        <p className="eyebrow mt-10" style={{ color: "var(--text-muted)" }}>
+
+        <p
+          className="section-label"
+          style={{ marginTop: "clamp(40px, 5vw, 56px)", marginBottom: 16 }}
+        >
           Preprints
         </p>
-        <div className="mt-4 space-y-2">
+        <div className="space-y-2">
           {preprints.map((p) => (
-            <p key={p.title} className="body-md" style={{ fontSize: 16 }}>
+            <p
+              key={p.title}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 15.5,
+                lineHeight: 1.55,
+              }}
+            >
               {p.title}{" "}
-              <span style={{ color: "var(--text-secondary)" }}>
-                · {p.venue}
-              </span>
+              <span style={{ color: "var(--text-muted)" }}>· {p.venue}</span>
             </p>
           ))}
         </div>
@@ -860,15 +1076,13 @@ function Awards({ hidden }: { hidden: boolean }) {
   return (
     <Panel id="awards" hidden={hidden}>
       <div>
-        <SectionLabel>Awards & Honors</SectionLabel>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+        <SectionHeader
+          label="Awards & Honors"
+          intro="Recognition from competitions, fellowships, and platform leaderboards."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {achievements.map((a) => (
-            <GlowCard
-              key={a.title}
-              glowColor="orange"
-              customSize
-              className="profile-card flex flex-col items-start text-left"
-            >
+            <article key={a.title} className="grid-card">
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
@@ -882,16 +1096,17 @@ function Awards({ hidden }: { hidden: boolean }) {
                 {a.title}
               </h3>
               <p
-                className="body-sm mt-3"
                 style={{
-                  color: "var(--text-secondary)",
-                  fontSize: 14,
+                  marginTop: 12,
+                  fontFamily: "var(--font-body)",
+                  fontSize: 14.5,
                   lineHeight: 1.6,
+                  color: "var(--text-secondary)",
                 }}
               >
                 {a.description}
               </p>
-            </GlowCard>
+            </article>
           ))}
         </div>
       </div>
@@ -936,49 +1151,52 @@ function Contact({ hidden }: { hidden: boolean }) {
         </p>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {channels.map((row) => (
-            <GlowCard
-              key={row.label}
-              glowColor="orange"
-              customSize
-              className="profile-card flex flex-col items-start text-left"
-            >
-              <p
-                className="label-mono"
-                style={{
-                  color: "var(--text-muted)",
-                  fontSize: 11,
-                  letterSpacing: "0.18em",
-                }}
-              >
-                {row.label.toUpperCase()}
-              </p>
-              <a
-                href={row.href}
-                target={
-                  row.external || row.href.startsWith("http")
-                    ? "_blank"
-                    : undefined
-                }
-                rel={
-                  row.external || row.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                className="mt-3 block"
-                style={{
-                  fontSize: 16,
-                  fontWeight: 600,
-                  color: "var(--text-primary)",
-                  textDecoration: "none",
-                  wordBreak: "break-word",
-                  lineHeight: 1.35,
-                }}
-              >
-                {row.value}
-              </a>
-            </GlowCard>
-          ))}
+          {channels.map((row) => {
+            const isExternal = row.external || row.href.startsWith("http");
+            return (
+              <article key={row.label} className="grid-card">
+                <a
+                  href={row.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className="grid-card-cover"
+                  aria-label={`${row.label}: ${row.value}${isExternal ? " (opens in a new tab)" : ""}`}
+                />
+                <p
+                  className="label-mono"
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: 11,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {row.label}
+                </p>
+                <p
+                  style={{
+                    marginTop: 12,
+                    display: "inline-flex",
+                    alignItems: "baseline",
+                    gap: 8,
+                    fontFamily: "var(--font-body)",
+                    fontSize: 16,
+                    fontWeight: 600,
+                    color: "var(--text-primary)",
+                    wordBreak: "break-word",
+                    lineHeight: 1.35,
+                  }}
+                >
+                  {row.value}
+                  {isExternal && (
+                    <span style={{ color: "var(--text-muted)", display: "inline-flex" }}>
+                      <ArrowOutward size={13} />
+                    </span>
+                  )}
+                </p>
+              </article>
+            );
+          })}
         </div>
 
         <div className="mt-14">
