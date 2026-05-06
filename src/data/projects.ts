@@ -10,12 +10,13 @@ export const projects: Project[] = [
     date: "2026 - Present",
     category: "venture",
     summary:
-      "Plasma sanitization equipment for post-harvest agricultural produce. Bench-validation underway, first reactor unit targeted 2026.",
+      "Plasma sanitization equipment for post-harvest agricultural produce. $30K validation deployment sold; commercial packhouse pilots targeted 2026.",
     description:
-      "Building plasma sanitization equipment for post-harvest agricultural produce. Iterating on plasma reactor geometry, gas-flow control, and food-contact electrode design. First reactor unit targeted for 2026 with packhouse pilots in parallel.",
+      "Building plasma sanitization equipment for post-harvest agricultural produce. Iterating on plasma reactor geometry, gas-flow control, and food-contact electrode design. Sold a $30K validation deployment; first commercial reactor unit and packhouse pilots targeted 2026.",
     metrics: [
+      "$30K validation deployment sold",
       "Plasma reactor design + bench-validation in progress",
-      "Targeting commercial packhouse pilots in 2026",
+      "Commercial packhouse pilots targeted 2026",
     ],
     tech: [
       "Plasma Physics",

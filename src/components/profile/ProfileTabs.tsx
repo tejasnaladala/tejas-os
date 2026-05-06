@@ -434,7 +434,7 @@ function Overview({ hidden }: { hidden: boolean }) {
         <Highlight
           tag="BUILDING"
           title="R0 Systems"
-          body="Plasma sanitization equipment for post-harvest agricultural produce. Currently in design + bench-validation stage, with first reactor unit targeted for 2026."
+          body="Plasma sanitization equipment for post-harvest agricultural produce. $30K validation deployment sold; first commercial reactor unit and packhouse pilots targeted 2026."
         />
         <Highlight
           tag="PREV. SHIPPED"
@@ -631,7 +631,7 @@ function Experience({ hidden }: { hidden: boolean }) {
       date: "2026 to Present",
       role: "Project Lead",
       org: "R0 Systems",
-      body: "Plasma sanitization equipment for post-harvest agricultural produce. Bench-validation underway, first reactor unit targeted 2026.",
+      body: "Plasma sanitization equipment for post-harvest agricultural produce. $30K validation deployment sold; first commercial reactor unit and packhouse pilots targeted 2026.",
     },
     {
       date: "Dec 2025 to Present",
@@ -795,6 +795,86 @@ function FeaturedProject() {
   );
 }
 
+/**
+ * Secondary featured card. Smaller than the primary FeaturedProject so the
+ * visual hierarchy reads "PlasmaX (headline) + R0 Systems (supporting beat)"
+ * rather than two competing cards. R0 has no public website yet, so the
+ * card is non-clickable; copy emphasizes the validation-deployment milestone.
+ */
+function SecondaryFeaturedR0() {
+  const r0 = projects.find((p) => p.id === "r0-systems");
+  if (!r0) return null;
+
+  return (
+    <article className="featured-card-secondary">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <span
+          className="font-mono"
+          style={{
+            fontSize: 10,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "#CC785C",
+            fontWeight: 600,
+          }}
+        >
+          Current
+        </span>
+        <span
+          className="font-mono"
+          style={{
+            fontSize: 10,
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            color: "var(--text-muted)",
+          }}
+        >
+          {r0.role}
+        </span>
+      </div>
+
+      <h3
+        style={{
+          marginTop: 14,
+          fontFamily: "var(--font-display)",
+          fontWeight: 700,
+          fontSize: "clamp(24px, 2.8vw, 34px)",
+          letterSpacing: "-0.008em",
+          lineHeight: 1.05,
+          color: "var(--text-primary)",
+        }}
+      >
+        R0 Systems
+      </h3>
+
+      <p
+        style={{
+          marginTop: 12,
+          fontFamily: "var(--font-body)",
+          fontSize: 14.5,
+          lineHeight: 1.6,
+          color: "var(--text-secondary)",
+          maxWidth: "62ch",
+        }}
+      >
+        Plasma sanitization equipment for post-harvest agricultural produce.{" "}
+        <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>
+          $30K validation deployment sold
+        </strong>
+        ; first commercial reactor unit and packhouse pilots targeted 2026.
+      </p>
+
+      <div className="mt-4 flex flex-wrap gap-1.5" style={{ position: "relative", zIndex: 1 }}>
+        {r0.tech.slice(0, 5).map((t) => (
+          <span key={t} className="chip">
+            {t}
+          </span>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 type ProjectCardProps = {
   project: NonNullable<ReturnType<typeof projects.find>>;
   index: number;
@@ -884,9 +964,9 @@ function ProjectGridCard({ project, index }: ProjectCardProps) {
 }
 
 function Projects({ hidden }: { hidden: boolean }) {
-  // PlasmaX is featured separately; the grid lists everything else.
+  // PlasmaX (primary) and R0 Systems (secondary) are featured separately;
+  // the grid below lists everything else.
   const gridIds = [
-    "r0-systems",
     "parchment",
     "delphi",
     "agentbreed",
@@ -916,6 +996,7 @@ function Projects({ hidden }: { hidden: boolean }) {
           intro="Selected work across plasma hardware, autonomous research systems, and multi-agent evaluation."
         />
         <FeaturedProject />
+        <SecondaryFeaturedR0 />
 
         <div style={{ marginTop: "clamp(40px, 5vw, 64px)" }}>
           <p
