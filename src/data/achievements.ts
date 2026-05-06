@@ -14,7 +14,7 @@ export const achievements: Achievement[] = [
     unlocked: true,
   },
   {
-    title: "10 Contracted Deployments",
+    title: "13 Contracted Deployments",
     description: "Revenue-generating PlasmaX systems contracted across Indian commercial packhouses",
     icon: "deployment",
     unlocked: true,
@@ -68,8 +68,8 @@ export const achievements: Achievement[] = [
     unlocked: true,
   },
   {
-    title: "Patent Filed",
-    description: "Provisional patent on venturi-plasma integration architecture",
+    title: "2 Provisional Patents Filed",
+    description: "Filed on venturi-plasma integration architecture for the PlasmaX nitrogen system",
     icon: "patent",
     unlocked: true,
   },
