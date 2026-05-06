@@ -6,7 +6,7 @@ export const projects: Project[] = [
     filename: "R0Systems",
     extension: "hw",
     title: "R0 Systems",
-    role: "Project Lead",
+    role: "Founder & CEO",
     date: "2026 - Present",
     category: "venture",
     summary:

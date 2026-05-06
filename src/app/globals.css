@@ -552,35 +552,30 @@ main {
   transform: translateX(3px);
 }
 
-/* Secondary featured card. Same hairline + warm tint language as the
-   primary featured card, but compressed: less padding, smaller heading,
-   muted gradient. Used for R0 Systems beneath PlasmaX so the visual
-   hierarchy reads "headline + supporting beat" instead of two equal cards. */
+/* Secondary featured card. Mirrors the primary featured-card layout
+   (top-row eyebrow, 2-col title+role / description, dotted tag row) but
+   uses slightly tighter padding and a softer gradient so PlasmaX retains
+   visual primacy. Used for R0 Systems beneath PlasmaX. */
 .featured-card-secondary {
   display: block;
   position: relative;
   background:
-    linear-gradient(135deg, rgba(204, 120, 92, 0.04) 0%,
-                            rgba(204, 120, 92, 0.015) 45%,
+    linear-gradient(135deg, rgba(204, 120, 92, 0.045) 0%,
+                            rgba(204, 120, 92, 0.018) 42%,
                             rgba(255, 255, 255, 0.55) 100%);
   border: 1px solid var(--hairline);
-  border-radius: 12px;
-  padding: clamp(22px, 2.6vw, 32px);
+  border-radius: 14px;
+  padding: clamp(24px, 3vw, 40px);
   text-decoration: none;
   color: var(--text-primary);
   margin-top: clamp(16px, 1.8vw, 24px);
-  width: clamp(0px, 100%, 86%);
+  width: 100%;
   transition: border-color 220ms ease, transform 220ms ease,
     background 220ms ease;
 }
 .featured-card-secondary:hover {
   border-color: var(--hairline-strong);
   transform: translateY(-1px);
-}
-@media (max-width: 768px) {
-  .featured-card-secondary {
-    width: 100%;
-  }
 }
 
 /* Grid card used by Experience / Projects / Publications / Awards. Calmer

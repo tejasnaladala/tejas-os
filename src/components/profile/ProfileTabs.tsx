@@ -629,7 +629,7 @@ function Experience({ hidden }: { hidden: boolean }) {
   const entries: ExperienceEntry[] = [
     {
       date: "2026 to Present",
-      role: "Project Lead",
+      role: "Founder & CEO",
       org: "R0 Systems",
       body: "Plasma sanitization equipment for post-harvest agricultural produce. $30K validation deployment sold; first commercial reactor unit and packhouse pilots targeted 2026.",
     },
@@ -796,14 +796,23 @@ function FeaturedProject() {
 }
 
 /**
- * Secondary featured card. Smaller than the primary FeaturedProject so the
- * visual hierarchy reads "PlasmaX (headline) + R0 Systems (supporting beat)"
- * rather than two competing cards. R0 has no public website yet, so the
- * card is non-clickable; copy emphasizes the validation-deployment milestone.
+ * Secondary featured card. Mirrors the primary FeaturedProject layout
+ * (top-row eyebrow, 2-col title+role / description, dotted tag row) at a
+ * smaller scale so the visual hierarchy reads "PlasmaX (headline) + R0
+ * (supporting beat)" rather than two competing cards. R0 has no public
+ * website yet so there is no top-right link affordance.
  */
 function SecondaryFeaturedR0() {
   const r0 = projects.find((p) => p.id === "r0-systems");
   if (!r0) return null;
+
+  // Brand-positioning tags chosen for parity with the PlasmaX featured card.
+  const tags = [
+    "Deep Tech",
+    "Plasma Hardware",
+    "Agriculture",
+    "Sanitization",
+  ];
 
   return (
     <article className="featured-card-secondary">
@@ -811,7 +820,7 @@ function SecondaryFeaturedR0() {
         <span
           className="font-mono"
           style={{
-            fontSize: 10,
+            fontSize: 10.5,
             letterSpacing: "0.22em",
             textTransform: "uppercase",
             color: "#CC785C",
@@ -823,51 +832,80 @@ function SecondaryFeaturedR0() {
         <span
           className="font-mono"
           style={{
-            fontSize: 10,
-            letterSpacing: "0.16em",
+            fontSize: 11,
+            letterSpacing: "0.14em",
             textTransform: "uppercase",
             color: "var(--text-muted)",
           }}
         >
-          {r0.role}
+          2026 to Present
         </span>
       </div>
 
-      <h3
-        style={{
-          marginTop: 14,
-          fontFamily: "var(--font-display)",
-          fontWeight: 700,
-          fontSize: "clamp(24px, 2.8vw, 34px)",
-          letterSpacing: "-0.008em",
-          lineHeight: 1.05,
-          color: "var(--text-primary)",
-        }}
+      <div
+        className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)]"
+        style={{ marginTop: 24, gap: "clamp(20px, 3vw, 48px)", alignItems: "start" }}
       >
-        R0 Systems
-      </h3>
+        <div>
+          <h3
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 700,
+              fontSize: "clamp(26px, 3.4vw, 38px)",
+              letterSpacing: "-0.01em",
+              lineHeight: 1.04,
+              color: "var(--text-primary)",
+            }}
+          >
+            R0 Systems
+          </h3>
+          <p
+            className="font-mono"
+            style={{
+              marginTop: 10,
+              fontSize: 12,
+              letterSpacing: "0.06em",
+              color: "var(--text-secondary)",
+            }}
+          >
+            Founder &amp; CEO
+          </p>
+        </div>
 
-      <p
-        style={{
-          marginTop: 12,
-          fontFamily: "var(--font-body)",
-          fontSize: 14.5,
-          lineHeight: 1.6,
-          color: "var(--text-secondary)",
-          maxWidth: "62ch",
-        }}
-      >
-        Plasma sanitization equipment for post-harvest agricultural produce.{" "}
-        <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>
-          $30K validation deployment sold
-        </strong>
-        ; first commercial reactor unit and packhouse pilots targeted 2026.
-      </p>
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 15,
+            lineHeight: 1.6,
+            color: "var(--text-secondary)",
+            maxWidth: "44ch",
+          }}
+        >
+          Plasma sanitization equipment for post-harvest agricultural produce.{" "}
+          <strong style={{ color: "var(--text-primary)", fontWeight: 600 }}>
+            $30K validation deployment sold
+          </strong>
+          ; first commercial reactor unit and packhouse pilots targeted 2026.
+        </p>
+      </div>
 
-      <div className="mt-4 flex flex-wrap gap-1.5" style={{ position: "relative", zIndex: 1 }}>
-        {r0.tech.slice(0, 5).map((t) => (
-          <span key={t} className="chip">
-            {t}
+      <div className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-2">
+        {tags.map((t, i) => (
+          <span key={t} className="flex items-center">
+            <span className="chip">{t}</span>
+            {i < tags.length - 1 && (
+              <span
+                aria-hidden="true"
+                style={{
+                  marginLeft: 8,
+                  color: "var(--text-faint)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                }}
+              >
+                ·
+              </span>
+            )}
           </span>
         ))}
       </div>
