@@ -1,7 +1,5 @@
 # Underwater ROV Journey Implementation Plan
 
-> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
-
 **Goal:** Replace the BIOS/OS desktop simulation with a free-roam 2D underwater world where users pilot a pixel ROV through an ocean, discovering portfolio content at themed stations.
 
 **Architecture:** DOM-based 2D world with CSS transforms for camera following. ROV stays centered on viewport, world translates around it. Zustand manages ROV position, station discovery, and panel state. Content panels slide in as overlays when docking. Mobile falls back to scroll-based ocean layout. Existing games and data files are reused unchanged.

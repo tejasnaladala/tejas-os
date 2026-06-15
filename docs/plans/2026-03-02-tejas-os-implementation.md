@@ -1,7 +1,5 @@
 # TejasOS Implementation Plan
 
-> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
-
 **Goal:** Build a production-ready OS-style personal portfolio website for tejasnaladala.com that boots like a retro BIOS, runs as a desktop environment with draggable windows, includes arcade games, easter eggs, and a recruiter escape hatch.
 
 **Architecture:** Next.js 15 App Router with Zustand for window/boot/settings state, Framer Motion for animations, pure Canvas API for lazy-loaded games, Howler.js for audio sprites. Single-page app where all navigation happens via opening/closing windows on a simulated desktop. Separate /resume route for recruiter-friendly clean view.
@@ -24,7 +22,7 @@
 
 Run:
 ```bash
-cd C:/Users/tejas/OneDrive/Desktop/tejas-os
+cd tejas-os
 npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --use-npm
 ```
 
@@ -3115,7 +3113,7 @@ git commit -m "chore: optimize Next.js config for production performance"
 **Step 1: Initialize git remote**
 
 ```bash
-cd C:/Users/tejas/OneDrive/Desktop/tejas-os
+cd tejas-os
 git remote add origin https://github.com/tejasnaladala/tejas-os.git
 git branch -M main
 ```
