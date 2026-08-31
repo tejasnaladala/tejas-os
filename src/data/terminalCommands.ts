@@ -49,7 +49,7 @@ export const TERMINAL_COMMANDS: Record<string, { description: string; execute: (
                          Uptime:    ${bio.systemInfo.uptime}
   tejas@portfolio        Shell:     TejasOS Terminal v1.0
                          Ventures:  Parchment Labs, delphi, Cerulean
-                         Papers:    3 published / 35 citations`,
+                         Papers:    3 published / 57 citations`,
   },
   "cat resume.txt": {
     description: "Display resume summary",

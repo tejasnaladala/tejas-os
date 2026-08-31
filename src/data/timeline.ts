@@ -3,9 +3,9 @@ import { TimelineEntry } from "@/types";
 export const timeline: TimelineEntry[] = [
   {
     date: "2026.04",
-    title: "OpenAI Parameter Golf - Track Beat",
+    title: "OpenAI Parameter Golf - In Progress",
     description:
-      "Beat the prior 2nd-place track_10min_16mb submission with a 3.7M-parameter transformer under a 10-minute, 16 MB budget.",
+      "Building a 3.7M-parameter candidate under the track_10min_16mb constraints; no immutable competition result is published yet.",
     type: "project",
   },
   {
