@@ -27,7 +27,7 @@ export const achievements: Achievement[] = [
   },
   {
     title: "Google Scholar",
-    description: "35 citations, h-index 3, i10-index 2",
+    description: "57 citations, h-index 3, i10-index 2",
     icon: "scholar",
     unlocked: true,
   },
@@ -39,9 +39,9 @@ export const achievements: Achievement[] = [
   },
   {
     title: "OpenAI Parameter Golf",
-    description: "Beat the prior 2nd-place track_10min_16mb submission",
+    description: "Entry in progress; no published result yet",
     icon: "openai",
-    unlocked: true,
+    unlocked: false,
   },
   {
     title: "CMU Venture Challenge",

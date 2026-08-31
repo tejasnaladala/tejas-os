@@ -463,8 +463,7 @@ function Overview({ hidden }: { hidden: boolean }) {
         <div className="recognition-list">
           {[
             "YC AI Startup School 2026 · San Francisco cohort",
-            "OpenAI Parameter Golf · beat prior 2nd-place track_10min_16mb",
-            "Google Scholar · 35 citations, h-index 3, i10-index 2",
+            "Google Scholar · 57 citations, h-index 3, i10-index 2",
             "Carnegie Mellon Venture Challenge · 2nd / 150+ teams · $4,500",
             "UW Science & Technology Showcase · Grand Prize + Best Pitch · $2,750",
             "Red Bull Basement · Runner-up",
@@ -486,7 +485,7 @@ function Overview({ hidden }: { hidden: boolean }) {
           {[
             { done: true, text: "Sell an industrial reactor before turning 18" },
             { done: true, text: "Get a paper into a real journal" },
-            { done: true, text: "Beat a Parameter Golf leaderboard track" },
+            { done: false, text: "Publish a verified Parameter Golf result" },
             {
               done: false,
               text: "Publish the connectome benchmark after peer review",

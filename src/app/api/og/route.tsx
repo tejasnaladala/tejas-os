@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
-
 export async function GET() {
   return new ImageResponse(
     (
@@ -124,7 +122,7 @@ export async function GET() {
             display: "flex",
           }}
         >
-          $2M SEED / $180K UNIT / 35 CITATIONS
+          AI SYSTEMS / PHYSICAL SYSTEMS / EMPIRICAL RESEARCH
         </div>
       </div>
     ),

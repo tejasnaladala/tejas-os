@@ -220,17 +220,17 @@ export const projects: Project[] = [
     extension: "pt",
     title: "OpenAI Parameter Golf",
     role: "Model Craft Challenge",
-    date: "Apr 2026",
+    date: "Apr 2026 - Present",
     category: "competition",
     summary:
-      "Beat the prior 2nd-place submission on track_10min_16mb with a 3.7M-parameter transformer trained under a 10-minute wallclock budget.",
+      "Building a compact transformer for track_10min_16mb under the competition's 10-minute wallclock and 16 MB parameter constraints. Result in progress.",
     description:
-      "Trained a 3.7M-parameter decoder-only transformer with 6 layers, 384 hidden dimension, and 6 heads on 12M FineWeb-Edu documents with a custom BPE tokenizer pipeline. Ran a 31-candidate factorial sweep on 8x H100 SXM varying tokenizer, architecture, optimizer, learning-rate schedule, warmup, weight decay, batch size, gradient accumulation, and data ordering. Divergent runs were watchdog-terminated and pairwise config selection used Welch's t on BPB with wallclock-aware tiebreaking.",
+      "The current experiment uses a 3.7M-parameter decoder-only transformer, a custom BPE pipeline, bounded run orchestration, and configuration comparisons across architecture, optimization, scheduling, batching, and data order. The code and experiment design are public; no immutable competition result is published yet.",
     metrics: [
-      "Beat the prior 2nd-place submission on track_10min_16mb",
+      "Competition result in progress",
       "10-minute training wallclock and 16 MB parameter budget",
-      "31-candidate sweep on 8x H100 SXM",
-      "Pluggable backend ran identically on free-GPU providers",
+      "3.7M-parameter candidate architecture",
+      "Reproducible backend and run logging",
     ],
     tech: [
       "PyTorch",
