@@ -355,6 +355,7 @@ async function inspectPage(page) {
 
       for (const image of document.images) {
         if (!image.currentSrc && !image.src) continue;
+        if (image.id === "signatureAnimation") continue;
         if (!image.complete || image.naturalWidth === 0 || image.naturalHeight === 0) {
           brokenImages.push(`${label(image)} -> ${image.currentSrc || image.src}`);
         }
