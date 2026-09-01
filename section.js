@@ -827,8 +827,12 @@ function renderCv() {
 }
 
 const renderers = { about: renderAbout, cv: renderCv, investing: renderInvesting, research: renderResearch, stories: renderStories, work: renderWork };
-renderPageHeading();
-renderers[page]?.();
+try {
+  renderPageHeading();
+  renderers[page]?.();
+} finally {
+  document.documentElement.classList.remove("section-render-pending");
+}
 
 try {
   window.sessionStorage.setItem("tejas-intro-seen", "1");

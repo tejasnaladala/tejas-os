@@ -9,6 +9,7 @@ const MAX_REPORTED_GROUPS = 30;
 const GEOMETRY_TOLERANCE_PX = 2;
 const MIN_TOUCH_TARGET_PX = 44;
 
+const ROUTE_FILTER = process.env.MOBILE_AUDIT_ROUTE;
 const ROUTES = Object.freeze([
   { path: "/", marker: "engineer, researcher", minimumText: 80 },
   { path: "/about", marker: "My roots lie", minimumText: 500 },
@@ -19,7 +20,7 @@ const ROUTES = Object.freeze([
   { path: "/blog/nespresso-jailbreak", marker: "It is never just coffee", minimumText: 1_500 },
   { path: "/blog/wifi-cantenna", marker: "Status of university infrastructure", minimumText: 1_500 },
   { path: "/cv", marker: "R0 Systems", minimumText: 350 },
-]);
+].filter((route) => !ROUTE_FILTER || route.path === ROUTE_FILTER));
 
 const IOS_USER_AGENT =
   "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1";
@@ -45,6 +46,7 @@ const notes = [];
 const stats = {
   browsers: 0,
   fullRouteAudits: 0,
+  hydrationAudits: 0,
   menuAudits: 0,
   noJavaScriptAudits: 0,
   reducedMotionAudits: 0,
@@ -597,6 +599,66 @@ async function auditReducedMotion(browser, browserName) {
   }
 }
 
+async function auditSectionHydration(browser, browserName) {
+  const profile = PHONE_PROFILES.find((item) => item.id === "iphone-15-portrait");
+  const context = await browser.newContext(contextOptions(profile));
+  const page = await context.newPage();
+  const label = { browser: browserName, profile: "delayed section render", route: "/work" };
+
+  await context.route("**/section.js*", async (route) => {
+    await new Promise((resolveDelay) => setTimeout(resolveDelay, 600));
+    await route.continue();
+  });
+
+  try {
+    const navigation = page.goto(`${BASE_URL}/work`, {
+      waitUntil: "domcontentloaded",
+      timeout: NAVIGATION_TIMEOUT_MS,
+    });
+
+    await page.waitForSelector(".page-intro h1", { state: "attached", timeout: NAVIGATION_TIMEOUT_MS });
+    const pending = await page.locator(".page-intro h1").evaluate((heading) => ({
+      hasPixelHeading: heading.classList.contains("is-pixel-heading"),
+      pending: document.documentElement.classList.contains("section-render-pending"),
+      visibility: getComputedStyle(heading).visibility,
+    }));
+
+    if (!pending.pending) fail(label, "section hydration", "pending state cleared before the section renderer loaded");
+    if (pending.hasPixelHeading) fail(label, "section hydration", "pixel heading rendered before the delayed module loaded");
+    if (pending.visibility !== "hidden") {
+      fail(label, "section hydration", `plain heading visibility was ${pending.visibility} during hydration`);
+    }
+
+    const response = await navigation;
+    if (!response || response.status() !== 200) {
+      fail(label, "section hydration", `expected HTTP 200, received ${response?.status() ?? "no response"}`);
+      return;
+    }
+
+    await page.waitForFunction(
+      () =>
+        document.querySelector(".page-intro h1")?.classList.contains("is-pixel-heading") &&
+        !document.documentElement.classList.contains("section-render-pending"),
+      null,
+      { timeout: NAVIGATION_TIMEOUT_MS },
+    );
+
+    const rendered = await page.locator(".page-intro h1").evaluate((heading) => ({
+      pixelCount: heading.querySelectorAll(".page-heading-pixel").length,
+      visibility: getComputedStyle(heading).visibility,
+    }));
+    if (rendered.visibility !== "visible") {
+      fail(label, "section hydration", `pixel heading visibility was ${rendered.visibility} after rendering`);
+    }
+    if (!rendered.pixelCount) fail(label, "section hydration", "rendered heading contains no pixel art");
+    stats.hydrationAudits += 1;
+  } catch (error) {
+    fail(label, "section hydration", error.message);
+  } finally {
+    await context.close();
+  }
+}
+
 async function auditWithoutJavaScript(browser, browserName) {
   const profile = PHONE_PROFILES.find((item) => item.id === "iphone-15-portrait");
   const context = await browser.newContext(contextOptions(profile, { javaScriptEnabled: false, reducedMotion: "reduce" }));
@@ -636,6 +698,19 @@ async function auditWithoutJavaScript(browser, browserName) {
                   style?.visibility !== "hidden",
               ),
               horizontalOverflow: Math.max(0, scrollWidth - viewportWidth),
+              overflowOffenders: Array.from(document.querySelectorAll("body *"))
+                .map((element) => {
+                  const rect = element.getBoundingClientRect();
+                  return {
+                    tag: element.tagName.toLowerCase(),
+                    className: typeof element.className === "string" ? element.className : "",
+                    left: Math.round(rect.left),
+                    right: Math.round(rect.right),
+                    width: Math.round(rect.width),
+                  };
+                })
+                .filter(({ left, right }) => left < -tolerance || right > viewportWidth + tolerance)
+                .slice(0, 12),
               minimumText,
               tolerance,
             };
@@ -649,7 +724,11 @@ async function auditWithoutJavaScript(browser, browserName) {
         }
         if (result.hasSerializedObject) fail(label, "no-JS readability", "serialized [object Object] text is visible");
         if (result.horizontalOverflow > result.tolerance) {
-          fail(label, "no-JS horizontal overflow", `${result.horizontalOverflow}px beyond the viewport`);
+          fail(
+            label,
+            "no-JS horizontal overflow",
+            `${result.horizontalOverflow}px beyond the viewport; offenders: ${JSON.stringify(result.overflowOffenders)}`,
+          );
         }
         stats.noJavaScriptAudits += 1;
       } catch (error) {
@@ -677,11 +756,11 @@ async function mapWithConcurrency(items, concurrency, worker) {
 
 function printReport() {
   const scenarioCount =
-    stats.fullRouteAudits + stats.reducedMotionAudits + stats.noJavaScriptAudits;
+    stats.fullRouteAudits + stats.hydrationAudits + stats.reducedMotionAudits + stats.noJavaScriptAudits;
 
   if (!failures.length) {
     console.log(
-      `Mobile regression passed: ${stats.browsers} browser engine(s), ${stats.fullRouteAudits} full route/profile audits, ${stats.menuAudits} menu audits, ${stats.reducedMotionAudits} reduced-motion audits, and ${stats.noJavaScriptAudits} no-JS audits at ${BASE_URL}.`,
+      `Mobile regression passed: ${stats.browsers} browser engine(s), ${stats.fullRouteAudits} full route/profile audits, ${stats.hydrationAudits} delayed-hydration audits, ${stats.menuAudits} menu audits, ${stats.reducedMotionAudits} reduced-motion audits, and ${stats.noJavaScriptAudits} no-JS audits at ${BASE_URL}.`,
     );
   } else {
     const grouped = new Map();
@@ -745,6 +824,7 @@ async function main() {
       await mapWithConcurrency(PHONE_PROFILES, CONCURRENCY, (profile) =>
         runProfile(engine.browser, engine.name, profile),
       );
+      await auditSectionHydration(engine.browser, engine.name);
       await auditReducedMotion(engine.browser, engine.name);
       await auditWithoutJavaScript(engine.browser, engine.name);
     } finally {
