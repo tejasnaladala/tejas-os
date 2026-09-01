@@ -408,6 +408,22 @@ async function inspectPage(page) {
 
 async function auditMenu(page, context) {
   const button = page.locator("#menuButton");
+  try {
+    await page.waitForFunction(
+      () => {
+        const boot = document.querySelector("#boot");
+        if (!boot) return true;
+        const style = getComputedStyle(boot);
+        return style.display === "none" || style.visibility === "hidden" || Number.parseFloat(style.opacity) <= 0.01;
+      },
+      null,
+      { timeout: NAVIGATION_TIMEOUT_MS },
+    );
+  } catch (error) {
+    fail(context, "menu", `intro did not clear before navigation: ${error.message}`);
+    return;
+  }
+
   if (!(await button.isVisible().catch(() => false))) {
     fail(context, "menu", "mobile menu button is not visible");
     return;
