@@ -1230,5 +1230,5 @@ export const contactLinks = {
   pitch: "mailto:naladala@uw.edu?subject=Angel%20pitch%20-%20%5BCompany%5D",
   foundersInc: "https://f.inc/",
   speedrun: "https://speedrun.a16z.com/",
-  resume: "./assets/resume.pdf",
+  resume: "./assets/resume.pdf?v=20260901.11",
 };
