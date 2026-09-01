@@ -1,4 +1,4 @@
-import { archiveEntries } from "/content.js?v=20260901.10";
+import { archiveEntries } from "/content.js?v=20260901.13";
 
 const escapeHtml = (value = "") =>
   String(value)
@@ -99,8 +99,16 @@ const root = document.querySelector("#storyEntry");
 if (!story) {
   root.innerHTML = `<section class="story-entry-missing"><p class="minor-heading">Unsupervised</p><h1>That story wandered off.</h1><a class="button-link" href="/blog">Back to the blog<span aria-hidden="true">&#8592;</span></a></section>`;
 } else {
-  document.title = `${story.title} | Unsupervised`;
+  const pageTitle = `${story.title} | Unsupervised`;
+  const pageUrl = `${window.location.origin}/blog/${encodeURIComponent(story.id)}`;
+  document.title = pageTitle;
   document.querySelector('meta[name="description"]')?.setAttribute("content", story.teaser);
+  document.querySelector("#storyCanonical")?.setAttribute("href", pageUrl);
+  document.querySelector('meta[property="og:title"]')?.setAttribute("content", pageTitle);
+  document.querySelector('meta[property="og:description"]')?.setAttribute("content", story.teaser);
+  document.querySelector('meta[property="og:url"]')?.setAttribute("content", pageUrl);
+  document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", pageTitle);
+  document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", story.teaser);
 
   root.innerHTML = `<article class="story-entry${story.blocks?.length ? " story-entry--longform" : ""}">
     <header class="story-entry__header">

@@ -20,8 +20,13 @@ const checks = [
   ["stale citation count", /35 citations/i],
   ["unsupported MTEB artifact", /public leaderboard/i],
   ["unreconciled maze headline", /4,200\+|97\.4%|97\.2%/i],
+  ["unpublished MTEB conclusion", /16 retrieval datasets|task-definition mismatch/i],
+  ["retired Parchment scale claim", /150-agent|5,000\+ papers|900 training runs/i],
+  ["stale Mimic test count", /103 tests/i],
+  ["stale AgentBreed run count", /700\+ runs/i],
   ["canned contrast", /\bsits between\b|\bthe throughline\b|\brather than\b|\bnot just\b|\bisn't just\b|\bmore than just\b/i],
   ["generic positioning copy", /\bat the intersection of\b|\ba testament to\b|\bseamlessly\b|\bleverag(?:e|es|ed|ing)\b|\bever-evolving\b/i],
+  ["generic scope claim", /\bend[- ]to[- ]end\b|\bfull[- ]stack\b/i],
 ];
 
 const failures = checks.filter(([, pattern]) => pattern.test(copy));

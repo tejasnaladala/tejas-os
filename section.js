@@ -7,7 +7,7 @@ import {
   cvProfile,
   researchJournal,
   workJournal,
-} from "/content.js?v=20260901.11";
+} from "/content.js?v=20260901.13";
 
 const page = document.body.dataset.page;
 const content = document.querySelector("#pageContent");
@@ -620,7 +620,7 @@ function renderResearch() {
       <section class="research-record research-resume__group research-resume__group--published" aria-labelledby="publishedRecord">
         <header>
           <h2 id="publishedRecord">Published record</h2>
-          <p>Three peer-reviewed plasma-engineering papers, 57 citations, and an h-index of 3.</p>
+          <p>Three peer-reviewed plasma-engineering papers, 57 citations, and an h-index of 3 as of Sep 2026.</p>
         </header>
         <div class="research-record__papers">
           ${publications
