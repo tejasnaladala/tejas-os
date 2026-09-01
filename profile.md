@@ -1,6 +1,6 @@
 # Tejas Naladala
 
-> Hi, I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.
+> i'm an engineer, researcher, entrepreneur, and angel investor based in Seattle, WA.
 
 Last updated: 2026-09-01
 Schema version: 1.0.0

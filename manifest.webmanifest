@@ -1,7 +1,7 @@
 {
   "name": "Tejas Naladala",
   "short_name": "Tejas",
-  "description": "Hi, I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.",
+  "description": "i'm an engineer, researcher, entrepreneur, and angel investor based in Seattle, WA.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -9,7 +9,7 @@
   "theme_color": "#f4f1e8",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/favicon-reactor.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"

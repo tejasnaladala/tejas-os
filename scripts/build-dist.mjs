@@ -21,6 +21,7 @@ const publicFiles = [
   "cv.md",
   "data/profile.js",
   "favicon.svg",
+  "favicon-reactor.svg",
   "feed.xml",
   "home.js",
   "index.html",
