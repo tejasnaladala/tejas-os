@@ -10,7 +10,7 @@ export const profile = Object.freeze({
     name: "Tejas Naladala",
     givenName: "Tejas",
     familyName: "Naladala",
-    headline: "I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.",
+    headline: "Hi, I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.",
     shortBio:
       "Tejas Naladala is a 19-year-old Engineering student at the University of Washington, founder of R0 Systems, and an empirical machine-learning researcher.",
     location: "Seattle, Washington, United States",

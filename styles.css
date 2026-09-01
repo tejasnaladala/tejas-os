@@ -160,7 +160,7 @@ body.is-booting .decorative-motion-control {
   background: var(--ivory);
   opacity: 1;
   visibility: visible;
-  transition: opacity 420ms cubic-bezier(0.4, 0, 0.2, 1), visibility 420ms linear;
+  transition: opacity 300ms cubic-bezier(0.22, 1, 0.36, 1), visibility 300ms linear;
 }
 
 .boot.is-leaving {
@@ -177,13 +177,13 @@ body.is-booting .decorative-motion-control {
   opacity: 1;
   transform: translateY(-2.2vh) rotate(-10deg) scale(1.08);
   transform-origin: center;
-  transition: opacity 220ms ease, transform 280ms cubic-bezier(0.2, 0.72, 0.26, 1);
+  transition: opacity 150ms cubic-bezier(0.4, 0, 1, 1), transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .boot.is-signature-leaving .boot__signature {
   opacity: 0;
-  transform: translateY(-2.7vh) rotate(-10deg) scale(1.06);
+  transform: translateY(-3vh) rotate(-10deg) scale(1.14);
 }
 
 .boot__signature img {
@@ -192,7 +192,7 @@ body.is-booting .decorative-motion-control {
   height: 100%;
   object-fit: contain;
   background: transparent;
-  opacity: 1;
+  opacity: 0.84;
 }
 
 /* Site chrome */
@@ -2315,7 +2315,7 @@ html.decorative-motion-settled .about-story-doodle__icon {
   }
 
   .boot.is-signature-leaving .boot__signature {
-    transform: translateY(-1vh) rotate(-4deg) scale(0.99);
+    transform: translateY(-1.2vh) rotate(-4deg) scale(1.06);
   }
 
   .home-view .site-header__inner {

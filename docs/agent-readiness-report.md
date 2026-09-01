@@ -27,7 +27,7 @@ The score is an engineering assessment, not a search-ranking metric.
 | Mobile regression | Pass: 216 Chromium and WebKit scenarios |
 | Signature regression | Pass: 12 animated and reduced-motion scenarios |
 | Public bundle security review | Pass: no private files, secrets, local paths, or retired claims |
-| Build output | 58 files, 4.20 MB |
+| Build output | 58 files, 4.21 MB |
 
 ## Architecture
 
