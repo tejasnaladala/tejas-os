@@ -8,7 +8,7 @@ import { profile } from "../data/profile.js";
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = profile.canonicalUrl;
 const PERSON_ID = profile.identity.canonicalId;
-const ASSET_VERSION = "20260901.107";
+const ASSET_VERSION = "20260901.108";
 const PUBLISHED_STORY_IDS = new Set(["nespresso-jailbreak", "wifi-cantenna"]);
 const stories = archiveEntries.filter((story) => PUBLISHED_STORY_IDS.has(story.id));
 

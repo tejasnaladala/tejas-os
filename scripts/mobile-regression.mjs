@@ -243,8 +243,12 @@ async function waitForReadablePage(page, route) {
 
 async function settleImages(page) {
   await page.evaluate(async () => {
-    const images = [...document.images];
-    for (const image of images) image.loading = "eager";
+    const images = [...document.images].filter((image) => image.currentSrc || image.src);
+    for (const image of images) {
+      image.loading = "eager";
+      image.scrollIntoView({ block: "center", inline: "nearest" });
+      await new Promise((resolveFrame) => window.requestAnimationFrame(() => window.requestAnimationFrame(resolveFrame)));
+    }
 
     await Promise.race([
       Promise.allSettled(
@@ -256,7 +260,7 @@ async function settleImages(page) {
           });
         }),
       ),
-      new Promise((resolveTimeout) => window.setTimeout(resolveTimeout, 3_000)),
+      new Promise((resolveTimeout) => window.setTimeout(resolveTimeout, 6_000)),
     ]);
 
     window.scrollTo(0, 0);

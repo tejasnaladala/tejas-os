@@ -31,6 +31,11 @@ body[data-page="cv"] { --section-accent: #a83b59; }
   box-sizing: border-box;
 }
 
+img,
+video {
+  max-width: 100%;
+}
+
 html {
   min-width: 280px;
   overflow-x: clip;

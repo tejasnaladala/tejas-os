@@ -243,25 +243,55 @@ async function waitForSignatureFrame(page) {
     SIGNATURE_PATH,
     { timeout: 4_000 },
   );
-  await page.waitForFunction(
-    () => {
+  try {
+    await page.waitForFunction(
+      () => {
+        const boot = document.querySelector("#boot");
+        const image = document.querySelector("#signatureAnimation");
+        if (!boot || !(image instanceof HTMLImageElement)) return false;
+        const bootStyle = getComputedStyle(boot);
+        const imageStyle = getComputedStyle(image);
+        return (
+          bootStyle.display !== "none" &&
+          bootStyle.visibility === "visible" &&
+          Number.parseFloat(bootStyle.opacity) > 0.5 &&
+          imageStyle.display !== "none" &&
+          imageStyle.visibility === "visible" &&
+          Number.parseFloat(imageStyle.opacity) > 0.5
+        );
+      },
+      null,
+      { timeout: 1_000 },
+    );
+  } catch {
+    const state = await page.evaluate(() => {
       const boot = document.querySelector("#boot");
       const image = document.querySelector("#signatureAnimation");
-      if (!boot || !(image instanceof HTMLImageElement)) return false;
-      const bootStyle = getComputedStyle(boot);
-      const imageStyle = getComputedStyle(image);
-      return (
-        bootStyle.display !== "none" &&
-        bootStyle.visibility === "visible" &&
-        Number.parseFloat(bootStyle.opacity) > 0.5 &&
-        imageStyle.display !== "none" &&
-        imageStyle.visibility === "visible" &&
-        Number.parseFloat(imageStyle.opacity) > 0.5
-      );
-    },
-    null,
-    { timeout: 1_000 },
-  );
+      const bootStyle = boot ? getComputedStyle(boot) : null;
+      const imageStyle = image ? getComputedStyle(image) : null;
+      return {
+        bootPresent: Boolean(boot),
+        bootClass: boot?.className ?? "",
+        bootOpacity: bootStyle?.opacity ?? "missing",
+        bootVisibility: bootStyle?.visibility ?? "missing",
+        imageClass: image?.className ?? "",
+        imageComplete: image?.complete ?? false,
+        imageOpacity: imageStyle?.opacity ?? "missing",
+        imageVisibility: imageStyle?.visibility ?? "missing",
+        imageTransition: imageStyle?.transition ?? "missing",
+        imageParentClass: image?.parentElement?.className ?? "",
+        imageAnimations: image?.getAnimations().map((animation) => ({
+          currentTime: animation.currentTime,
+          playState: animation.playState,
+          timing: animation.effect?.getComputedTiming(),
+        })) ?? [],
+        styleSheets: [...document.styleSheets].map((sheet) => sheet.href || "inline"),
+        visibilityState: document.visibilityState,
+        reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      };
+    });
+    throw new Error(`signature did not become visibly rendered: ${JSON.stringify(state)}`);
+  }
 
   const geometry = await page.locator("#signatureAnimation").evaluate((image) => {
     const rect = image.getBoundingClientRect();
