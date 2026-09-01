@@ -6,8 +6,9 @@ const BASE_URL = (process.env.SIGNATURE_AUDIT_BASE_URL ?? "http://127.0.0.1:3010
 const NAVIGATION_TIMEOUT_MS = readInteger("SIGNATURE_AUDIT_TIMEOUT_MS", 12_000, 5_000, 60_000);
 const BOOT_EXIT_TIMEOUT_MS = 6_500;
 const IDENTITY_TIMEOUT_MS = 8_000;
-const SIGNATURE_PATH = "/assets/signature/tejas-signature-transparent-hq.webp";
-const HOMEPAGE_IDENTITY = "hi, i'm tejas. i'm an engineer, researcher, entrepreneur, and angel investor.";
+const SIGNATURE_PATH = "/assets/signature/tejas-signature-retina.webp";
+const SIGNATURE_DIMENSIONS = Object.freeze([1680, 936]);
+const HOMEPAGE_IDENTITY = "i'm an engineer, researcher, entrepreneur, and angel investor based in Seattle, WA.";
 
 const IOS_USER_AGENT =
   "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1";
@@ -267,15 +268,33 @@ async function waitForSignatureFrame(page) {
     return {
       rect: { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height },
       viewport: { width: window.innerWidth, height: window.innerHeight },
+      layout: { width: image.offsetWidth, height: image.offsetHeight },
+      natural: { width: image.naturalWidth, height: image.naturalHeight },
+      pixelRatio: window.devicePixelRatio,
     };
   });
   assert(geometry.rect.width > 0 && geometry.rect.height > 0, "signature animation has no rendered area");
+  assert(
+    geometry.natural.width >= geometry.layout.width * geometry.pixelRatio &&
+      geometry.natural.height >= geometry.layout.height * geometry.pixelRatio,
+    `signature asset is below native device density: ${JSON.stringify(geometry)}`,
+  );
   assert(
     geometry.rect.left >= -1 &&
       geometry.rect.top >= -1 &&
       geometry.rect.right <= geometry.viewport.width + 1 &&
       geometry.rect.bottom <= geometry.viewport.height + 1,
     `signature animation crosses the viewport: rect=${JSON.stringify(geometry.rect)}, viewport=${JSON.stringify(geometry.viewport)}`,
+  );
+}
+
+async function assertAnimatedFavicon(page) {
+  const initialHref = await page.locator('link[rel~="icon"]').getAttribute("href");
+  assert(initialHref?.startsWith("data:image/svg+xml,"), "favicon did not initialize its pixel-art frames");
+  await page.waitForFunction(
+    (previousHref) => document.querySelector('link[rel~="icon"]')?.getAttribute("href") !== previousHref,
+    initialHref,
+    { timeout: 1_200 },
   );
 }
 
@@ -361,7 +380,11 @@ async function auditAnimatedLoad(page, phase) {
   }));
   assert(new URL(asset.currentSrc).pathname === SIGNATURE_PATH, `${phase} used ${asset.currentSrc || "no signature asset"}`);
   assert(asset.complete, `${phase} signature image did not finish loading`);
-  assert(asset.dimensions[0] > 0 && asset.dimensions[1] > 0, `${phase} signature image has no decoded dimensions`);
+  assert(
+    asset.dimensions[0] === SIGNATURE_DIMENSIONS[0] && asset.dimensions[1] === SIGNATURE_DIMENSIONS[1],
+    `${phase} signature dimensions were ${asset.dimensions.join("x")}; expected ${SIGNATURE_DIMENSIONS.join("x")}`,
+  );
+  await assertAnimatedFavicon(page);
 
   await waitForBootExit(page, navigationStartedAt);
   await assertFinalIdentity(page);
