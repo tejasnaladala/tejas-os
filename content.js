@@ -102,15 +102,14 @@ export const portfolioItems = [
     category: "Plasma hardware / venture",
     summary: "Chemical-free plasma-activated-water equipment for post-harvest produce sanitation.",
     description: [
-      "R0 replaces chlorine wash chemistry with a sanitizer generated on-site from air, water, and electricity. The system combines a patent-pending plasma reactor, microbubble mass transfer, a conveyor wash line, and closed-loop dosing control.",
+      "R0 generates produce sanitizer on site from air, water, and electricity. The system combines a patent-pending plasma reactor, microbubble mass transfer, a conveyor wash line, and closed-loop dosing control.",
       "I designed and built the full machine stack: reactor and electrode geometry, a 20 kV driver, STM32 firmware, gas and water handling, mechanical assemblies, fabrication, validation, and field deployment.",
     ],
     metrics: [
-      "6-figure revenue at roughly 50% gross margin across eight paying customers",
-      "Customers include University of Wisconsin and CSIR national laboratories CFTRI and NIIST",
-      "1.2-1.5 log10 immediate microbial reduction in validation trials, rising to 2.5 by day 21",
+      "Bootstrapped to six figures in revenue",
+      "Up to 3x shelf-life extension at under $0.50 per ton in energy cost across tomato and leafy-green validation studies",
       "Three peer-reviewed papers and two patents pending",
-      "Selected for a16z Speedrun S008 and Y Combinator F26",
+      "Selected for a16z Speedrun S008",
     ],
     tags: ["Plasma physics", "High-voltage electronics", "Embedded C", "STM32", "PID control", "CAD", "Fabrication"],
     links: [
@@ -152,7 +151,7 @@ export const portfolioItems = [
     shortLabel: "NIIST",
     tone: "yellow",
     title: "CSIR-NIIST, India",
-    role: "Research Intern",
+    role: "Research Associate",
     date: "Jun 2024 - Mar 2025",
     category: "Photovoltaics / materials research",
     summary: "Solar-cell fabrication and characterization in Dr. Suraj Soman's sustainable-energy group.",
@@ -177,7 +176,7 @@ export const portfolioItems = [
     role: "Research Engineer",
     date: "May 2023 - Jun 2024",
     category: "Custom hardware / plasma systems",
-    summary: "End-to-end engineering of custom agri-food and plasma equipment for clients and research laboratories.",
+    summary: "Custom agri-food and plasma equipment for clients and research laboratories.",
     description: [
       "Scoped, designed, fabricated, validated, and delivered working machines across high-voltage power electronics, reactor and electrode architecture, venturis, controls, and mechanical design.",
       "Handled electrical, thermal, fluidic, and mechanical failures on the shop floor until each commissioned machine met its operating requirements.",
@@ -200,17 +199,17 @@ export const portfolioItems = [
     positionType: "collection",
     entries: [
       {
-        title: "MTEB Gym: label-free embedding evaluation",
+        title: "MTEB-Gym: label-free embedding evaluation",
         meta: "Research Collaborator / Jun 2026 - Present",
         summary: "Co-developed label-free embedding evaluation and its judge-reliability study.",
         facts: [
           "Co-developed MTEB-Gym, a label-free framework for ranking embedding models on datasets without human relevance annotations.",
-          "Tested judge reliability across 16 retrieval datasets and mapped the conditions that changed ranking quality.",
-          "Found task-definition mismatch to be the largest source of ranking error and added dataset-specific evaluation criteria.",
+          "Worked on bidirectional judging, validation, uncertainty estimates, and failure handling for label-free rankings.",
           "Merged nine changes covering validation, uncertainty estimates, caching, deterministic parallelism, and failure handling.",
+          "The active reliability study still needs a public result artifact.",
         ],
         links: [
-          { label: "MTEB Gym contributions", href: "https://github.com/embeddings-benchmark/MTEB-gym-v2/pulls?q=is%3Apr+author%3Atejasnaladala+is%3Amerged" },
+          { label: "MTEB-Gym contributions", href: "https://github.com/embeddings-benchmark/MTEB-gym-v2/pulls?q=is%3Apr+author%3Atejasnaladala+is%3Amerged" },
           { label: "MTEB contribution", href: "https://github.com/embeddings-benchmark/mteb/pull/4790" },
         ],
       },
@@ -279,10 +278,10 @@ export const portfolioItems = [
       {
         title: "Evolutionary optimization of VLM inference",
         meta: "Author / Jun 2026 - Jul 2026",
-        summary: "An AlphaEvolve-style search loop that rewrote a Qwen3-VL inference pipeline for CharXiv chart QA.",
+        summary: "An AlphaEvolve-style search loop over Qwen3-VL inference on CharXiv chart QA.",
         facts: [
           "Used MAP-Elites to search prompt, parsing, formatting, and inference-code variants across a behavioral archive.",
-          "Reached 73.0% held-out accuracy, 2.5x the naive baseline; formatting changes alone moved accuracy by 24-31 points.",
+          "Search reached 63.25% held-out; a separately designed per-question router reached 73.0%, compared with the 29.5% naive baseline.",
           "Sandboxed generated code at the AST boundary and retained candidate lineage so every accepted mutation remained inspectable.",
           "Used paired McNemar testing (p = 2.4e-6) to separate the measured gain from evaluation noise.",
         ],
@@ -301,15 +300,13 @@ export const portfolioItems = [
       {
         title: "Parchment Labs",
         meta: "Project Lead / Dec 2025 - Mar 2026",
-        summary: "A nine-stage literature-to-experiment system with replayable computational studies.",
+        summary: "A nine-stage prototype for moving from literature review to an experiment specification.",
         facts: [
           "Ingested papers into a provenance-aware knowledge graph, scored candidate gaps, and retained citations and intermediate reasoning across stages.",
-          "Used adversarial review to reject weak hypotheses before experiment design and compute allocation.",
-          "Orchestrated local 32B inference, experiment generation, GPU execution, checkpointing, and manuscript/figure synthesis through replayable run state.",
-          "Produced the connectome benchmark as its first full study; that downstream benchmark was later audited and its original result withdrawn.",
+          "Used a three-round review stage to reject weak hypotheses before experiment design.",
+          "Its first complete pipeline run generated the original connectome pilot, which was later audited and withdrawn.",
         ],
         links: [
-          { label: "Parchment Labs", href: "https://parchmentlabs.com/" },
           { label: "Connectome benchmark", href: "https://github.com/tejasnaladala/connectome-bpu" },
         ],
       },
@@ -372,7 +369,7 @@ export const portfolioItems = [
           "Ran the analysis alongside 4 a.m. CTD casts and chlorophyll, oxygen, RAS, PPS, and microbial-DNA sampling under real field constraints.",
         ],
         links: [
-          { label: "OOI profile", href: "https://interactiveoceans.washington.edu/07/2026/tejas-naladala/naladala_tejas_v26/" },
+          { label: "VISIONS '26 overview", href: "https://interactiveoceans.washington.edu/about-visions-26/" },
           { label: "VISIONS '26 team", href: "https://interactiveoceans.washington.edu/people-visions26/" },
         ],
       },
@@ -393,7 +390,7 @@ export const portfolioItems = [
         title: "Mimic",
         meta: "Robotics / Mar 2026",
         summary: "Browser-to-robot imitation learning: WebRTC teleoperation into a MuJoCo Franka arm, demo recording, ACT or diffusion-policy training, and ONNX export.",
-        facts: ["60 FPS server-side simulation streaming", "103 tests", "LeRobot v3 dataset layout"],
+        facts: ["Configured 60 Hz control loop", "108 tests", "LeRobot v3 dataset layout"],
         links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/mimic" }],
       },
       {
@@ -421,62 +418,6 @@ export const portfolioItems = [
         summary: "A retrospective verification prototype for systematic strategies with transaction costs, walk-forward splits, multiple-comparison correction, and structured rejection logs.",
         facts: ["Clean clones currently fall back to synthetic data", "Real-data results are omitted until an immutable input manifest is published"],
         links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/delphi-quant" }],
-      },
-      {
-        title: "OpenAI Parameter Golf",
-        meta: "Experiment tooling / Apr 2026",
-        summary: "A dry-run-verified sweep-and-select harness for the 10-minute, 16 MB track, plus review of BPB-accounting defects in upstream submissions.",
-        facts: ["31-candidate experiment design; GPU sweep not run", "Deterministic selection and budget accounting", "Review comments on PRs #1632 and #1672; issue #1604"],
-        links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/parameter-golf" }],
-      },
-      {
-        title: "AI Agent City",
-        meta: "Simulation / 2026",
-        summary: "A fixed-timestep civilization simulator where persistent agents choose work, trade, eat, partner, and form emergent population-level behavior.",
-        facts: ["About 1,700 ticks/second at 50 agents", "Immutable ECS state", "Optional Three.js voxel frontend"],
-        links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/ai-agent-city" }],
-      },
-      {
-        title: "Claude Nexus",
-        meta: "Agent coordination / 2026",
-        summary: "A coordination layer for coding-agent instances with a WebSocket relay, shared memory, task routing, peer messaging, and an MCP interface.",
-        facts: ["Six TypeScript packages", "32 tests", "Dogfooded across two developers and two networks"],
-        links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/claude-nexus" }],
-      },
-      {
-        title: "Jumpstart",
-        meta: "Founder matchmaking / May 2026",
-        summary: "An unofficial pre-event matchmaker for YC Startup School 2026, with nine agents and deterministic fallbacks behind one shared interface.",
-        links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/jumpstart" }],
-      },
-      {
-        title: "icordion",
-        meta: "Music + sensors / 2026",
-        summary: "Turns an iPhone accelerometer into accordion bellows, with motion-driven Web Audio synthesis and musette tuning.",
-        links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/icordion" }],
-      },
-      {
-        title: "Delulu Is Not The Solulu",
-        meta: "Local-first ML / 2026",
-        summary: "Private, on-device relationship-pattern analysis from chat screenshots through local Ollama models. No cloud path.",
-        links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/deluluisnotthesolulu" }],
-      },
-      {
-        title: "Atticus",
-        meta: "Document intelligence / 2026",
-        summary: "An MVP that extracts commercial-insurance PDFs, structures coverage, and flags gaps in roughly 50-page policies in under 60 seconds.",
-      },
-      {
-        title: "Cerulean Robotics",
-        meta: "Underwater robotics / Nov 2025 - Jan 2026",
-        summary: "Lake-health robot prototypes built around Pixhawk, ArduSub, custom power electronics, and pressure-rated housings.",
-        facts: ["$2,000 Buerk prototype grant", "Sub-100 ms video target", "100 m-rated housing work"],
-      },
-      {
-        title: "tejas-os",
-        meta: "Portfolio system / 2026",
-        summary: "The open-source personal desktop that holds the work a one-page resume cannot.",
-        links: [{ label: "GitHub", href: "https://github.com/tejasnaladala/tejas-os" }],
       },
     ],
   },
@@ -550,7 +491,7 @@ export const workJournal = [
     dates: "Jun 2024 - Mar 2025",
     description: [
       "Researched dye-sensitized and perovskite photovoltaics within CSIR-NIIST's indoor-light energy-harvesting program, whose dye-sensitized-cell work later reached a 40% indoor-light conversion-efficiency record.",
-      "Fabricated solar cells end to end using FTO substrates, TiO₂ photoanodes, thermal processing, ruthenium sensitizers, electrolytes, counter electrodes, and sealed device assemblies.",
+      "Fabricated complete solar-cell devices using FTO substrates, TiO₂ photoanodes, thermal processing, ruthenium sensitizers, electrolytes, counter electrodes, and sealed assemblies.",
       "Ran the full optoelectronic and structural characterization stack: J–V curves, IPCE, photoinduced absorption spectroscopy, and XRD with Scherrer crystallite-size analysis.",
       "Connected spectral response, charge-recombination behavior, crystallite structure, and fabrication parameters to device-level efficiency and failure modes.",
       "Designed controlled experiments across photoanode architecture and processing conditions, then analyzed batch variation and reproducibility across fabricated devices.",
@@ -575,7 +516,7 @@ export const researchJournal = {
   studies: [
     {
       groupId: "research-programs",
-      entryTitle: "MTEB Gym: label-free embedding evaluation",
+      entryTitle: "MTEB-Gym: label-free embedding evaluation",
       field: "Embedding evaluation",
       question: "When can label-free embedding evaluation produce a trustworthy model ranking?",
       dates: "Jun 2026 - Present",
@@ -668,7 +609,7 @@ export const researchJournal = {
       question: "Can methane-bubble flux be estimated while the experiment is 2,900 meters underwater?",
       kind: "project",
       dates: "Aug 2026 - Present",
-      website: "https://interactiveoceans.washington.edu/07/2026/tejas-naladala/naladala_tejas_v26/",
+      website: "https://interactiveoceans.washington.edu/about-visions-26/",
       description: [
         "Building a field-to-analysis system for methane-bubble flux estimation from ROV video, sonar, hydrophone, CTD, and navigation data.",
         "The provenance layer keeps shipboard sources read-only and traces every derived artifact to source paths, hashes, and code versions.",
@@ -689,12 +630,12 @@ export const researchJournal = {
       attribution: "Advised by Professor Zhuang Liu · Princeton University",
       dates: "Jun 2026 - Jul 2026",
       description: [
-        "An AlphaEvolve-style search loop that rewrote a Qwen3-VL inference pipeline for CharXiv chart QA.",
+        "An AlphaEvolve-style search loop improved the best single-prompt Qwen3-VL configuration to 63.25% held-out accuracy on CharXiv chart QA.",
         "MAP-Elites searched prompt, parsing, formatting, and inference-code variants across a behavioral archive.",
-        "The final pipeline reached 73.0% held-out accuracy, 2.5x the naive baseline; formatting changes alone moved accuracy by 24-31 points.",
-        "Paired McNemar testing gave p = 2.4e-6, and every accepted mutation retained inspectable lineage.",
+        "A separately designed per-question router reached 73.0%, compared with the 29.5% naive baseline.",
+        "The paired comparison gave p = 2.4e-6, and every accepted mutation retained inspectable lineage.",
       ],
-      note: "An AlphaEvolve-style loop reached 73.0% held-out chart-QA accuracy, 2.5x the naive baseline.",
+      note: "Search reached 63.25% held-out; a separately designed per-question router reached 73.0%.",
     },
     {
       groupId: "technical-reports",
@@ -717,7 +658,6 @@ export const researchJournal = {
       displayTitle: "Parchment Labs",
       attribution: "Literature-to-experiment research automation",
       dates: "Dec 2025 - Mar 2026",
-      website: "https://parchmentlabs.com/",
       description: [
         "A nine-stage prototype for moving from literature review to an experiment specification.",
         "It ingested papers into a provenance-aware graph, scored candidate gaps, and retained citations and intermediate reasoning across stages.",
@@ -783,7 +723,7 @@ export const aboutTabs = {
       "I'm Tejas, a 19-year-old Engineering student at the University of Washington.",
       "I founded R0 Systems and run empirical ML studies across embedding evaluation, medical imaging, agents, and reinforcement learning.",
     ],
-    capabilities: ["AI/ML evaluation", "Plasma engineering", "Embedded systems", "Research automation", "Full-stack prototypes", "Hardware fabrication"],
+    capabilities: ["AI/ML evaluation", "Plasma engineering", "Embedded systems", "Research automation", "Software prototypes", "Hardware fabrication"],
   },
   offclock: {
     label: "Off clock",
@@ -804,7 +744,7 @@ export const aboutTabs = {
     items: [
       ["Research", "Three peer-reviewed papers, 57 citations, h-index 3, plus current work in MTEB, medical imaging, RL, and connectomes."],
       ["Building", "R0 Systems and a public trail of robotics, agents, evaluation tools, and ML experiments on GitHub."],
-      ["Programs", "a16z Speedrun S008, Y Combinator F26 and Startup School 2026, Founders Inc, Z Fellows, and the UW Lavin Fellowship."],
+      ["Programs", "a16z Speedrun S008, Startup School 2026, Founders Inc pitch day, Z Fellows, and the UW Lavin Entrepreneurship Program."],
       ["Recognition", "CMU Venture Challenge runner-up; UW Science & Technology Showcase Grand Prize and Best Communication; Red Bull Basement runner-up."],
       ["Fieldwork", "VISIONS '26 student researcher aboard R/V Roger Revelle with ROV Jason."],
     ],
@@ -1023,7 +963,7 @@ export const cvProfile = {
   summary: "Work, research, publications, technical reports, open-source systems, awards, and engineering tools.",
   highlights: [
     "R0 Systems, OpenTrade, SEAL, CSIR-NIIST, and Ingenium Naturae",
-    "MTEB Gym, RSNA knee imaging, agentbreed, maze RL, connectomes, and VISIONS '26",
+    "MTEB-Gym, RSNA knee imaging, agentbreed, maze RL, connectomes, and VISIONS '26",
     "Three peer-reviewed publications and two technical reports",
     "Selected open-source systems, awards, programs, patents, and skills",
   ],
@@ -1230,5 +1170,5 @@ export const contactLinks = {
   pitch: "mailto:naladala@uw.edu?subject=Angel%20pitch%20-%20%5BCompany%5D",
   foundersInc: "https://f.inc/",
   speedrun: "https://speedrun.a16z.com/",
-  resume: "./assets/resume.pdf?v=20260901.11",
+  resume: "./assets/resume.pdf?v=20260901.13",
 };
