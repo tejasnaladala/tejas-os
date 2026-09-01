@@ -1,4 +1,4 @@
-const base = (process.env.AUDIT_BASE_URL ?? "http://127.0.0.1:3011").replace(/\/$/, "");
+const base = (process.env.AUDIT_BASE_URL ?? "http://127.0.0.1:3010").replace(/\/$/, "");
 const errors = [];
 
 function assert(condition, message) {
