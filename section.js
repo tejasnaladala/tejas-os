@@ -7,7 +7,7 @@ import {
   cvProfile,
   researchJournal,
   workJournal,
-} from "/content.js?v=20260901.10";
+} from "/content.js?v=20260901.11";
 
 const page = document.body.dataset.page;
 const content = document.querySelector("#pageContent");
