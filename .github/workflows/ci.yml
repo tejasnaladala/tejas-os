@@ -21,18 +21,16 @@ jobs:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 22
-      - name: Check copy and JavaScript
-        run: npm run check
-      - name: Smoke-test static routes
+      - name: Build and validate
+        run: npm run build
+      - name: Audit the public bundle
         shell: bash
         run: |
-          node server.mjs > /tmp/tejas-os.log 2>&1 &
+          STATIC_ROOT=dist node server.mjs > /tmp/tejas-os.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           for attempt in {1..20}; do
             curl --silent --fail http://127.0.0.1:3010/ >/dev/null && break
             sleep 0.25
           done
-          for route in / /about /work /research /investing /blog /cv /assets/resume.pdf; do
-            curl --silent --fail "http://127.0.0.1:3010${route}" >/dev/null
-          done
+          npm run audit:http

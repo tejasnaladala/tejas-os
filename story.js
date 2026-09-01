@@ -1,4 +1,4 @@
-import { archiveEntries } from "/content.js?v=20260901.13";
+import { archiveEntries } from "/content.js?v=20260901.101";
 
 const escapeHtml = (value = "") =>
   String(value)
@@ -112,7 +112,7 @@ if (!story) {
 
   root.innerHTML = `<article class="story-entry${story.blocks?.length ? " story-entry--longform" : ""}">
     <header class="story-entry__header">
-      <p class="story-entry__brand" aria-label="Unsupervised"><span class="story-entry__brand-un" aria-hidden="true">"Un"</span><span class="story-entry__brand-supervised" aria-hidden="true">Supervised</span></p>
+      <p class="story-entry__brand"><span class="sr-only">Unsupervised</span><span class="story-entry__brand-un" aria-hidden="true">"Un"</span><span class="story-entry__brand-supervised" aria-hidden="true">Supervised</span></p>
       <h1>${escapeHtml(story.title)}</h1>
       <p class="story-entry__teaser">${escapeHtml(story.teaser)}</p>
       ${story.readingTime ? `<p class="story-entry__reading-time">${escapeHtml(story.readingTime)}</p>` : ""}

@@ -1,5 +1,5 @@
 const boot = document.querySelector("#boot");
-const signatureVideo = document.querySelector("#signatureVideo");
+const signatureAnimation = document.querySelector("#signatureAnimation");
 const site = document.querySelector("#site");
 const menuButton = document.querySelector("#menuButton");
 const mobileNav = document.querySelector("#mobileNav");
@@ -197,8 +197,7 @@ function renderNameMark() {
 function setupHeroTypewriter() {
   const element = document.querySelector(".hero-disciplines");
   const text = element.innerText.trim();
-  element.setAttribute("aria-label", text);
-  element.innerHTML = `<span class="typewriter-frame" aria-hidden="true"><span class="typewriter-reserve">${escapeHtml(text)}</span><span class="typewriter-output"><span></span><i class="typewriter-caret"></i></span></span>`;
+  element.innerHTML = `<span class="sr-only">${escapeHtml(text)}</span><span class="typewriter-frame" aria-hidden="true"><span class="typewriter-reserve">${escapeHtml(text)}</span><span class="typewriter-output"><span></span><i class="typewriter-caret"></i></span></span>`;
   heroTypewriter = { element, output: element.querySelector(".typewriter-output span"), started: false, text };
 }
 
@@ -238,8 +237,8 @@ function startHeroTypewriter() {
       return;
     }
 
-    const cadence = character === "\n" ? 190 : character === " " ? 21 : 36 + (characterIndex % 4) * 4;
-    window.setTimeout(typeNextCharacter, cadence + (/[,.]/.test(character) ? 135 : 0));
+    const cadence = character === "\n" ? 170 : character === " " ? 18 : 42 + (characterIndex % 3) * 5;
+    window.setTimeout(typeNextCharacter, cadence + (/[,.]/.test(character) ? 130 : 0));
   };
 
   typeNextCharacter();
@@ -299,8 +298,6 @@ function finishBoot() {
   if (bootFinished) return;
   bootFinished = true;
   window.clearTimeout(bootFallback);
-  window.sessionStorage.setItem("tejas-intro-seen", "1");
-  signatureVideo.pause();
   boot.classList.add("is-signature-leaving");
 
   window.setTimeout(() => {
@@ -314,32 +311,28 @@ function finishBoot() {
 }
 
 function startBoot() {
-  if (window.sessionStorage.getItem("tejas-intro-seen") === "1") {
-    bootFinished = true;
-    boot.remove();
-    revealHome();
-    showTypedIntro();
-    return;
-  }
-
   if (prefersReducedMotion.matches) {
     finishBoot();
     return;
   }
 
-  signatureVideo.addEventListener("ended", finishBoot, { once: true });
-  const startDelay = 200;
-  const playbackRate = 0.7;
-  const duration = Number.isFinite(signatureVideo.duration) && signatureVideo.duration > 0 ? signatureVideo.duration : 2.84;
+  const startDelay = 40;
 
   window.setTimeout(() => {
     if (bootFinished) return;
-    signatureVideo.defaultPlaybackRate = playbackRate;
-    signatureVideo.playbackRate = playbackRate;
-    signatureVideo.play().catch(() => window.setTimeout(finishBoot, 220));
+    const source = signatureAnimation.dataset.src;
+    signatureAnimation.addEventListener(
+      "load",
+      () => {
+        window.clearTimeout(bootFallback);
+        bootFallback = window.setTimeout(finishBoot, 2800);
+      },
+      { once: true },
+    );
+    signatureAnimation.addEventListener("error", finishBoot, { once: true });
+    signatureAnimation.src = source;
+    bootFallback = window.setTimeout(finishBoot, 4600);
   }, startDelay);
-
-  bootFallback = window.setTimeout(finishBoot, startDelay + (duration / playbackRate) * 1000 + 700);
 }
 
 renderNameMark();

@@ -1,10 +1,16 @@
 {
-  "name": "tejas-os",
-  "version": "1.0.0",
+  "name": "tejas-local-revamp",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node scripts/check-copy.mjs && node --check content.js && node --check section.js && node --check story.js && node --check music.js",
+    "generate": "node scripts/generate-agent-layer.mjs",
+    "build": "npm run check && node scripts/build-dist.mjs",
+    "check:agent": "node scripts/check-agent-layer.mjs && node scripts/agent-eval.mjs",
+    "audit:http": "node scripts/audit-http.mjs",
+    "audit:mobile": "node scripts/mobile-regression.mjs",
+    "audit:signature": "node scripts/signature-regression.mjs",
+    "check": "npm run generate && node scripts/check-copy.mjs && node --check content.js && node --check data/profile.js && node --check section.js && node --check story.js && node --check music.js && npm run check:agent",
     "dev": "node server.mjs",
     "start": "node server.mjs"
   }

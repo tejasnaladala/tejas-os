@@ -1,0 +1,31 @@
+# Tejas Naladala
+
+> Engineering builder, founder of R0 Systems, and empirical machine-learning researcher.
+
+Last updated: 2026-09-01
+Canonical identity: https://tejasnaladala.com/#person
+
+## Primary record
+
+- [Profile JSON](https://tejasnaladala.com/profile.json): Canonical entities, claims, evidence, skills, dates, status, and provenance.
+- [Profile Markdown](https://tejasnaladala.com/profile.md): Concise professional overview.
+- [Complete CV](https://tejasnaladala.com/cv.md): Full text record with a PDF link.
+
+## Professional record
+
+- [Work](https://tejasnaladala.com/work.md): Employment, roles, dates, and contributions.
+- [Research](https://tejasnaladala.com/research.md): Studies, current boundaries, technical notes, publications, and public systems.
+- [Projects](https://tejasnaladala.com/projects.md): Public software systems.
+- [Publications](https://tejasnaladala.com/publications.md): Peer-reviewed papers and citation snapshot.
+
+## Personal writing
+
+- [About](https://tejasnaladala.com/about.md): Personal narrative.
+- [Unsupervised](https://tejasnaladala.com/blog.md): Published stories and work in progress.
+
+## Contact
+
+- [Email Tejas](mailto:naladala@uw.edu?subject=Hello%20Tejas)
+- [GitHub](https://github.com/tejasnaladala)
+- [LinkedIn](https://www.linkedin.com/in/tejasnaladala)
+- [Google Scholar](https://scholar.google.com/citations?user=7901XFQAAAAJ)

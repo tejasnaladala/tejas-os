@@ -1,37 +1,36 @@
-# tejas-os
+# tejasnaladala.com
 
-Source for [tejasnaladala.com](https://tejasnaladala.com).
+Static source for [tejasnaladala.com](https://tejasnaladala.com): a personal site with separate About, Work, Research, Investing, and Blog views.
 
-The site is static HTML, CSS, and JavaScript deployed on Vercel. Work and research records live in `content.js`; `section.js` renders the long-form pages. The blog keeps its narrative structures in the same content module.
+## Local development
 
-## Routes
-
-- `/about` - personal background and photographs
-- `/work` - five roles across machine learning, research, and machine building
-- `/research` - studies, projects, technical notes, papers, and open systems
-- `/investing` - angel-investing focus and 20-point rubric
-- `/blog` - "Un"Supervised stories
-- `/cv` - embedded and downloadable CV
-
-## Local preview
-
-```bash
-npm run check
+```powershell
 npm run dev
 ```
 
-The preview runs at `http://127.0.0.1:3010` by default. Set `PORT` to use another port.
+The local server defaults to `http://127.0.0.1:3000`. Set `PORT` to use another port.
 
-`npm run check` parses every JavaScript entry point and rejects retired facts and stock professional-copy phrases before deployment.
+## Build and verification
+
+```powershell
+npm run build
+npm run audit:http
+npm run audit:mobile
+npx --yes --package=playwright node scripts/signature-regression.mjs
+```
+
+`npm run build` regenerates the machine-readable layer, validates the professional record and public copy, runs the retrieval evaluation, and creates an allowlisted `dist/` directory. Vercel publishes only `dist/`; source files, reports, screenshots, temporary files, and local configuration stay outside the deployment.
+
+## Content model
+
+- `data/profile.js` is the canonical professional record.
+- `content.js` contains personal writing, investing copy, and blog articles.
+- `scripts/generate-agent-layer.mjs` produces static HTML fallbacks, Markdown pages, JSON, JSON-LD, `llms.txt`, the sitemap, the Atom feed, and the web manifest.
+- `scripts/check-agent-layer.mjs` validates graph references, discovery metadata, Markdown, JSON-LD, and deterministic generation.
+- `scripts/build-dist.mjs` assembles the public release from an explicit allowlist.
+
+The visual pages and machine-readable files are generated from the same facts. Public machine endpoints are documented in [docs/agent-accessibility.md](docs/agent-accessibility.md).
 
 ## Deployment
 
-The Vercel configuration serves the repository root directly. Production deploys can be created with:
-
-```bash
-vercel --prod
-```
-
-## License
-
-MIT. See [LICENSE](./LICENSE).
+The repository is linked to Vercel. Production builds use `npm run build` and publish `dist/` according to `vercel.json`.

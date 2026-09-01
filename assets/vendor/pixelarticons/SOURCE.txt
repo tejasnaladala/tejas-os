@@ -1,6 +1,0 @@
-Pixelarticons 2.4.1
-Copyright (c) 2019 Gerrit Halfmann
-Source: https://github.com/halfmage/pixelarticons
-License: MIT (see LICENSE.txt)
-
-The selected SVGs are vendored locally and animated by the site's CSS.

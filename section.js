@@ -1,13 +1,17 @@
 import {
   aboutNarrative,
-  aboutTabs,
   angelProfile,
   archiveEntries,
+} from "/content.js?v=20260901.101";
+import {
+  aboutHello,
   contactLinks,
   cvProfile,
   researchJournal,
   workJournal,
-} from "/content.js?v=20260901.13";
+} from "/data/profile.js?v=20260901.101";
+
+const aboutTabs = { hello: aboutHello };
 
 const page = document.body.dataset.page;
 const content = document.querySelector("#pageContent");
@@ -473,21 +477,21 @@ function renderEditorialLinks(links = [], modifier = "") {
 const technicalNoteDocuments = {
   "Evolutionary optimization of VLM inference": {
     href: "/assets/research/alphaevolve-charxiv-note.pdf",
-    preview: "/assets/research/alphaevolve-charxiv-first-page.png",
+    preview: "/assets/research/alphaevolve-charxiv-first-page.webp",
     alt: "First page of the AlphaEvolve-style CharXiv technical note",
     pages: 8,
     orientation: "portrait",
-    width: 1275,
-    height: 1650,
+    width: 700,
+    height: 906,
   },
   "Dense Qwen vs MoE GLM serving": {
     href: "/assets/research/qwen-glm-serving-benchmark.pdf",
-    preview: "/assets/research/qwen-glm-serving-first-page.png",
+    preview: "/assets/research/qwen-glm-serving-first-page.webp",
     alt: "First page of the Qwen3.5-9B and GLM-4.7-Flash serving benchmark",
     pages: 15,
     orientation: "landscape",
-    width: 1500,
-    height: 844,
+    width: 700,
+    height: 394,
   },
 };
 
@@ -503,19 +507,20 @@ function renderTechnicalNoteDocument(document) {
   </a>`;
 }
 
-function renderRecordRows(records, variant = "") {
+function renderRecordRows(records, variant = "", headingLevel = 2) {
   const variantClass = variant ? ` work-resume__records--${escapeHtml(variant)}` : "";
+  const headingTag = headingLevel === 3 ? "h3" : "h2";
   return `<div class="work-resume__records${variantClass}">
     ${records
       .map(
-        ({ tone, title, context, organization, website, dates, description, document }) => `
+        ({ tone, title, context, organization, website, dates, dateStart, dateEnd, dateStartLabel, dateEndLabel, description, document }) => `
           <section class="work-record work-record--${escapeHtml(tone)}">
             <header class="work-record__header">
-              <h2>${website ? `<a href="${escapeHtml(website)}" target="_blank" rel="noreferrer">${escapeHtml(organization)}</a>` : escapeHtml(organization)}</h2>
+              <${headingTag}>${website ? `<a href="${escapeHtml(website)}" target="_blank" rel="noreferrer">${escapeHtml(organization)}</a>` : escapeHtml(organization)}</${headingTag}>
               <p class="work-record__role">${escapeHtml(title)}</p>
               ${context ? `<p class="work-record__context">${escapeHtml(context)}</p>` : ""}
               <p class="work-record__dates">
-                <time>${escapeHtml(dates)}</time>
+                ${dateStart ? `<time datetime="${escapeHtml(dateStart)}">${escapeHtml(dateStartLabel)}</time><span aria-hidden="true"> - </span><time${dateEnd ? ` datetime="${escapeHtml(dateEnd)}"` : ""}>${escapeHtml(dateEndLabel)}</time>` : `<time>${escapeHtml(dates)}</time>`}
               </p>
             </header>
             ${
@@ -550,18 +555,22 @@ function renderResearch() {
   const publications = researchJournal.publications ?? [];
   const systems = researchJournal.systems ?? [];
   const tones = ["blue", "red", "green", "yellow", "purple", "black"];
-  const makeStudyRecord = ({ entryTitle, field, question, dates, website, description }, index) => {
+  const makeStudyRecord = ({ entryTitle, field, question, dates, dateStart, dateEnd, dateStartLabel, dateEndLabel, website, description }, index) => {
     const organization = field === "Ocean field science" ? "Ocean CV for methane-bubble flux estimation" : entryTitle;
     return {
       tone: tones[index % tones.length],
       organization,
       title: question,
       dates,
+      dateStart,
+      dateEnd,
+      dateStartLabel,
+      dateEndLabel,
       website: website ? normalizeHref(website) : "",
       description,
     };
   };
-  const makeReportRecord = ({ entryTitle, displayTitle, attribution, dates, website, description }, index) => {
+  const makeReportRecord = ({ entryTitle, displayTitle, attribution, dates, dateStart, dateEnd, dateStartLabel, dateEndLabel, website, description }, index) => {
     const document = technicalNoteDocuments[entryTitle];
     return {
       tone: tones[index % tones.length],
@@ -569,6 +578,10 @@ function renderResearch() {
       title: attribution,
       context: "",
       dates,
+      dateStart,
+      dateEnd,
+      dateStartLabel,
+      dateEndLabel,
       website: document?.href ?? (website ? normalizeHref(website) : ""),
       description,
       document,
@@ -600,21 +613,21 @@ function renderResearch() {
         <header class="research-resume__section-heading">
           <h2 id="researchStudies">Research</h2>
         </header>
-        ${renderRecordRows(researchProjects)}
+        ${renderRecordRows(researchProjects, "", 3)}
       </section>
 
       <section class="research-resume__group research-resume__group--projects" aria-labelledby="researchProjects">
         <header class="research-resume__section-heading">
           <h2 id="researchProjects">Projects</h2>
         </header>
-        ${renderRecordRows(systemProjects, "projects")}
+        ${renderRecordRows(systemProjects, "projects", 3)}
       </section>
 
       <section class="research-resume__group research-resume__group--notes" aria-labelledby="technicalNotes">
         <header class="research-resume__section-heading">
           <h2 id="technicalNotes">Technical notes</h2>
         </header>
-        ${renderRecordRows(technicalNotes, "notes")}
+        ${renderRecordRows(technicalNotes, "notes", 3)}
       </section>
 
       <section class="research-record research-resume__group research-resume__group--published" aria-labelledby="publishedRecord">
@@ -725,8 +738,8 @@ function renderInvesting() {
             <p>${escapeHtml(angelProfile.referral)}</p>
           </div>
           <div class="investing-referral__logos" aria-label="Referral programs">
-            <a class="investing-partner" href="${escapeHtml(contactLinks.foundersInc)}" target="_blank" rel="noopener noreferrer"><span class="investing-partner__mark"><img src="/assets/partners/founders-inc.png" alt="" /></span><span>Founders, Inc.</span></a>
-            <a class="investing-partner" href="${escapeHtml(contactLinks.speedrun)}" target="_blank" rel="noopener noreferrer"><span class="investing-partner__mark investing-partner__mark--speedrun"><img src="/assets/partners/a16z-speedrun.png" alt="" /></span><span>a16z speedrun</span></a>
+            <a class="investing-partner" href="${escapeHtml(contactLinks.foundersInc)}" target="_blank" rel="noopener noreferrer"><span class="investing-partner__mark"><img src="/assets/partners/founders-inc.png" alt="" width="180" height="180" decoding="async" /></span><span>Founders, Inc.</span></a>
+            <a class="investing-partner" href="${escapeHtml(contactLinks.speedrun)}" target="_blank" rel="noopener noreferrer"><span class="investing-partner__mark investing-partner__mark--speedrun"><img src="/assets/partners/a16z-speedrun.png" alt="" width="180" height="180" decoding="async" /></span><span>a16z speedrun</span></a>
           </div>
           <a class="button-link" href="${escapeHtml(contactLinks.pitch)}">Send the company<span aria-hidden="true">&#8599;</span></a>
         </div>
@@ -775,7 +788,6 @@ function renderStories() {
 
   content.innerHTML = `<section class="story-tiles story-tiles--four" aria-label="Unsupervised stories">
     ${archiveEntries
-      .filter((story) => story.id !== "elevator-debug")
       .map(
         (story) => `<a class="story-tile" href="/blog/${escapeHtml(story.id)}">
           <div class="story-tile__visual">${renderStoryTileArt(story.id)}</div>

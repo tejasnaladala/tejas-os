@@ -1,0 +1,1781 @@
+{
+  "schemaVersion": "1.0.0",
+  "lastUpdated": "2026-09-01",
+  "canonicalUrl": "https://tejasnaladala.com",
+  "identity": {
+    "id": "person:tejas-naladala",
+    "canonicalId": "https://tejasnaladala.com/#person",
+    "name": "Tejas Naladala",
+    "givenName": "Tejas",
+    "familyName": "Naladala",
+    "headline": "I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.",
+    "shortBio": "Tejas Naladala is a 19-year-old Engineering student at the University of Washington, founder of R0 Systems, and an empirical machine-learning researcher.",
+    "location": "Seattle, Washington, United States",
+    "image": "https://tejasnaladala.com/assets/gallery/tejas.webp",
+    "publicEmail": "naladala@uw.edu",
+    "contactUrl": "mailto:naladala@uw.edu?subject=Hello%20Tejas",
+    "externalProfiles": {
+      "website": "https://tejasnaladala.com",
+      "github": "https://github.com/tejasnaladala",
+      "linkedin": "https://www.linkedin.com/in/tejasnaladala",
+      "googleScholar": "https://scholar.google.com/citations?user=7901XFQAAAAJ"
+    },
+    "currentActivities": [
+      "experience:r0-founder",
+      "education:uw-engineering",
+      "research:mteb-gym",
+      "research:rsna-knee",
+      "research:agentbreed",
+      "research:connectome-v2",
+      "research:ocean-cv"
+    ],
+    "currentFocus": [
+      "plasma-activated-water machines",
+      "machine-learning evaluation",
+      "agent behavior and reproducibility",
+      "medical imaging",
+      "ocean computer vision",
+      "embedded sensing"
+    ],
+    "professionalInterests": [
+      "machine-learning engineering",
+      "AI evaluation research",
+      "AI safety and alignment evaluation",
+      "embedded systems",
+      "robotics",
+      "hardware product development",
+      "technical founding"
+    ]
+  },
+  "contact": {
+    "email": "mailto:naladala@uw.edu?subject=Hello%20Tejas",
+    "pitch": "mailto:naladala@uw.edu?subject=Angel%20pitch%20-%20%5BCompany%5D",
+    "resume": "https://tejasnaladala.com/assets/resume.pdf?v=20260901.15",
+    "foundersInc": "https://f.inc/",
+    "speedrun": "https://speedrun.a16z.com/"
+  },
+  "organizations": [
+    {
+      "id": "org:r0-systems",
+      "name": "R0 Systems",
+      "aliases": [],
+      "url": "https://fuckchlorine.com/",
+      "kind": "company"
+    },
+    {
+      "id": "org:opentrade",
+      "name": "OpenTrade",
+      "aliases": [
+        "OpenTrade (YC S26)"
+      ],
+      "url": "https://opentrade.live/",
+      "kind": "company"
+    },
+    {
+      "id": "org:uw",
+      "name": "University of Washington",
+      "aliases": [
+        "UW",
+        "UW Seattle"
+      ],
+      "url": "https://www.washington.edu/",
+      "kind": "educational_organization"
+    },
+    {
+      "id": "org:seal",
+      "name": "Sensors, Energy, and Automation Laboratory",
+      "aliases": [
+        "SEAL",
+        "SEAL Lab"
+      ],
+      "url": "https://www.uwseal.org/",
+      "parentOrganizationId": "org:uw",
+      "kind": "research_lab"
+    },
+    {
+      "id": "org:csir-niist",
+      "name": "CSIR-National Institute for Interdisciplinary Science and Technology",
+      "aliases": [
+        "CSIR-NIIST",
+        "NIIST"
+      ],
+      "url": "https://www.niist.res.in/",
+      "kind": "research_institute"
+    },
+    {
+      "id": "org:ingenium-naturae",
+      "name": "Ingenium Naturae",
+      "aliases": [
+        "Ingenium",
+        "Ingenium Technologies"
+      ],
+      "url": null,
+      "kind": "company",
+      "normalizationNote": "Ingenium Naturae is the current professional-history label. Ingenium Technologies appears in some publication-era affiliation records."
+    },
+    {
+      "id": "org:mteb",
+      "name": "Massive Text Embedding Benchmark",
+      "aliases": [
+        "MTEB"
+      ],
+      "url": "https://github.com/embeddings-benchmark/mteb",
+      "kind": "open_source_project"
+    },
+    {
+      "id": "org:rsna",
+      "name": "Radiological Society of North America",
+      "aliases": [
+        "RSNA"
+      ],
+      "url": "https://www.rsna.org/",
+      "kind": "professional_organization"
+    },
+    {
+      "id": "org:ooi",
+      "name": "Ocean Observatories Initiative",
+      "aliases": [
+        "NSF OOI",
+        "OOI"
+      ],
+      "url": "https://oceanobservatories.org/",
+      "kind": "research_program"
+    },
+    {
+      "id": "org:whoi",
+      "name": "Woods Hole Oceanographic Institution",
+      "aliases": [
+        "WHOI"
+      ],
+      "url": "https://www.whoi.edu/",
+      "kind": "research_institution"
+    },
+    {
+      "id": "org:uw-apl",
+      "name": "University of Washington Applied Physics Laboratory",
+      "aliases": [
+        "UW APL",
+        "APL-UW"
+      ],
+      "url": "https://www.apl.washington.edu/",
+      "parentOrganizationId": "org:uw",
+      "kind": "research_institution"
+    },
+    {
+      "id": "org:princeton",
+      "name": "Princeton University",
+      "aliases": [
+        "Princeton"
+      ],
+      "url": "https://www.princeton.edu/",
+      "kind": "educational_organization"
+    },
+    {
+      "id": "org:harvard",
+      "name": "Harvard University",
+      "aliases": [
+        "Harvard"
+      ],
+      "url": "https://www.harvard.edu/",
+      "kind": "educational_organization"
+    }
+  ],
+  "education": [
+    {
+      "id": "education:uw-engineering",
+      "institutionId": "org:uw",
+      "field": "Engineering",
+      "credential": null,
+      "startDate": "2025-08",
+      "endDate": "2028-06",
+      "expectedEndDate": true,
+      "current": true,
+      "location": "Seattle, Washington, United States",
+      "details": [
+        "Lavin Entrepreneurship Program, a selective multi-year Buerk Center cohort.",
+        "Coursework and independent work span machine learning, signal processing, embedded systems, optimization, and research methods."
+      ],
+      "demonstrates": [
+        "skill:machine-learning",
+        "skill:signal-processing",
+        "skill:embedded-systems"
+      ],
+      "evidenceIds": [
+        "evidence:uw",
+        "evidence:cv"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "experience:r0-founder",
+      "organizationId": "org:r0-systems",
+      "role": "Founder & CEO",
+      "displayTone": "red",
+      "startDate": "2024-06",
+      "endDate": null,
+      "current": true,
+      "summary": "Founded and commercialized continuous-flow plasma-activated-water equipment for post-harvest produce sanitation.",
+      "contributions": [
+        "R0 generates produce sanitizer on site using air, water, and electricity. I bootstrapped it to six figures in revenue.",
+        "I designed the reactor, Venturi transfer stage, water loop, controls, and field hardware.",
+        "The machines now run continuously in customer facilities.",
+        "Three peer-reviewed papers, two pending patents, and independent national food-safety laboratory studies document the system.",
+        "Demonstrated up to 3x shelf-life extension at under $0.50 per ton in energy cost across tomato and leafy-green validation studies."
+      ],
+      "demonstrates": [
+        "skill:technical-leadership",
+        "skill:plasma-engineering",
+        "skill:high-voltage-power-electronics",
+        "skill:embedded-systems",
+        "skill:industrial-design",
+        "skill:experiment-design"
+      ],
+      "claimIds": [
+        "claim:r0-revenue",
+        "claim:r0-machine-stack",
+        "claim:r0-field-use",
+        "claim:r0-papers-patents",
+        "claim:r0-shelf-life"
+      ],
+      "evidenceIds": [
+        "evidence:r0-site",
+        "evidence:r0-dyson",
+        "evidence:paper-paw-systems",
+        "evidence:paper-paw-disinfection",
+        "evidence:paper-industrial-plasma"
+      ]
+    },
+    {
+      "id": "experience:opentrade-ml",
+      "organizationId": "org:opentrade",
+      "role": "Machine Learning Engineer",
+      "displayTone": "blue",
+      "startDate": "2026-06",
+      "endDate": "2026-09",
+      "current": false,
+      "summary": "First machine-learning hire for an AI-native investing product.",
+      "contributions": [
+        "As OpenTrade's first ML hire, I built market-data grounding, trade-card generation, and personalized ranking.",
+        "Replaced hand-tuned feed ordering with a learned ranking model built from user interaction, content, recency, and market-context signals and evaluated releases through offline replay and product behavior.",
+        "Built a factual-accuracy and regression harness for generated financial content, checking grounding against live market data, numerical consistency, temporal validity, unsupported claims, and structured-output compliance across model and prompt releases.",
+        "Turned impressions and downstream behavior into evaluation and training signals for subsequent model releases.",
+        "Defined launch hypotheses, primary metrics, and guardrails before each production release.",
+        "Built backend and serverless API routes serving model outputs, integrated external market-data providers, and owned testing, deployment, and CI for a product that grew from launch to roughly 150,000 monthly users in two months."
+      ],
+      "demonstrates": [
+        "skill:machine-learning",
+        "skill:llm-evaluation",
+        "skill:ranking-systems",
+        "skill:experiment-design",
+        "skill:mlops",
+        "skill:backend-engineering"
+      ],
+      "claimIds": [
+        "claim:opentrade-first-ml-hire",
+        "claim:opentrade-users"
+      ],
+      "evidenceIds": [
+        "evidence:opentrade-site",
+        "evidence:cv"
+      ]
+    },
+    {
+      "id": "experience:seal-research",
+      "organizationId": "org:seal",
+      "role": "Research Associate",
+      "displayTone": "green",
+      "startDate": "2025-03",
+      "endDate": "2025-11",
+      "current": false,
+      "summary": "Embedded sensing for drowsiness detection and U.S. Navy hull-integrity monitoring.",
+      "contributions": [
+        "Engineered a real-time PPG wearable: transimpedance front end, fourth-order Butterworth filter, 100 Hz 12-bit acquisition, and adaptive motion-artifact cancellation rejecting 95% of motion artifact.",
+        "Built a PZT-array acoustic-emission system for U.S. Navy hull-integrity monitoring, using charge amplification, 10 kHz acquisition, and a real-time 512-point FFT pipeline to separate impacts from fatigue-crack signatures.",
+        "Handled analog design, prototype bring-up, embedded acquisition, signal processing, bench characterization, and failure analysis.",
+        "Authored the sensing architecture, signal-processing methodology, and validation sections of two funded proposals across a seven-person research team."
+      ],
+      "demonstrates": [
+        "skill:embedded-systems",
+        "skill:signal-processing",
+        "skill:analog-electronics",
+        "skill:research-methods"
+      ],
+      "claimIds": [
+        "claim:seal-ppg",
+        "claim:seal-hull",
+        "claim:seal-proposals"
+      ],
+      "evidenceIds": [
+        "evidence:seal-site",
+        "evidence:cv"
+      ]
+    },
+    {
+      "id": "experience:niist-research",
+      "organizationId": "org:csir-niist",
+      "role": "Research Associate",
+      "displayTone": "yellow",
+      "startDate": "2024-06",
+      "endDate": "2025-03",
+      "current": false,
+      "summary": "Solar-cell fabrication and characterization in a sustainable-energy research group.",
+      "contributions": [
+        "Researched dye-sensitized and perovskite photovoltaics within CSIR-NIIST's indoor-light energy-harvesting program, whose dye-sensitized-cell work later reached a 40% indoor-light conversion-efficiency record.",
+        "Fabricated complete solar-cell devices using FTO substrates, TiO2 photoanodes, thermal processing, ruthenium sensitizers, electrolytes, counter electrodes, and sealed assemblies.",
+        "Ran the full optoelectronic and structural characterization stack: J-V curves, IPCE, photoinduced absorption spectroscopy, and XRD with Scherrer crystallite-size analysis.",
+        "Connected spectral response, charge-recombination behavior, crystallite structure, and fabrication parameters to device-level efficiency and failure modes.",
+        "Designed controlled experiments across photoanode architecture and processing conditions, then analyzed batch variation and reproducibility across fabricated devices."
+      ],
+      "demonstrates": [
+        "skill:photovoltaics",
+        "skill:materials-characterization",
+        "skill:experiment-design"
+      ],
+      "claimIds": [
+        "claim:niist-fabrication",
+        "claim:niist-characterization"
+      ],
+      "evidenceIds": [
+        "evidence:niist-site",
+        "evidence:cv"
+      ]
+    },
+    {
+      "id": "experience:ingenium-research-engineer",
+      "organizationId": "org:ingenium-naturae",
+      "role": "Research Engineer",
+      "displayTone": "purple",
+      "startDate": "2023-05",
+      "endDate": "2024-06",
+      "current": false,
+      "summary": "Custom plasma and automation equipment for agri-food clients.",
+      "contributions": [
+        "Delivered custom plasma and automation machines for agri-food clients. Each build combined power electronics, embedded control, fluidics, reactor design, and industrial mechanics.",
+        "Designed 20 kV discharge drivers, MOSFET switching stages, PID control loops, STM32 firmware, electrode and reactor geometries, Venturi injectors, and production CAD assemblies.",
+        "Handled client specifications, system architecture, component selection, fabrication, wiring, firmware, validation, acceptance testing, documentation, and handoff.",
+        "Debugged coupled electrical, thermal, fluidic, and mechanical failure modes on the shop floor until each machine met its operating requirements."
+      ],
+      "demonstrates": [
+        "skill:plasma-engineering",
+        "skill:high-voltage-power-electronics",
+        "skill:embedded-systems",
+        "skill:industrial-design",
+        "skill:failure-analysis"
+      ],
+      "claimIds": [
+        "claim:ingenium-machines",
+        "claim:ingenium-20kv"
+      ],
+      "evidenceIds": [
+        "evidence:cv"
+      ]
+    }
+  ],
+  "research": [
+    {
+      "id": "research:mteb-gym",
+      "title": "MTEB-Gym: label-free embedding evaluation",
+      "field": "Embedding evaluation",
+      "organizationIds": [
+        "org:mteb"
+      ],
+      "role": "Research collaborator",
+      "researchType": "collaborative empirical study",
+      "status": "in_progress",
+      "startDate": "2026-06",
+      "endDate": null,
+      "question": "When can label-free embedding evaluation produce a trustworthy model ranking?",
+      "contributions": [
+        "Co-developed MTEB-Gym, a label-free framework for ranking embedding models on datasets without human relevance annotations.",
+        "Worked on bidirectional judging, validation, uncertainty estimates, and failure handling for label-free rankings.",
+        "Merged nine changes covering validation, uncertainty estimates, caching, deterministic parallelism, and failure handling."
+      ],
+      "result": "Nine merged upstream changes cover validation, uncertainty estimates, cache behavior, deterministic parallelism, and failure handling.",
+      "limitation": "The active reliability study still needs a public result artifact.",
+      "demonstrates": [
+        "skill:machine-learning",
+        "skill:llm-evaluation",
+        "skill:experiment-design",
+        "skill:open-source"
+      ],
+      "claimIds": [
+        "claim:mteb-nine-merges"
+      ],
+      "evidenceIds": [
+        "evidence:mteb-pulls",
+        "evidence:mteb-pr-4790"
+      ]
+    },
+    {
+      "id": "research:rsna-knee",
+      "title": "RSNA Knee Abnormality Detection",
+      "field": "Medical imaging",
+      "organizationIds": [
+        "org:rsna"
+      ],
+      "role": "Independent researcher",
+      "researchType": "research project",
+      "status": "in_progress",
+      "startDate": "2026-07",
+      "endDate": null,
+      "question": "Which validation choices materially change a knee-MRI model's reported AUC?",
+      "contributions": [
+        "Built a knee-MRI evaluation pipeline around ordered slices, hierarchical 2.5D multiple-instance learning, and study-level aggregation.",
+        "Added patient/study splits, fold-integrity checks, leakage audits, label-quality analysis, and metric-consistency tests to the experiment path.",
+        "In progress."
+      ],
+      "result": "The current artifact covers study-level aggregation, leakage checks, fold audits, and metric-consistency tests.",
+      "limitation": "In progress.",
+      "demonstrates": [
+        "skill:machine-learning",
+        "skill:medical-imaging",
+        "skill:experiment-design"
+      ],
+      "claimIds": [
+        "claim:rsna-pipeline"
+      ],
+      "evidenceIds": [
+        "evidence:rsna-site",
+        "evidence:cv"
+      ]
+    },
+    {
+      "id": "research:agentbreed",
+      "title": "AgentBreed",
+      "field": "Multi-agent systems",
+      "organizationIds": [],
+      "role": "Sole author",
+      "researchType": "preregistered synthetic pilot",
+      "status": "in_progress",
+      "startDate": "2026-03",
+      "endDate": null,
+      "question": "How much agent performance comes from the configuration space, and how much from the search operator?",
+      "contributions": [
+        "Designed a preregistered study of configuration-space richness and search algorithms in multi-agent systems.",
+        "Ran 700 reproducible evaluations across three domains in a deterministic simulator.",
+        "Compared search operators with Holm-corrected pairwise tests; none reached corrected significance in the synthetic pilot.",
+        "The real-LLM replication is preregistered and pending; current results cover the simulator."
+      ],
+      "result": "In the 700-run deterministic synthetic pilot, pairwise differences among the tested search operators did not reach Holm-corrected significance.",
+      "limitation": "This result does not establish equivalence among search operators. The real-LLM replication is preregistered and pending, and the current sensitivity-analysis output is not used for inference.",
+      "demonstrates": [
+        "skill:agent-systems",
+        "skill:experiment-design",
+        "skill:statistical-testing",
+        "skill:open-source"
+      ],
+      "claimIds": [
+        "claim:agentbreed-700"
+      ],
+      "evidenceIds": [
+        "evidence:agentbreed-repo"
+      ]
+    },
+    {
+      "id": "research:maze-rl",
+      "title": "Procedural-Maze RL Baselines",
+      "field": "Reinforcement learning",
+      "organizationIds": [],
+      "role": "Sole author",
+      "researchType": "reproducible benchmark",
+      "status": "artifact_reconciliation",
+      "startDate": "2026-02",
+      "endDate": "2026-04",
+      "question": "Why did modern reward-driven RL miss a policy a five-line heuristic could see?",
+      "contributions": [
+        "Benchmarked PPO, DQN, and A2C on procedurally generated mazes against simple heuristics and behavior cloning.",
+        "The policy class can express strong maze-solving behavior; reward-driven training struggled to reach it consistently.",
+        "The public repository includes experiment code, run records, manifests, and a result verifier.",
+        "Later runs outgrew the pinned manifest. Artifact reconciliation is in progress before final reporting."
+      ],
+      "result": "The policy class can express strong maze-solving behavior; reward-driven training struggled to reach it consistently.",
+      "limitation": "Later runs outgrew the pinned manifest. Artifact reconciliation is in progress before final reporting.",
+      "demonstrates": [
+        "skill:reinforcement-learning",
+        "skill:experiment-design",
+        "skill:reproducibility",
+        "skill:open-source"
+      ],
+      "claimIds": [
+        "claim:maze-public-artifacts"
+      ],
+      "evidenceIds": [
+        "evidence:maze-repo"
+      ]
+    },
+    {
+      "id": "research:connectome-v2",
+      "title": "Connectome Architecture Benchmark",
+      "field": "Biological computation",
+      "organizationIds": [],
+      "role": "Independent researcher and auditor",
+      "researchType": "controlled architecture benchmark",
+      "status": "corrected_run_pending",
+      "startDate": "2025-12",
+      "endDate": null,
+      "question": "Does biological wiring still help after density, weights, graph realizations, and trainable components are controlled?",
+      "contributions": [
+        "Built a controlled benchmark for biological connectomes and matched random graphs.",
+        "Audited and invalidated the original 757-row pilot after finding control-density, provenance, optimizer, and evaluation failures.",
+        "Rebuilt CAB v2 around digest-bound measured connectomes, readout-only optimization, and nulls matched on exact edge count and weight distribution.",
+        "CAB v2 is implemented and tested. The full corrected run is pending."
+      ],
+      "result": "The first pass found confounds in null-graph density, weight distributions, dataset provenance, and what the optimizer was allowed to train.",
+      "limitation": "The original 757-row artifact is invalidated. CAB v2 awaits a full corrected run.",
+      "demonstrates": [
+        "skill:machine-learning",
+        "skill:experiment-design",
+        "skill:research-audit",
+        "skill:open-source"
+      ],
+      "claimIds": [
+        "claim:connectome-invalidated",
+        "claim:connectome-v2"
+      ],
+      "evidenceIds": [
+        "evidence:connectome-repo"
+      ]
+    },
+    {
+      "id": "research:ocean-cv",
+      "title": "Regional Cabled Array expedition RR2607",
+      "field": "Ocean field science",
+      "organizationIds": [
+        "org:ooi",
+        "org:whoi",
+        "org:uw-apl",
+        "org:uw"
+      ],
+      "role": "Student researcher and pipeline developer",
+      "researchType": "field research and multimodal analysis",
+      "status": "in_progress",
+      "startDate": "2026-08",
+      "endDate": null,
+      "question": "Can methane-bubble flux be estimated while the experiment is 2,900 meters underwater?",
+      "contributions": [
+        "Building a field-to-analysis system for methane-bubble flux estimation from ROV video, sonar, hydrophone, CTD, and navigation data.",
+        "The provenance layer keeps shipboard sources read-only and traces every derived artifact to source paths, hashes, and code versions.",
+        "Current work covers computer vision, acoustic alignment, calibration, and held-out validation.",
+        "Work in progress."
+      ],
+      "result": "Building a provenance-aware pipeline that aligns computer vision, sonar, and field metadata.",
+      "limitation": "Work in progress; no final scientific result is claimed.",
+      "demonstrates": [
+        "skill:computer-vision",
+        "skill:ocean-field-science",
+        "skill:data-provenance",
+        "skill:experiment-design"
+      ],
+      "claimIds": [
+        "claim:ocean-pipeline"
+      ],
+      "evidenceIds": [
+        "evidence:visions-26",
+        "evidence:jason"
+      ]
+    }
+  ],
+  "technicalReports": [
+    {
+      "id": "report:vlm-inference",
+      "title": "VLM Inference Optimization",
+      "internalTitle": "Evolutionary optimization of VLM inference",
+      "status": "technical_report",
+      "startDate": "2026-06",
+      "endDate": "2026-07",
+      "advisor": {
+        "name": "Zhuang Liu",
+        "title": "Assistant Professor of Computer Science",
+        "organizationId": "org:princeton",
+        "url": "https://www.cs.princeton.edu/~zhuangl/"
+      },
+      "summary": "An AlphaEvolve-style search study of prompt, parsing, formatting, and inference-code variants on CharXiv chart question answering.",
+      "contributions": [
+        "An AlphaEvolve-style search loop produced a best single-prompt Qwen3-VL configuration at 63.25% held-out accuracy on CharXiv chart QA; its difference from the 60.5% manual prompt was not significant (p = .42).",
+        "MAP-Elites searched prompt, parsing, formatting, and inference-code variants across a behavioral archive.",
+        "A separately designed per-question router reached 73.0%, compared with the 29.5% naive baseline.",
+        "The router-to-naive paired comparison gave p = 2.4e-6, and every accepted mutation retained inspectable lineage."
+      ],
+      "demonstrates": [
+        "skill:machine-learning",
+        "skill:computer-vision",
+        "skill:experiment-design",
+        "skill:statistical-testing"
+      ],
+      "claimIds": [
+        "claim:vlm-search",
+        "claim:vlm-router"
+      ],
+      "evidenceIds": [
+        "evidence:vlm-report",
+        "evidence:zhuang-liu"
+      ]
+    },
+    {
+      "id": "report:single-gpu-serving",
+      "title": "Single-GPU Model Serving",
+      "internalTitle": "Dense Qwen vs MoE GLM serving",
+      "status": "technical_report",
+      "startDate": "2026-06",
+      "endDate": "2026-06",
+      "advisor": {
+        "name": "Juncheng Yang",
+        "title": "Assistant Professor of Computer Science",
+        "organizationId": "org:harvard",
+        "url": "https://seas.harvard.edu/person/juncheng-yang"
+      },
+      "summary": "An 80-point vLLM serving matrix comparing dense and mixture-of-experts models on one H100.",
+      "contributions": [
+        "An 80-point vLLM matrix compared dense and mixture-of-experts models at roughly equal active-parameter budgets.",
+        "The benchmark swept prompt length, generation length, concurrency, and serving configuration across Qwen3.5-9B and GLM-4.7-Flash.",
+        "The dense/MoE throughput crossover appeared near concurrency three. At 49K-token generation, Qwen admitted 42 concurrent requests versus GLM's 10.",
+        "A hardware audit caught a PCIe-throttled H100 before publication; GPQA accuracy moved by 20 points with token budget."
+      ],
+      "demonstrates": [
+        "skill:ml-systems",
+        "skill:performance-measurement",
+        "skill:experiment-design",
+        "skill:failure-analysis"
+      ],
+      "claimIds": [
+        "claim:serving-matrix",
+        "claim:serving-crossover"
+      ],
+      "evidenceIds": [
+        "evidence:serving-report",
+        "evidence:juncheng-yang"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "id": "publication:paw-systems",
+      "title": "Design of systems for plasma activated water (PAW) for agri-food applications",
+      "authors": [
+        "N. N. Misra",
+        "Tejas Naladala",
+        "Khalid J. Alzahrani"
+      ],
+      "authorshipPosition": 2,
+      "venue": "Journal of Physics D: Applied Physics",
+      "volumeIssuePages": "57(49), 493003",
+      "publicationDate": "2024-09-17",
+      "status": "published",
+      "peerReviewed": true,
+      "doi": "10.1088/1361-6463/ad77de",
+      "url": "https://doi.org/10.1088/1361-6463/ad77de",
+      "associatedExperienceIds": [
+        "experience:r0-founder",
+        "experience:ingenium-research-engineer"
+      ],
+      "evidenceIds": [
+        "evidence:paper-paw-systems"
+      ]
+    },
+    {
+      "id": "publication:paw-disinfection",
+      "title": "Design of a continuous plasma activated water (PAW) disinfection system for fresh produce industry",
+      "authors": [
+        "N. N. Misra",
+        "Tejas Naladala",
+        "Khalid J. Alzahrani",
+        "V. P. Sreelakshmi",
+        "P. S. Negi"
+      ],
+      "authorshipPosition": 2,
+      "venue": "Innovative Food Science & Emerging Technologies",
+      "volumeIssuePages": "97, 103845",
+      "publicationDate": "2024-10",
+      "status": "published",
+      "peerReviewed": true,
+      "doi": "10.1016/j.ifset.2024.103845",
+      "url": "https://doi.org/10.1016/j.ifset.2024.103845",
+      "associatedExperienceIds": [
+        "experience:r0-founder",
+        "experience:ingenium-research-engineer"
+      ],
+      "evidenceIds": [
+        "evidence:paper-paw-disinfection"
+      ]
+    },
+    {
+      "id": "publication:industrial-plasma",
+      "title": "Design and construction of a continuous industrial scale cold plasma equipment for fresh produce industry",
+      "authors": [
+        "N. N. Misra",
+        "V. P. Sreelakshmi",
+        "Tejas Naladala",
+        "Khalid J. Alzahrani",
+        "P. S. Negi"
+      ],
+      "authorshipPosition": 3,
+      "venue": "Innovative Food Science & Emerging Technologies",
+      "volumeIssuePages": "97, 103840",
+      "publicationDate": "2024-10",
+      "status": "published",
+      "peerReviewed": true,
+      "doi": "10.1016/j.ifset.2024.103840",
+      "url": "https://doi.org/10.1016/j.ifset.2024.103840",
+      "associatedExperienceIds": [
+        "experience:r0-founder",
+        "experience:ingenium-research-engineer"
+      ],
+      "evidenceIds": [
+        "evidence:paper-industrial-plasma"
+      ]
+    }
+  ],
+  "publicationMetrics": {
+    "peerReviewedPublications": 3,
+    "citations": 57,
+    "hIndex": 3,
+    "asOf": "2026-09",
+    "evidenceIds": [
+      "evidence:google-scholar"
+    ]
+  },
+  "patents": {
+    "id": "patents:r0-pending",
+    "title": "R0 Systems patent applications",
+    "count": 2,
+    "status": "pending",
+    "publicDetails": false,
+    "note": "Two R0 Systems patent applications are pending. Application details are not published here.",
+    "evidenceIds": [
+      "evidence:cv"
+    ]
+  },
+  "projects": [
+    {
+      "id": "project:mimic",
+      "title": "Mimic",
+      "status": "public_repository",
+      "summary": "Browser teleoperation and imitation learning for a simulated Franka arm.",
+      "role": "Author",
+      "url": "https://github.com/tejasnaladala/mimic",
+      "demonstrates": [
+        "skill:robotics",
+        "skill:imitation-learning",
+        "skill:computer-vision"
+      ],
+      "evidenceIds": [
+        "evidence:mimic-repo"
+      ]
+    },
+    {
+      "id": "project:engram",
+      "title": "Engram",
+      "status": "public_repository",
+      "summary": "An online-learning prototype with local plasticity and persistent memory; experimental efficacy remains unverified.",
+      "role": "Author",
+      "url": "https://github.com/tejasnaladala/engram",
+      "demonstrates": [
+        "skill:online-learning",
+        "skill:rust",
+        "skill:agent-systems"
+      ],
+      "evidenceIds": [
+        "evidence:engram-repo"
+      ]
+    },
+    {
+      "id": "project:forge",
+      "title": "Forge",
+      "status": "public_repository",
+      "summary": "A provider-agnostic agent runtime with tools, memory, budgets, and observability.",
+      "role": "Author",
+      "url": "https://github.com/tejasnaladala/Forge",
+      "demonstrates": [
+        "skill:agent-systems",
+        "skill:backend-engineering",
+        "skill:observability"
+      ],
+      "evidenceIds": [
+        "evidence:forge-repo"
+      ]
+    },
+    {
+      "id": "project:wireml",
+      "title": "WireML",
+      "status": "public_repository",
+      "summary": "A terminal workbench for training lightweight heads on foundation-model embeddings.",
+      "role": "Author",
+      "url": "https://github.com/tejasnaladala/wireml",
+      "demonstrates": [
+        "skill:machine-learning",
+        "skill:ml-systems",
+        "skill:developer-tools"
+      ],
+      "evidenceIds": [
+        "evidence:wireml-repo"
+      ]
+    },
+    {
+      "id": "project:delphi-quant",
+      "title": "delphi-quant",
+      "status": "public_repository",
+      "summary": "A retrospective verification harness for systematic strategies and legible rejection.",
+      "role": "Author",
+      "url": "https://github.com/tejasnaladala/delphi-quant",
+      "demonstrates": [
+        "skill:statistical-testing",
+        "skill:reproducibility",
+        "skill:failure-analysis"
+      ],
+      "evidenceIds": [
+        "evidence:delphi-repo"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "award:cmu-venture-challenge",
+      "name": "Carnegie Mellon Venture Challenge",
+      "result": "Second place, national round",
+      "date": "2026-03",
+      "metric": "150+ teams; $4,500",
+      "evidenceIds": [
+        "evidence:cv"
+      ]
+    },
+    {
+      "id": "award:uw-showcase",
+      "name": "University of Washington Science & Technology Showcase",
+      "result": "Grand Prize and Best Pitch",
+      "date": "2026-01",
+      "metric": "$2,750",
+      "evidenceIds": [
+        "evidence:cv"
+      ]
+    },
+    {
+      "id": "award:red-bull-basement",
+      "name": "Red Bull Basement",
+      "result": "Second place",
+      "date": "2026",
+      "metric": null,
+      "evidenceIds": [
+        "evidence:cv"
+      ]
+    },
+    {
+      "id": "award:buerk-prototype-grant",
+      "name": "Buerk Center Prototype Grant",
+      "result": "Recipient",
+      "date": "2026",
+      "metric": "$2,000",
+      "evidenceIds": [
+        "evidence:cv"
+      ]
+    }
+  ],
+  "programs": [
+    {
+      "id": "program:a16z-speedrun",
+      "name": "a16z Speedrun S008",
+      "date": "2026",
+      "associatedEntityId": "org:r0-systems"
+    },
+    {
+      "id": "program:founders-inc",
+      "name": "Founders Inc pitch day presenter",
+      "date": "2026-07",
+      "associatedEntityId": "org:r0-systems"
+    },
+    {
+      "id": "program:z-fellows",
+      "name": "Z Fellows",
+      "date": "2026",
+      "associatedEntityId": "person:tejas-naladala"
+    },
+    {
+      "id": "program:lavin",
+      "name": "Lavin Entrepreneurship Program",
+      "date": null,
+      "associatedEntityId": "education:uw-engineering"
+    },
+    {
+      "id": "program:visions-26",
+      "name": "VISIONS '26 expedition",
+      "date": "2026-08",
+      "associatedEntityId": "research:ocean-cv"
+    }
+  ],
+  "writing": [
+    {
+      "id": "writing:nespresso-jailbreak",
+      "title": "The Nespresso Jailbreak",
+      "url": "https://tejasnaladala.com/blog/nespresso-jailbreak",
+      "markdownUrl": "https://tejasnaladala.com/blog/nespresso-jailbreak.md",
+      "type": "personal_essay",
+      "readingTime": "4 minutes 34 seconds"
+    },
+    {
+      "id": "writing:wifi-cantenna",
+      "title": "The Cantenna Incident",
+      "url": "https://tejasnaladala.com/blog/wifi-cantenna",
+      "markdownUrl": "https://tejasnaladala.com/blog/wifi-cantenna.md",
+      "type": "personal_essay",
+      "readingTime": "4 minutes 52 seconds"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill:machine-learning",
+      "name": "Machine learning",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "experience:opentrade-ml",
+        "research:mteb-gym",
+        "research:rsna-knee",
+        "research:connectome-v2",
+        "report:vlm-inference"
+      ]
+    },
+    {
+      "id": "skill:llm-evaluation",
+      "name": "LLM evaluation",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "experience:opentrade-ml",
+        "research:mteb-gym"
+      ]
+    },
+    {
+      "id": "skill:ranking-systems",
+      "name": "Ranking systems",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "experience:opentrade-ml",
+        "research:mteb-gym"
+      ]
+    },
+    {
+      "id": "skill:agent-systems",
+      "name": "Agent systems",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "research:agentbreed",
+        "project:engram",
+        "project:forge"
+      ]
+    },
+    {
+      "id": "skill:reinforcement-learning",
+      "name": "Reinforcement learning",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "research:maze-rl"
+      ]
+    },
+    {
+      "id": "skill:computer-vision",
+      "name": "Computer vision",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "research:ocean-cv",
+        "report:vlm-inference",
+        "project:mimic"
+      ]
+    },
+    {
+      "id": "skill:medical-imaging",
+      "name": "Medical imaging",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "research:rsna-knee"
+      ]
+    },
+    {
+      "id": "skill:ml-systems",
+      "name": "ML systems",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "experience:opentrade-ml",
+        "report:single-gpu-serving",
+        "project:wireml"
+      ]
+    },
+    {
+      "id": "skill:mlops",
+      "name": "MLOps",
+      "category": "Software systems",
+      "demonstratedBy": [
+        "experience:opentrade-ml"
+      ]
+    },
+    {
+      "id": "skill:experiment-design",
+      "name": "Experiment design",
+      "category": "Research methods",
+      "demonstratedBy": [
+        "experience:r0-founder",
+        "experience:opentrade-ml",
+        "experience:niist-research",
+        "research:mteb-gym",
+        "research:agentbreed",
+        "research:maze-rl",
+        "research:connectome-v2",
+        "research:ocean-cv",
+        "report:vlm-inference",
+        "report:single-gpu-serving"
+      ]
+    },
+    {
+      "id": "skill:statistical-testing",
+      "name": "Statistical testing",
+      "category": "Research methods",
+      "demonstratedBy": [
+        "research:agentbreed",
+        "report:vlm-inference",
+        "project:delphi-quant"
+      ]
+    },
+    {
+      "id": "skill:research-audit",
+      "name": "Research auditing",
+      "category": "Research methods",
+      "demonstratedBy": [
+        "research:connectome-v2",
+        "report:single-gpu-serving"
+      ]
+    },
+    {
+      "id": "skill:reproducibility",
+      "name": "Reproducibility",
+      "category": "Research methods",
+      "demonstratedBy": [
+        "research:maze-rl",
+        "research:agentbreed",
+        "project:delphi-quant"
+      ]
+    },
+    {
+      "id": "skill:data-provenance",
+      "name": "Data provenance",
+      "category": "Research methods",
+      "demonstratedBy": [
+        "research:ocean-cv",
+        "research:connectome-v2"
+      ]
+    },
+    {
+      "id": "skill:research-methods",
+      "name": "Research methods",
+      "category": "Research methods",
+      "demonstratedBy": [
+        "experience:seal-research",
+        "experience:niist-research"
+      ]
+    },
+    {
+      "id": "skill:plasma-engineering",
+      "name": "Plasma engineering",
+      "category": "Hardware",
+      "demonstratedBy": [
+        "experience:r0-founder",
+        "experience:ingenium-research-engineer",
+        "publication:paw-systems",
+        "publication:paw-disinfection",
+        "publication:industrial-plasma"
+      ]
+    },
+    {
+      "id": "skill:high-voltage-power-electronics",
+      "name": "High-voltage power electronics",
+      "category": "Hardware",
+      "demonstratedBy": [
+        "experience:r0-founder",
+        "experience:ingenium-research-engineer"
+      ]
+    },
+    {
+      "id": "skill:embedded-systems",
+      "name": "Embedded systems",
+      "category": "Hardware",
+      "demonstratedBy": [
+        "experience:r0-founder",
+        "experience:seal-research",
+        "experience:ingenium-research-engineer",
+        "education:uw-engineering"
+      ]
+    },
+    {
+      "id": "skill:signal-processing",
+      "name": "Signal processing",
+      "category": "Hardware",
+      "demonstratedBy": [
+        "experience:seal-research",
+        "education:uw-engineering"
+      ]
+    },
+    {
+      "id": "skill:analog-electronics",
+      "name": "Analog electronics",
+      "category": "Hardware",
+      "demonstratedBy": [
+        "experience:seal-research"
+      ]
+    },
+    {
+      "id": "skill:industrial-design",
+      "name": "Industrial machine design",
+      "category": "Hardware",
+      "demonstratedBy": [
+        "experience:r0-founder",
+        "experience:ingenium-research-engineer"
+      ]
+    },
+    {
+      "id": "skill:failure-analysis",
+      "name": "Failure analysis",
+      "category": "Engineering methods",
+      "demonstratedBy": [
+        "experience:ingenium-research-engineer",
+        "report:single-gpu-serving",
+        "project:delphi-quant"
+      ]
+    },
+    {
+      "id": "skill:photovoltaics",
+      "name": "Photovoltaics",
+      "category": "Materials",
+      "demonstratedBy": [
+        "experience:niist-research"
+      ]
+    },
+    {
+      "id": "skill:materials-characterization",
+      "name": "Materials characterization",
+      "category": "Materials",
+      "demonstratedBy": [
+        "experience:niist-research"
+      ]
+    },
+    {
+      "id": "skill:robotics",
+      "name": "Robotics",
+      "category": "Robotics",
+      "demonstratedBy": [
+        "project:mimic",
+        "research:ocean-cv"
+      ]
+    },
+    {
+      "id": "skill:imitation-learning",
+      "name": "Imitation learning",
+      "category": "Robotics",
+      "demonstratedBy": [
+        "project:mimic"
+      ]
+    },
+    {
+      "id": "skill:ocean-field-science",
+      "name": "Ocean field science",
+      "category": "Field research",
+      "demonstratedBy": [
+        "research:ocean-cv"
+      ]
+    },
+    {
+      "id": "skill:backend-engineering",
+      "name": "Backend engineering",
+      "category": "Software systems",
+      "demonstratedBy": [
+        "experience:opentrade-ml",
+        "project:forge"
+      ]
+    },
+    {
+      "id": "skill:developer-tools",
+      "name": "Developer tools",
+      "category": "Software systems",
+      "demonstratedBy": [
+        "project:wireml"
+      ]
+    },
+    {
+      "id": "skill:observability",
+      "name": "Observability",
+      "category": "Software systems",
+      "demonstratedBy": [
+        "project:forge"
+      ]
+    },
+    {
+      "id": "skill:open-source",
+      "name": "Open-source contribution",
+      "category": "Software systems",
+      "demonstratedBy": [
+        "research:mteb-gym",
+        "research:agentbreed",
+        "research:maze-rl",
+        "research:connectome-v2",
+        "project:mimic",
+        "project:engram",
+        "project:forge",
+        "project:wireml",
+        "project:delphi-quant"
+      ]
+    },
+    {
+      "id": "skill:online-learning",
+      "name": "Online learning",
+      "category": "AI and ML",
+      "demonstratedBy": [
+        "project:engram"
+      ]
+    },
+    {
+      "id": "skill:rust",
+      "name": "Rust",
+      "category": "Software systems",
+      "demonstratedBy": [
+        "project:engram"
+      ]
+    },
+    {
+      "id": "skill:performance-measurement",
+      "name": "Performance measurement",
+      "category": "Software systems",
+      "demonstratedBy": [
+        "report:single-gpu-serving"
+      ]
+    },
+    {
+      "id": "skill:technical-leadership",
+      "name": "Technical leadership",
+      "category": "Leadership",
+      "demonstratedBy": [
+        "experience:r0-founder"
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim:r0-revenue",
+      "subjectId": "experience:r0-founder",
+      "text": "R0 Systems was bootstrapped to six figures in revenue.",
+      "category": "business_outcome",
+      "evidenceIds": [
+        "evidence:r0-site",
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:r0-machine-stack",
+      "subjectId": "experience:r0-founder",
+      "text": "Tejas designed R0's reactor, transfer stage, water loop, controls, and field hardware.",
+      "category": "contribution",
+      "evidenceIds": [
+        "evidence:r0-site",
+        "evidence:r0-dyson"
+      ],
+      "evidenceTier": 2,
+      "confidence": "artifact_supported"
+    },
+    {
+      "id": "claim:r0-field-use",
+      "subjectId": "experience:r0-founder",
+      "text": "R0 machines run continuously in customer facilities.",
+      "category": "deployment",
+      "evidenceIds": [
+        "evidence:r0-site",
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:r0-papers-patents",
+      "subjectId": "experience:r0-founder",
+      "text": "R0 work has three peer-reviewed papers and two pending patents.",
+      "category": "research_output",
+      "evidenceIds": [
+        "evidence:paper-paw-systems",
+        "evidence:paper-paw-disinfection",
+        "evidence:paper-industrial-plasma",
+        "evidence:cv"
+      ],
+      "evidenceTier": 1,
+      "confidence": "partially_externally_verified"
+    },
+    {
+      "id": "claim:r0-shelf-life",
+      "subjectId": "experience:r0-founder",
+      "text": "R0 studies reported up to 3x shelf-life extension at under $0.50 per ton in energy cost.",
+      "category": "quantitative_outcome",
+      "evidenceIds": [
+        "evidence:r0-site",
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:opentrade-first-ml-hire",
+      "subjectId": "experience:opentrade-ml",
+      "text": "Tejas joined OpenTrade as its first machine-learning hire.",
+      "category": "role",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:opentrade-users",
+      "subjectId": "experience:opentrade-ml",
+      "text": "OpenTrade reached roughly 150,000 monthly users in two months.",
+      "category": "business_outcome",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:seal-ppg",
+      "subjectId": "experience:seal-research",
+      "text": "The SEAL PPG pipeline rejected 95% of motion artifact in reported testing.",
+      "category": "quantitative_outcome",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:seal-hull",
+      "subjectId": "experience:seal-research",
+      "text": "Tejas built a 10 kHz PZT-array acoustic-emission pipeline with a real-time 512-point FFT for hull-integrity monitoring.",
+      "category": "contribution",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:seal-proposals",
+      "subjectId": "experience:seal-research",
+      "text": "Tejas authored technical sections of two funded proposals on a seven-person research team.",
+      "category": "contribution",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:niist-fabrication",
+      "subjectId": "experience:niist-research",
+      "text": "Tejas fabricated dye-sensitized and perovskite solar cells at CSIR-NIIST.",
+      "category": "contribution",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:niist-characterization",
+      "subjectId": "experience:niist-research",
+      "text": "Tejas ran J-V, IPCE, photoinduced absorption, and XRD characterization.",
+      "category": "contribution",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:ingenium-machines",
+      "subjectId": "experience:ingenium-research-engineer",
+      "text": "Tejas delivered custom plasma and automation machines for agri-food clients.",
+      "category": "deployment",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:ingenium-20kv",
+      "subjectId": "experience:ingenium-research-engineer",
+      "text": "Tejas designed 20 kV discharge drivers and their embedded control systems.",
+      "category": "contribution",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:mteb-nine-merges",
+      "subjectId": "research:mteb-gym",
+      "text": "Tejas has nine merged MTEB-Gym changes covering validation, uncertainty, caching, deterministic parallelism, and failure handling.",
+      "category": "open_source_contribution",
+      "evidenceIds": [
+        "evidence:mteb-pulls",
+        "evidence:mteb-pr-4790"
+      ],
+      "evidenceTier": 1,
+      "confidence": "externally_verified"
+    },
+    {
+      "id": "claim:rsna-pipeline",
+      "subjectId": "research:rsna-knee",
+      "text": "The RSNA knee-MRI pipeline includes study-level aggregation, leakage checks, fold audits, and metric-consistency tests.",
+      "category": "research_artifact",
+      "evidenceIds": [
+        "evidence:cv"
+      ],
+      "evidenceTier": 3,
+      "confidence": "self_reported"
+    },
+    {
+      "id": "claim:agentbreed-700",
+      "subjectId": "research:agentbreed",
+      "text": "AgentBreed currently reports 700 deterministic simulator evaluations across three domains.",
+      "category": "research_artifact",
+      "evidenceIds": [
+        "evidence:agentbreed-repo"
+      ],
+      "evidenceTier": 1,
+      "confidence": "artifact_supported"
+    },
+    {
+      "id": "claim:maze-public-artifacts",
+      "subjectId": "research:maze-rl",
+      "text": "The maze benchmark repository includes code, run records, manifests, and a result verifier; artifact reconciliation remains in progress.",
+      "category": "research_artifact",
+      "evidenceIds": [
+        "evidence:maze-repo"
+      ],
+      "evidenceTier": 1,
+      "confidence": "artifact_supported"
+    },
+    {
+      "id": "claim:connectome-invalidated",
+      "subjectId": "research:connectome-v2",
+      "text": "The original 757-row connectome pilot was invalidated after an audit found control and provenance failures.",
+      "category": "research_correction",
+      "evidenceIds": [
+        "evidence:connectome-repo"
+      ],
+      "evidenceTier": 1,
+      "confidence": "artifact_supported"
+    },
+    {
+      "id": "claim:connectome-v2",
+      "subjectId": "research:connectome-v2",
+      "text": "CAB v2 is implemented and tested; the full corrected run remains pending.",
+      "category": "research_status",
+      "evidenceIds": [
+        "evidence:connectome-repo"
+      ],
+      "evidenceTier": 1,
+      "confidence": "artifact_supported"
+    },
+    {
+      "id": "claim:ocean-pipeline",
+      "subjectId": "research:ocean-cv",
+      "text": "The ocean computer-vision and multimodal alignment pipeline is in progress; no final scientific result is claimed.",
+      "category": "research_status",
+      "evidenceIds": [
+        "evidence:visions-26",
+        "evidence:cv"
+      ],
+      "evidenceTier": 2,
+      "confidence": "partially_externally_verified"
+    },
+    {
+      "id": "claim:vlm-search",
+      "subjectId": "report:vlm-inference",
+      "text": "The best searched single-prompt VLM configuration reached 63.25% held-out CharXiv accuracy.",
+      "category": "quantitative_result",
+      "evidenceIds": [
+        "evidence:vlm-report"
+      ],
+      "evidenceTier": 2,
+      "confidence": "artifact_supported"
+    },
+    {
+      "id": "claim:vlm-router",
+      "subjectId": "report:vlm-inference",
+      "text": "A separately designed per-question router reached 73.0% against a 29.5% naive baseline; paired p = 2.4e-6.",
+      "category": "quantitative_result",
+      "evidenceIds": [
+        "evidence:vlm-report"
+      ],
+      "evidenceTier": 2,
+      "confidence": "artifact_supported"
+    },
+    {
+      "id": "claim:serving-matrix",
+      "subjectId": "report:single-gpu-serving",
+      "text": "The serving report contains an 80-point vLLM matrix on one H100.",
+      "category": "research_artifact",
+      "evidenceIds": [
+        "evidence:serving-report"
+      ],
+      "evidenceTier": 2,
+      "confidence": "artifact_supported"
+    },
+    {
+      "id": "claim:serving-crossover",
+      "subjectId": "report:single-gpu-serving",
+      "text": "The measured dense/MoE throughput crossover appeared near concurrency three.",
+      "category": "quantitative_result",
+      "evidenceIds": [
+        "evidence:serving-report"
+      ],
+      "evidenceTier": 2,
+      "confidence": "artifact_supported"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence:cv",
+      "type": "first_party_cv",
+      "tier": 3,
+      "title": "Tejas Naladala complete CV",
+      "url": "https://tejasnaladala.com/assets/resume.pdf?v=20260901.15",
+      "description": "First-party CV; supports role, contribution, award, and self-reported outcome claims."
+    },
+    {
+      "id": "evidence:r0-site",
+      "type": "company_website",
+      "tier": 2,
+      "title": "R0 Systems",
+      "url": "https://fuckchlorine.com/",
+      "description": "First-party company website for R0's product and system claims."
+    },
+    {
+      "id": "evidence:r0-dyson",
+      "type": "official_project_entry",
+      "tier": 1,
+      "title": "R0 Systems - James Dyson Award",
+      "url": "https://www.jamesdysonaward.org/en-US/2026/project/r0-systems",
+      "description": "Official competition entry describing the R0 system."
+    },
+    {
+      "id": "evidence:opentrade-site",
+      "type": "company_website",
+      "tier": 2,
+      "title": "OpenTrade",
+      "url": "https://opentrade.live/",
+      "description": "Company website; establishes the organization, not Tejas's specific contributions."
+    },
+    {
+      "id": "evidence:uw",
+      "type": "institution_website",
+      "tier": 1,
+      "title": "University of Washington",
+      "url": "https://www.washington.edu/",
+      "description": "Official institution website; does not independently verify enrollment details."
+    },
+    {
+      "id": "evidence:seal-site",
+      "type": "lab_website",
+      "tier": 1,
+      "title": "Sensors, Energy, and Automation Laboratory",
+      "url": "https://www.uwseal.org/",
+      "description": "Official laboratory website; does not independently verify every personal contribution."
+    },
+    {
+      "id": "evidence:niist-site",
+      "type": "institution_website",
+      "tier": 1,
+      "title": "CSIR-NIIST",
+      "url": "https://www.niist.res.in/",
+      "description": "Official institute website; does not independently verify every personal contribution."
+    },
+    {
+      "id": "evidence:mteb-pulls",
+      "type": "github_contributions",
+      "tier": 1,
+      "title": "Merged MTEB-Gym contributions by Tejas Naladala",
+      "url": "https://github.com/embeddings-benchmark/MTEB-gym-v2/pulls?q=is%3Apr+author%3Atejasnaladala+is%3Amerged",
+      "description": "Public merged pull requests."
+    },
+    {
+      "id": "evidence:mteb-pr-4790",
+      "type": "github_pull_request",
+      "tier": 1,
+      "title": "MTEB pull request 4790",
+      "url": "https://github.com/embeddings-benchmark/mteb/pull/4790",
+      "description": "Public upstream MTEB contribution."
+    },
+    {
+      "id": "evidence:agentbreed-repo",
+      "type": "github_repository",
+      "tier": 1,
+      "title": "AgentBreed repository",
+      "url": "https://github.com/tejasnaladala/agentbreed",
+      "description": "Public code, study protocol, tests, and current result boundaries."
+    },
+    {
+      "id": "evidence:maze-repo",
+      "type": "github_repository",
+      "tier": 1,
+      "title": "Procedural-Maze RL Baselines repository",
+      "url": "https://github.com/tejasnaladala/maze-rl-baselines",
+      "description": "Public code, run records, manifests, and verifier."
+    },
+    {
+      "id": "evidence:connectome-repo",
+      "type": "github_repository",
+      "tier": 1,
+      "title": "Connectome Architecture Benchmark repository",
+      "url": "https://github.com/tejasnaladala/connectome-bpu",
+      "description": "Public invalidation record, corrected protocol, and CAB v2 implementation."
+    },
+    {
+      "id": "evidence:rsna-site",
+      "type": "organization_website",
+      "tier": 1,
+      "title": "Radiological Society of North America",
+      "url": "https://www.rsna.org/",
+      "description": "Official organization website; does not verify the independent project."
+    },
+    {
+      "id": "evidence:visions-26",
+      "type": "official_expedition_page",
+      "tier": 1,
+      "title": "VISIONS '26",
+      "url": "https://interactiveoceans.washington.edu/about-visions-26/",
+      "description": "Official expedition overview."
+    },
+    {
+      "id": "evidence:jason",
+      "type": "official_vehicle_page",
+      "tier": 1,
+      "title": "ROV Jason",
+      "url": "https://www.whoi.edu/what-we-do/explore/underwater-vehicles/ndsf-jason/",
+      "description": "Official WHOI page for ROV Jason."
+    },
+    {
+      "id": "evidence:vlm-report",
+      "type": "technical_report",
+      "tier": 2,
+      "title": "VLM Inference Optimization technical report",
+      "url": "https://tejasnaladala.com/assets/research/alphaevolve-charxiv-note.pdf",
+      "description": "First-party technical report with methods and measured results."
+    },
+    {
+      "id": "evidence:serving-report",
+      "type": "technical_report",
+      "tier": 2,
+      "title": "Single-GPU Model Serving technical report",
+      "url": "https://tejasnaladala.com/assets/research/qwen-glm-serving-benchmark.pdf",
+      "description": "First-party technical report with benchmark matrix and audit notes."
+    },
+    {
+      "id": "evidence:zhuang-liu",
+      "type": "official_faculty_profile",
+      "tier": 1,
+      "title": "Zhuang Liu - Princeton University",
+      "url": "https://engineering.princeton.edu/faculty/zhuang-liu",
+      "description": "Official faculty affiliation page."
+    },
+    {
+      "id": "evidence:juncheng-yang",
+      "type": "official_faculty_profile",
+      "tier": 1,
+      "title": "Juncheng Yang - Harvard University",
+      "url": "https://seas.harvard.edu/person/juncheng-yang",
+      "description": "Official faculty affiliation page."
+    },
+    {
+      "id": "evidence:paper-paw-systems",
+      "type": "doi",
+      "tier": 1,
+      "title": "Design of systems for plasma activated water for agri-food applications",
+      "url": "https://doi.org/10.1088/1361-6463/ad77de",
+      "description": "Publisher DOI record for the peer-reviewed paper and author list."
+    },
+    {
+      "id": "evidence:paper-paw-disinfection",
+      "type": "doi",
+      "tier": 1,
+      "title": "Design of a continuous PAW disinfection system for fresh produce industry",
+      "url": "https://doi.org/10.1016/j.ifset.2024.103845",
+      "description": "Publisher DOI record for the peer-reviewed paper and author list."
+    },
+    {
+      "id": "evidence:paper-industrial-plasma",
+      "type": "doi",
+      "tier": 1,
+      "title": "Design and construction of continuous industrial-scale cold plasma equipment",
+      "url": "https://doi.org/10.1016/j.ifset.2024.103840",
+      "description": "Publisher DOI record for the peer-reviewed paper and author list."
+    },
+    {
+      "id": "evidence:google-scholar",
+      "type": "scholar_profile",
+      "tier": 1,
+      "title": "Tejas Naladala - Google Scholar",
+      "url": "https://scholar.google.com/citations?user=7901XFQAAAAJ",
+      "description": "Public author profile; citation counts are timestamped because they change."
+    },
+    {
+      "id": "evidence:mimic-repo",
+      "type": "github_repository",
+      "tier": 1,
+      "title": "Mimic repository",
+      "url": "https://github.com/tejasnaladala/mimic",
+      "description": "Public source repository."
+    },
+    {
+      "id": "evidence:engram-repo",
+      "type": "github_repository",
+      "tier": 1,
+      "title": "Engram repository",
+      "url": "https://github.com/tejasnaladala/engram",
+      "description": "Public source repository."
+    },
+    {
+      "id": "evidence:forge-repo",
+      "type": "github_repository",
+      "tier": 1,
+      "title": "Forge repository",
+      "url": "https://github.com/tejasnaladala/Forge",
+      "description": "Public source repository."
+    },
+    {
+      "id": "evidence:wireml-repo",
+      "type": "github_repository",
+      "tier": 1,
+      "title": "WireML repository",
+      "url": "https://github.com/tejasnaladala/wireml",
+      "description": "Public source repository."
+    },
+    {
+      "id": "evidence:delphi-repo",
+      "type": "github_repository",
+      "tier": 1,
+      "title": "delphi-quant repository",
+      "url": "https://github.com/tejasnaladala/delphi-quant",
+      "description": "Public source repository."
+    }
+  ],
+  "provenance": {
+    "canonicalSource": "data/profile.js",
+    "reviewedAgainst": [
+      "visible website copy",
+      "published CV",
+      "public GitHub repositories",
+      "DOI metadata",
+      "official institution pages"
+    ],
+    "unresolved": [
+      "Ingenium Naturae and Ingenium Technologies appear in different records; the public work history uses Ingenium Naturae and preserves Ingenium Technologies as an alias.",
+      "The public month for entry into the Lavin Entrepreneurship Program is not specified."
+    ]
+  }
+}
