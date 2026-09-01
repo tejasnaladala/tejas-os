@@ -304,10 +304,10 @@ function finishBoot() {
     revealHome();
     boot.classList.add("is-leaving");
     announce("Tejas Naladala portfolio ready.");
-    window.setTimeout(startHeroTypewriter, prefersReducedMotion.matches ? 0 : 120);
-  }, prefersReducedMotion.matches ? 0 : 85);
+    window.setTimeout(startHeroTypewriter, prefersReducedMotion.matches ? 0 : 150);
+  }, prefersReducedMotion.matches ? 0 : 105);
 
-  window.setTimeout(() => boot.remove(), prefersReducedMotion.matches ? 20 : 410);
+  window.setTimeout(() => boot.remove(), prefersReducedMotion.matches ? 20 : 500);
 }
 
 function startBoot() {
@@ -324,6 +324,7 @@ function startBoot() {
     signatureAnimation.addEventListener(
       "load",
       () => {
+        signatureAnimation.classList.add("is-loaded");
         window.clearTimeout(bootFallback);
         bootFallback = window.setTimeout(finishBoot, 2800);
       },
