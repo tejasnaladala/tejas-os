@@ -207,6 +207,14 @@ a {
   text-transform: lowercase;
 }
 
+html.section-render-pending .page-intro h1 {
+  visibility: hidden;
+}
+
+html.section-render-pending .page-intro h1::after {
+  animation: none;
+}
+
 .page-intro h1::after {
   content: "";
   position: absolute;
