@@ -1,6 +1,6 @@
 # Tejas Naladala
 
-> I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.
+> Hi, I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.
 
 Last updated: 2026-09-01
 Schema version: 1.0.0

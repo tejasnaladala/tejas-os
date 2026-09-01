@@ -304,10 +304,10 @@ function finishBoot() {
     revealHome();
     boot.classList.add("is-leaving");
     announce("Tejas Naladala portfolio ready.");
-    window.setTimeout(startHeroTypewriter, prefersReducedMotion.matches ? 0 : 180);
-  }, prefersReducedMotion.matches ? 0 : 120);
+    window.setTimeout(startHeroTypewriter, prefersReducedMotion.matches ? 0 : 120);
+  }, prefersReducedMotion.matches ? 0 : 85);
 
-  window.setTimeout(() => boot.remove(), prefersReducedMotion.matches ? 20 : 540);
+  window.setTimeout(() => boot.remove(), prefersReducedMotion.matches ? 20 : 410);
 }
 
 function startBoot() {

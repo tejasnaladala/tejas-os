@@ -8,7 +8,7 @@ import { profile } from "../data/profile.js";
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = profile.canonicalUrl;
 const PERSON_ID = profile.identity.canonicalId;
-const ASSET_VERSION = "20260901.101";
+const ASSET_VERSION = "20260901.102";
 const PUBLISHED_STORY_IDS = new Set(["nespresso-jailbreak", "wifi-cantenna"]);
 const stories = archiveEntries.filter((story) => PUBLISHED_STORY_IDS.has(story.id));
 
@@ -856,7 +856,7 @@ async function updateHtml(file, config, fallback) {
 }
 
 const pageConfigs = {
-  "index.html": { route: "/", title: "Tejas Naladala", description: "I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.", markdown: "/profile.md", type: "ProfilePage" },
+  "index.html": { route: "/", title: "Tejas Naladala", description: "Hi, I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.", markdown: "/profile.md", type: "ProfilePage" },
   "about.html": { route: "/about", title: "About | Tejas Naladala", description: "The person behind the research, machines, and companies.", markdown: "/about.md", type: "ProfilePage" },
   "work.html": { route: "/work", title: "Work | Tejas Naladala", description: "Machine learning, research, and machine building.", markdown: "/work.md", type: "CollectionPage" },
   "research.html": { route: "/research", title: "Research | Tejas Naladala", description: "Empirical ML studies, field projects, technical notes, and peer-reviewed plasma engineering.", markdown: "/research.md", type: "CollectionPage" },

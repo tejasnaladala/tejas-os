@@ -1,6 +1,6 @@
 # Tejas Naladala - CV
 
-> I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.
+> Hi, I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.
 
 Tejas Naladala is a 19-year-old Engineering student at the University of Washington, founder of R0 Systems, and an empirical machine-learning researcher.
 

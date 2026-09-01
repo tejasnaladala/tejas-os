@@ -7,7 +7,7 @@ const NAVIGATION_TIMEOUT_MS = readInteger("SIGNATURE_AUDIT_TIMEOUT_MS", 12_000, 
 const BOOT_EXIT_TIMEOUT_MS = 6_500;
 const IDENTITY_TIMEOUT_MS = 8_000;
 const SIGNATURE_PATH = "/assets/signature/tejas-signature-transparent-hq.webp";
-const HOMEPAGE_IDENTITY = "i'm tejas. i'm an engineer, researcher, entrepreneur, and angel investor.";
+const HOMEPAGE_IDENTITY = "hi, i'm tejas. i'm an engineer, researcher, entrepreneur, and angel investor.";
 
 const IOS_USER_AGENT =
   "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1";
