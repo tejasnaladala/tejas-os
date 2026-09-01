@@ -1,4 +1,6 @@
-.vercel/
+.vercel
 .env*
-.claude/
-tmp/
+dist
+output
+tmp
+.playwright-cli

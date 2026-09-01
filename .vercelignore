@@ -1,6 +1,16 @@
 .claude
 .env*
 .vercel
-package.json
 server.mjs
 tmp
+.playwright-cli
+output
+assets/signature/tejas-signature-030104.mp4
+assets/signature/tejas-signature-030104.webm
+assets/signature/tejas-signature.mp4
+assets/signature/tejas-signature.webm
+assets/signature/tejas-signature-363636-60fps.webm
+assets/gallery/showcase.webp
+assets/gallery/welding.webp
+assets/research/alphaevolve-charxiv-first-page.png
+assets/research/qwen-glm-serving-first-page.png

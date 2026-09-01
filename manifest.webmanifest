@@ -1,0 +1,18 @@
+{
+  "name": "Tejas Naladala",
+  "short_name": "Tejas",
+  "description": "I'm Tejas. I'm an engineer, researcher, entrepreneur, and angel investor.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f1e8",
+  "theme_color": "#f4f1e8",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
