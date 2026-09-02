@@ -4,7 +4,7 @@ import { pathToFileURL } from "node:url";
 
 const BASE_URL = (process.env.SIGNATURE_AUDIT_BASE_URL ?? "http://127.0.0.1:3010").replace(/\/$/, "");
 const NAVIGATION_TIMEOUT_MS = readInteger("SIGNATURE_AUDIT_TIMEOUT_MS", 12_000, 5_000, 60_000);
-const BOOT_EXIT_TIMEOUT_MS = 8_500;
+const BOOT_EXIT_TIMEOUT_MS = 7_500;
 const IDENTITY_TIMEOUT_MS = 8_000;
 const SIGNATURE_PATH = "/assets/signature/tejas-signature-seedance-v2.webp";
 const SIGNATURE_DIMENSIONS = Object.freeze([1920, 1080]);
