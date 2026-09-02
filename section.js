@@ -2,14 +2,14 @@ import {
   aboutNarrative,
   angelProfile,
   archiveEntries,
-} from "/content.js?v=20260901.101";
+} from "/content.js?v=20260902.111";
 import {
   aboutHello,
   contactLinks,
   cvProfile,
   researchJournal,
   workJournal,
-} from "/data/profile.js?v=20260901.101";
+} from "/data/profile.js?v=20260902.111";
 
 const aboutTabs = { hello: aboutHello };
 

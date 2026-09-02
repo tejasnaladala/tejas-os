@@ -10,7 +10,7 @@
     "audit:http": "node scripts/audit-http.mjs",
     "audit:mobile": "node scripts/mobile-regression.mjs",
     "audit:signature": "node scripts/signature-regression.mjs",
-    "check": "npm run generate && node scripts/check-copy.mjs && node --check content.js && node --check data/profile.js && node --check section.js && node --check story.js && node --check music.js && npm run check:agent",
+    "check": "npm run generate && node scripts/check-copy.mjs && node --check content.js && node --check data/profile.js && node --check section.js && node --check story.js && node --check site-motion.js && npm run check:agent",
     "dev": "node server.mjs",
     "start": "node server.mjs"
   }

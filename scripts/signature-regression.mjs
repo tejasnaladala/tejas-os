@@ -364,18 +364,27 @@ async function assertFinalIdentity(page) {
       const element = document.querySelector(".hero-disciplines");
       const output = element?.querySelector(".typewriter-output > span");
       const greeting = document.querySelector(".hero-greeting");
-      if (!element || !output || !greeting || !element.classList.contains("is-typed")) return false;
+      const greetingOutput = greeting?.querySelector(".typewriter-output > span");
+      if (
+        !element ||
+        !output ||
+        !greeting ||
+        !greetingOutput ||
+        !element.classList.contains("is-typed") ||
+        !greeting.classList.contains("is-typed")
+      ) return false;
 
       const style = getComputedStyle(element);
       const outputStyle = getComputedStyle(output);
       const greetingStyle = getComputedStyle(greeting);
+      const greetingOutputStyle = getComputedStyle(greetingOutput);
       const rect = element.getBoundingClientRect();
       const greetingRect = greeting.getBoundingClientRect();
       const normalize = (value) => String(value ?? "").replace(/\s+/g, " ").trim().toLowerCase();
 
       return (
         normalize(output.textContent) === expectedIdentity &&
-        normalize(greeting.textContent) === expectedGreeting &&
+        normalize(greetingOutput.textContent) === expectedGreeting &&
         style.display !== "none" &&
         style.visibility === "visible" &&
         Number.parseFloat(style.opacity) > 0.95 &&
@@ -385,6 +394,9 @@ async function assertFinalIdentity(page) {
         greetingStyle.display !== "none" &&
         greetingStyle.visibility === "visible" &&
         Number.parseFloat(greetingStyle.opacity) > 0.95 &&
+        greetingOutputStyle.display !== "none" &&
+        greetingOutputStyle.visibility === "visible" &&
+        Number.parseFloat(greetingOutputStyle.opacity) > 0.95 &&
         rect.width > 0 &&
         rect.height > 0 &&
         greetingRect.width > 0 &&
@@ -396,8 +408,8 @@ async function assertFinalIdentity(page) {
   );
 
   const state = await page.evaluate(() => ({
-    identity: document.querySelector(".typewriter-output > span")?.textContent ?? "",
-    greeting: document.querySelector(".hero-greeting")?.textContent ?? "",
+    identity: document.querySelector(".hero-disciplines .typewriter-output > span")?.textContent ?? "",
+    greeting: document.querySelector(".hero-greeting .typewriter-output > span")?.textContent ?? "",
     siteHidden: document.querySelector(".site")?.getAttribute("aria-hidden"),
     bodyBooting: document.body.classList.contains("is-booting"),
   }));
@@ -476,8 +488,9 @@ async function auditReducedMotion(browser, profile, orientation) {
     await page.waitForFunction(
       ([expectedIdentity, expectedGreeting]) => {
         const site = document.querySelector(".site");
-        const output = document.querySelector(".typewriter-output > span");
+        const output = document.querySelector(".hero-disciplines .typewriter-output > span");
         const greeting = document.querySelector(".hero-greeting");
+        const greetingOutput = greeting?.querySelector(".typewriter-output > span");
         const normalize = (value) => String(value ?? "").replace(/\s+/g, " ").trim().toLowerCase();
         return (
           window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
@@ -485,7 +498,8 @@ async function auditReducedMotion(browser, profile, orientation) {
           site?.classList.contains("is-ready") &&
           site.getAttribute("aria-hidden") === "false" &&
           normalize(output?.textContent) === expectedIdentity &&
-          normalize(greeting?.textContent) === expectedGreeting
+          normalize(greetingOutput?.textContent) === expectedGreeting &&
+          greeting?.classList.contains("is-typed")
         );
       },
       [normalizeText(HOMEPAGE_IDENTITY), normalizeText(HOMEPAGE_GREETING)],

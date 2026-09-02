@@ -29,7 +29,7 @@ const publicFiles = [
   "investing.md",
   "llms.txt",
   "manifest.webmanifest",
-  "music.js",
+  "site-motion.js",
   "pages.css",
   "profile.json",
   "profile.md",

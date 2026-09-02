@@ -15,6 +15,7 @@ const checks = [
   ["stale degree", /Electrical\s*&\s*Computer Engineering|Applied Mathematics|Applied Math/i],
   ["retired company name", /PlasmaX/i],
   ["stale citation count", /35 citations/i],
+  ["stale about heading", /entrepreneurship\s+speaks\s+to\s+me/i],
   ["canned contrast", /\bsits between\b|\bthe throughline\b|\brather than\b|\bnot just\b|\bisn't just\b|\bmore than just\b/i],
   ["generic positioning copy", /\bat the intersection of\b|\ba testament to\b|\bseamlessly\b|\bleverag(?:e|es|ed|ing)\b|\bever-evolving\b/i],
   ["generic scope claim", /\bend[- ]to[- ]end\b|\bfull[- ]stack\b/i],
