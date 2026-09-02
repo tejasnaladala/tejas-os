@@ -4,10 +4,11 @@ import { pathToFileURL } from "node:url";
 
 const BASE_URL = (process.env.SIGNATURE_AUDIT_BASE_URL ?? "http://127.0.0.1:3010").replace(/\/$/, "");
 const NAVIGATION_TIMEOUT_MS = readInteger("SIGNATURE_AUDIT_TIMEOUT_MS", 12_000, 5_000, 60_000);
-const BOOT_EXIT_TIMEOUT_MS = 6_500;
+const BOOT_EXIT_TIMEOUT_MS = 8_500;
 const IDENTITY_TIMEOUT_MS = 8_000;
-const SIGNATURE_PATH = "/assets/signature/tejas-signature-retina.webp";
-const SIGNATURE_DIMENSIONS = Object.freeze([1680, 936]);
+const SIGNATURE_PATH = "/assets/signature/tejas-signature-seedance-v2.webp";
+const SIGNATURE_DIMENSIONS = Object.freeze([1920, 1080]);
+const HOMEPAGE_GREETING = "hi. i'm tejas";
 const HOMEPAGE_IDENTITY = "i'm an engineer, researcher, entrepreneur, and angel investor based in Seattle, WA.";
 
 const IOS_USER_AGENT =
@@ -183,7 +184,7 @@ async function instrumentContext(context) {
     const nativePause = HTMLMediaElement.prototype.pause;
 
     HTMLMediaElement.prototype.play = function signaturePlay(...args) {
-      if (this.id === "signatureVideo") {
+      if (this.id === "signatureAnimation") {
         window.__signatureRegression.playCalls += 1;
         window.__signatureRegression.playStartedAt.push(performance.now());
       }
@@ -191,7 +192,7 @@ async function instrumentContext(context) {
     };
 
     HTMLMediaElement.prototype.pause = function signaturePause(...args) {
-      if (this.id === "signatureVideo") window.__signatureRegression.pauseCalls += 1;
+      if (this.id === "signatureAnimation") window.__signatureRegression.pauseCalls += 1;
       return nativePause.apply(this, args);
     };
   });
@@ -276,6 +277,7 @@ async function waitForSignatureFrame(page) {
         bootVisibility: bootStyle?.visibility ?? "missing",
         imageClass: image?.className ?? "",
         imageComplete: image?.complete ?? false,
+        imageNaturalWidth: image?.naturalWidth ?? 0,
         imageOpacity: imageStyle?.opacity ?? "missing",
         imageVisibility: imageStyle?.visibility ?? "missing",
         imageTransition: imageStyle?.transition ?? "missing",
@@ -299,16 +301,18 @@ async function waitForSignatureFrame(page) {
       rect: { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom, width: rect.width, height: rect.height },
       viewport: { width: window.innerWidth, height: window.innerHeight },
       layout: { width: image.offsetWidth, height: image.offsetHeight },
-      natural: { width: image.naturalWidth, height: image.naturalHeight },
+      decoded: { width: image.naturalWidth, height: image.naturalHeight },
+      source: { width: Number(image.getAttribute("width")), height: Number(image.getAttribute("height")) },
       pixelRatio: window.devicePixelRatio,
     };
   });
   assert(geometry.rect.width > 0 && geometry.rect.height > 0, "signature animation has no rendered area");
   assert(
-    geometry.natural.width >= geometry.layout.width * geometry.pixelRatio &&
-      geometry.natural.height >= geometry.layout.height * geometry.pixelRatio,
+    geometry.source.width >= geometry.layout.width * geometry.pixelRatio &&
+      geometry.source.height >= geometry.layout.height * geometry.pixelRatio,
     `signature asset is below native device density: ${JSON.stringify(geometry)}`,
   );
+  assert(geometry.decoded.width > 0 && geometry.decoded.height > 0, `signature image did not decode: ${JSON.stringify(geometry)}`);
   assert(
     geometry.rect.left >= -1 &&
       geometry.rect.top >= -1 &&
@@ -356,38 +360,49 @@ async function waitForBootExit(page, navigationStartedAt) {
 
 async function assertFinalIdentity(page) {
   await page.waitForFunction(
-    (expected) => {
+    ([expectedIdentity, expectedGreeting]) => {
       const element = document.querySelector(".hero-disciplines");
       const output = element?.querySelector(".typewriter-output > span");
-      if (!element || !output || !element.classList.contains("is-typed")) return false;
+      const greeting = document.querySelector(".hero-greeting");
+      if (!element || !output || !greeting || !element.classList.contains("is-typed")) return false;
 
       const style = getComputedStyle(element);
       const outputStyle = getComputedStyle(output);
+      const greetingStyle = getComputedStyle(greeting);
       const rect = element.getBoundingClientRect();
+      const greetingRect = greeting.getBoundingClientRect();
       const normalize = (value) => String(value ?? "").replace(/\s+/g, " ").trim().toLowerCase();
 
       return (
-        normalize(output.textContent) === expected &&
+        normalize(output.textContent) === expectedIdentity &&
+        normalize(greeting.textContent) === expectedGreeting &&
         style.display !== "none" &&
         style.visibility === "visible" &&
         Number.parseFloat(style.opacity) > 0.95 &&
         outputStyle.display !== "none" &&
         outputStyle.visibility === "visible" &&
         Number.parseFloat(outputStyle.opacity) > 0.95 &&
+        greetingStyle.display !== "none" &&
+        greetingStyle.visibility === "visible" &&
+        Number.parseFloat(greetingStyle.opacity) > 0.95 &&
         rect.width > 0 &&
-        rect.height > 0
+        rect.height > 0 &&
+        greetingRect.width > 0 &&
+        greetingRect.height > 0
       );
     },
-    normalizeText(HOMEPAGE_IDENTITY),
+    [normalizeText(HOMEPAGE_IDENTITY), normalizeText(HOMEPAGE_GREETING)],
     { timeout: IDENTITY_TIMEOUT_MS },
   );
 
   const state = await page.evaluate(() => ({
     identity: document.querySelector(".typewriter-output > span")?.textContent ?? "",
+    greeting: document.querySelector(".hero-greeting")?.textContent ?? "",
     siteHidden: document.querySelector(".site")?.getAttribute("aria-hidden"),
     bodyBooting: document.body.classList.contains("is-booting"),
   }));
   assert(normalizeText(state.identity) === normalizeText(HOMEPAGE_IDENTITY), `homepage identity was "${state.identity}"`);
+  assert(normalizeText(state.greeting) === normalizeText(HOMEPAGE_GREETING), `homepage greeting was "${state.greeting}"`);
   assert(state.siteHidden === "false", "final site remained aria-hidden");
   assert(!state.bodyBooting, "body retained is-booting after the signature finished");
 }
@@ -406,13 +421,18 @@ async function auditAnimatedLoad(page, phase) {
   const asset = await page.locator("#signatureAnimation").evaluate((image) => ({
     currentSrc: image.currentSrc,
     complete: image.complete,
-    dimensions: [image.naturalWidth, image.naturalHeight],
+    decodedDimensions: [image.naturalWidth, image.naturalHeight],
+    sourceDimensions: [Number(image.getAttribute("width")), Number(image.getAttribute("height"))],
   }));
   assert(new URL(asset.currentSrc).pathname === SIGNATURE_PATH, `${phase} used ${asset.currentSrc || "no signature asset"}`);
   assert(asset.complete, `${phase} signature image did not finish loading`);
   assert(
-    asset.dimensions[0] === SIGNATURE_DIMENSIONS[0] && asset.dimensions[1] === SIGNATURE_DIMENSIONS[1],
-    `${phase} signature dimensions were ${asset.dimensions.join("x")}; expected ${SIGNATURE_DIMENSIONS.join("x")}`,
+    asset.sourceDimensions[0] === SIGNATURE_DIMENSIONS[0] && asset.sourceDimensions[1] === SIGNATURE_DIMENSIONS[1],
+    `${phase} signature source dimensions were ${asset.sourceDimensions.join("x")}; expected ${SIGNATURE_DIMENSIONS.join("x")}`,
+  );
+  assert(
+    asset.decodedDimensions[0] === SIGNATURE_DIMENSIONS[0] && asset.decodedDimensions[1] === SIGNATURE_DIMENSIONS[1],
+    `${phase} signature decoded dimensions were ${asset.decodedDimensions.join("x")}; expected ${SIGNATURE_DIMENSIONS.join("x")}`,
   );
   await assertAnimatedFavicon(page);
 
@@ -454,19 +474,21 @@ async function auditReducedMotion(browser, profile, orientation) {
     assert(response?.status() === 200, `reduced-motion load returned HTTP ${response?.status() ?? "no response"}`);
 
     await page.waitForFunction(
-      (expected) => {
+      ([expectedIdentity, expectedGreeting]) => {
         const site = document.querySelector(".site");
         const output = document.querySelector(".typewriter-output > span");
+        const greeting = document.querySelector(".hero-greeting");
         const normalize = (value) => String(value ?? "").replace(/\s+/g, " ").trim().toLowerCase();
         return (
           window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
           !document.body.classList.contains("is-booting") &&
           site?.classList.contains("is-ready") &&
           site.getAttribute("aria-hidden") === "false" &&
-          normalize(output?.textContent) === expected
+          normalize(output?.textContent) === expectedIdentity &&
+          normalize(greeting?.textContent) === expectedGreeting
         );
       },
-      normalizeText(HOMEPAGE_IDENTITY),
+      [normalizeText(HOMEPAGE_IDENTITY), normalizeText(HOMEPAGE_GREETING)],
       { timeout: 1_000 },
     );
     await page.waitForSelector("#boot", { state: "detached", timeout: 1_000 });
