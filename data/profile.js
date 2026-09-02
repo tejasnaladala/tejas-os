@@ -15,6 +15,7 @@ export const profile = Object.freeze({
       "Tejas Naladala is a 19-year-old Engineering student at the University of Washington, founder of R0 Systems, and an empirical machine-learning researcher.",
     location: "Seattle, Washington, United States",
     image: `${SITE}/assets/gallery/tejas.webp`,
+    socialImage: `${SITE}/assets/social/tejas-naladala-social-v1.jpg`,
     publicEmail: "naladala@uw.edu",
     contactUrl: "mailto:naladala@uw.edu?subject=Hello%20Tejas",
     externalProfiles: {

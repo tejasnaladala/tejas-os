@@ -22,7 +22,7 @@ I started doing things that made me happy.
 
 and somewhere along the way, I fell in love with problems.
 
-entrepreneurship speaks to me
+I love being a founder because it means
 
 ## Freedom
 
