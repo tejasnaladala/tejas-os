@@ -138,9 +138,7 @@ a {
   height: 100%;
   object-fit: contain;
   filter: brightness(0);
-  opacity: 0;
-  transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity;
+  opacity: 0.9;
 }
 
 .boot__signature img.is-loaded {

@@ -376,7 +376,7 @@ function startBoot() {
       bootPlaybackEnd = window.setTimeout(finishBoot, 4_300);
     };
 
-    bootFallback = window.setTimeout(finishBoot, 6_300);
+    bootFallback = window.setTimeout(finishBoot, 5_000);
     signatureAnimation.addEventListener("load", showSignature, { once: true });
     signatureAnimation.addEventListener("error", finishBoot, { once: true });
     signatureAnimation.src = signatureAnimation.dataset.src;
