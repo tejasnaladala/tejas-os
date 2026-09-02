@@ -50,8 +50,7 @@ export const aboutNarrative = {
     ],
   ],
   freedomIntro: [
-    { text: "entrepreneurship", mark: true, tone: "coral" },
-    " speaks to me",
+    "I love being a founder because it means",
   ],
   freedom: [
     "Freedom to not have my entire life decided for me or imposed upon me because of societal norms.",

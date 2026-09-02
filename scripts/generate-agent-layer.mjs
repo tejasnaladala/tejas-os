@@ -8,6 +8,7 @@ import { profile } from "../data/profile.js";
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = profile.canonicalUrl;
 const PERSON_ID = profile.identity.canonicalId;
+const SOCIAL_IMAGE = profile.identity.socialImage ?? profile.identity.image;
 const ASSET_VERSION = "20260901.108";
 const PUBLISHED_STORY_IDS = new Set(["nespresso-jailbreak", "wifi-cantenna"]);
 const stories = archiveEntries.filter((story) => PUBLISHED_STORY_IDS.has(story.id));
@@ -683,11 +684,15 @@ function discoveryBlock(config) {
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="alternate" type="application/atom+xml" href="${SITE}/feed.xml" title="Unsupervised" />
     <meta property="og:site_name" content="Tejas Naladala" />
-    <meta property="og:image:alt" content="Portrait of Tejas Naladala" />
+    <meta property="og:image:secure_url" content="${SOCIAL_IMAGE}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tejas Naladala, engineer, researcher, entrepreneur, and angel investor" />
     <meta name="twitter:title" content="${escapeHtml(config.title)}" />
     <meta name="twitter:description" content="${escapeHtml(config.description)}" />
-    <meta name="twitter:image" content="${profile.identity.image}" />
-    <meta name="twitter:image:alt" content="Portrait of Tejas Naladala" />
+    <meta name="twitter:image" content="${SOCIAL_IMAGE}" />
+    <meta name="twitter:image:alt" content="Tejas Naladala, engineer, researcher, entrepreneur, and angel investor" />
     <script type="application/ld+json">${jsonForHtml(pageJsonLd(config))}</script>
     <!-- agent:head:end -->`;
 }
@@ -817,13 +822,17 @@ function buildStoryHtml(story) {
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(story.teaser)}" />
     <meta property="og:url" content="${SITE}${route}" />
-    <meta property="og:image" content="${profile.identity.image}" />
-    <meta property="og:image:alt" content="Portrait of Tejas Naladala" />
+    <meta property="og:image" content="${SOCIAL_IMAGE}" />
+    <meta property="og:image:secure_url" content="${SOCIAL_IMAGE}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tejas Naladala, engineer, researcher, entrepreneur, and angel investor" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(story.teaser)}" />
-    <meta name="twitter:image" content="${profile.identity.image}" />
-    <meta name="twitter:image:alt" content="Portrait of Tejas Naladala" />
+    <meta name="twitter:image" content="${SOCIAL_IMAGE}" />
+    <meta name="twitter:image:alt" content="Tejas Naladala, engineer, researcher, entrepreneur, and angel investor" />
     <title>${escapeHtml(title)}</title>
     <link rel="stylesheet" href="/pages.css?v=${ASSET_VERSION}" />
     <script type="application/ld+json">${jsonForHtml(storyJsonLd(story))}</script>
@@ -849,6 +858,7 @@ async function updateHtml(file, config, fallback) {
   const target = join(ROOT, file);
   let html = await readFile(target, "utf8");
   html = html.replace('content="width=device-width, initial-scale=1"', 'content="width=device-width, initial-scale=1, viewport-fit=cover"');
+  html = html.replace(/(<meta property="og:image" content=")[^"]*(" \/>)/, `$1${SOCIAL_IMAGE}$2`);
   html = addOrReplaceHead(html, config);
   if (fallback) html = addOrReplaceFallback(html, fallback);
   await write(file, html);
