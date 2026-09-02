@@ -320,19 +320,21 @@ function startBoot() {
 
   window.setTimeout(() => {
     if (bootFinished) return;
-    const source = signatureAnimation.dataset.src;
-    signatureAnimation.addEventListener(
-      "load",
-      () => {
-        signatureAnimation.classList.add("is-loaded");
-        window.clearTimeout(bootFallback);
-        bootFallback = window.setTimeout(finishBoot, 2800);
-      },
-      { once: true },
-    );
+
+    let signatureLoaded = false;
+    const showSignature = () => {
+      if (bootFinished || signatureLoaded) return;
+      signatureLoaded = true;
+      signatureAnimation.classList.add("is-loaded");
+      window.clearTimeout(bootFallback);
+      bootFallback = window.setTimeout(finishBoot, 4_300);
+    };
+
+    signatureAnimation.addEventListener("load", showSignature, { once: true });
     signatureAnimation.addEventListener("error", finishBoot, { once: true });
-    signatureAnimation.src = source;
-    bootFallback = window.setTimeout(finishBoot, 4600);
+    signatureAnimation.src = signatureAnimation.dataset.src;
+    if (signatureAnimation.complete && signatureAnimation.naturalWidth > 0) queueMicrotask(showSignature);
+    bootFallback = window.setTimeout(finishBoot, 7_600);
   }, startDelay);
 }
 

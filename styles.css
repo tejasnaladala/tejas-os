@@ -176,11 +176,11 @@ body.is-booting .decorative-motion-control {
 
 .boot__signature {
   display: grid;
-  width: min(58vw, 660px);
-  aspect-ratio: 1120 / 624;
+  width: min(74vw, 900px);
+  aspect-ratio: 16 / 9;
   place-items: center;
   opacity: 1;
-  transform: translateY(-2.2vh) rotate(-10deg) scale(1.08);
+  transform: translateY(-1.5vh) scale(1);
   transform-origin: center;
   transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1), transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
@@ -188,7 +188,7 @@ body.is-booting .decorative-motion-control {
 
 .boot.is-signature-leaving .boot__signature {
   opacity: 0;
-  transform: translateY(-2.4vh) rotate(-10deg) scale(1.09);
+  transform: translateY(-1.7vh) scale(1.015);
 }
 
 .boot__signature img {
@@ -196,14 +196,13 @@ body.is-booting .decorative-motion-control {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: transparent;
   opacity: 0;
   transition: opacity 280ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity;
 }
 
 .boot__signature img.is-loaded {
-  opacity: 0.84;
+  opacity: 0.9;
 }
 
 /* Site chrome */
@@ -1188,8 +1187,8 @@ body.is-booting .decorative-motion-control {
   }
 
   .boot__signature {
-    width: min(82vw, 430px);
-    transform: translateY(-3vh) rotate(-10deg) scale(1.08);
+    width: min(94vw, 620px);
+    transform: translateY(-2vh) scale(1);
   }
 
   .hero__inner {
@@ -1789,16 +1788,33 @@ body.is-booting .hero [data-reveal] {
   62%, 64% { transform: translateX(0) scaleY(0.08); }
 }
 
+.hero-greeting,
 .hero-disciplines {
   width: min(90vw, 900px);
   max-width: 900px;
-  margin: 83px auto 0;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.hero-greeting {
+  margin-top: 76px;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.hero-disciplines {
+  margin-top: 0;
+  margin-bottom: 0;
   color: #55534d;
   font-size: 18px;
   font-weight: 550;
   line-height: 1.45;
-  text-align: center;
-  text-wrap: balance;
 }
 
 .typewriter-frame {
@@ -1957,9 +1973,16 @@ body.is-booting .hero [data-reveal] {
     width: min(100%, 640px);
   }
 
-  .hero-disciplines {
+  .hero-greeting {
     max-width: 340px;
     margin-top: 18px;
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
+
+  .hero-disciplines {
+    max-width: 340px;
+    margin-top: 0;
     font-size: 14px;
   }
 
@@ -2014,8 +2037,14 @@ body.is-booting .hero [data-reveal] {
     width: min(74vw, 790px);
   }
 
-  .hero-disciplines {
+  .hero-greeting {
     margin-top: 12px;
+    margin-bottom: 4px;
+    font-size: 26px;
+  }
+
+  .hero-disciplines {
+    margin-top: 0;
   }
 }
 
@@ -2321,12 +2350,12 @@ html.decorative-motion-settled .about-story-doodle__icon {
 
 @media (max-height: 500px) and (pointer: coarse) {
   .boot__signature {
-    width: min(64vw, calc(100svh * 1.35), 560px);
-    transform: translateY(0) rotate(-4deg) scale(1);
+    width: min(88vw, calc(100svh * 1.6), 760px);
+    transform: translateY(0) scale(1);
   }
 
   .boot.is-signature-leaving .boot__signature {
-    transform: translateY(-0.2vh) rotate(-4deg) scale(1.01);
+    transform: translateY(-0.2vh) scale(1.01);
   }
 
   .home-view .site-header__inner {
@@ -2410,9 +2439,16 @@ html.decorative-motion-settled .about-story-doodle__icon {
     width: min(72vw, 610px);
   }
 
+  .hero-greeting {
+    max-width: 380px;
+    margin-top: 6px;
+    margin-bottom: 3px;
+    font-size: 22px;
+  }
+
   .hero-disciplines {
     max-width: 380px;
-    margin-top: 8px;
+    margin-top: 0;
     font-size: 14px;
   }
 
