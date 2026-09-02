@@ -7,12 +7,28 @@ const announcer = document.querySelector("#announcer");
 const pageMain = document.querySelector("main");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const mobileBreakpoint = window.matchMedia("(max-width: 700px)");
+const signatureSessionKey = "tejas-signature-played";
 
 let bootFinished = false;
 let bootFallback = 0;
 let bootPlaybackEnd = 0;
 let heroTypewriters = [];
 let heroTypewriterStarted = false;
+
+function hasPlayedSignature() {
+  if (document.documentElement.classList.contains("signature-seen")) return true;
+  try {
+    return window.sessionStorage.getItem(signatureSessionKey) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function rememberSignature() {
+  try {
+    window.sessionStorage.setItem(signatureSessionKey, "1");
+  } catch {}
+}
 
 const nameGlyphs = Object.freeze({
   A: ["0001111000", "0011111100", "0110000110", "1100000011", "1100000011", "1100000011", "1111111111", "1111111111", "1100000011", "1100000011", "1100000011", "1100000011"],
@@ -324,7 +340,24 @@ function finishBoot() {
   window.setTimeout(() => boot.remove(), prefersReducedMotion.matches ? 20 : 500);
 }
 
+function skipBoot() {
+  if (bootFinished) return;
+  bootFinished = true;
+  window.clearTimeout(bootFallback);
+  window.clearTimeout(bootPlaybackEnd);
+  boot.remove();
+  revealHome();
+  window.setTimeout(startHeroTypewriter, prefersReducedMotion.matches ? 0 : 150);
+}
+
 function startBoot() {
+  if (hasPlayedSignature()) {
+    skipBoot();
+    return;
+  }
+
+  rememberSignature();
+
   if (prefersReducedMotion.matches) {
     finishBoot();
     return;

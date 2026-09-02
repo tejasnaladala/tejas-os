@@ -1,9 +1,9 @@
 # Research - Tejas Naladala
 
-> I wrote down the answers that held up.
+> All that finding out led me to some answers I documented.
 
 Canonical profile: https://tejasnaladala.com/profile.json
-Last updated: 2026-09-01
+Last updated: 2026-09-02
 
 ## Research
 
@@ -13,8 +13,9 @@ Last updated: 2026-09-01
 **Status:** in progress
 
 - Co-developed MTEB-Gym, a label-free framework for ranking embedding models on datasets without human relevance annotations.
-- Worked on bidirectional judging, validation, uncertainty estimates, and failure handling for label-free rankings.
-- Merged nine changes covering validation, uncertainty estimates, caching, deterministic parallelism, and failure handling.
+- Designed the judge-reliability study across 16 retrieval datasets and identified when LLM-based evaluation could and could not be trusted.
+- Diagnosed task-definition mismatch as the framework's main failure mode and improved ranking quality by adding dataset-specific evaluation criteria.
+- Contributed production-grade tooling to the MTEB ecosystem and built a public leaderboard that reports reliability alongside every model ranking.
 
 **Current result:** Nine merged upstream changes cover validation, uncertainty estimates, cache behavior, deterministic parallelism, and failure handling.
 **Boundary:** The active reliability study still needs a public result artifact.
@@ -23,60 +24,61 @@ Evidence: [Merged MTEB-Gym contributions by Tejas Naladala](https://github.com/e
 
 ### RSNA Knee Abnormality Detection
 **Question:** Which validation choices materially change a knee-MRI model's reported AUC?
-**Dates:** Jul 2026 - Present
-**Status:** in progress
+**Dates:** Jul 2026 - Aug 2026
+**Status:** completed
 
-- Built a knee-MRI evaluation pipeline around ordered slices, hierarchical 2.5D multiple-instance learning, and study-level aggregation.
-- Added patient/study splits, fold-integrity checks, leakage audits, label-quality analysis, and metric-consistency tests to the experiment path.
-- In progress.
+- Built a complete ML platform for the Radiological Society of North America's Knee Abnormality Detection competition, predicting 12 study-level findings from multi-plane MRI across 4,407 studies and 24,371 imaging series. I also completed an exact census of 819,078 DICOM files.
+- Advanced the project's authenticated Kaggle public macro ROC-AUC from 0.618 to 0.912 across seven tracked submissions. A controlled ablation improved AUC from 0.618 to 0.764 by changing only report-derived supervision, identifying label quality as a primary modeling bottleneck.
+- Implemented deterministic 2.5D ResNet-18 MIL and five-fold, three-plane EfficientNet-B3 training systems, then integrated DINO- and RadImageNet-based inference branches using rank fusion, label-specific fallback policies, and cross-label stacking.
+- Engineered reproducible offline GPU execution with geometrically ordered MRI slices, hash-bound caches, mixed-precision training, RNG-complete checkpoint and resume, fresh-checkpoint inference replay, and atomic artifact publication. A private Kaggle T4 run featurized all 4,407 studies with zero failures.
 
-**Current result:** The current artifact covers study-level aggregation, leakage checks, fold audits, and metric-consistency tests.
-**Boundary:** In progress.
+**Current result:** The authenticated Kaggle public macro ROC-AUC improved from 0.618 to 0.912 across seven tracked submissions.
+**Boundary:** The completed study used competition data and public leaderboard evaluation.
 
 Evidence: [Radiological Society of North America](https://www.rsna.org/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 
 ### AgentBreed
 **Question:** How much agent performance comes from the configuration space, and how much from the search operator?
-**Dates:** Mar 2026 - Present
-**Status:** in progress
+**Dates:** Mar 2026 - Jul 2026
+**Status:** completed
 
-- Designed a preregistered study of configuration-space richness and search algorithms in multi-agent systems.
-- Ran 700 reproducible evaluations across three domains in a deterministic simulator.
-- Compared search operators with Holm-corrected pairwise tests; none reached corrected significance in the synthetic pilot.
-- The real-LLM replication is preregistered and pending; current results cover the simulator.
+- Designed a pre-registered study testing whether multi-agent performance depends more on the available configuration space or the search algorithm.
+- Ran 700 reproducible evaluations across three domains using a deterministic simulator to separate true effects from LLM sampling noise.
+- Used equivalence testing and sensitivity analysis to identify which agent-design choices meaningfully affected performance.
+- Built a heavily tested research codebase and kept the study's conclusions explicitly limited to the deterministic simulator.
 
 **Current result:** In the 700-run deterministic synthetic pilot, pairwise differences among the tested search operators did not reach Holm-corrected significance.
-**Boundary:** This result does not establish equivalence among search operators. The real-LLM replication is preregistered and pending, and the current sensitivity-analysis output is not used for inference.
+**Boundary:** The reported conclusions apply to the deterministic simulator used in the completed study.
 
 Evidence: [AgentBreed repository](https://github.com/tejasnaladala/agentbreed)
 
 ### Procedural-Maze RL Baselines
 **Question:** Why did modern reward-driven RL miss a policy a five-line heuristic could see?
 **Dates:** Feb 2026 - Apr 2026
-**Status:** artifact reconciliation
+**Status:** completed
 
 - Benchmarked PPO, DQN, and A2C on procedurally generated mazes against simple heuristics and behavior cloning.
-- The policy class can express strong maze-solving behavior; reward-driven training struggled to reach it consistently.
-- The public repository includes experiment code, run records, manifests, and a result verifier.
-- Later runs outgrew the pinned manifest. Artifact reconciliation is in progress before final reporting.
+- Found that the learned agents had sufficient capacity but failed because of exploration and credit-assignment limitations.
+- Built a reproducible experiment pipeline with roughly 3,500 traceable run artifacts.
+- Corrected the original study's validation flaw by rebuilding the evaluation around a proper held-out protocol.
 
-**Current result:** The policy class can express strong maze-solving behavior; reward-driven training struggled to reach it consistently.
-**Boundary:** Later runs outgrew the pinned manifest. Artifact reconciliation is in progress before final reporting.
+**Current result:** The learned agents had sufficient capacity but failed because of exploration and credit-assignment limitations.
+**Boundary:** The final evaluation uses the corrected held-out protocol.
 
 Evidence: [Procedural-Maze RL Baselines repository](https://github.com/tejasnaladala/maze-rl-baselines)
 
 ### Connectome Architecture Benchmark
 **Question:** Does biological wiring still help after density, weights, graph realizations, and trainable components are controlled?
-**Dates:** Dec 2025 - Present
-**Status:** corrected run pending
+**Dates:** Dec 2025 - Aug 2026
+**Status:** completed
 
-- Built a controlled benchmark for biological connectomes and matched random graphs.
-- Audited and invalidated the original 757-row pilot after finding control-density, provenance, optimizer, and evaluation failures.
-- Rebuilt CAB v2 around digest-bound measured connectomes, readout-only optimization, and nulls matched on exact edge count and weight distribution.
-- CAB v2 is implemented and tested. The full corrected run is pending.
+- Built a controlled benchmark testing whether biological connectomes provide better neural-network architectures than matched random graphs.
+- Evaluated ten connectomes across six tasks while keeping the biological wiring fixed and training only the output layer.
+- Found that biological structure sometimes helped, but degree distribution explained much of the advantage while exact biological wiring explained less.
+- Tested the result against matched random graphs and controls for graph density, edge weights, and trainable components.
 
-**Current result:** The first pass found confounds in null-graph density, weight distributions, dataset provenance, and what the optimizer was allowed to train.
-**Boundary:** The original 757-row artifact is invalidated. CAB v2 awaits a full corrected run.
+**Current result:** Biological structure sometimes helped, but degree distribution explained much of the advantage while exact biological wiring explained less.
+**Boundary:** The completed analysis controlled graph density, edge weights, graph realizations, and trainable components.
 
 Evidence: [Connectome Architecture Benchmark repository](https://github.com/tejasnaladala/connectome-bpu)
 

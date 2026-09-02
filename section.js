@@ -9,7 +9,7 @@ import {
   cvProfile,
   researchJournal,
   workJournal,
-} from "/data/profile.js?v=20260902.111";
+} from "/data/profile.js?v=20260902.115";
 
 const aboutTabs = { hello: aboutHello };
 

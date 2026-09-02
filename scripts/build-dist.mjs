@@ -16,6 +16,7 @@ const publicFiles = [
   "about.md",
   "blog.html",
   "blog.md",
+  "boot-session.js",
   "content.js",
   "cv.html",
   "cv.md",
