@@ -9,7 +9,7 @@ const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = profile.canonicalUrl;
 const PERSON_ID = profile.identity.canonicalId;
 const SOCIAL_IMAGE = profile.identity.socialImage ?? profile.identity.image;
-const ASSET_VERSION = "20260901.108";
+const ASSET_VERSION = "20260902.111";
 const PUBLISHED_STORY_IDS = new Set(["nespresso-jailbreak", "wifi-cantenna"]);
 const stories = archiveEntries.filter((story) => PUBLISHED_STORY_IDS.has(story.id));
 
@@ -842,7 +842,7 @@ function buildStoryHtml(story) {
     <header class="page-topbar"><div class="page-topbar__inner"><a class="back-link" href="/blog" aria-label="Back to Unsupervised"><span class="back-link__arrow" aria-hidden="true">&larr;</span><span>blog</span></a></div></header>
     <main class="story-entry-main" id="storyEntry"><article class="story-entry story-entry--longform"><header class="story-entry__header"><p class="story-entry__brand">&quot;Un&quot;Supervised</p><h1>${escapeHtml(story.title)}</h1><p class="story-entry__teaser">${escapeHtml(story.teaser)}</p><p class="story-entry__reading-time">${escapeHtml(story.readingTime)}</p></header><div class="story-entry__layout"><div class="story-entry__copy">${body}</div></div></article></main>
     <script type="module" src="/story.js?v=${ASSET_VERSION}"></script>
-    <script type="module" src="/music.js?v=${ASSET_VERSION}"></script>
+    <script type="module" src="/site-motion.js?v=${ASSET_VERSION}"></script>
   </body>
 </html>
 `;

@@ -192,8 +192,6 @@ function contextOptions(profile, overrides = {}) {
 async function prepareContext(context) {
   await context.addInitScript(() => {
     window.sessionStorage.setItem("tejas-intro-seen", "1");
-    window.sessionStorage.setItem("tejas-music-enabled", "off");
-    window.sessionStorage.removeItem("tejas-music-unlocked");
   });
 }
 

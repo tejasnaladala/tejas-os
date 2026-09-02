@@ -11,7 +11,8 @@ const mobileBreakpoint = window.matchMedia("(max-width: 700px)");
 let bootFinished = false;
 let bootFallback = 0;
 let bootPlaybackEnd = 0;
-let heroTypewriter = null;
+let heroTypewriters = [];
+let heroTypewriterStarted = false;
 
 const nameGlyphs = Object.freeze({
   A: ["0001111000", "0011111100", "0110000110", "1100000011", "1100000011", "1100000011", "1111111111", "1111111111", "1100000011", "1100000011", "1100000011", "1100000011"],
@@ -196,53 +197,64 @@ function renderNameMark() {
 }
 
 function setupHeroTypewriter() {
-  const element = document.querySelector(".hero-disciplines");
-  const text = element.innerText.trim();
-  element.innerHTML = `<span class="sr-only">${escapeHtml(text)}</span><span class="typewriter-frame" aria-hidden="true"><span class="typewriter-reserve">${escapeHtml(text)}</span><span class="typewriter-output"><span></span><i class="typewriter-caret"></i></span></span>`;
-  heroTypewriter = { element, output: element.querySelector(".typewriter-output span"), started: false, text };
+  heroTypewriters = [...document.querySelectorAll(".hero-greeting, .hero-disciplines")].map((element) => {
+    const text = element.innerText.trim();
+    element.innerHTML = `<span class="sr-only">${escapeHtml(text)}</span><span class="typewriter-frame" aria-hidden="true"><span class="typewriter-reserve">${escapeHtml(text)}</span><span class="typewriter-output"><span></span><i class="typewriter-caret"></i></span></span>`;
+    return { element, output: element.querySelector(".typewriter-output span"), text };
+  });
 }
 
 function showTypedIntro() {
-  heroTypewriter.started = true;
-  heroTypewriter.output.textContent = heroTypewriter.text;
-  heroTypewriter.element.classList.add("is-typed");
+  heroTypewriterStarted = true;
+  heroTypewriters.forEach(({ element, output, text }) => {
+    output.textContent = text;
+    element.classList.add("is-typed");
+  });
 }
 
 function startHeroTypewriter() {
-  if (!heroTypewriter || heroTypewriter.started) return;
-  heroTypewriter.started = true;
+  if (!heroTypewriters.length || heroTypewriterStarted) return;
+  heroTypewriterStarted = true;
 
   if (prefersReducedMotion.matches) {
     showTypedIntro();
     return;
   }
 
-  heroTypewriter.element.classList.add("is-typing");
-  let characterIndex = 0;
-  const typeNextCharacter = () => {
-    const character = heroTypewriter.text[characterIndex];
-    characterIndex += 1;
+  const typeLine = (lineIndex) => {
+    const line = heroTypewriters[lineIndex];
+    if (!line) return;
 
-    if (character === " " || character === "\n") {
-      heroTypewriter.output.append(document.createTextNode(character));
-    } else {
-      const glyph = document.createElement("span");
-      glyph.className = "typewriter-character";
-      glyph.textContent = character;
-      heroTypewriter.output.append(glyph);
-    }
+    line.element.classList.add("is-typing");
+    let characterIndex = 0;
+    const typeNextCharacter = () => {
+      const character = line.text[characterIndex];
+      characterIndex += 1;
 
-    if (characterIndex >= heroTypewriter.text.length) {
-      heroTypewriter.element.classList.remove("is-typing");
-      heroTypewriter.element.classList.add("is-typed");
-      return;
-    }
+      if (character === " " || character === "\n") {
+        line.output.append(document.createTextNode(character));
+      } else {
+        const glyph = document.createElement("span");
+        glyph.className = "typewriter-character";
+        glyph.textContent = character;
+        line.output.append(glyph);
+      }
 
-    const cadence = character === "\n" ? 170 : character === " " ? 18 : 42 + (characterIndex % 3) * 5;
-    window.setTimeout(typeNextCharacter, cadence + (/[,.]/.test(character) ? 130 : 0));
+      if (characterIndex >= line.text.length) {
+        line.element.classList.remove("is-typing");
+        line.element.classList.add("is-typed");
+        if (lineIndex + 1 < heroTypewriters.length) window.setTimeout(() => typeLine(lineIndex + 1), 110);
+        return;
+      }
+
+      const cadence = character === "\n" ? 170 : character === " " ? 18 : 42 + (characterIndex % 3) * 5;
+      window.setTimeout(typeNextCharacter, cadence + (/[,.]/.test(character) ? 130 : 0));
+    };
+
+    typeNextCharacter();
   };
 
-  typeNextCharacter();
+  typeLine(0);
 }
 
 function announce(message) {

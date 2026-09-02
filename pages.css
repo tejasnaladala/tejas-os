@@ -71,59 +71,6 @@ a {
   color: var(--ivory);
 }
 
-.decorative-motion-control {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 50;
-  display: grid;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border: 1px solid rgb(17 17 15 / 34%);
-  border-radius: 50%;
-  place-items: center;
-  background: rgb(244 241 232 / 86%);
-  color: var(--ink);
-  cursor: pointer;
-  font-family: Georgia, serif;
-  font-size: 17px;
-  line-height: 1;
-  backdrop-filter: blur(8px);
-  transition: border-color 180ms ease, transform 180ms ease, opacity 180ms ease;
-}
-
-.decorative-motion-control::after {
-  position: absolute;
-  width: 17px;
-  height: 1px;
-  background: currentColor;
-  content: "";
-  opacity: 0;
-  transform: rotate(-45deg) scaleX(0.4);
-  transition: opacity 160ms ease, transform 180ms ease;
-}
-
-.decorative-motion-control.is-muted {
-  opacity: 0.56;
-}
-
-.decorative-motion-control.is-muted::after {
-  opacity: 1;
-  transform: rotate(-45deg) scaleX(1);
-}
-
-.decorative-motion-control:hover,
-.decorative-motion-control:focus-visible {
-  border-color: var(--ink);
-  outline: none;
-  transform: translateY(-2px);
-}
-
-.decorative-motion-control:focus-visible {
-  box-shadow: 0 0 0 2px var(--ivory), 0 0 0 4px var(--ink);
-}
-
 .page-topbar {
   position: sticky;
   top: 0;
@@ -5482,15 +5429,6 @@ button {
 
 .back-link {
   min-height: 44px;
-}
-
-body:not(.home-view) .decorative-motion-control {
-  top: max(11px, env(safe-area-inset-top));
-  right: max(var(--gutter), env(safe-area-inset-right));
-  bottom: auto;
-  z-index: 25;
-  width: 44px;
-  height: 44px;
 }
 
 .agent-readable {
