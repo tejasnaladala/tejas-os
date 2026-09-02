@@ -10,6 +10,7 @@ const mobileBreakpoint = window.matchMedia("(max-width: 700px)");
 
 let bootFinished = false;
 let bootFallback = 0;
+let bootPlaybackEnd = 0;
 let heroTypewriter = null;
 
 const nameGlyphs = Object.freeze({
@@ -298,6 +299,7 @@ function finishBoot() {
   if (bootFinished) return;
   bootFinished = true;
   window.clearTimeout(bootFallback);
+  window.clearTimeout(bootPlaybackEnd);
   boot.classList.add("is-signature-leaving");
 
   window.setTimeout(() => {
@@ -326,15 +328,14 @@ function startBoot() {
       if (bootFinished || signatureLoaded) return;
       signatureLoaded = true;
       signatureAnimation.classList.add("is-loaded");
-      window.clearTimeout(bootFallback);
-      bootFallback = window.setTimeout(finishBoot, 4_300);
+      bootPlaybackEnd = window.setTimeout(finishBoot, 4_300);
     };
 
+    bootFallback = window.setTimeout(finishBoot, 6_300);
     signatureAnimation.addEventListener("load", showSignature, { once: true });
     signatureAnimation.addEventListener("error", finishBoot, { once: true });
     signatureAnimation.src = signatureAnimation.dataset.src;
     if (signatureAnimation.complete && signatureAnimation.naturalWidth > 0) queueMicrotask(showSignature);
-    bootFallback = window.setTimeout(finishBoot, 7_600);
   }, startDelay);
 }
 
