@@ -9,7 +9,7 @@ const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = profile.canonicalUrl;
 const PERSON_ID = profile.identity.canonicalId;
 const SOCIAL_IMAGE = profile.identity.socialImage ?? profile.identity.image;
-const ASSET_VERSION = "20260902.111";
+const ASSET_VERSION = "20260902.112";
 const PUBLISHED_STORY_IDS = new Set(["nespresso-jailbreak", "wifi-cantenna"]);
 const stories = archiveEntries.filter((story) => PUBLISHED_STORY_IDS.has(story.id));
 
@@ -104,7 +104,7 @@ function buildResearchMarkdown() {
   const sections = [
     "# Research - Tejas Naladala",
     "",
-    "> I wrote down the answers that held up.",
+    "> All that finding out led me to some answers I documented.",
     "",
     `Canonical profile: ${SITE}/profile.json`,
     `Last updated: ${profile.lastUpdated}`,

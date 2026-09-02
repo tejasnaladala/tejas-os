@@ -4,8 +4,8 @@
   --muted: #66635c;
   --line: rgb(17 17 15 / 22%);
   --line-strong: rgb(17 17 15 / 68%);
-  --display: "Bodoni 72", Didot, "Iowan Old Style", Baskerville, Georgia, serif;
-  --sans: "Avenir Next", "Segoe UI Variable Text", "Helvetica Neue", sans-serif;
+  --display: Georgia, "Times New Roman", serif;
+  --sans: "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --page: 1120px;
   --gutter: clamp(22px, 4vw, 52px);
   --section-accent: #2f6fc7;
@@ -445,6 +445,7 @@ html.section-render-pending .page-intro h1::after {
   max-width: 360px;
   margin: 0 0 5px;
   color: var(--muted);
+  font-family: var(--display);
   font-size: clamp(15px, 1.6vw, 18px);
   line-height: 1.55;
 }
@@ -460,8 +461,44 @@ html.section-render-pending .page-intro h1::after {
 }
 
 .page-intro__subtitle {
+  display: inline-flex;
   margin: 0;
+  align-items: baseline;
   color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(38px, 12vw, 52px);
+  font-weight: 400;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.page-intro__subtitle-un {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-right: 0.08em;
+  color: var(--section-accent);
+  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-size: 0.64em;
+  font-weight: 700;
+  transform: translateY(-0.12em) rotate(-7deg);
+}
+
+.page-intro__subtitle-un::after {
+  position: absolute;
+  right: -0.08em;
+  bottom: -0.06em;
+  left: -0.08em;
+  z-index: -1;
+  height: 0.1em;
+  background: var(--section-accent);
+  content: "";
+  opacity: 0.72;
+  transform: rotate(-2deg);
+}
+
+.page-intro__subtitle-supervised {
+  display: inline-block;
   font-family: var(--display);
   font-weight: 400;
 }
@@ -2738,12 +2775,7 @@ body[data-page="investing"] .page-intro {
   --accent-text: #8f304b;
   color: inherit;
   font-weight: 600;
-  text-decoration-line: underline;
-  text-decoration-color: var(--accent-color);
-  text-decoration-color: color-mix(in srgb, var(--accent-color) 68%, transparent);
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 0.14em;
-  text-decoration-skip-ink: auto;
+  text-decoration: none;
 }
 
 .about-story__accent--color {
@@ -3712,7 +3744,6 @@ body[data-page="investing"] .page-intro {
     max-width: 1040px;
     margin: 0;
     color: var(--ink);
-    font-family: var(--display);
     font-size: clamp(22px, 2.05vw, 28px);
     line-height: 1.24;
   }
@@ -3744,40 +3775,8 @@ body[data-page="investing"] .page-intro {
     white-space: nowrap;
   }
 
-  body[data-page="stories"] .page-intro__subtitle-un {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    margin-right: 0.08em;
-    color: var(--section-accent);
-    font-family: "Segoe Print", "Bradley Hand", cursive;
-    font-size: 0.64em;
-    font-weight: 700;
-    transform: translateY(-0.12em) rotate(-7deg);
-  }
-
-  body[data-page="stories"] .page-intro__subtitle-un::after {
-    position: absolute;
-    right: -0.08em;
-    bottom: -0.06em;
-    left: -0.08em;
-    z-index: -1;
-    height: 0.1em;
-    background: var(--section-accent);
-    content: "";
-    opacity: 0.72;
-    transform: rotate(-2deg);
-  }
-
-  body[data-page="stories"] .page-intro__subtitle-supervised {
-    display: inline-block;
-    font-family: var(--display);
-    font-weight: 400;
-  }
-
   body[data-page="stories"] .page-intro__note {
     margin-top: clamp(5px, 0.9vh, 8px);
-    font-family: var(--display);
     font-size: clamp(17px, 1.5vw, 20px);
     font-weight: 500;
     line-height: 1.25;

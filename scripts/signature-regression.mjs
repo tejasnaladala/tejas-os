@@ -43,6 +43,7 @@ const failures = [];
 const notes = [];
 const stats = {
   animatedLoads: 0,
+  sessionSkips: 0,
   reducedMotionLoads: 0,
 };
 
@@ -433,11 +434,13 @@ async function auditAnimatedLoad(page, phase) {
   const asset = await page.locator("#signatureAnimation").evaluate((image) => ({
     currentSrc: image.currentSrc,
     complete: image.complete,
+    filter: getComputedStyle(image).filter,
     decodedDimensions: [image.naturalWidth, image.naturalHeight],
     sourceDimensions: [Number(image.getAttribute("width")), Number(image.getAttribute("height"))],
   }));
   assert(new URL(asset.currentSrc).pathname === SIGNATURE_PATH, `${phase} used ${asset.currentSrc || "no signature asset"}`);
   assert(asset.complete, `${phase} signature image did not finish loading`);
+  assert(asset.filter === "brightness(0)", `${phase} signature filter was ${asset.filter}; expected brightness(0)`);
   assert(
     asset.sourceDimensions[0] === SIGNATURE_DIMENSIONS[0] && asset.sourceDimensions[1] === SIGNATURE_DIMENSIONS[1],
     `${phase} signature source dimensions were ${asset.sourceDimensions.join("x")}; expected ${SIGNATURE_DIMENSIONS.join("x")}`,
@@ -454,6 +457,27 @@ async function auditAnimatedLoad(page, phase) {
   stats.animatedLoads += 1;
 }
 
+async function auditSessionSkip(page) {
+  const events = observePage(page);
+  const navigationStartedAt = Date.now();
+  const response = await page.reload({ waitUntil: "domcontentloaded", timeout: NAVIGATION_TIMEOUT_MS });
+
+  assert(response?.status() === 200, `session return returned HTTP ${response?.status() ?? "no response"}`);
+  await waitForBootExit(page, navigationStartedAt);
+  await assertFinalIdentity(page);
+
+  const state = await page.evaluate(() => ({
+    bootPresent: Boolean(document.querySelector("#boot")),
+    htmlMarked: document.documentElement.classList.contains("signature-seen"),
+    sessionMarked: window.sessionStorage.getItem("tejas-signature-played") === "1",
+  }));
+  assert(!state.bootPresent, "signature boot replayed during the same browser session");
+  assert(state.htmlMarked, "same-session homepage did not retain its signature marker");
+  assert(state.sessionMarked, "same-session homepage did not retain its storage marker");
+  assertNoPageErrors(events);
+  stats.sessionSkips += 1;
+}
+
 async function auditAnimatedProfile(browser, profile, orientation) {
   const context = await browser.newContext(contextOptions(profile, orientation));
   await instrumentContext(context);
@@ -462,7 +486,7 @@ async function auditAnimatedProfile(browser, profile, orientation) {
 
   try {
     await auditAnimatedLoad(page, "first load");
-    await auditAnimatedLoad(page, "repeat reload");
+    await auditSessionSkip(page);
   } finally {
     await context.close();
   }
@@ -545,7 +569,7 @@ function printReport() {
     for (const [index, failure] of failures.entries()) console.error(`${index + 1}. ${failure}`);
   } else {
     console.log(
-      `Signature regression passed: ${stats.animatedLoads} animated loads (first load plus repeat reload) and ${stats.reducedMotionLoads} reduced-motion loads at ${BASE_URL}.`,
+      `Signature regression passed: ${stats.animatedLoads} first-session animated loads, ${stats.sessionSkips} same-session skips, and ${stats.reducedMotionLoads} reduced-motion loads at ${BASE_URL}.`,
     );
   }
   for (const note of notes.sort()) console.log(`PASS: ${note}`);

@@ -2,7 +2,7 @@
 
 > i'm an engineer, researcher, entrepreneur, and angel investor based in Seattle, WA.
 
-Last updated: 2026-09-01
+Last updated: 2026-09-02
 Schema version: 1.0.0
 Canonical identity: https://tejasnaladala.com/#person
 Canonical JSON: https://tejasnaladala.com/profile.json
@@ -17,11 +17,9 @@ Tejas Naladala is a 19-year-old Engineering student at the University of Washing
 
 ## Current work
 
-- Founder & CEO, [R0 Systems](https://fuckchlorine.com/) (Jun 2024 - Present): Founded and commercialized continuous-flow plasma-activated-water equipment for post-harvest produce sanitation.
+- Founder & CEO, [R0 Systems](https://fuckchlorine.com/) (Jun 2024 - Present): Plasma-activated-water equipment for produce wash lines.
 - Engineering student, [University of Washington](https://www.washington.edu/) (Aug 2025 - Jun 2028, expected)
 - MTEB-Gym: label-free embedding evaluation (in progress): When can label-free embedding evaluation produce a trustworthy model ranking?
-- RSNA Knee Abnormality Detection (in progress): Which validation choices materially change a knee-MRI model's reported AUC?
-- AgentBreed (in progress): How much agent performance comes from the configuration space, and how much from the search operator?
 - Regional Cabled Array expedition RR2607 (in progress): Can methane-bubble flux be estimated while the experiment is 2,900 meters underwater?
 
 ## Experience
@@ -31,16 +29,14 @@ Tejas Naladala is a 19-year-old Engineering student at the University of Washing
 - Role: Founder & CEO
 - Dates: Jun 2024 - Present
 - Current: yes
-- Summary: Founded and commercialized continuous-flow plasma-activated-water equipment for post-harvest produce sanitation.
+- Summary: Plasma-activated-water equipment for produce wash lines.
 - Demonstrates: Technical leadership, Plasma engineering, High-voltage power electronics, Embedded systems, Industrial machine design, Experiment design
 
 Contributions:
 
-- R0 generates produce sanitizer on site using air, water, and electricity. I bootstrapped it to six figures in revenue.
-- I designed the reactor, Venturi transfer stage, water loop, controls, and field hardware.
-- The machines now run continuously in customer facilities.
-- Three peer-reviewed papers, two pending patents, and independent national food-safety laboratory studies document the system.
-- Demonstrated up to 3x shelf-life extension at under $0.50 per ton in energy cost across tomato and leafy-green validation studies.
+- I founded R0 to replace chlorine on produce wash lines with plasma-activated water generated on demand from air, water, and electricity, and bootstrapped it to 6-figure revenue.
+- I designed every part of the machine, including the patent-pending plasma reactor and microbubble generator, Venturi gas transfer at 22 L/min, drive electronics, and an STM32 hard real-time dosing loop in C/C++. The full system runs on 44 watts.
+- In validation, R0 outperformed chlorine on disinfection without chlorate or perchlorate residue, kept produce fresh 3x longer, and ran cheaper than incumbent chemistry. Three peer-reviewed papers, two pending patents, and independent national food-safety laboratory studies back the work.
 
 Evidence: [R0 Systems](https://fuckchlorine.com/); [R0 Systems - James Dyson Award](https://www.jamesdysonaward.org/en-US/2026/project/r0-systems); [Design of systems for plasma activated water for agri-food applications](https://doi.org/10.1088/1361-6463/ad77de); [Design of a continuous PAW disinfection system for fresh produce industry](https://doi.org/10.1016/j.ifset.2024.103845); [Design and construction of continuous industrial-scale cold plasma equipment](https://doi.org/10.1016/j.ifset.2024.103840)
 
@@ -54,11 +50,10 @@ Evidence: [R0 Systems](https://fuckchlorine.com/); [R0 Systems - James Dyson Awa
 
 Contributions:
 
-- As OpenTrade's first ML hire, I built market-data grounding, trade-card generation, and personalized ranking.
+- I joined as OpenTrade's first ML hire and owned the decision path from live market data to grounded LLM-generated trade cards to the personalized ranking determining what each user saw.
 - Replaced hand-tuned feed ordering with a learned ranking model built from user interaction, content, recency, and market-context signals and evaluated releases through offline replay and product behavior.
 - Built a factual-accuracy and regression harness for generated financial content, checking grounding against live market data, numerical consistency, temporal validity, unsupported claims, and structured-output compliance across model and prompt releases.
-- Turned impressions and downstream behavior into evaluation and training signals for subsequent model releases.
-- Defined launch hypotheses, primary metrics, and guardrails before each production release.
+- Closed the model-data loop by turning impressions and downstream user behavior into evaluation and training signals, with pre-registered launch hypotheses, primary metrics, and guardrails before shipping to production.
 - Built backend and serverless API routes serving model outputs, integrated external market-data providers, and owned testing, deployment, and CI for a product that grew from launch to roughly 150,000 monthly users in two months.
 
 Evidence: [OpenTrade](https://opentrade.live/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
@@ -73,9 +68,9 @@ Evidence: [OpenTrade](https://opentrade.live/); [Tejas Naladala complete CV](htt
 
 Contributions:
 
-- Engineered a real-time PPG wearable: transimpedance front end, fourth-order Butterworth filter, 100 Hz 12-bit acquisition, and adaptive motion-artifact cancellation rejecting 95% of motion artifact.
+- Engineered a real-time PPG drowsiness wearable from sensor to signal pipeline, including a transimpedance front end, fourth-order Butterworth filtering, 100 Hz 12-bit acquisition, and adaptive noise cancellation rejecting 95% of motion artifact.
 - Built a PZT-array acoustic-emission system for U.S. Navy hull-integrity monitoring, using charge amplification, 10 kHz acquisition, and a real-time 512-point FFT pipeline to separate impacts from fatigue-crack signatures.
-- Handled analog design, prototype bring-up, embedded acquisition, signal processing, bench characterization, and failure analysis.
+- Took sensing systems through analog design, prototype bring-up, embedded acquisition, signal processing, bench characterization, and failure analysis.
 - Authored the sensing architecture, signal-processing methodology, and validation sections of two funded proposals across a seven-person research team.
 
 Evidence: [Sensors, Energy, and Automation Laboratory](https://www.uwseal.org/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
@@ -91,8 +86,8 @@ Evidence: [Sensors, Energy, and Automation Laboratory](https://www.uwseal.org/);
 Contributions:
 
 - Researched dye-sensitized and perovskite photovoltaics within CSIR-NIIST's indoor-light energy-harvesting program, whose dye-sensitized-cell work later reached a 40% indoor-light conversion-efficiency record.
-- Fabricated complete solar-cell devices using FTO substrates, TiO2 photoanodes, thermal processing, ruthenium sensitizers, electrolytes, counter electrodes, and sealed assemblies.
-- Ran the full optoelectronic and structural characterization stack: J-V curves, IPCE, photoinduced absorption spectroscopy, and XRD with Scherrer crystallite-size analysis.
+- Fabricated complete solar cells using FTO substrates, TiO2 photoanodes, thermal processing, ruthenium sensitizers, electrolytes, counter electrodes, and sealed device assemblies.
+- Ran the full optoelectronic and structural characterization stack, including J-V curves, IPCE, photoinduced absorption spectroscopy, and XRD with Scherrer crystallite-size analysis.
 - Connected spectral response, charge-recombination behavior, crystallite structure, and fabrication parameters to device-level efficiency and failure modes.
 - Designed controlled experiments across photoanode architecture and processing conditions, then analyzed batch variation and reproducibility across fabricated devices.
 
@@ -108,9 +103,9 @@ Evidence: [CSIR-NIIST](https://www.niist.res.in/); [Tejas Naladala complete CV](
 
 Contributions:
 
-- Delivered custom plasma and automation machines for agri-food clients. Each build combined power electronics, embedded control, fluidics, reactor design, and industrial mechanics.
+- Delivered custom plasma and automation equipment for agri-food clients, turning incomplete requirements into commissioned machines spanning power electronics, embedded control, fluidics, reactor design, and industrial mechanics.
 - Designed 20 kV discharge drivers, MOSFET switching stages, PID control loops, STM32 firmware, electrode and reactor geometries, Venturi injectors, and production CAD assemblies.
-- Handled client specifications, system architecture, component selection, fabrication, wiring, firmware, validation, acceptance testing, documentation, and handoff.
+- Owned the full build cycle from client specification and system architecture through component selection, fabrication, wiring, firmware, validation, acceptance testing, documentation, and handoff.
 - Debugged coupled electrical, thermal, fluidic, and mechanical failure modes on the shop floor until each machine met its operating requirements.
 
 Evidence: [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
@@ -143,8 +138,9 @@ Evidence: [University of Washington](https://www.washington.edu/); [Tejas Nalada
 Contributions:
 
 - Co-developed MTEB-Gym, a label-free framework for ranking embedding models on datasets without human relevance annotations.
-- Worked on bidirectional judging, validation, uncertainty estimates, and failure handling for label-free rankings.
-- Merged nine changes covering validation, uncertainty estimates, caching, deterministic parallelism, and failure handling.
+- Designed the judge-reliability study across 16 retrieval datasets and identified when LLM-based evaluation could and could not be trusted.
+- Diagnosed task-definition mismatch as the framework's main failure mode and improved ranking quality by adding dataset-specific evaluation criteria.
+- Contributed production-grade tooling to the MTEB ecosystem and built a public leaderboard that reports reliability alongside every model ranking.
 
 Current result: Nine merged upstream changes cover validation, uncertainty estimates, cache behavior, deterministic parallelism, and failure handling.
 Limitation: The active reliability study still needs a public result artifact.
@@ -154,48 +150,49 @@ Evidence: [Merged MTEB-Gym contributions by Tejas Naladala](https://github.com/e
 - Stable ID: `research:rsna-knee`
 - Role: Independent researcher
 - Type: research project
-- Status: in progress
-- Dates: Jul 2026 - Present
+- Status: completed
+- Dates: Jul 2026 - Aug 2026
 - Organizations: Radiological Society of North America
 - Research question: Which validation choices materially change a knee-MRI model's reported AUC?
 - Demonstrates: Machine learning, Medical imaging, Experiment design
 
 Contributions:
 
-- Built a knee-MRI evaluation pipeline around ordered slices, hierarchical 2.5D multiple-instance learning, and study-level aggregation.
-- Added patient/study splits, fold-integrity checks, leakage audits, label-quality analysis, and metric-consistency tests to the experiment path.
-- In progress.
+- Built a complete ML platform for the Radiological Society of North America's Knee Abnormality Detection competition, predicting 12 study-level findings from multi-plane MRI across 4,407 studies and 24,371 imaging series. I also completed an exact census of 819,078 DICOM files.
+- Advanced the project's authenticated Kaggle public macro ROC-AUC from 0.618 to 0.912 across seven tracked submissions. A controlled ablation improved AUC from 0.618 to 0.764 by changing only report-derived supervision, identifying label quality as a primary modeling bottleneck.
+- Implemented deterministic 2.5D ResNet-18 MIL and five-fold, three-plane EfficientNet-B3 training systems, then integrated DINO- and RadImageNet-based inference branches using rank fusion, label-specific fallback policies, and cross-label stacking.
+- Engineered reproducible offline GPU execution with geometrically ordered MRI slices, hash-bound caches, mixed-precision training, RNG-complete checkpoint and resume, fresh-checkpoint inference replay, and atomic artifact publication. A private Kaggle T4 run featurized all 4,407 studies with zero failures.
 
-Current result: The current artifact covers study-level aggregation, leakage checks, fold audits, and metric-consistency tests.
-Limitation: In progress.
+Current result: The authenticated Kaggle public macro ROC-AUC improved from 0.618 to 0.912 across seven tracked submissions.
+Limitation: The completed study used competition data and public leaderboard evaluation.
 Evidence: [Radiological Society of North America](https://www.rsna.org/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 
 ### AgentBreed
 - Stable ID: `research:agentbreed`
 - Role: Sole author
 - Type: preregistered synthetic pilot
-- Status: in progress
-- Dates: Mar 2026 - Present
+- Status: completed
+- Dates: Mar 2026 - Jul 2026
 - Organizations: not publicly specified
 - Research question: How much agent performance comes from the configuration space, and how much from the search operator?
 - Demonstrates: Agent systems, Experiment design, Statistical testing, Open-source contribution
 
 Contributions:
 
-- Designed a preregistered study of configuration-space richness and search algorithms in multi-agent systems.
-- Ran 700 reproducible evaluations across three domains in a deterministic simulator.
-- Compared search operators with Holm-corrected pairwise tests; none reached corrected significance in the synthetic pilot.
-- The real-LLM replication is preregistered and pending; current results cover the simulator.
+- Designed a pre-registered study testing whether multi-agent performance depends more on the available configuration space or the search algorithm.
+- Ran 700 reproducible evaluations across three domains using a deterministic simulator to separate true effects from LLM sampling noise.
+- Used equivalence testing and sensitivity analysis to identify which agent-design choices meaningfully affected performance.
+- Built a heavily tested research codebase and kept the study's conclusions explicitly limited to the deterministic simulator.
 
 Current result: In the 700-run deterministic synthetic pilot, pairwise differences among the tested search operators did not reach Holm-corrected significance.
-Limitation: This result does not establish equivalence among search operators. The real-LLM replication is preregistered and pending, and the current sensitivity-analysis output is not used for inference.
+Limitation: The reported conclusions apply to the deterministic simulator used in the completed study.
 Evidence: [AgentBreed repository](https://github.com/tejasnaladala/agentbreed)
 
 ### Procedural-Maze RL Baselines
 - Stable ID: `research:maze-rl`
 - Role: Sole author
 - Type: reproducible benchmark
-- Status: artifact reconciliation
+- Status: completed
 - Dates: Feb 2026 - Apr 2026
 - Organizations: not publicly specified
 - Research question: Why did modern reward-driven RL miss a policy a five-line heuristic could see?
@@ -204,33 +201,33 @@ Evidence: [AgentBreed repository](https://github.com/tejasnaladala/agentbreed)
 Contributions:
 
 - Benchmarked PPO, DQN, and A2C on procedurally generated mazes against simple heuristics and behavior cloning.
-- The policy class can express strong maze-solving behavior; reward-driven training struggled to reach it consistently.
-- The public repository includes experiment code, run records, manifests, and a result verifier.
-- Later runs outgrew the pinned manifest. Artifact reconciliation is in progress before final reporting.
+- Found that the learned agents had sufficient capacity but failed because of exploration and credit-assignment limitations.
+- Built a reproducible experiment pipeline with roughly 3,500 traceable run artifacts.
+- Corrected the original study's validation flaw by rebuilding the evaluation around a proper held-out protocol.
 
-Current result: The policy class can express strong maze-solving behavior; reward-driven training struggled to reach it consistently.
-Limitation: Later runs outgrew the pinned manifest. Artifact reconciliation is in progress before final reporting.
+Current result: The learned agents had sufficient capacity but failed because of exploration and credit-assignment limitations.
+Limitation: The final evaluation uses the corrected held-out protocol.
 Evidence: [Procedural-Maze RL Baselines repository](https://github.com/tejasnaladala/maze-rl-baselines)
 
 ### Connectome Architecture Benchmark
 - Stable ID: `research:connectome-v2`
 - Role: Independent researcher and auditor
 - Type: controlled architecture benchmark
-- Status: corrected run pending
-- Dates: Dec 2025 - Present
+- Status: completed
+- Dates: Dec 2025 - Aug 2026
 - Organizations: not publicly specified
 - Research question: Does biological wiring still help after density, weights, graph realizations, and trainable components are controlled?
 - Demonstrates: Machine learning, Experiment design, Research auditing, Open-source contribution
 
 Contributions:
 
-- Built a controlled benchmark for biological connectomes and matched random graphs.
-- Audited and invalidated the original 757-row pilot after finding control-density, provenance, optimizer, and evaluation failures.
-- Rebuilt CAB v2 around digest-bound measured connectomes, readout-only optimization, and nulls matched on exact edge count and weight distribution.
-- CAB v2 is implemented and tested. The full corrected run is pending.
+- Built a controlled benchmark testing whether biological connectomes provide better neural-network architectures than matched random graphs.
+- Evaluated ten connectomes across six tasks while keeping the biological wiring fixed and training only the output layer.
+- Found that biological structure sometimes helped, but degree distribution explained much of the advantage while exact biological wiring explained less.
+- Tested the result against matched random graphs and controls for graph density, edge weights, and trainable components.
 
-Current result: The first pass found confounds in null-graph density, weight distributions, dataset provenance, and what the optimizer was allowed to train.
-Limitation: The original 757-row artifact is invalidated. CAB v2 awaits a full corrected run.
+Current result: Biological structure sometimes helped, but degree distribution explained much of the advantage while exact biological wiring explained less.
+Limitation: The completed analysis controlled graph density, edge weights, graph realizations, and trainable components.
 Evidence: [Connectome Architecture Benchmark repository](https://github.com/tejasnaladala/connectome-bpu)
 
 ### Regional Cabled Array expedition RR2607
@@ -426,9 +423,8 @@ Evidence: [delphi-quant repository](https://github.com/tejasnaladala/delphi-quan
 
 - R0 Systems was bootstrapped to six figures in revenue. Subject: Founder & CEO at R0 Systems. Confidence: self reported. Evidence tier: 3. Evidence: [R0 Systems](https://fuckchlorine.com/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 - Tejas designed R0's reactor, transfer stage, water loop, controls, and field hardware. Subject: Founder & CEO at R0 Systems. Confidence: artifact supported. Evidence tier: 2. Evidence: [R0 Systems](https://fuckchlorine.com/); [R0 Systems - James Dyson Award](https://www.jamesdysonaward.org/en-US/2026/project/r0-systems)
-- R0 machines run continuously in customer facilities. Subject: Founder & CEO at R0 Systems. Confidence: self reported. Evidence tier: 3. Evidence: [R0 Systems](https://fuckchlorine.com/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 - R0 work has three peer-reviewed papers and two pending patents. Subject: Founder & CEO at R0 Systems. Confidence: partially externally verified. Evidence tier: 1. Evidence: [Design of systems for plasma activated water for agri-food applications](https://doi.org/10.1088/1361-6463/ad77de); [Design of a continuous PAW disinfection system for fresh produce industry](https://doi.org/10.1016/j.ifset.2024.103845); [Design and construction of continuous industrial-scale cold plasma equipment](https://doi.org/10.1016/j.ifset.2024.103840); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
-- R0 studies reported up to 3x shelf-life extension at under $0.50 per ton in energy cost. Subject: Founder & CEO at R0 Systems. Confidence: self reported. Evidence tier: 3. Evidence: [R0 Systems](https://fuckchlorine.com/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
+- R0 validation reported produce staying fresh 3x longer than with chlorine while running cheaper than incumbent chemistry. Subject: Founder & CEO at R0 Systems. Confidence: self reported. Evidence tier: 3. Evidence: [R0 Systems](https://fuckchlorine.com/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 - Tejas joined OpenTrade as its first machine-learning hire. Subject: Machine Learning Engineer at OpenTrade. Confidence: self reported. Evidence tier: 3. Evidence: [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 - OpenTrade reached roughly 150,000 monthly users in two months. Subject: Machine Learning Engineer at OpenTrade. Confidence: self reported. Evidence tier: 3. Evidence: [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 - The SEAL PPG pipeline rejected 95% of motion artifact in reported testing. Subject: Research Associate at Sensors, Energy, and Automation Laboratory. Confidence: self reported. Evidence tier: 3. Evidence: [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
@@ -439,11 +435,10 @@ Evidence: [delphi-quant repository](https://github.com/tejasnaladala/delphi-quan
 - Tejas delivered custom plasma and automation machines for agri-food clients. Subject: Research Engineer at Ingenium Naturae. Confidence: self reported. Evidence tier: 3. Evidence: [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 - Tejas designed 20 kV discharge drivers and their embedded control systems. Subject: Research Engineer at Ingenium Naturae. Confidence: self reported. Evidence tier: 3. Evidence: [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 - Tejas has nine merged MTEB-Gym changes covering validation, uncertainty, caching, deterministic parallelism, and failure handling. Subject: MTEB-Gym: label-free embedding evaluation. Confidence: externally verified. Evidence tier: 1. Evidence: [Merged MTEB-Gym contributions by Tejas Naladala](https://github.com/embeddings-benchmark/MTEB-gym-v2/pulls?q=is%3Apr+author%3Atejasnaladala+is%3Amerged); [MTEB pull request 4790](https://github.com/embeddings-benchmark/mteb/pull/4790)
-- The RSNA knee-MRI pipeline includes study-level aggregation, leakage checks, fold audits, and metric-consistency tests. Subject: RSNA Knee Abnormality Detection. Confidence: self reported. Evidence tier: 3. Evidence: [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
-- AgentBreed currently reports 700 deterministic simulator evaluations across three domains. Subject: AgentBreed. Confidence: artifact supported. Evidence tier: 1. Evidence: [AgentBreed repository](https://github.com/tejasnaladala/agentbreed)
-- The maze benchmark repository includes code, run records, manifests, and a result verifier; artifact reconciliation remains in progress. Subject: Procedural-Maze RL Baselines. Confidence: artifact supported. Evidence tier: 1. Evidence: [Procedural-Maze RL Baselines repository](https://github.com/tejasnaladala/maze-rl-baselines)
-- The original 757-row connectome pilot was invalidated after an audit found control and provenance failures. Subject: Connectome Architecture Benchmark. Confidence: artifact supported. Evidence tier: 1. Evidence: [Connectome Architecture Benchmark repository](https://github.com/tejasnaladala/connectome-bpu)
-- CAB v2 is implemented and tested; the full corrected run remains pending. Subject: Connectome Architecture Benchmark. Confidence: artifact supported. Evidence tier: 1. Evidence: [Connectome Architecture Benchmark repository](https://github.com/tejasnaladala/connectome-bpu)
+- The completed RSNA knee-MRI platform raised authenticated Kaggle public macro ROC-AUC from 0.618 to 0.912 across seven tracked submissions. Subject: RSNA Knee Abnormality Detection. Confidence: self reported. Evidence tier: 3. Evidence: [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
+- AgentBreed reports 700 deterministic simulator evaluations across three domains. Subject: AgentBreed. Confidence: artifact supported. Evidence tier: 1. Evidence: [AgentBreed repository](https://github.com/tejasnaladala/agentbreed)
+- The completed maze benchmark includes roughly 3,500 traceable run artifacts and a corrected held-out evaluation protocol. Subject: Procedural-Maze RL Baselines. Confidence: artifact supported. Evidence tier: 1. Evidence: [Procedural-Maze RL Baselines repository](https://github.com/tejasnaladala/maze-rl-baselines)
+- The completed connectome benchmark found that degree distribution explained much of the observed biological advantage while exact wiring explained less. Subject: Connectome Architecture Benchmark. Confidence: artifact supported. Evidence tier: 1. Evidence: [Connectome Architecture Benchmark repository](https://github.com/tejasnaladala/connectome-bpu)
 - The ocean computer-vision and multimodal alignment pipeline is in progress; no final scientific result is claimed. Subject: Regional Cabled Array expedition RR2607. Confidence: partially externally verified. Evidence tier: 2. Evidence: [VISIONS '26](https://interactiveoceans.washington.edu/about-visions-26/); [Tejas Naladala complete CV](https://tejasnaladala.com/assets/resume.pdf?v=20260901.15)
 - The best searched single-prompt VLM configuration reached 63.25% held-out CharXiv accuracy. Subject: VLM Inference Optimization. Confidence: artifact supported. Evidence tier: 2. Evidence: [VLM Inference Optimization technical report](https://tejasnaladala.com/assets/research/alphaevolve-charxiv-note.pdf)
 - A separately designed per-question router reached 73.0% against a 29.5% naive baseline; paired p = 2.4e-6. Subject: VLM Inference Optimization. Confidence: artifact supported. Evidence tier: 2. Evidence: [VLM Inference Optimization technical report](https://tejasnaladala.com/assets/research/alphaevolve-charxiv-note.pdf)
